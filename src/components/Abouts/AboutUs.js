@@ -129,11 +129,7 @@ const AboutUs = () => {
       </div>
 
       <div className="bg-black text-white p-10">
-<<<<<<< HEAD
-  <div className="container mx-auto px-8 hover:border-blue-700 hover:border-2 py-8">
-=======
   <div className="container mx-auto px-8 py-8">
->>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
     <div className="pb-12">
       <h1 className="text-4xl font-bold mb-4 ">
         Navigating the Finwise School Experience
@@ -143,82 +139,6 @@ const AboutUs = () => {
       </p>
     </div>
 
-<<<<<<< HEAD
-    <div className="flex flex-wrap justify-between p-5  ">
-      
-    <div className="w-full md:w-[30%] border-l-[1px] border-blue-700 p-5  mb-8 ">
-        <h2 className="text-xl font-semibold mb-4">Step 01</h2>
-        <div className="text-center">
-          <h2 className="text-lg font-bold mb-2">Sign Up and Create your Account</h2>
-          <p className="font-thin">
-            Fill Out Registration Information: Provide your basic details like name, email, and password to create your account.
-          </p>
-        </div>
-        <div className="absolute top-0 left-0 h-full w-1 bg-blue-300 shadow-lg"></div>
-      </div>
-
-      <div className="w-full md:w-[30%] border-l-[1px] border-blue-700 p-5  mb-8 ">
-
-        <h2 className="text-xl font-semibold mb-4">Step 02</h2>
-        <div className="text-center">
-          <h2 className="text-lg font-bold mb-2">Complete a Financial Assessment</h2>
-          <p className="font-thin">
-            Answer Questions About Your Financial Goals: Share your short-term and long-term financial objectives to help tailor your plan.
-          </p>
-        </div>
-        <div className="absolute top-0 left-0 h-full w-1 bg-blue-300 shadow-lg"></div>
-      </div>
-
-      <div className="w-full md:w-[30%] border-l-[1px] border-blue-700 p-5  mb-8 ">
-
-        <h2 className="text-xl font-semibold mb-4">Step 03</h2>
-        <div className="text-center">
-          <h2 className="text-lg font-bold mb-2">Start Learning with Financial Modules</h2>
-          <p className="font-thin">
-            Complete Educational Modules: Work through interactive modules designed to build your financial knowledge and skills.
-          </p>
-        </div>
-        <div className="absolute top-0 left-0 h-full w-1 bg-blue-300 shadow-lg"></div>
-      </div>
-
-
-      <div className="w-full md:w-[30%] border-l-[1px] border-blue-700 p-5  mb-8 ">
-
-        <h2 className="text-xl font-semibold mb-4">Step 04</h2>
-        <div className="text-center">
-          <h2 className="text-lg font-bold mb-2">Utilize Financial Tools and Resources</h2>
-          <p className="font-thin">
-            Access Financial Tools: Use tools to create and manage a budget, helping you track and control your spending.
-          </p>
-        </div>
-        <div className="absolute top-0 left-0 h-full w-1 shadow-lg"></div>
-      </div>
-
-      <div className="w-full md:w-[30%] border-l-[1px] border-blue-700 p-5  mb-8 ">
-
-        <h2 className="text-xl font-semibold mb-4">Step 05</h2>
-        <div className="text-center">
-          <h2 className="text-lg font-bold mb-2">Monitor Progress and Get Expert Advice</h2>
-          <p className="font-thin">
-            Check the Leaderboard: See how you rank against other users by tracking your progress on the leaderboard.
-          </p>
-        </div>
-        <div className="absolute top-0 left-0 h-full w-1 bg-blue-300 shadow-lg"></div>
-      </div>
-
-      <div className="w-full md:w-[30%] border-l-[1px] border-blue-700 p-5  mb-8 ">
-
-        <h2 className="text-xl font-semibold mb-4">Step 06</h2>
-        <div className="text-center">
-          <h2 className="text-lg font-bold mb-2">Achieve Goals and Earn Rewards</h2>
-          <p className="font-thin">
-            Earn Rewards for Completing Modules: Receive rewards for completing modules and achieving milestones, motivating you to stay on track.
-          </p>
-        </div>
-        <div className="absolute top-0 left-0 h-full w-1 bg-blue-300 shadow-lg"></div>
-      </div>
-    </div>
-=======
     <div className="flex flex-wrap justify-between p-5">
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
@@ -311,7 +231,6 @@ const AboutUs = () => {
   </div>
 </div>
 
->>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
   </div>
 
   
@@ -321,11 +240,7 @@ const AboutUs = () => {
     <h1 className="finwise-blue text-4xl font-bold mb-4 ">
       Meet our Supporters
     </h1>
-<<<<<<< HEAD
-    <p className="font-thin">
-=======
     <p className="">
->>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
       At Finwise School, our success is fueled by the support and expertise of our valued partners.
     </p>
   </div>
@@ -350,11 +265,7 @@ const AboutUs = () => {
         <h1 className="finwise-blue text-4xl font-bold  mb-7 pt-16">
           Partner Portal
         </h1>
-<<<<<<< HEAD
-        <p className=" px-10 font-thin mb-14 text-justify">
-=======
         <p className=" px-10 mb-14 text-justify">
->>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
           Our Partner Portal offers customized financial planning solutions
           tailored specifically for corporate clients. Collaborate with Finwise
           School to provide your employees with seamless access to exclusive
