@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.auth-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  padding: 20px;
+}
+
+.auth-page h2 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.auth-page .formContainer {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.auth-page .formGroup {
+  margin-bottom: 20px;
+}
+
+.auth-page .formGroup label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.auth-page .formGroup input {
+  width: 100%;
+  padding: 8px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.auth-page .subButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007fff;
+  border: none; /* Changed from navy to none */
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: medium;
+  font-weight: 500;
+}
+
+.auth-page .subButton:hover {
+  background-color: #a9c7e5;
+}
+
+.auth-page p {
+  margin-top: 15px;
+}
+
+/* Reset styles for global elements, so they don't affect .auth-page */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: white;
+}
