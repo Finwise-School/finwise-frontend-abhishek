@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import responses from './Chatbot/responses';
 import subOptions from './Chatbot/subOptions';
 import './Chatbot/chatbot.css';
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import axios from 'axios';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([
@@ -24,6 +25,24 @@ const Chatbot = () => {
   const [query, setQuery] = useState(''); // New state for query
   const [showForm, setShowForm] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0); // State to store scroll position
+
+  // Create a ref for the chat container
+  const chatContainerRef = useRef(null);
+
+  // Scroll to bottom whenever messages change
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  // Scroll to the stored position when reopening the chat
+  useEffect(() => {
+    if (chatContainerRef.current && isOpen) {
+      chatContainerRef.current.scrollTop = scrollPosition;
+    }
+  }, [isOpen]);
 
   const handleMajorOptionClick = (option) => {
     setMessages([...messages, { text: option, isBot: false }]);
@@ -61,28 +80,53 @@ const Chatbot = () => {
     setShowForm(false);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setMessages([...messages, { text: `Name: ${name}, Email: ${email}, Query: ${query}`, isBot: false }]);
-    // Here you would normally handle form submission, e.g., send to a server
-    setMessages([...messages, { text: "Thank you! We will get back to you soon.", isBot: true }]);
-    setName('');
-    setEmail('');
-    setQuery(''); // Clear query after submission
-    setShowForm(false);
-    setOptions([
-      "I have some General Questions",
-      "About Platform Access and Features",
-      "What are Learning Experience and Courses",
-      "About Rewards and Incentives",
-      "Support and Additional Information",
-      "Other"
-    ]);
-    setCurrentLevel('main');
-    setSelectedOption(null);
+  
+    const formData = {
+      name,
+      email,
+      query
+    };
+  
+    try {
+      await axios.post('http://localhost:5000/api/chatbot', formData);
+  
+      setMessages([...messages, { text: `Name: ${name}, Email: ${email}, Query: ${query}`, isBot: false }]);
+      setMessages([...messages, { text: "Thank you! We will get back to you soon.", isBot: true }]);
+      
+      // Clear the form fields
+      setName('');
+      setEmail('');
+      setQuery('');
+  
+      // Hide the form and reset options
+      setShowForm(false);
+      setOptions([
+        "I have some General Questions",
+        "About Platform Access and Features",
+        "What are Learning Experience and Courses",
+        "About Rewards and Incentives",
+        "Support and Additional Information",
+        "Other"
+      ]);
+      setCurrentLevel('main');
+      setSelectedOption(null);
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error('Error submitting the form:', error);
+      setMessages([...messages, { text: "There was an error submitting the form. Please try again.", isBot: true }]);
+    }
   };
+  
 
   const openButton = () => {
+    if (isOpen) {
+      // Save scroll position when closing
+      if (chatContainerRef.current) {
+        setScrollPosition(chatContainerRef.current.scrollTop);
+      }
+    }
     setIsOpen(!isOpen);
   };
 
@@ -94,7 +138,10 @@ const Chatbot = () => {
         {isOpen ? (
           <>
             <IoIosCloseCircleOutline className='w-6 h-6 absolute top-2 right-2 cursor-pointer' onClick={openButton}/>
-            <div className="flex-1 p-3 overflow-y-auto flex flex-col">
+            <div 
+              className="flex-1 p-3 overflow-y-auto flex flex-col" 
+              ref={chatContainerRef}
+            >
               {messages.map((msg, index) => (
                 <div
                   key={index}

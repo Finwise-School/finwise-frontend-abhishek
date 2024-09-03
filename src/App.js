@@ -27,7 +27,7 @@ import MortgageCalculator from "./components/calculator/Mortgage";
 import IRRCalculator from "./components/calculator/IRR";
 import ScrollToTop from "./components/ScrolltoTop";
 import Blogs from "./components/Blogs";
-
+import QuotesHeader from "./components/QuotesHeader";
 
 const ProtectedRoute = ({ element, ...rest }) => {
   const { isAuthenticated } = useAuth();
@@ -39,6 +39,7 @@ const App = () => {
     <AuthProvider>
       <Router>
       <ScrollToTop />
+      <QuotesHeader />
         <div className="app">
           <Header/> 
           <Routes>

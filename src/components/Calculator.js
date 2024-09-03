@@ -28,7 +28,7 @@ const FinancialPlanningTools = () => {
 
       <hr className="mt-0 h-0.5 my-8 bg-gray-100 border-0 dark:bg-gray-400" />
 
-      <div className="w-full max-w-screen-xl mx-auto">
+      <div className="w-full max-w-screen-xl mx-auto"  style={{maxWidth: "1150px"}}>
         <div className="grid-for-calci grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-5">
           <ToolCard title="Fixed Deposit Calculator" image={FDImg} path="/tools/fixed-deposit" />
           <ToolCard title="SIP Calculator" image={MutualImg} path="/tools/sip" />

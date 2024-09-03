@@ -4,8 +4,8 @@ const FAQcarouselcard = ({ title, answer, isExpanded, onToggle }) => {
 
     return (
         <>
-    <div className={`flex flex-col rounded-xl border border-[#262626] finwise-green-bg p-[30px] md:p-[50px] ${isExpanded ? 'h-auto' : 'md:h-[25rem]'}`}>
-      <h1 className='font-semibold text-lg md:text-2xl text-[#FFFFFF] leading-7 md:leading-9'>{title}</h1>
+    <div className={`flex flex-col rounded-xl border border-[#262626] finwise-green-bg p-[8%] md:p-[10%] lg:p-[12%] ${isExpanded ? 'h-auto' : 'md:h-[25rem]'}`}>
+      <h1 className={`text-lg md:text-2xl leading-7 md:leading-9 ${isExpanded ? 'font-black text-[#223876]' : 'font-semibold text-[#FFFFFF]'}`}>{title}</h1>
       {Array.isArray(answer) ? (null) : (
   <p className={`font-medium text-sm leading-5 md:text-lg md:leading-7 tracking-tighter py-5 text-[#262626] transition ease-in-out ${isExpanded ? 'h-auto' : 'h-32 overflow-hidden'}`}>
   {answer}

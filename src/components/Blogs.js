@@ -15,7 +15,7 @@ function Blogs() {
 
   //UNCOMMENT LATER (DON'T DELETE)
   // useEffect(() => {
-  //   axios.get('http://localhost:2142/api')
+  //   axios.get('http://localhost:5000/api')
   //   .then(response => {
   //     // setData(response.data[0].Heading);
   //     setData(response.data);

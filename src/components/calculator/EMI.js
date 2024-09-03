@@ -5,8 +5,8 @@ import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import Tool_Footer from "./Tools_footer";
 import CalculatorList from './Calulators_List';
-import logo from '../../assets/images/logo.png'; // Adjust the path as needed
-
+import logo from '../../assets/images/logo-for-excel.png'; 
+import ExcelJS from 'exceljs';
 
 const EMICalculator = () => {
     const [loanAmount, setLoanAmount] = useState(10000.00);
@@ -14,7 +14,7 @@ const EMICalculator = () => {
     const [termLength, setTermLength] = useState(9);
     const [firstPaymentDate, setFirstPaymentDate] = useState('2024-01-01');
     const [compoundPeriod, setCompoundPeriod] = useState('Monthly');
-    const [paymentFrequency, setPaymentFrequency] = useState('Bi-Weekly');
+    const [paymentFrequency, setPaymentFrequency] = useState('Monthly');
     const [result, setResult] = useState({ payment: "0" });
     const [schedule, setSchedule] = useState([]);
     const [showMore, setShowMore] = useState(false);
@@ -85,6 +85,27 @@ const EMICalculator = () => {
         let balance = P;
         let paymentDate = new Date(firstPaymentDate);
 
+        const getPaymentDateIncrement = () => {
+            switch (paymentFrequency) {
+                case 'Monthly':
+                    return 1;
+                case 'Semi-Monthly':
+                    return 0.5;
+                case 'Bi-Weekly':
+                    return 14 / 30;
+                case 'Weekly':
+                    return 7 / 30;
+                default:
+                    return 1;
+            }
+        };
+
+        const incrementPaymentDate = (paymentDate, incrementInMonths) => {
+            paymentDate.setMonth(paymentDate.getMonth() + Math.floor(incrementInMonths));
+            const remainderDays = (incrementInMonths - Math.floor(incrementInMonths)) * 30;
+            paymentDate.setDate(paymentDate.getDate() + remainderDays);
+        };
+
         for (let i = 1; i <= totalPayments; i++) {
             const interestDue = balance * periodicInterestRate;
             const principalPaid = EMI - interestDue;
@@ -96,20 +117,22 @@ const EMICalculator = () => {
                 interestRate: annualInterestRate.toFixed(2) + '%',
                 interestDue: interestDue.toFixed(2),
                 paymentDue: EMI.toFixed(2),
-                extraPayments: "0",
-                additionalPayment: "0",
+                // extraPayments: "0",
+                // additionalPayment: "0",
                 principalPaid: principalPaid.toFixed(2),
                 balance: balance.toFixed(2),
-                taxReturned: "0",
-                cumulativeTaxReturned: "0"
+                // taxReturned: "0",
+                // cumulativeTaxReturned: "0"
             });
 
-            paymentDate.setMonth(paymentDate.getMonth() + (12 / periodsPerYear));
+            // Increment payment date based on payment frequency
+            incrementPaymentDate(paymentDate, getPaymentDateIncrement());
         }
 
         setResult({ payment: EMI.toFixed(2) });
         setSchedule(scheduleData);
     };
+
 
     useEffect(() => {
         calculatePayment();
@@ -130,19 +153,19 @@ const EMICalculator = () => {
         doc.setFontSize(18);
         doc.text('EMI Payment Schedule', margin, titleYPosition);
 
-        const tableColumn = ["Payment No", "Payment Date", "Interest Rate", "Interest Due", "Payment Due", "Extra Payments", "Additional Payments", "Principal Paid", "Balance", "Tax Returned", "Cumulative Tax Returned"];
+        const tableColumn = ["Payment No", "Payment Date", "Interest Rate", "Interest Due", "Payment Due", "Principal Paid", "Balance"];
         const tableRows = schedule.map(row => [
             row.paymentNo,
             row.paymentDate,
             row.interestRate,
             row.interestDue,
             row.paymentDue,
-            row.extraPayments,
-            row.additionalPayment,
+            // row.extraPayments,
+            // row.additionalPayment,
             row.principalPaid,
             row.balance,
-            row.taxReturned,
-            row.cumulativeTaxReturned
+            // row.taxReturned,
+            // row.cumulativeTaxReturned
         ]);
 
         const startY = titleYPosition + 10;
@@ -163,13 +186,83 @@ const EMICalculator = () => {
         doc.save('EMI_Schedule.pdf');
     };
 
-    const exportToExcel = () => {
-        const worksheet = XLSX.utils.json_to_sheet(schedule);
-        const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, worksheet, 'Schedule');
-        XLSX.writeFile(workbook, 'EMI_Schedule.xlsx');
-    };
 
+    // const exportToExcel = () => {
+    //     const worksheet = XLSX.utils.json_to_sheet(schedule);
+    
+    //     const range = XLSX.utils.decode_range(worksheet['!ref']);
+    //     for (let rowNum = range.s.r; rowNum <= range.e.r; rowNum++) {
+    //         for (let colNum = range.s.c; colNum <= range.e.c; colNum++) {
+    //             const cellAddress = XLSX.utils.encode_cell({ r: rowNum, c: colNum });
+    //             if (!worksheet[cellAddress]) continue;
+    
+    //             worksheet[cellAddress].s = { protection: { locked: true } }; 
+    //         }
+    //     }
+    
+    //     const workbook = XLSX.utils.book_new();
+    //     XLSX.utils.book_append_sheet(workbook, worksheet, 'Schedule');
+    
+    //     worksheet['!protect'] = {
+    //         password: 'finwise',
+    //         editObjects: false,
+    //         selectLockedCells: true
+    //     };
+    
+    //     XLSX.writeFile(workbook, 'EMI_Schedule - Finwise School.xlsx');
+    // };
+    const exportToExcel = async () => {
+        // Create a new workbook and add a worksheet
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Schedule');
+    
+        // Fetch the image as a buffer
+        const imageBuffer = await fetch(logo).then(res => res.arrayBuffer());
+    
+        // Add the image to the workbook
+        const imageId = workbook.addImage({
+            buffer: imageBuffer,
+            extension: 'png',
+        });
+    
+        worksheet.addImage(imageId, {
+            tl: { col: 0, row: 0 }, 
+            ext: { width: 100, height: 100 }, 
+        });
+    
+        const headers = ["Payment No", "Payment Date", "Interest Rate", "Interest Due", "Payment Due", "Principal Paid", "Balance"];
+        worksheet.addRow(headers).font = { bold: true };
+    
+        schedule.forEach(row => {
+            const rowData = [
+                row.paymentNo,
+                row.paymentDate,
+                row.interestRate,
+                row.interestDue,
+                row.paymentDue,
+                row.principalPaid,
+                row.balance
+            ];
+            worksheet.addRow(rowData);
+        });
+    
+        worksheet.columns.forEach(column => {
+            column.width = 20; 
+        });
+    
+        worksheet.protect('finwise', {
+            selectLockedCells: true
+        });
+    
+        workbook.xlsx.writeBuffer().then(buffer => {
+            const url = URL.createObjectURL(new Blob([buffer]));
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'EMI_Schedule - Finwise School.xlsx';
+            a.click();
+            URL.revokeObjectURL(url);
+        }).catch(err => console.error(err));
+    };
     return (
         <div className="bg-gray-50 p-2">
             <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
@@ -310,12 +403,12 @@ const EMICalculator = () => {
                                     <th className="border p-2 text-left">Interest Rate</th>
                                     <th className="border p-2 text-left">Interest Due</th>
                                     <th className="border p-2 text-left">Payment Due</th>
-                                    <th className="border p-2 text-left">Extra Payments</th>
-                                    <th className="border p-2 text-left">Additional Payments</th>
+                                    {/* <th className="border p-2 text-left">Extra Payments</th>
+                                    <th className="border p-2 text-left">Additional Payments</th> */}
                                     <th className="border p-2 text-left">Principal Paid</th>
                                     <th className="border p-2 text-left">Balance</th>
-                                    <th className="border p-2 text-left">Tax Returned</th>
-                                    <th className="border p-2 text-left">Cumulative Tax Returned</th>
+                                    {/* <th className="border p-2 text-left">Tax Returned</th>
+                                    <th className="border p-2 text-left">Cumulative Tax Returned</th> */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -326,12 +419,12 @@ const EMICalculator = () => {
                                         <td className="border p-2">{row.interestRate}</td>
                                         <td className="border p-2">{row.interestDue}</td>
                                         <td className="border p-2">{row.paymentDue}</td>
-                                        <td className="border p-2">{row.extraPayments}</td>
-                                        <td className="border p-2">{row.additionalPayment}</td>
+                                        {/* <td className="border p-2">{row.extraPayments}</td>
+                                        <td className="border p-2">{row.additionalPayment}</td> */}
                                         <td className="border p-2">{row.principalPaid}</td>
                                         <td className="border p-2">{row.balance}</td>
-                                        <td className="border p-2">{row.taxReturned}</td>
-                                        <td className="border p-2">{row.cumulativeTaxReturned}</td>
+                                        {/* <td className="border p-2">{row.taxReturned}</td>
+                                        <td className="border p-2">{row.cumulativeTaxReturned}</td> */}
                                     </tr>
                                 ))}
                             </tbody>

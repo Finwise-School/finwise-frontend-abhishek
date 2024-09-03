@@ -229,7 +229,7 @@ strong {
 }
 
 .faqButton {
-  background-color:   1A1A1A;
+  background-color: #1A1A1A;
 }
 
 .shine {
@@ -271,4 +271,36 @@ strong {
 
 .tool-card:hover::before {
   left: 100%;
+}
+
+/* for reqest-access  button */
+@keyframes revolveGradient {
+  0% {
+    border-image-source: linear-gradient(90deg, #223876, #3CB371);
+  }
+  50% {
+    border-image-source: linear-gradient(180deg, #223876, #3CB371);
+  }
+  100% {
+    border-image-source: linear-gradient(270deg, #223876, #3CB371);
+  }
+}
+
+@keyframes colorTransition {
+  0% {
+    border-image-source: linear-gradient(90deg, #223876, #3CB371);
+  }
+  50% {
+    border-image-source: linear-gradient(180deg, #2a3d7a, #4caf50);
+  }
+  100% {
+    border-image-source: linear-gradient(270deg, #223876, #3CB371);
+  }
+}
+
+.revolving-border {
+  border: 5px solid;
+  border-radius: 12px;
+  border-image: linear-gradient(90deg, #223876, #3CB371) 1;
+  animation: colorTransition 10s linear infinite, revolveGradient 10s linear infinite;
 }

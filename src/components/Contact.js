@@ -19,6 +19,7 @@ const ContactUs = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [submissionStatus, setSubmissionStatus] = useState('');
 
   const validateForm = () => {
     const newErrors = {};
@@ -42,10 +43,44 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('Form submitted:', formData);
+      try {
+        const response = await fetch('http://localhost:5000/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            subject: formData.inquiryType,
+            message: formData.message,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          setSubmissionStatus('Contact form submitted successfully');
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            inquiryType: '',
+            hearAboutUs: '',
+            message: '',
+            terms: false,
+          });
+        } else {
+          setSubmissionStatus(result.message || 'Submission failed');
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        setSubmissionStatus('Network error, please try again later');
+      }
     }
   };
 
@@ -194,61 +229,63 @@ const ContactUs = () => {
                   Send Your Message
                 </button>
               </div>
-
-
             </div>
           </form>
+          {submissionStatus && (
+            <div className="mt-6 text-center">
+              <p className={submissionStatus.includes('success') ? 'text-green-600' : 'text-red-600'}>
+                {submissionStatus}
+              </p>
+            </div>
+          )}
         </div>
       </div>
       <footer style={{ backgroundColor: "#000000" }} className="text-white py-8">
-  <div className="max-w-7xl mx-auto">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div className="flex items-center justify-center relative group">
-        {/* <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-5 rounded-md shadow-md" style={{ width: '250px', height: '150px', margin: '2px' }}> */}
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
-
-          <img src={MailImg} alt="Email Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
-          <p className="text-white text-sm">
-            <a href="mailto:contact@finwiseschool.com" className="hover:underline">contact@finwiseschool.com</a>
-          </p>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="flex items-center justify-center relative group">
+              <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
+                <img src={MailImg} alt="Email Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
+                <p className="text-white text-sm">
+                  <a href="mailto:contact@finwiseschool.com" className="hover:underline">contact@finwiseschool.com</a>
+                </p>
+              </div>
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </div>
+            <div className="flex items-center justify-center relative group">
+              <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
+                <img src={CallImg} alt="Phone Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
+                <p className="text-white text-sm">
+                  <a href="tel:+447741819337" className="hover:underline">+44 7741-819-337</a>
+                </p>
+              </div>
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </div>
+            <div className="flex items-center justify-center relative group">
+              <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
+                <img src={LocationImg} alt="Location Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
+                <p className="text-white text-sm">Glasgow, UK</p>
+              </div>
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </div>
+            <div className="flex items-center justify-center relative group">
+              <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
+                <img src={youtubeImg} alt="YouTube Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
+                <p className="text-white text-sm">YouTube</p>
+              </div>
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      </div>
-      <div className="flex items-center justify-center relative group">
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
-          <img src={CallImg} alt="Phone Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
-          <p className="text-white text-sm">
-            <a href="tel:+447741819337" className="hover:underline">+44 7741-819-337</a>
-          </p>
-        </div>
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      </div>
-      <div className="flex items-center justify-center relative group">
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
-          <img src={LocationImg} alt="Location Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
-          <p className="text-white text-sm">Glasgow, UK</p>
-        </div>
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      </div>
-      <div className="flex items-center justify-center relative group">
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md" style={{ width: '280px', height: '120px', margin: '0px' }}>
-          <img src={youtubeImg} alt="YouTube Icon" className="w-12 h-12 mb-2 transition-transform duration-300 ease-in-out transform group-hover:scale-110" />
-          <p className="text-white text-sm">YouTube</p>
-        </div>
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="shine absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
+      </footer>
 
       <EarlyAccessTemplate />
     </div>

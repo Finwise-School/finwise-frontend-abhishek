@@ -14,6 +14,7 @@ const EarlyAccessForm = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submissionError, setSubmissionError] = useState('');
 
   const handleStart = () => {
     setStarted(true);
@@ -51,10 +52,38 @@ const EarlyAccessForm = () => {
     setFormStep((prev) => prev - 1);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateStep()) {
-      setSubmitted(true); 
+      try {
+        const response = await fetch('http://localhost:5000/api/request-early-access', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+  
+        const result = await response.json();
+  
+        if (response.ok) {
+          setSubmitted(true);
+        } else {
+          setSubmissionError(result.message || 'Something went wrong');
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        setSubmissionError('Network error, please try again later');
+      }
+    }
+  };
+  
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (formStep !== 4) {
+        handleNextStep();
+      }
     }
   };
 
@@ -83,6 +112,11 @@ const EarlyAccessForm = () => {
 
   return (
     <div className="bg-white text-[#223876] font-inter min-h-screen flex justify-center items-center">
+      {submissionError && (
+        <div className="absolute top-0 left-0 w-full bg-red-500 text-white text-center py-2">
+          {submissionError}
+        </div>
+      )}
       {!started ? (
         <div className="w-full h-full flex flex-col md:flex-row">
           <div className="flex-1 p-10 flex flex-col justify-center items-start">
@@ -90,7 +124,7 @@ const EarlyAccessForm = () => {
               We currently have a waitlist. Please fill this form to apply for the Finwise School early access.
             </p>
             <p className="text-sm md:text-base mb-10">
-              Click on start, Lets get started
+              Click on start, Let's get started
             </p>
             <div className="flex items-center mb-4">
               <button
@@ -108,7 +142,7 @@ const EarlyAccessForm = () => {
         </div>
       ) : (
         <div className="w-full max-w-lg px-4 mx-auto mt-20">
-          <form onSubmit={handleSubmit} className="w-full">
+          <form onSubmit={handleSubmit} className="w-full" onKeyDown={handleKeyDown}>
             {formStep === 1 && (
               <div className="flex flex-col items-start pb-2 mb-8 w-full">
                 <label htmlFor="name" className="flex items-center space-x-2 text-lg md:text-xl font-normal">
@@ -186,7 +220,7 @@ const EarlyAccessForm = () => {
                 </label>
                 <div className="w-full mt-4">
                   <PhoneInput
-                    country={'us'}
+                    country={'gb'}
                     value={formData.phone}
                     onChange={handlePhoneChange}
                     inputStyle={{

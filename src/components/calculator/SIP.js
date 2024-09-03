@@ -254,10 +254,14 @@ const SIP = () => {
                                             tooltip: {
                                                 callbacks: {
                                                     label: (tooltipItem) => {
-                                                        return `${tooltipItem.label} £${tooltipItem.raw.toFixed(0)}`;
+                                                        const value = tooltipItem.raw;
+                                                        if (typeof value === 'number') {
+                                                            return `${tooltipItem.label} £${value.toFixed(0)}`;
+                                                        }
+                                                        return `${tooltipItem.label}: £${value}`;
                                                     }
                                                 }
-                                            }
+                                            }                                            
                                         },
                                         scales: {
                                             x: {
