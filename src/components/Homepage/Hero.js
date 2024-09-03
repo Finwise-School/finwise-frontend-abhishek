@@ -1,5 +1,5 @@
 import React from 'react';
-import Heroos from '../Homepage/Hero/Hero.gif'
+import Heroos from '../Homepage/Hero/hero.gif'
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
 import sub from "../Homepage/Hero/sub.png"
 import black from "../Homepage/Hero/black.png"

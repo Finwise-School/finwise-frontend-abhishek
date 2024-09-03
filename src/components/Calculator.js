@@ -37,7 +37,7 @@ const FinancialPlanningTools = () => {
           <ToolCard title="Tax Calculator" image={TaxImg} path="/tools/tax" />
           <ToolCard title="Budget Boss Calculator" image={BudgetImg} path="/tools/budget" />
           <ToolCard title="Mortgage Calculator" image={MortgageImg} path="/tools/mortgage" />
-          <ToolCard title="IRR" image={IRRImg} path="#" />
+          <ToolCard title="IRR" image={IRRImg} path="/tools/irr" />
           <ToolCard title="Ideal Loan Payback Period" image={LoanImg} path="/tools/loan" />
           <ToolCard title="EMI Calculator" image={EMIImg} path="/tools/emi" />
           <ToolCard title="CAGR" image={CAGRImg} path="/tools/cagr" />
