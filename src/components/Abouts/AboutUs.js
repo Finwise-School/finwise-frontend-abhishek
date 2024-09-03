@@ -129,7 +129,7 @@ const AboutUs = () => {
       </div>
 
       <div className="bg-black text-white p-10">
-  <div className="container mx-auto px-8 hover:border-blue-700 hover:border-2 py-8">
+  <div className="container mx-auto px-8 py-8">
     <div className="pb-12">
       <h1 className="text-4xl font-bold mb-4 ">
         Navigating the Finwise School Experience
