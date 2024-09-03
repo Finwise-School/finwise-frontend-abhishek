@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import React, { useRef } from 'react';
+=======
 import React from 'react';
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
 
 const Faqcard = ({ title, answer, isExpanded, onToggle, isArray }) => {
   return (

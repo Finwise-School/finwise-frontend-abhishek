@@ -1,5 +1,13 @@
 import React from 'react';
 import Heroos from '../Homepage/Hero/Hero.gif'
+<<<<<<< HEAD
+
+const Hero = () => {
+  return (
+    <section className="relative">
+      <img loading="lazy" src={Heroos} alt="Hero background" className="object-contain w-full aspect-[1.90]  max-md:max-w-full" />
+    </section>
+=======
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
 import sub from "../Homepage/Hero/sub.png"
 import black from "../Homepage/Hero/black.png"
@@ -26,6 +34,7 @@ const Hero = () => {
         <img src={black} height={1450} width={1485} alt="about-us" className="hidden md:block ml-[1%] mt-[5%]"/>
       </div>
     </div>
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
   );
 };
 
