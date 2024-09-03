@@ -1,7 +1,12 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.4d4ddd4c.css",
     "main.js": "/static/js/main.3537cdfd.js",
+=======
+    "main.css": "/static/css/main.80f193e2.css",
+    "main.js": "/static/js/main.09b1534f.js",
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
     "static/js/361.fe5f23a3.chunk.js": "/static/js/361.fe5f23a3.chunk.js",
     "static/js/359.3c15bbf9.chunk.js": "/static/js/359.3c15bbf9.chunk.js",
     "static/js/767.f531e8cd.chunk.js": "/static/js/767.f531e8cd.chunk.js",
@@ -30,6 +35,10 @@
     "static/media/star.png": "/static/media/star.4758cb11f1b252437b7d.png",
     "static/media/barclays.png": "/static/media/barclays.4a183c3db5ed8aada26f.png",
     "static/media/inspire.png": "/static/media/inspire.58e132c776e588956437.png",
+<<<<<<< HEAD
+=======
+    "static/media/logo-for-excel.png": "/static/media/logo-for-excel.a66775f673b7741648f7.png",
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
     "static/media/StrathclvdeInspire.jpg": "/static/media/StrathclvdeInspire.f7397a7ba1c2e729fa77.jpg",
     "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
     "static/media/Barclays.jpg": "/static/media/Barclays.87359e3c3641f0257a23.jpg",
@@ -45,14 +54,24 @@
     "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
+<<<<<<< HEAD
     "main.4d4ddd4c.css.map": "/static/css/main.4d4ddd4c.css.map",
     "main.3537cdfd.js.map": "/static/js/main.3537cdfd.js.map",
+=======
+    "main.80f193e2.css.map": "/static/css/main.80f193e2.css.map",
+    "main.09b1534f.js.map": "/static/js/main.09b1534f.js.map",
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
     "361.fe5f23a3.chunk.js.map": "/static/js/361.fe5f23a3.chunk.js.map",
     "359.3c15bbf9.chunk.js.map": "/static/js/359.3c15bbf9.chunk.js.map",
     "767.f531e8cd.chunk.js.map": "/static/js/767.f531e8cd.chunk.js.map"
   },
   "entrypoints": [
+<<<<<<< HEAD
     "static/css/main.4d4ddd4c.css",
     "static/js/main.3537cdfd.js"
+=======
+    "static/css/main.80f193e2.css",
+    "static/js/main.09b1534f.js"
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
   ]
 }

@@ -14,6 +14,10 @@ const FAQ = () => {
   const [mainExpand, setMainExpand] = useState(false);
   const isLarge = useMediaQuery({ minWidth: 1024 });
   const isMedium = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+<<<<<<< HEAD
+=======
+  // eslint-disable-next-line no-unused-vars
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
   const isSmall = useMediaQuery({ maxWidth: 767 });
 
   // Handler to toggle the expansion state of a specific card

@@ -20,7 +20,10 @@ export default function CarouselCards() {
 
   const isLarge = useMediaQuery({ minWidth: 1024 });
   const isMedium = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+<<<<<<< HEAD
   const isSmall = useMediaQuery({ maxWidth: 767 });
+=======
+>>>>>>> 58cf2833a15f341e127d726d69afe1921e7f18e4
 
 
     const settings = {

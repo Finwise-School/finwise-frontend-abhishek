@@ -145,5 +145,4 @@ const IRRCalculator = () => {
   );
 };
 
-
 export default IRRCalculator;
