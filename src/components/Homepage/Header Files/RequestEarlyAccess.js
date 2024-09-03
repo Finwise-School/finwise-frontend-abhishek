@@ -12,7 +12,7 @@ function RequestAccessButton() {
     <div className="mt-6 lg:mt-0 lg:ml-10">
       <button
         onClick={handleClick}
-        className="inline-block rounded-lg text-[#263871] hover:text-green-500 py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300"
+        className="inline-block revolving-border rounded-lg text-[#263871] hover:text-green-500 py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300"
         style={{
           border: '5px solid',
           borderRadius: '12px',

@@ -10,6 +10,7 @@ import { FaStar } from "react-icons/fa6";
 import { FaGraduationCap } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
 import EarlyAccessTemplate from "../EarlyAccessTemplate";
+import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
 const AboutUs = () => {
   return (
     <div>
@@ -26,19 +27,8 @@ const AboutUs = () => {
             user's progress and performance, ensuring that each lesson is
             relevant and appropriately challenging.
           </p>
-          <div className="mt-6 lg:mt-0 lg:ml-0">
-            <a
-              href="/early-access"
-              className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-2 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300"
-              style={{
-                border: "5px solid",
-                borderRadius: "12px",
-                borderImage:
-                  "linear-gradient(90deg, #223876 0%, #3CB371 100%) 1",
-              }}
-            >
-              Request Early Access
-            </a>
+          <div style={{marginLeft: "-40px"}}>
+          <EarlyAccessBtn/>
           </div>
         </div>
        <img

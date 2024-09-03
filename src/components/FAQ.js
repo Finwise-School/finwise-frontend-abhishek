@@ -14,6 +14,7 @@ const FAQ = () => {
   const [mainExpand, setMainExpand] = useState(false);
   const isLarge = useMediaQuery({ minWidth: 1024 });
   const isMedium = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  // eslint-disable-next-line no-unused-vars
   const isSmall = useMediaQuery({ maxWidth: 767 });
 
   // Handler to toggle the expansion state of a specific card
@@ -39,7 +40,7 @@ const FAQ = () => {
 
   return (
     <>
-      <div className='mainFaqContainer flex flex-col md:mx-32 m-[14px] md:mb-16'>
+      <div className='mainFaqContainer flex flex-col md:mx-32 m-[14px] md:mb-16 mt-16'>
         <div className='faqHeader flex flex-row md:justify-between md:items-start justify-center items-center'>
           <div>
             <h1 className='font-semibold text-[28px] leading-10 md:text-5xl md:leading-[72px] finwise-blue'>

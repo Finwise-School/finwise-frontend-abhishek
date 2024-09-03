@@ -19,7 +19,7 @@ function Header() {
       </h1>
       <button
         onClick={handleClick}
-        className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-2 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300"
+        className="inline-block text-[#263871] revolving-border hover:text-green-500 rounded-lg py-2 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300"
         style={{
           border: '5px solid',
           borderRadius: '12px',

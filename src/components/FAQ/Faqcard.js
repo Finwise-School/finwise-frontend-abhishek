@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 const Faqcard = ({ title, answer, isExpanded, onToggle, isArray }) => {
   return (
