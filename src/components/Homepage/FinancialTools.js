@@ -1,17 +1,15 @@
 import React from 'react';
-import fire from '../Homepage/Tools/fire.png'
+import fire from '../Homepage/Tools/fire.png';
 import { redirect } from 'react-router-dom';
 
 const ToolCard = ({ title, description, imageSrc }) => (
-  <div className="flex overflow-hidden flex-col flex-1 shrink  pt-[3%]  pr-[2%]  pl-[3%] pb-[4%]  bg-green-500 rounded-xl border  justify-center align-middle border-solid basis-[25px] border-neutral-800 min-h-[100%] min-w-[30%] max-md:pl-[3%] max-md:max-w-full">
-    <div className="flex flex-col w-full max-md:max-w-full">
-      <div className="flex flex-col w-full max-md:max-w-full">
-        <h3 className="text-2xl font-semibold text-white max-md:max-w-full">{title}</h3>
-        <p className="mt-[2%] text-lg font-medium leading-7 text-blue-900 max-md:max-w-full">{description}</p>
-      </div>
+  <div className="flex overflow-hidden flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[37.5vw] max-w-[450px] min-w-[375px]">
+    <div className="flex flex-col w-full">
+      <h3 className="text-2xl font-semibold text-white">{title}</h3>
+      <p className="mt-3 text-lg font-medium leading-7 text-blue-900">{description}</p>
     </div>
     <a href={redirect}>
-      <img loading="lazy" src={imageSrc} alt={title} className="object-contain mt-8 max-w-full rounded-xl aspect-[0.62] w-[457px]" />
+      <img loading="lazy" src={imageSrc} alt={title} className="object-contain mt-8 w-full rounded-xl aspect-[0.62]" />
     </a>
   </div>
 );
@@ -37,30 +35,21 @@ const FinancialTools = () => {
       redirect: "/tools"
     }
   ];
-  
 
   return (
-    <section className="flex flex-col self-center -mt-4 w-full max-w-[1596px] max-md:mt-10 max-md:max-w-full p-24">
-      <div className="flex gap-10 items-end w-full max-md:max-w-full">
-        <div className="flex flex-col min-w-[100px] w-[1173px]">
-          <h2 className="text-5xl font-semibold text-blue-900 max-md:max-w-full max-md:text-4xl">
-            10+ Financial Planning Tools
-          </h2>
-          <p className="mt-3.5 text-lg font-medium text-neutral-400 max-md:max-w-full">
-            Tailor your journey to financial freedom with our exclusive financial planning tools.
-          </p>
-        </div>
+    <section className="flex flex-col items-center justify-center px-4 mt-10 md:px-0 md:mt-0">
+      <div className="flex flex-col items-center text-center">
+        <h2 className="text-xl md:text-5xl max-w-full">10+ Financial Planning Tools</h2>
+        <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">
+          Tailor your journey to financial freedom with our exclusive financial planning tools.
+        </p>
       </div>
-      <div className="flex flex-col mt-[5%] w-full h-auto min-h-[100%] max-md:mt-5 max-md:max-w-full min-md:min-w-full justify-center align-middle">
-      <div className="flex flex-wrap gap-[5%] items-center justify-center align-middle w-full min-w-full max-w-full">
-
-          {tools.map((tool, index) => (
-            <ToolCard key={index} {...tool} />
-          ))}
-        </div>
+      <div className="flex flex-wrap justify-center gap-6 mt-10 w-full">
+        {tools.map((tool, index) => (
+          <ToolCard key={index} {...tool} />
+        ))}
       </div>
     </section>
-    
   );
 };
 
