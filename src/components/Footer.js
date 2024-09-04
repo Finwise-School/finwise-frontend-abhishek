@@ -1,6 +1,6 @@
 import React from "react";
-import FooterColumn from "./FooterColumn";
-import EmailSubscription from "./EmailSubscription";
+import FooterColumn from "./Homepage/Footer Files/FooterColumn";
+import EmailSubscription from "./Homepage/Footer Files/EmailSubscription";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 function Footer() {
