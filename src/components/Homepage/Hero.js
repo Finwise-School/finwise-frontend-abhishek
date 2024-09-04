@@ -11,7 +11,7 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row gap-8">
           
           {/* Right Image - Displayed first in mobile view */}
-          <div className="flex justify-center md:justify-end w-full md:w-1/2 order-1 md:order-2">
+          <div className="flex m-16 justify-center md:justify-end w-full md:w-1/2 order-1 md:order-2">
             <img 
               src={Heroos} 
               alt="Illustration" 
@@ -20,7 +20,7 @@ const Hero = () => {
           </div>
 
           {/* Left Content - Displayed below the image in mobile view */}
-          <div className="flex flex-col items-center md:items-start justify-center h-full space-y-6 text-center md:text-left w-full md:w-1/2 order-2 md:order-1">
+          <div className="flex flex-col items-center m-6 md:items-start justify-center h-full space-y-6 text-center md:text-left w-full md:w-1/2 order-2 md:order-1">
             <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-4">
               Master Your Money with<br />Finwise School
             </h1>
@@ -59,25 +59,25 @@ const Hero = () => {
 
         @media (min-width: 768px) {
           .hero-image {
-            max-width: 86%;
+            max-width: 101%;
           }
         }
 
         @media (min-width: 1024px) {
           .hero-image {
-            max-width: 86%;
+            max-width: 101%;
           }
         }
 
         @media (min-width: 1280px) {
           .hero-image {
-            max-width: 86%;
+            max-width: 101%;
           }
         }
 
         @media (min-width: 1536px) {
           .hero-image {
-            max-width: 86%;
+            max-width: 101%;
           }
         }
       `}</style>
