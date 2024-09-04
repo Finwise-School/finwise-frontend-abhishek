@@ -63,13 +63,13 @@ function Footer() {
 
   return (
     <footer className="flex flex-col w-full bg-black">
-      <div className="flex flex-wrap gap-4 items-start px-4 py-6 w-full">
+      <div className="flex gap-4 items-start px-4 py-6 w-full">
         <EmailSubscription />
-        <div className="flex flex-wrap flex-1 gap-4 justify-between items-start font-medium basis-0 min-w-[200px]">
-          {footerColumns.map((column, index) => (
-            <FooterColumn key={index} title={column.title} items={column.items} />
-          ))}
-        </div>
+        <div className="flex flex-1 gap-4 justify-between items-start font-medium flex-grow">
+  {footerColumns.map((column, index) => (
+    <FooterColumn key={index} title={column.title} items={column.items} />
+  ))}
+</div>
       </div>
       <div className="flex flex-wrap items-center px-4 py-2 bg-zinc-900 text-xs">
         <div className="flex-grow text-center text-white">
