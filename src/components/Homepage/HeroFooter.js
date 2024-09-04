@@ -6,11 +6,11 @@ import Money from "../../assets/images/HOMEPAGE/header/money.png";
 
 const HeroFooter = () => {
   return (
-    <footer style={{ backgroundColor: "#000000" }} className="text-white py-8">
+    <footer style={{ backgroundColor: "#000000", marginLeft: "4px", marginRight: "4px" }} className="text-white py-8 rounded-2xl">
       <div className="max-w-7xl mx-auto px-4 rounded-md overflow-hidden"> 
         <div className="grid-for-calci grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-[2px] text-center">
           {/* Contact Item */}
-          <a href="mailto:contact@finwiseschool.com" className="flex items-center justify-center relative group">
+          <a href="#" className="flex items-center justify-center relative group">
             <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-green-500 p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full" style={{ backgroundColor: "black" }}>
               <div className="relative mb-2">
                 <img src={Home} alt="Email Icon" className="w-14 h-14" />
@@ -20,7 +20,7 @@ const HeroFooter = () => {
           </a>
 
           {/* Phone Item */}
-          <a href="tel:+447741819337" className="flex items-center justify-center relative group">
+          <a href="#" className="flex items-center justify-center relative group">
             <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-green-500 p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full" style={{ backgroundColor: "black" }}>
               <div className="relative mb-2">
                 <img src={Money} alt="Phone Icon" className="w-14 h-14" />
@@ -30,7 +30,7 @@ const HeroFooter = () => {
           </a>
 
           {/* Location Item */}
-          <a href="https://www.google.com/maps/place/Glasgow,+UK" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center relative group">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center relative group">
             <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-green-500 p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full" style={{ backgroundColor: "black" }}>
               <div className="relative mb-2">
                 <img src={Build} alt="Location Icon" className="w-14 h-14" />
@@ -40,7 +40,7 @@ const HeroFooter = () => {
           </a>
 
           {/* Social Media Links */}
-          <a href="https://youtube.com/@finwiseschool" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center relative group">
+          <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center relative group">
             <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-green-500 p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full" style={{ backgroundColor: "black" }}>
               <div className="relative mb-2">
                 <img src={Sun} alt="Social Media Icon" className="w-14 h-14" />
