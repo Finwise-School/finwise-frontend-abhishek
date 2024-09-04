@@ -6,7 +6,7 @@ import youtubeImg from "../../assets/images/contact/youtube.png";
 
 const ContactFooter = () => {
   return (
-    <footer style={{ backgroundColor: "#000000", borderRadius: "50px" }} className="text-white py-8 rounded-lg">
+    <footer style={{ backgroundColor: "#000000"}} className="text-white py-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid-for-calci grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-[2px] text-center">
           {/* Contact Item */}
