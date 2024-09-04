@@ -62,26 +62,21 @@ function Footer() {
 
   return (
     <footer className="flex flex-col w-full bg-black">
-      {/* Top Section */}
-      <div className="flex flex-wrap gap-4 items-start px-4 py-6 w-full justify-between md:justify-center">
+      <div className="flex flex-wrap gap-2 items-start px-4 py-6 w-full justify-between md:justify-center">
         <EmailSubscription />
-        {/* Footer Columns */}
-        <div className="flex flex-1 gap-4 justify-between items-start font-medium flex-grow flex-wrap max-md:flex-col max-md:items-center">
+        <div className="flex flex-1 gap-2 justify-between items-start font-medium flex-grow flex-wrap max-md:flex-col max-md:items-center">
           {footerColumns.map((column, index) => (
             <FooterColumn key={index} title={column.title} items={column.items} />
           ))}
         </div>
       </div>
 
-      {/* Bottom Section */}
       <div className="flex flex-wrap items-center justify-between px-4 py-2 bg-zinc-900 text-xs text-center">
-        {/* Text Links */}
         <div className="flex flex-col md:flex-row items-center text-white justify-center md:justify-start w-full md:w-auto">
           <p className="text-xs md:text-sm m-auto md:m-0">@2024 Finwise School All Rights Reserved.</p>
           <a href="#terms" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Terms & Conditions</a>
           <a href="/privacy" target="_blank" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Privacy Notice</a>
         </div>
-        {/* Social Icons */}
         <div className="flex gap-2 items-center justify-center md:justify-end mt-4 md:mt-0">
           {socialIcons.map((social, index) => (
             <a
