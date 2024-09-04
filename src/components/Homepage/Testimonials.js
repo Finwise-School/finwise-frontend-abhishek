@@ -16,7 +16,7 @@ const TestimonialCard = ({ rating, title, content, author, location, imageSrc })
     </div>
     <div className="flex items-center justify-center mt-6 w-full font-medium">
       <img loading="lazy" src={imageSrc} alt={author} className="object-contain rounded-full aspect-square w-[60px]" />
-      <div className="flex flex-col ml-3 text-center">
+      <div className="flex flex-col self-center my-auto text-center">
         <div className="text-xl text-white">{author}</div>
         <div className="text-lg text-black">{location}</div>
       </div>
@@ -53,8 +53,8 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center w-full px-8 md:px-16 lg:px-24">
-      <div className="flex flex-col gap-10 items-center gap-10 w-full max-md:max-w-full">
+    <section className="flex flex-col items-center justify-center self-center -mt-4 w-full max-w-[1596px] px-8 md:px-16 lg:px-24 max-md:mt-10 max-md:px-16">
+      <div className="flex gap-10 items-center gap-10 w-full max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full text-center">
           <h2 className="text-5xl font-semibold text-blue-900 max-md:max-w-full max-md:text-4xl">
             Word from Our People
