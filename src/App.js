@@ -30,6 +30,7 @@ import Blogs from "./components/Blogs";
 import QuotesHeader from "./components/QuotesHeader";
 import UnderConst from "./components/UnderDevelopement";
 import ContactFooter from "./components/contact/ContactFooter";
+import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
 const ProtectedRoute = ({ element, ...rest }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? element : <Navigate to="/login" />;
@@ -44,6 +45,7 @@ const App = () => {
         <div className="app">
           <Header/> 
           <Routes>
+          <Route path="/privacy" element={<PrivacyNotice />} />
             <Route path="/early-access" element={<EarlyAccess />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<Contact />} />
