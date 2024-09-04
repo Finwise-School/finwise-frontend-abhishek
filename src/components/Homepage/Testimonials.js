@@ -2,7 +2,7 @@ import React from 'react';
 import starrs from './../Homepage/Testimonials/star.png';
 
 const TestimonialCard = ({ rating, title, content, author, location, imageSrc }) => (
-  <div className="flex flex-col flex-1 shrink p-12 bg-green-500 rounded-xl border border-solid basis-0 border-neutral-800 min-w-[240px] max-md:px-5 max-md:max-w-full text-center justify-center items-center self-center">
+  <div className="flex flex-col p-12 bg-green-500 rounded-xl border border-solid basis-0 border-neutral-800 min-w-[240px] max-md:px-5 max-md:max-w-full text-center justify-center items-center self-center">
     <div className="flex gap-2.5 text-center justify-center items-center self-center">
       {[...Array(5)].map((_, i) => (
         <div key={i} className="flex gap-2.5 text-center justify-center items-center self-center p-2.5 w-11 h-11 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
@@ -16,7 +16,7 @@ const TestimonialCard = ({ rating, title, content, author, location, imageSrc })
     </div>
     <div className="flex gap-3 text-center justify-center items-center self-center mt-10 w-full font-medium">
       <img loading="lazy" src={imageSrc} alt={author} className="object-contain rounded-full aspect-square w-[60px]" />
-      <div className="flex flex-col flex-1 shrink self-center my-auto">
+      <div className="flex flex-col self-center my-auto">
         <div className="text-xl text-white">{author}</div>
         <div className="text-lg text-black">{location}</div>
       </div>
@@ -54,8 +54,8 @@ const Testimonials = () => {
 
   return (
     <section className="flex flex-col text-center justify-center items-center self-center -mt-4 w-full max-w-[1596px] px-8 md:px-16 lg:px-24 max-md:mt-10 max-md:px-16">
-      <div className="flex gap-10 text-center justify-center items-center self-center w-full max-md:max-w-full">
-        <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full">
+      <div className="flex flex-col gap-10 text-center justify-center items-center self-center w-full max-md:max-w-full">
+        <div className="flex flex-col w-full basis-0 min-w-[240px] max-md:max-w-full">
           <h2 className="text-5xl font-semibold text-blue-900 max-md:max-w-full max-md:text-4xl">
             Word from Our People
           </h2>
@@ -64,7 +64,7 @@ const Testimonials = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col mt-10 w-full max-md:mt-10 max-md:max-w-full mx-4 lg:mx-0">
+      <div className="flex flex-col flex-wrap mt-10 w-full max-md:mt-10 max-md:max-w-full mx-4 lg:mx-0">
       <div className="flex flex-wrap gap-8 text-center justify-center items-center self-center w-full max-md:max-w-full">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={index} {...testimonial} />
