@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FAQItem = ({ question, answer }) => (
-  <div className="flex flex-col justify-between flex-1 p-12 bg-green-500 rounded-xl border border-solid border-neutral-800 min-h-[320px] max-w-[calc(33%-16px)] flex-grow min-w-[300px] max-md:w-full max-md:min-h-auto max-md:max-w-full">
-    <h3 className="text-2xl font-semibold text-white">{question}</h3>
-    <p className="mt-4 tracking-normal leading-7 text-neutral-800 flex-grow">{answer}</p>
+  <div className="flex flex-col items-center justify-between p-6 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[30vw] max-w-[371px] min-w-[300px]">
+    <h3 className="text-2xl font-semibold text-white text-center">{question}</h3>
+    <p className="mt-4 tracking-normal leading-7 text-neutral-800 text-center">{answer}</p>
     <Link to="/faqs">
-      <button className="px-6 py-5 mt-8 tracking-normal leading-none text-white rounded-xl border border-solid bg-zinc-900 border-neutral-800 max-md:px-5">
+      <button className="px-6 py-3 mt-8 tracking-normal leading-none text-white bg-zinc-900 rounded-xl border border-solid border-neutral-800">
         Read More
       </button>
     </Link>
@@ -30,23 +30,12 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center w-full max-w-[1596px] p-14 max-md:mt-10 max-md:max-w-full">
-      <div className="flex flex-wrap gap-10 items-end p-10 w-full justify-between max-md:flex-col max-md:items-start">
-        <div className="flex flex-col flex-1 shrink-0 min-w-[240px] max-md:max-w-full">
-          <h2 className="text-5xl font-semibold text-blue-900 max-md:text-4xl">
-            Frequently Asked Questions
-          </h2>
-          <p className="mt-3.5 text-lg font-medium text-neutral-400">
-            Find answers to common questions about Finwise School.
-          </p>
-        </div>
-        <Link to="/faqs">
-          <button className="gap-2 p-4 text-lg font-medium text-white bg-green-500 rounded-xl border border-blue-900 ">
-            View All FAQ's
-          </button>
-        </Link>
+    <section className="flex flex-col items-center justify-center px-4 py-10 mt-10 md:px-0 md:mt-0 w-full">
+      <div className="flex flex-col items-center text-center mb-8">
+        <h2 className="text-xl font-semibold text-blue-900 mt-15 md:text-5xl max-w-full">Frequently Asked Questions</h2>
+        <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">Find answers to common questions about Finwise School.</p>
       </div>
-      <div className="flex flex-wrap gap-8 w-full justify-between">
+      <div className="flex flex-wrap justify-center gap-8 w-full">
         {faqs.map((faq, index) => (
           <FAQItem key={index} {...faq} />
         ))}
