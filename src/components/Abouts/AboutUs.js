@@ -68,9 +68,11 @@ const AboutUs = () => {
             <div className="flex mb-10">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaStar className="finwise-blue text-xl" />
-                  </div>
+<div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+                  
                   <h1 className="finwise-blue text-lg font-bold">Trust</h1>
                 </div>
                 <p>
@@ -83,9 +85,13 @@ const AboutUs = () => {
 
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaGraduationCap className="finwise-blue text-xl" />
-                  </div>
+                
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaGraduationCap className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+
+              
                   <h1 className="finwise-blue text-lg font-bold">Excellence</h1>
                 </div>
                 <p>
@@ -100,9 +106,14 @@ const AboutUs = () => {
             <div className="flex">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <IoIosPeople className="finwise-blue text-xl" />
-                  </div>
+              
+              
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <IoIosPeople className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+
+                
                   <h1 className="finwise-blue text-lg font-bold">
                     Community Focus
                   </h1>
@@ -117,9 +128,10 @@ const AboutUs = () => {
 
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaStar className="finwise-blue text-xl" />
-                  </div>
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
                   <h1 className="finwise-blue text-lg font-bold">
                     Our Commitment
                   </h1>
@@ -144,12 +156,14 @@ const AboutUs = () => {
         Navigating the Finwise School process is simple and designed to guide you toward financial success. Here's a step-by-step overview:
       </p>
     </div>
-
-    <div className="flex flex-wrap justify-between p-[1%]">
-   <div className="relative w-full md:w-[30%] p-5 mb-8">
+<div className="flex flex-wrap justify-between p-[1%]">
+  
+  <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 01
+     
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Sign Up and Create your Account</h2>
@@ -158,13 +172,17 @@ const AboutUs = () => {
         email, and password to create your account.
       </p>
     </div>
+    
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
-   </div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
+  </div>
 
-   <div className="relative w-full md:w-[30%] p-5 mb-8">
+ 
+  <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 02
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Complete a Financial Assessment</h2>
@@ -174,12 +192,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
-   </div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
+  </div>
 
-   <div className="relative w-full md:w-[30%] p-5 mb-8">
+ 
+  <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 03
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Start Learning with Financial Modules</h2>
@@ -189,12 +210,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
-   </div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
+  </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 04
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Utilize Financial Tools and Resources</h2>
@@ -204,12 +228,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 05
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Monitor Progress and Get Expert Advice</h2>
@@ -219,12 +246,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 06
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Achieve Goals and Earn Rewards</h2>
@@ -234,8 +264,10 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 </div>
+
 
   </div>
 

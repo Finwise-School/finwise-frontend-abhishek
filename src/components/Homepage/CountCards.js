@@ -59,11 +59,12 @@ const CountCards = () => {
             width: 13rem;
           }
         }
-               @media (min-width: 1304px) {
-          #count-card {
-            width: 15rem;
-          }
-        }
+        @media (min-width: 1304px) {
+            #count-card {
+                width: 15rem;
+                }
+                }
+           
       `}</style>
 
         </div>
