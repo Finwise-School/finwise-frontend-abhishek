@@ -14,7 +14,7 @@ import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
 const AboutUs = () => {
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-between p-10">
+      <div className="flex flex-col md:flex-row items-center justify-between pt-[8%] pr-[8%] pl-[8%] ">
         <div className="w-full md:w-1/2">
           <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
           <p className="text-base mb-6 text-justify">
@@ -43,10 +43,10 @@ const AboutUs = () => {
       </div>
 
       <div className="p-8">
-        <div className="flex flex-col md:flex-row mb-20">
+        <div className="flex flex-col md:flex-row mb-20 pr-[8%] pl-[7%]">
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
             <div className="flex">
-              <h1 className="finwise-blue text-4xl font-bold mb-4">
+              <h1 className="finwise-blue text-4xl font-bold mb-[1%]">
                 Our Values
               </h1>
             </div>
@@ -128,8 +128,8 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="bg-black text-white p-10">
-  <div className="container mx-auto px-8 py-8">
+<div className="bg-black text-white pt-[2%]">
+  <div className="container mx-auto  py-[]">
     <div className="pb-12">
       <h1 className="text-4xl font-bold mb-4 ">
         Navigating the Finwise School Experience
@@ -140,7 +140,7 @@ const AboutUs = () => {
     </div>
 
     <div className="flex flex-wrap justify-between p-5">
-  <div className="relative w-full md:w-[30%] p-5 mb-8">
+   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 01
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
@@ -153,9 +153,9 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
-  </div>
+   </div>
 
-  <div className="relative w-full md:w-[30%] p-5 mb-8">
+   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 02
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
@@ -168,9 +168,9 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
-  </div>
+   </div>
 
-  <div className="relative w-full md:w-[30%] p-5 mb-8">
+   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 03
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
@@ -183,7 +183,7 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
-  </div>
+   </div>
 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
@@ -246,19 +246,20 @@ const AboutUs = () => {
   </div>
 
 
-      <div className="flex justify-center items-center space-x-10">
-  <div className="border-2 p-8 border-black animate-spin-slow rounded-lg">
-    <img src={inspire} className="h-40 w-60" alt="Inspire" />
+  <div className="flex justify-center items-center space-x-[2%]">
+  <div className="border-2 p-[3%] border-black animate-spin-slow rounded-lg">
+    <img src={inspire} className="h-[50%] w-[75%]" alt="Inspire" />
   </div>
 
-  <div className="border-2 p-8 border-black animate-spin-slow rounded-lg">
-    <img src={barclays} className="h-40 w-60" alt="Barclays" />
+  <div className="border-2 p-[3%] border-black animate-spin-slow rounded-lg">
+    <img src={barclays} className="h-[50%] w-[75%]" alt="Barclays" />
   </div>
 
-  <div className="border-2 p-8 border-black animate-spin-slow rounded-lg">
-    <img src={univ} className="h-40 w-60" alt="University" />
+  <div className="border-2 p-[3%] border-black animate-spin-slow rounded-lg">
+    <img src={univ} className="h-[50%] w-[75%]" alt="University" />
   </div>
 </div>
+
 
 
       <div className="flex flex-col items-center text-center p-10">
