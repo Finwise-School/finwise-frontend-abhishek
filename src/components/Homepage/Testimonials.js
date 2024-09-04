@@ -54,7 +54,7 @@ const Testimonials = () => {
 
   return (
     <section className="flex flex-col text-center justify-center items-center self-center -mt-4 w-full max-w-[1596px] px-8 md:px-16 lg:px-24 max-md:mt-10 max-md:px-16">
-      <div className="flex flex-col gap-10 text-center justify-center items-center self-center w-full max-md:max-w-full">
+      <div className="flex gap-10 text-center justify-center items-center self-center w-full max-md:max-w-full">
         <div className="flex flex-col w-full basis-0 min-w-[240px] max-md:max-w-full">
           <h2 className="text-5xl font-semibold text-blue-900 max-md:max-w-full max-md:text-4xl">
             Word from Our People
@@ -64,7 +64,7 @@ const Testimonials = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col flex-wrap mt-10 w-full max-md:mt-10 max-md:max-w-full mx-4 lg:mx-0">
+      <div className="flex flex-col mt-10 w-full max-md:mt-10 max-md:max-w-full mx-4 lg:mx-0">
       <div className="flex flex-wrap gap-8 text-center justify-center items-center self-center w-full max-md:max-w-full">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={index} {...testimonial} />
