@@ -1,6 +1,6 @@
-import React from "react";
-import FooterColumn from "./Homepage/Footer Files/FooterColumn";
-import EmailSubscription from "./Homepage/Footer Files/EmailSubscription";
+import React, { useState, useEffect } from "react";
+import FooterColumn from "./FooterColumn";
+import EmailSubscription from "./EmailSubscription";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 function Footer() {
@@ -60,28 +60,35 @@ function Footer() {
     { icon: <FaYoutube />, alt: "YouTube", url: "https://www.youtube.com/@finwiseschool" }
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768); 
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <footer className="flex flex-col w-full bg-black">
-      {/* Top Section */}
-      <div className="flex flex-wrap gap-2 items-start px-2 py-6 w-full justify-between md:justify-center max-md:flex-col max-md:items-center max-md:text-center">
+      <div className={`flex flex-wrap gap-2 items-start px-2 py-6 w-full justify-between md:justify-center ${isMobile ? "flex-col items-center" : ""}`}>
         <EmailSubscription />
-        {/* Footer Columns */}
-        <div className="flex flex-1 gap-2 justify-between items-start font-medium flex-grow flex-wrap max-md:flex-col max-md:items-center max-md:text-center">
+        <div className={`flex flex-1 gap-2 justify-between items-start font-medium flex-grow flex-wrap ${isMobile ? "flex-col items-center" : ""}`}>
           {footerColumns.map((column, index) => (
             <FooterColumn key={index} title={column.title} items={column.items} />
           ))}
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between px-4 py-2 bg-zinc-900 text-xs text-center">
-        {/* Text Links */}
+      <div className={`flex ${isMobile ? "flex-col" : "flex-row"} items-center justify-between px-4 py-2 bg-zinc-900 text-xs text-center`}>
         <div className="flex flex-col md:flex-row items-center text-white justify-center md:justify-start w-full md:w-auto">
           <p className="text-xs md:text-sm m-auto md:m-0">@2024 Finwise School All Rights Reserved.</p>
           <a href="#terms" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Terms & Conditions</a>
           <a href="/privacy" target="_blank" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Privacy Notice</a>
         </div>
-        {/* Social Icons */}
         <div className="flex gap-2 items-center justify-center md:justify-end mt-4 md:mt-0">
           {socialIcons.map((social, index) => (
             <a
