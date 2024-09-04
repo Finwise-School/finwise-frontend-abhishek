@@ -23,7 +23,7 @@ const Hero = () => {
         <img src={sub} height={770} width={770} alt="about-us" className="hidden md:block ml-[6%] -mt-[12%]"/>
       </div>
       <div>
-        <img src={black} h-full h-screen w-full w-screen alt="about-us" className="hidden md:block ml-[1%] mt-[5%]"/>
+        <img src={black} height={1450} width={1485} alt="about-us" className="hidden md:block ml-[1%] mt-[5%]"/>
       </div>
     </div>
   );
