@@ -74,7 +74,8 @@ function Footer() {
       <div className="flex flex-wrap items-center px-4 py-2 bg-zinc-900 text-xs">
         <div className="flex-grow text-center text-white">
           <p className="text-xs md:text-sm">@2024 Finwise School All Rights Reserved.</p>
-          <a href="#terms" className="text-gray-400 hover:text-white text-xs md:text-sm">Terms & Conditions</a>
+          <a href="#terms" className="text-gray-400 hover:text-white text-xs md:text-sm p-1">Terms & Conditions</a>
+          <a href="/privacy" target="blank" className="text-gray-400 hover:text-white text-xs md:text-sm p-1">Privacy Notice</a>
         </div>
         <div className="flex gap-2 items-center">
           {socialIcons.map((social, index) => (
