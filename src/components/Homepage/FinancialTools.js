@@ -3,7 +3,7 @@ import fire from '../Homepage/Tools/fire.png';
 import { redirect } from 'react-router-dom';
 
 const ToolCard = ({ title, description, imageSrc }) => (
-  <div className="flex overflow-hidden flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[30vw] max-w-[360px] min-w-[300px]">
+  <div className="flex overflow-hidden flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[31.875vw] max-w-[382.5px] min-w-[318.75px]">
     <div className="flex flex-col w-full">
       <h3 className="text-2xl font-semibold text-white">{title}</h3>
       <p className="mt-3 text-lg font-medium leading-7 text-blue-900">{description}</p>
@@ -39,7 +39,7 @@ const FinancialTools = () => {
   return (
     <section className="flex flex-col items-center justify-center px-4 mt-10 md:px-0 md:mt-0">
       <div className="flex flex-col items-center text-center">
-        <h2 className="text-xl font-semibold text-blue-900 mt-10 md:text-5xl max-w-full">10+ Financial Planning Tools</h2>
+        <h2 className="text-xl md:text-5xl max-w-full">10+ Financial Planning Tools</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">
           Tailor your journey to financial freedom with our exclusive financial planning tools.
         </p>
