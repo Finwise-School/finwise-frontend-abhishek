@@ -1,8 +1,10 @@
 import React from 'react';
 import starrs from './../Homepage/Testimonials/star.png';
+import Slider from "react-slick";
+import 'react-multi-carousel/lib/styles.css';
 
 const TestimonialCard = ({ rating, title, content, author, location, imageSrc }) => (
-  <div className="TestimonialCard flex flex-col items-start p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[31.25vw] max-w-[375px] min-w-[375px]">
+  <div className="TestimonialCard flex flex-col p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[80%] justify-center items-center">
     <div className="flex gap-2.5 justify-start items-center">
       {[...Array(5)].map((_, i) => (
         <div key={i} className="flex items-center justify-center p-2.5 w-10 h-10 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
@@ -25,6 +27,45 @@ const TestimonialCard = ({ rating, title, content, author, location, imageSrc })
 );
 
 const Testimonials = () => {
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          autoplay: true,
+          speed: 2000,
+          autoplaySpeed: 2000,
+          cssEase: "linear",
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          speed: 2000,
+          autoplaySpeed: 2000,
+          cssEase: "linear",
+        }
+      },
+    ]
+  };
+
+
   const testimonials = [
     {
       rating: 5,
@@ -58,13 +99,18 @@ const Testimonials = () => {
         <h2 className="text-xl font-semibold text-blue-900 md:text-5xl max-w-full">Word from Our People</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">Read the success stories and heartfelt testimonials from our valued members.</p>
       </div>
-      <div className="flex flex-wrap justify-center text-start gap-6 mt-10 w-full">
-        {testimonials.map((testimonial, index) => (
-          <TestimonialCard key={index} {...testimonial} />
-        ))}
+      <div className="flex flex-wrap justify-center items-center text-start gap-6 mt-10 w-[90%] md:w-[90%] lg:w-[80%] md:overflow-hidden rounded-xl">
+      <Slider {...settings} className="flex flex-wrap justify-center items-center text-start gap-6 mt-10 w-full">
+{testimonials.map((testimonial, index) => (
+  <TestimonialCard key={index} {...testimonial} />
+))}
+</Slider>
       </div>
     </section>
   );
 };
 
 export default Testimonials;
+
+
+
