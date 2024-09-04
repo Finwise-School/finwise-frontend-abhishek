@@ -43,13 +43,13 @@ export default function CarouselCards() {
         <div className='msContent gap-5 md:gap-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:my-10 ml-[6%] mr-[6%]'>
           {isLarge || isMedium ? data.slice(0, 4).map((item, index) => (
             <div key={index} className='supportersCard rounded-xl border border-[#262626] p-5 md:p-[30px] gap-10 md:gap-[50px]'>
-              <img src={item.img} alt={item.compName} className='rounded-[10px] md:rounded-xl cursor-pointer h-[200px] w-[318px] md:h-auto md:w-auto' onClick={() => handleClick(item.compLink)} />
+              <img src={item.img} alt={item.compName} className='rounded-[10px] md:rounded-xl cursor-pointer h-[200px] w-[318px] md:h-453 md:w-253' onClick={() => handleClick(item.compLink)} />
             </div>
           )) : 
           <Slider ref={sliderRef} {...settings}>
           {data.slice(0, 4).map((item, index) => (
               <div key={index} className='supportersCard rounded-xl border border-[#262626] p-5 md:p-[30px] gap-10 md:gap-[50px]'>
-                <img src={item.img} alt={item.compName} className='rounded-[10px] md:rounded-xl cursor-pointer md:h-auto md:w-auto' onClick={() => handleClick(item.compLink)} />
+                <img src={item.img} alt={item.compName} className='rounded-[10px] md:rounded-xl cursor-pointer h-[125px] w-[318px] md:h-453 md:w-253' onClick={() => handleClick(item.compLink)} />
               </div>
             ))}
           </Slider>

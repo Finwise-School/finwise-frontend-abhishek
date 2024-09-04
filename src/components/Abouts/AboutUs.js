@@ -30,9 +30,9 @@ const AboutUs = () => {
       user's progress and performance, ensuring that each lesson is
       relevant and appropriately challenging.
     </p>
-    <div style={{marginLeft: "-40px"}}>
+        <div style={{marginLeft: "-40px"}}>
           <EarlyAccessBtn/>
-          </div>
+        </div>
   </div>
 
   
@@ -108,7 +108,7 @@ const AboutUs = () => {
                 <div className="flex items-center mb-5">
               
               
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+                <div className="flex items-center justify-center w-10 h-8 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
   <IoIosPeople className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
 </div>
 
@@ -128,7 +128,7 @@ const AboutUs = () => {
 
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+                <div className="flex items-center justify-center w-10 h-8 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
   <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
 </div>
 
@@ -149,7 +149,7 @@ const AboutUs = () => {
 <div className="bg-black text-white pt-[2%] pr-[5%] pl-[5%]">
   <div className="container mx-auto  py-[]">
     <div className="pb-12">
-      <h1 className="text-4xl font-bold mb-4 ">
+      <h1 className="text-4xl font-bold mb-4 mt-10">
         Navigating the Finwise School Experience
       </h1>
       <p>
