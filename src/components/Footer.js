@@ -1,6 +1,6 @@
 import React from "react";
-import FooterColumn from "./Homepage/Footer Files/FooterColumn";
-import EmailSubscription from "./Homepage/Footer Files/EmailSubscription";
+import FooterColumn from "./FooterColumn";
+import EmailSubscription from "./EmailSubscription";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 function Footer() {
@@ -66,7 +66,7 @@ function Footer() {
       <div className="flex flex-wrap gap-4 items-start px-4 py-6 w-full justify-between md:justify-center">
         <EmailSubscription />
         {/* Footer Columns */}
-        <div className="flex flex-1 gap-4 justify-between items-start font-medium flex-grow flex-wrap max-md:flex-col">
+        <div className="flex flex-1 gap-4 justify-between items-start font-medium flex-grow flex-wrap max-md:flex-col max-md:items-center">
           {footerColumns.map((column, index) => (
             <FooterColumn key={index} title={column.title} items={column.items} />
           ))}
