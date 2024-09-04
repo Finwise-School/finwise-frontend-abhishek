@@ -321,7 +321,9 @@ strong {
 /* BLOGS */
 .writenContent img {
   width: 50%;
+  margin-left: 25%;
   transition: width 0.3s ease-in-out;
+
 }
 .writenContent img:hover {
   width: 55%;
