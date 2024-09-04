@@ -8,16 +8,7 @@ const EarlyAccessTemplate = () => {
     navigate('/early-access');
   };
 
-  const buttonStyles = {
-    base: 'inline-block text-[#263871] hover:text-green-500 font-bold mt-6 lg:mt-0 rounded-lg py-3 px-6 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300 revolving-border border border-gray-500',
-    mediaQuery: `
-      @media (min-width: 766px) and (max-width: 1022px) {
-        .responsive-button {
-          margin: 2.5rem; /* Adjust the margin or other styles as needed */
-        }
-      }
-    `
-  };
+  const buttonStyles = 'inline-block text-[#263871] hover:text-green-500 font-bold mt-6 lg:mt-0 rounded-lg py-3 px-6 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300 revolving-border border border-gray-500';
 
   return (
     <div className='flex flex-col bg-white max-md:pb-24'>
@@ -25,13 +16,10 @@ const EarlyAccessTemplate = () => {
 
       <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center p-8 lg:p-24 -mt-16 -mb-16">
         <div className="flex-1 max-w-full lg:max-w-[70%] mb-6 lg:mb-0 text-center lg:text-left">
-        <h1 className="finwise-blue text-4xl font-semibold mb-4 mt-4 md:mt-0">
+          <h1 className="finwise-blue text-4xl font-semibold mb-4 mt-4 md:mt-0">
             Start Your Financial Journey Today
           </h1>
-          <p
-            className="text-gray-500 font-light text-lg leading-relaxed lg:text-base lg:mr-0 mr-2"
-            style={{ fontSize: '16px', color: 'grey', padding: '3px' }}
-          >
+          <p className="text-gray-500 font-light text-lg leading-relaxed lg:text-base lg:mr-0 mr-2">
             Your path to financial freedom is just a click away. Whether you’re
             aiming to optimize your investments, create a solid savings plan, or
             receive expert financial advice, FinWise is here to guide you every
@@ -40,16 +28,13 @@ const EarlyAccessTemplate = () => {
             with our team for personalized support tailored to your needs.
           </p>
         </div>
-        <div className="flex-shrink-0 lg:ml-10 text-center">
+        <div className="flex-shrink-0 text-center w-full lg:w-auto">
           <button
             onClick={handleClick}
-            className={`${buttonStyles.base} responsive-button`} 
+            className={buttonStyles}
           >
             Request Early Access
           </button>
-          <style>
-            {buttonStyles.mediaQuery}
-          </style>
         </div>
       </div>
     </div>
