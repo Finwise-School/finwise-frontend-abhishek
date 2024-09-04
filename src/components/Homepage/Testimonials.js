@@ -2,10 +2,10 @@ import React from 'react';
 import starrs from './../Homepage/Testimonials/star.png';
 
 const TestimonialCard = ({ rating, title, content, author, location, imageSrc }) => (
-  <div className="TestimonialCard flex flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 max-w-full md:max-w-[300px] md:p-8">
+  <div className="TestimonialCard flex flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[25vw] max-w-[300px] min-w-[250px]">
     <div className="flex gap-2.5 justify-center items-center">
       {[...Array(5)].map((_, i) => (
-        <div key={i} className="flex items-center justify-center p-2.5 w-11 h-11 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
+        <div key={i} className="flex items-center justify-center p-2.5 w-10 h-10 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
           <img loading="lazy" src={starrs} alt="Star rating" className="object-contain w-6 h-6" />
         </div>
       ))}
@@ -15,7 +15,7 @@ const TestimonialCard = ({ rating, title, content, author, location, imageSrc })
       <p className="mt-3.5 text-lg font-medium leading-7 text-white">{content}</p>
     </div>
     <div className="flex items-center justify-center mt-6 w-full font-medium">
-      <img loading="lazy" src={imageSrc} alt={author} className="object-contain rounded-full aspect-square w-[60px]" />
+      <img loading="lazy" src={imageSrc} alt={author} className="object-contain rounded-full aspect-square w-[60px] md:w-[70px]" />
       <div className="flex flex-col ml-3 text-center">
         <div className="text-xl text-white">{author}</div>
         <div className="text-lg text-black">{location}</div>
@@ -58,7 +58,7 @@ const Testimonials = () => {
         <h2 className="text-xl md:text-5xl max-w-full">Word from Our People</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">Read the success stories and heartfelt testimonials from our valued members.</p>
       </div>
-      <div className="flex flex-wrap justify-center gap-8 mt-10 w-full">
+      <div className="flex flex-wrap justify-center gap-6 mt-10 w-full">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index} {...testimonial} />
         ))}
