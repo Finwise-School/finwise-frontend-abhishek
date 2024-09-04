@@ -32,7 +32,7 @@ const FAQ = () => {
   return (
     <section className="flex flex-col items-center justify-center px-4 mt-10 md:px-0 md:mt-0 w-full">
       <div className="flex flex-col items-center text-center mb-8">
-        <h2 className="text-xl md:text-5xl max-w-full">Frequently Asked Questions</h2>
+        <h2 className="text-xl font-semibold text-blue-900 mt-15 md:text-5xl max-w-full">Frequently Asked Questions</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">Find answers to common questions about Finwise School.</p>
       </div>
       <div className="flex flex-wrap justify-center gap-8 w-full">
