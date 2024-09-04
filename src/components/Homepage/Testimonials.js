@@ -58,7 +58,7 @@ const Testimonials = () => {
         <h2 className="text-xl font-semibold text-blue-900 md:text-5xl max-w-full">Word from Our People</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">Read the success stories and heartfelt testimonials from our valued members.</p>
       </div>
-      <div className="flex flex-wrap justify-center text-left gap-6 mt-10 w-full">
+      <div className="flex flex-wrap justify-center text-start gap-6 mt-10 w-full">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index} {...testimonial} />
         ))}
