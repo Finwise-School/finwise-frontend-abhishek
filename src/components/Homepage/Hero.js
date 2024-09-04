@@ -1,56 +1,41 @@
 import React from 'react';
 import Heroos from '../Homepage/Hero/hero.gif';
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
-import sub from "../Homepage/Hero/sub.png";
 import HeroFooter from "../Homepage/HeroFooter";
 import CountCards from "../Homepage/CountCards";
 
 const Hero = () => {
   return (
-    <div>
-      <div className="flex flex-col md:flex-row items-center justify-between p-[7%] -mt-[6%]">
-        
-        {/* Text Content */}
-        <div className="w-full md:w-1/2">
-          <h1 className="finwise-blue text-4xl font-bold mb-4">Master Your Money with Finwise School</h1>
-          <p className="text-base mb-6 text-justify">
-            Finwise School is a revolutionary platform designed to teach Gen-Z the essentials of personal finance through personalized, gamified experiences.
-          </p>
-          <div className="mt-10 md:mt-4" style={{ marginLeft: "-40px" }}>
-            <EarlyAccessBtn />
+    <div className="bg-white font-poppins">
+      <div className="max-w-screen-xl mx-auto px-4 py-8">
+        <div className="grid-for-calci grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          {/* Left Content - Vertically Centered */}
+          <div className="flex flex-col items-center md:items-start justify-center h-full space-y-6 text-center md:text-left">
+            <h1 className="finwise-blue ml-16 text-4xl font-bold mb-4">
+              Master Your Money with<br />Finwise School
+            </h1>
+            <p className="text-base ml-16 mb-4 text-gray-500">
+              Finwise School is a revolutionary platform designed to teach Gen-Z the essentials of personal finance through personalized, gamified experiences.
+            </p>
+            <div className="ml-6"> {/* Increased left margin */}
+              <EarlyAccessBtn />
+            </div>
+            <div>
+              <CountCards />
+            </div>
           </div>
 
-          <CountCards />
+          {/* Right Image */}
+          <div className="flex justify-center md:justify-end">
+            <img 
+              src={Heroos} 
+              alt="Illustration" 
+              className="w-full max-w-3xl h-auto" // Increased to make image very large
+            />
+          </div>
         </div>
-        
-        {/* Image with responsive behavior */}
-        <img 
-          src={Heroos} 
-          alt="about-us" 
-          className="hidden md:block animate-float" 
-          style={{
-            width: "60%",  // Default width for medium and larger screens
-            marginRight: "-15%",
-            transition: "width 0.3s ease", // Smooth transition for resizing
-          }}
-        />
       </div>
-
-      {/* Custom Media Queries */}
-      <style jsx>{`
-        @media (max-width: 1250px) {
-          img {
-            width: 50%;  /* Reduce size for screens smaller than 1250px */
-            margin-right: -10%;
-          }
-        }
-        @media (max-width: 1080px) {
-          img {
-            width: 45%;  /* Further reduce size for screens smaller than 1080px */
-            margin-right: -5%;
-          }
-        }
-      `}</style>
 
       {/* HeroFooter */}
       <div className="rounded-lg"> 
