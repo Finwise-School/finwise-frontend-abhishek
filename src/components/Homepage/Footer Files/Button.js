@@ -2,7 +2,7 @@ import React from "react";
 
 function Button({ text }) {
   return (
-    <button className="gap-2 w-full md:w-auto px-6 py-3 text-lg font-medium text-black bg-white rounded-xl max-md:px-4">
+    <button className="gap-2 self-stretch px-6 py-5 my-auto text-lg font-medium text-black bg-white rounded-xl max-md:px-5">
       {text}
     </button>
   );
