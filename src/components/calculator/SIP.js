@@ -45,7 +45,7 @@ const SIP = () => {
         if (!result) return {};
 
         const data = {
-            labels: ['Invested Amount', 'Returns Generated'],
+            labels: ['Invested Amount', 'Returns'],
             datasets: [{
                 data: [parseFloat(result.investedAmount), parseFloat(result.returnsGenerated)],
                 backgroundColor: ['#4CAF50', '#FFC107'],
@@ -213,13 +213,13 @@ const SIP = () => {
                             {errors.timePeriod && <p className="text-red-500 text-sm">{errors.timePeriod}</p>}
                         </div>
                     </div>
-                    
+
                     {/* Results Box */}
                     <div className="p-4 border border-gray-300 rounded-lg">
                         <h2 className="text-lg font-semibold text-gray-800 mb-4">Results:</h2>
                         {result && (
                             <div className="space-y-4">
-                                <div className="grid grid-cols-1 gap-2" style={{ "row-gap": "0.6rem" }}>
+                                <div className="grid grid-cols-1 gap-2" style={{ rowGap: '0.6rem' }}>
                                     <div className="p-4 border border-gray-300 rounded-lg">
                                         <p className="finwise-blue">Invested Amount</p>
                                         <p className="finwise-green font-semibold text-xl">£{result.investedAmount}</p>
@@ -237,7 +237,7 @@ const SIP = () => {
                         )}
                     </div>
                 </div>
-       
+
                 {result && (
                     <div className="mt-8 p-4 bg-white border border-gray-300 rounded-lg">
                         <h2 className="text-lg font-semibold text-gray-800 mb-4">Investment Growth Over Time</h2>
@@ -253,15 +253,16 @@ const SIP = () => {
                                             },
                                             tooltip: {
                                                 callbacks: {
+                                                    title: (tooltipItems) => {
+                                                        // Display year as title
+                                                        return `Year ${tooltipItems[0].label}`;
+                                                    },
                                                     label: (tooltipItem) => {
                                                         const value = tooltipItem.raw;
-                                                        if (typeof value === 'number') {
-                                                            return `${tooltipItem.label} £${value.toFixed(0)}`;
-                                                        }
-                                                        return `${tooltipItem.label}: £${value}`;
+                                                        return `£${Number(value).toFixed(0)}`;
                                                     }
                                                 }
-                                            }                                            
+                                            }
                                         },
                                         scales: {
                                             x: {
@@ -281,7 +282,7 @@ const SIP = () => {
                                     }}
                                 />
                             </div>
-                            <div className="flex-1 pl-2" style={{ maxWidth: '300px', maxHeight: '300px', marginLeft: '138px' }}>
+                            <div className="flex-1 pl-2" style={{ maxWidth: '300px', maxHeight: '300px', marginLeft: '138px'  }}>
                                 <Doughnut
                                     data={getChartData()}
                                     options={{
@@ -293,7 +294,7 @@ const SIP = () => {
                                             tooltip: {
                                                 callbacks: {
                                                     label: (tooltipItem) => {
-                                                        return `${tooltipItem.label}: £${tooltipItem.raw.toFixed(0)}`;
+                                                        return `${tooltipItem.label}: £${Number(tooltipItem.raw).toFixed(0)}`;
                                                     }
                                                 }
                                             }
@@ -305,8 +306,8 @@ const SIP = () => {
                         </div>
                     </div>
                 )}
-                         <Tool_Footer message="Analyze your mutual fund investments and their potential returns." />
-                         <CalculatorList activeCalculator="SIP Calculator" />
+                <Tool_Footer message="Analyze your mutual fund investments and their potential returns." />
+                <CalculatorList activeCalculator="SIP Calculator" />
             </div>
         </div>
     );

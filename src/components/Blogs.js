@@ -35,7 +35,7 @@ function Blogs() {
     return (
       <>
           <div className='m-4 md:px-12 gap-20 md:mb-20'>
-      <h1 className='flex justify-center m-4 font-semibold text-5xl leading-[72px] finwise-blue'>Blogs</h1>
+      <h1 className='flex justify-start font-semibold text-5xl leading-[72px] finwise-blue items-start'>Blogs</h1>
       <h2 className='flex sm:justify-start justify-center text-2xl font-bold my-8 finwise-blue'>Top Stories</h2>
         <div>
             <div className='flex md:flex-row flex-col justify-between'>
@@ -47,6 +47,7 @@ function Blogs() {
               <div className="flex flex-col justify-start gap-4">
                 <>
                   <h3 className="text-3xl font-bold text-[#1A1A1A]">The UK Tax System: Adulting Just Got Real (But We Got You)</h3>
+                  <button onClick={handleIsOpen} className={`font-bold hover:bg-[#3CB371] hover:text-white rounded-[10px] border border-[#223876] py-3 px-6 md:w-[20%] ${isOpen ? 'block' : 'hidden'}`}>Show Less</button>
                   <div className={`blogPara ${isOpen ? 'h-auto' : 'h-14 overflow-hidden'}`}>
                   <Blogswrite />
                   </div>

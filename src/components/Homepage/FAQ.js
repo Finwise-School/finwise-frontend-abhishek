@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FAQItem = ({ question, answer }) => (
   <div className="flex flex-col justify-between flex-1 p-12 bg-green-500 rounded-xl border border-solid border-neutral-800 min-h-[320px] max-w-[calc(33%-16px)] flex-grow min-w-[300px] max-md:w-full max-md:min-h-auto max-md:max-w-full">
     <h3 className="text-2xl font-semibold text-white">{question}</h3>
     <p className="mt-4 tracking-normal leading-7 text-neutral-800 flex-grow">{answer}</p>
-    <a href="/faqs">
+    <Link to="/faqs">
       <button className="px-6 py-5 mt-8 tracking-normal leading-none text-white rounded-xl border border-solid bg-zinc-900 border-neutral-800 max-md:px-5">
         Read More
       </button>
-    </a>
+    </Link>
   </div>
 );
 
@@ -39,11 +40,11 @@ const FAQ = () => {
             Find answers to common questions about Finwise School.
           </p>
         </div>
-        <a href="/faqs">
+        <Link to="/faqs">
           <button className="gap-2 p-4 text-lg font-medium text-white bg-green-500 rounded-xl border border-blue-900 ">
             View All FAQ's
           </button>
-        </a>
+        </Link>
       </div>
       <div className="flex flex-wrap gap-8 w-full justify-between">
         {faqs.map((faq, index) => (

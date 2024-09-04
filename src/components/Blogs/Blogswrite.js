@@ -7,7 +7,7 @@ import B5 from "../../assets/images/Blogs/b-5.png";
 
 const Blogswrite = () => {
   return (
-    <div className="container mx-auto px-4 py-8"> 
+    <div className='writenContent'> 
       <p className="text-lg text-gray-700 mb-8">
         Hey, fellow humans! So, you’ve finally started earning that sweet, sweet cash and thought to yourself, “Life’s good!”—until you noticed a chunk of your paycheck disappearing faster than a pack of crisps at a party. Welcome to the world of taxes, where the government takes a cut so they can keep the roads smooth, the schools teaching, and your Nana’s pension coming in.
       </p>

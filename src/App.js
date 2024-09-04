@@ -28,6 +28,7 @@ import IRRCalculator from "./components/calculator/IRR";
 import ScrollToTop from "./components/ScrolltoTop";
 import Blogs from "./components/Blogs";
 import QuotesHeader from "./components/QuotesHeader";
+import UnderConst from "./components/UnderDevelopement";
 
 const ProtectedRoute = ({ element, ...rest }) => {
   const { isAuthenticated } = useAuth();
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/tools" element={<Calculator />} />
+            <Route path="/maintainence" element={<UnderConst />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
