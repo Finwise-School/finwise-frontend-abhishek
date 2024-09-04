@@ -66,9 +66,11 @@ const AboutUs = () => {
             <div className="flex mb-10">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaStar className="finwise-blue text-xl" />
-                  </div>
+<div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+                  
                   <h1 className="finwise-blue text-lg font-bold">Trust</h1>
                 </div>
                 <p>
@@ -81,9 +83,13 @@ const AboutUs = () => {
 
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaGraduationCap className="finwise-blue text-xl" />
-                  </div>
+                
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaGraduationCap className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+
+              
                   <h1 className="finwise-blue text-lg font-bold">Excellence</h1>
                 </div>
                 <p>
@@ -98,9 +104,14 @@ const AboutUs = () => {
             <div className="flex">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <IoIosPeople className="finwise-blue text-xl" />
-                  </div>
+              
+              
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <IoIosPeople className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+
+                
                   <h1 className="finwise-blue text-lg font-bold">
                     Community Focus
                   </h1>
@@ -115,9 +126,10 @@ const AboutUs = () => {
 
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaStar className="finwise-blue text-xl" />
-                  </div>
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <IoIosPeople className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
                   <h1 className="finwise-blue text-lg font-bold">
                     Our Commitment
                   </h1>
