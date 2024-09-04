@@ -40,6 +40,36 @@ const PrivacyNotice = () => {
   <div className="mt-4">
     <h3 className="text-lg font-bold mb-2">4. Information we expect to collect from you</h3>
     <p className="text-gray-700 mb-2">4.1 We envisage collecting the following types of information from you:</p>
+    <table className="w-full border-collapse my-5">
+    <thead>
+      <tr className="bg-gray-100">
+        <th className="border border-gray-300 p-2 text-left">Information type</th>
+        <th className="border border-gray-300 p-2 text-left">Purpose and related details</th>
+        <th className="border border-gray-300 p-2 text-left">Justification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td className="border border-gray-300 p-2">Name</td>
+        <td className="border border-gray-300 p-2">We collect this to verify your identity when you contact us</td>
+        <td className="border border-gray-300 p-2">It's necessary for the performance of a contract with you</td>
+      </tr>
+      <tr>
+        <td className="border border-gray-300 p-2">Phone Number</td>
+        <td className="border border-gray-300 p-2">We collect this to tell you about special offers</td>
+        <td className="border border-gray-300 p-2">It's necessary for the performance of a contract with you</td>
+      </tr>
+      <tr>
+        <td className="border border-gray-300 p-2">Email</td>
+        <td className="border border-gray-300 p-2">We collect this to verify your identity when you contact us</td>
+        <td className="border border-gray-300 p-2">It's necessary for the performance of a contract with you</td>
+      </tr>
+    </tbody>
+    </table>
+
+
+
+
     <p className="text-gray-700">4.2 We may collect personal information about you from a number of sources, including the following:</p>
     <ul className="list-disc list-inside mt-2">
       <li className="text-gray-700">a. From you when you agree to take a service or product from us, in which case this may include your contact details, date of birth, how you will pay for the product or service and your bank details.</li>

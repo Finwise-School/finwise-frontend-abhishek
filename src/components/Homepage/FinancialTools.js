@@ -1,16 +1,18 @@
 import React from 'react';
 import fire from '../Homepage/Tools/fire.png';
-import { redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';  // Use Link instead of redirect
 
-const ToolCard = ({ title, description, imageSrc }) => (
+const ToolCard = ({ title, description, imageSrc, redirect }) => (
   <div className="flex overflow-hidden flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[30.94vw] max-w-[371px] min-w-[309px]">
     <div className="flex flex-col w-full">
-      <h3 className="text-2xl font-semibold text-white">{title}</h3>
+      <Link to={redirect}>
+        <h3 className="text-2xl font-semibold text-white">{title}</h3>
+      </Link>
       <p className="mt-3 text-lg font-medium leading-7 text-blue-900">{description}</p>
     </div>
-    <a href={redirect}>
+    <Link to={redirect}>
       <img loading="lazy" src={imageSrc} alt={title} className="object-contain mt-8 w-full rounded-xl aspect-[0.62]" />
-    </a>
+    </Link>
   </div>
 );
 
@@ -20,7 +22,7 @@ const FinancialTools = () => {
       title: "F.I.R.E Tool",
       description: "Calculate your Financial Independence Retire Early (F.I.R.E) Number.",
       imageSrc: require('../Homepage/Tools/fire.png'),
-      redirect: "/tools/fire"
+      redirect: "/tools/fire"   
     },
     {
       title: "Goal SIP Tool",
