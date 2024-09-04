@@ -17,7 +17,7 @@ const AboutUs = () => {
   return (
     <div>
 <div className="flex flex-col-reverse md:flex-row items-center justify-between pt-[3%] pb-[3%] pr-[8%] pl-[8%]">
-  {/* About Us Section */}
+  
   <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
     <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
     <p className="text-base mb-6 text-justify">
@@ -35,7 +35,7 @@ const AboutUs = () => {
           </div>
   </div>
 
-  {/* Image Section */}
+  
   <img
     src={phone}
     alt="about-us"
