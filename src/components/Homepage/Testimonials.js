@@ -62,10 +62,12 @@ const Testimonials = () => {
             Read the success stories and heartfelt testimonials from our valued members.
           </p>
       </div>
-      <div className="flex flex-col justify-center gap-8 mt-10 w-full">
-        {testimonials.map((testimonial, index) => (
+      <div className="flex flex-col items-center mt-10 w-full max-md:mt-10 max-md:max-w-full mx-4 lg:mx-0">
+      <div className="flex flex-wrap gap-8 items-center w-full max-md:max-w-full">
+          {testimonials.map((testimonial, index) => (
             <TestimonialCard key={index} {...testimonial} />
           ))}
+        </div>
       </div>
     </section>
   );
