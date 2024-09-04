@@ -3,11 +3,11 @@ import fire from '../Homepage/Tools/fire.png'
 import { redirect } from 'react-router-dom';
 
 const ToolCard = ({ title, description, imageSrc }) => (
-  <div className="flex overflow-hidden flex-col flex-1 shrink pt-10 pr-4 pb-4 pl-10 bg-green-500 rounded-xl border border-solid basis-[25px] border-neutral-800 min-h-[700px] min-w-[240px] max-md:pl-5 max-md:max-w-full">
+  <div className="flex overflow-hidden flex-col flex-1 shrink  pt-[3%]  pr-[2%]  pl-[3%] pb-[4%]  bg-green-500 rounded-xl border  justify-center align-middle border-solid basis-[25px] border-neutral-800 min-h-[100%] min-w-[30%] max-md:pl-[3%] max-md:max-w-full">
     <div className="flex flex-col w-full max-md:max-w-full">
       <div className="flex flex-col w-full max-md:max-w-full">
         <h3 className="text-2xl font-semibold text-white max-md:max-w-full">{title}</h3>
-        <p className="mt-1.5 text-lg font-medium leading-7 text-blue-900 max-md:max-w-full">{description}</p>
+        <p className="mt-[2%] text-lg font-medium leading-7 text-blue-900 max-md:max-w-full">{description}</p>
       </div>
     </div>
     <a href={redirect}>
@@ -51,8 +51,9 @@ const FinancialTools = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col mt-8 w-full h-auto max-md:mt-5 max-md:max-w-full">
-        <div className="flex flex-wrap gap-8 items-start w-full max-md:max-w-full">
+      <div className="flex flex-col mt-[5%] w-full h-auto min-h-[100%] max-md:mt-5 max-md:max-w-full min-md:min-w-full justify-center align-middle">
+      <div className="flex flex-wrap gap-[5%] items-center justify-center align-middle w-full min-w-full max-w-full">
+
           {tools.map((tool, index) => (
             <ToolCard key={index} {...tool} />
           ))}
