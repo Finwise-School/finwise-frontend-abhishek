@@ -232,14 +232,37 @@ strong {
   background-color: #1A1A1A;
 }
 
-.shine {
-  pointer-events: none;
-  background: linear-gradient(135deg, rgba(205, 188, 188, 0.3) 20%, rgba(187, 150, 150, 0) 80%);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease-out;
+/* -----------contact footer------------ */
+/* ContactFooter.css */
+.shiny-effect {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 }
-.group-hover .shine {
-  transform: translateX(100%);
+
+.shiny-effect::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: skewX(-20deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.shiny-effect:hover::before {
+  left: 100%;
+  opacity: 1;
+}
+.shiny-effect:hover {
+  transform: scale(1.05); /* Slightly enlarge the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for extra pop */
 }
 
 
