@@ -2,7 +2,7 @@ import React from 'react';
 import starrs from './../Homepage/Testimonials/star.png';
 
 const TestimonialCard = ({ rating, title, content, author, location, imageSrc }) => (
-  <div className="TestimonialCard flex flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[25vw] max-w-[300px] min-w-[250px]">
+  <div className="TestimonialCard flex flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[37.5vw] max-w-[450px] min-w-[375px]">
     <div className="flex gap-2.5 justify-center items-center">
       {[...Array(5)].map((_, i) => (
         <div key={i} className="flex items-center justify-center p-2.5 w-10 h-10 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
