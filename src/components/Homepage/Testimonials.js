@@ -54,13 +54,15 @@ const Testimonials = () => {
 
   return (
     <section className="flex flex-col items-center justify-center w-full px-8 md:px-16 lg:px-24">
-      <div className="flex flex-col items-center text-center">
-          <h2 className="text-5xl font-semibold text-blue-900">
+      <div className="flex flex-col gap-10 items-center gap-10 w-full max-md:max-w-full">
+        <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full text-center">
+          <h2 className="text-5xl font-semibold text-blue-900 max-md:max-w-full max-md:text-4xl">
             Word from Our People
           </h2>
-          <p className="mt-3.5 text-lg font-medium text-neutral-400">
+          <p className="mt-3.5 text-lg font-medium text-neutral-400 max-md:max-w-full">
             Read the success stories and heartfelt testimonials from our valued members.
           </p>
+        </div>
       </div>
       <div className="flex flex-col items-center mt-10 w-full max-md:mt-10 max-md:max-w-full mx-4 lg:mx-0">
       <div className="flex flex-wrap gap-8 items-center w-full max-md:max-w-full">
