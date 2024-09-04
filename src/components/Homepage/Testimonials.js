@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import 'react-multi-carousel/lib/styles.css';
 
 const TestimonialCard = ({ rating, title, content, author, location, imageSrc }) => (
-  <div className="TestimonialCard flex flex-col p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[80%] justify-center items-center">
+  <div className="TestimonialCard flex flex-col p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[90%] justify-center items-center">
     <div className="flex gap-2.5 justify-start items-center">
       {[...Array(5)].map((_, i) => (
         <div key={i} className="flex items-center justify-center p-2.5 w-10 h-10 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
