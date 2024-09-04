@@ -2,19 +2,19 @@ import React from 'react';
 import starrs from './../Homepage/Testimonials/star.png';
 
 const TestimonialCard = ({ rating, title, content, author, location, imageSrc }) => (
-  <div className="flex flex-col flex-1 shrink p-12 bg-green-500 rounded-xl border border-solid basis-0 border-neutral-800 min-w-[240px] max-md:px-5 max-md:max-w-full text-center">
-    <div className="flex gap-2.5 justify-center items-center self-center">
+  <div className="flex flex-col flex-1 shrink p-12 bg-green-500 rounded-xl border border-solid basis-0 border-neutral-800 min-w-[240px] max-md:px-5 max-md:max-w-full text-center justify-center items-center self-center">
+    <div className="flex gap-2.5 text-center justify-center items-center self-center">
       {[...Array(5)].map((_, i) => (
-        <div key={i} className="flex gap-2.5 items-center p-2.5 w-11 h-11 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
+        <div key={i} className="flex gap-2.5 text-center justify-center items-center self-center p-2.5 w-11 h-11 border border-solid bg-zinc-900 border-neutral-800 rounded-full">
           <img loading="lazy" src={starrs} alt="Star rating" className="object-contain w-6 h-6" />
         </div>
       ))}
     </div>
-    <div className="flex flex-col mt-10 w-full text-center">
+    <div className="flex flex-col mt-10 w-full text-center justify-center items-center self-center">
       <h3 className="text-2xl font-semibold text-black">{title}</h3>
       <p className="mt-3.5 text-lg font-medium leading-7 text-white">{content}</p>
     </div>
-    <div className="flex gap-3 items-center justify-center mt-10 w-full font-medium">
+    <div className="flex gap-3 text-center justify-center items-center self-center mt-10 w-full font-medium">
       <img loading="lazy" src={imageSrc} alt={author} className="object-contain rounded-full aspect-square w-[60px]" />
       <div className="flex flex-col flex-1 shrink self-center my-auto">
         <div className="text-xl text-white">{author}</div>
@@ -53,7 +53,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="flex flex-col self-center -mt-4 w-full max-w-[1596px] px-8 md:px-16 lg:px-24 max-md:mt-10 max-md:px-16">
+    <section className="flex flex-col text-center justify-center items-center self-center -mt-4 w-full max-w-[1596px] px-8 md:px-16 lg:px-24 max-md:mt-10 max-md:px-16">
       <div className="flex gap-10 items-end w-full max-md:max-w-full">
         <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full">
           <h2 className="text-5xl font-semibold text-blue-900 max-md:max-w-full max-md:text-4xl">
