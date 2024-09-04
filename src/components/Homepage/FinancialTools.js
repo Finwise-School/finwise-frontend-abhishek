@@ -37,9 +37,9 @@ const FinancialTools = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center px-4 mt-10 md:px-0 md:mt-0">
+    <section className="flex flex-col items-center justify-center px-4 mt-15 md:px-0 md:mt-0">
       <div className="flex flex-col items-center text-center">
-        <h2 className="text-xl font-semibold text-blue-900 mt-25 md:text-5xl max-w-full">10+ Financial Planning Tools</h2>
+        <h2 className="text-xl font-semibold text-blue-900 md:text-5xl max-w-full">10+ Financial Planning Tools</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">
           Tailor your journey to financial freedom with our exclusive financial planning tools.
         </p>
