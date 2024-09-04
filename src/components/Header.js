@@ -6,20 +6,22 @@ import Navigation from './Homepage/Header Files/Navigation.js';
 function Header() {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/early-access');
-  };
-
   return (
     <header className="flex relative justify-between items-center px-40 w-full bg-white max-md:px-5 max-md:max-w-full">
-      <Logo className="text-2xl" />
-      
-      <h1 className="z-0 self-stretch my-auto w-[1325px] max-md:max-w-full" style={{ marginLeft: '-20px' }}>
+      {/* Logo */}
+      <div className="flex-shrink-0 max-md:w-40 max-md:my-auto">
+        <Logo className="text-2xl max-md:text-4xl" />
+      </div>
+
+      {/* Title Hidden on Mobile */}
+      <h1 className="z-0 self-stretch my-auto w-[1325px] max-md:hidden" style={{ marginLeft: '-20px' }}>
         Finwise School
       </h1>
+
+      {/* Request Early Access Button - Visible only on large screens */}
       <button
-        onClick={handleClick}
-        className="inline-block hover:text-green-500 font-bold text-[#263871] revolving-border hover:text-green-500 rounded-lg py-2 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300"
+        onClick={() => navigate('/early-access')}
+        className="hidden lg:inline-block hover:text-green-500 font-bold text-[#263871] rounded-lg py-2 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300"
         style={{
           border: '5px solid',
           borderRadius: '12px',
@@ -28,6 +30,8 @@ function Header() {
       >
         Request Early Access
       </button>
+
+      {/* Navigation Component */}
       <Navigation />
     </header>
   );
