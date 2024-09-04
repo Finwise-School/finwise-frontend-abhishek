@@ -14,33 +14,31 @@ import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
 const AboutUs = () => {
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-between pt-[8%] pr-[8%] pl-[8%] ">
-        <div className="w-full md:w-1/2">
-          <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
-          <p className="text-base mb-6 text-justify">
-            At FinwiseSchool, we understand that everyone learns differently, so
-            we offer personalized learning paths tailored to each user's unique
-            financial knowledge, learning style, and goals. When users join,
-            they complete a short assessment to gauge their current financial
-            understanding and set personal financial goals. Our advanced
-            algorithms then customize the learning experience based on the
-            user's progress and performance, ensuring that each lesson is
-            relevant and appropriately challenging.
-          </p>
-          <div style={{marginLeft: "-40px"}}>
+      <div className="flex flex-col md:flex-row items-center justify-between pt-[8%] pr-[8%] pl-[8%]">
+  <div className="w-full md:w-1/2">
+    <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
+    <p className="text-base mb-6 text-justify">
+      At FinwiseSchool, we understand that everyone learns differently, so
+      we offer personalized learning paths tailored to each user's unique
+      financial knowledge, learning style, and goals. When users join,
+      they complete a short assessment to gauge their current financial
+      understanding and set personal financial goals. Our advanced
+      algorithms then customize the learning experience based on the
+      user's progress and performance, ensuring that each lesson is
+      relevant and appropriately challenging.
+    </p>
+    <div style={{marginLeft: "-40px"}}>
           <EarlyAccessBtn/>
           </div>
-        </div>
-       <img
-  src={phone}
-  height={500}
-  width={500}
-  alt="about-us"
-  className="hidden md:block md:ml-10 animate-float"
-/>
+  </div>
 
+  <img
+    src={phone}
+    alt="about-us"
+    className="w-full md:w-1/2 h-auto md:ml-10 animate-float"
+  />
+</div>
 
-      </div>
 
       <div className="p-8">
         <div className="flex flex-col md:flex-row mb-20 pr-[8%] pl-[7%]">
@@ -246,7 +244,7 @@ const AboutUs = () => {
   </div>
 
 
-  <div className="flex justify-center items-center space-x-[2%]">
+  <div className="flex justify-center items-center space-x-[1%] pr-[8%] pl-[8%]">
   <div className="border-2 p-[3%] border-black animate-spin-slow rounded-lg">
     <img src={inspire} className="h-[50%] w-[75%]" alt="Inspire" />
   </div>
@@ -266,7 +264,7 @@ const AboutUs = () => {
         <h1 className="finwise-blue text-4xl font-bold  mb-7 pt-16">
           Partner Portal
         </h1>
-        <p className=" px-10 mb-14 text-justify">
+        <p className=" pr-[6%] pl-[6%] mb-14 text-justify">
           Our Partner Portal offers customized financial planning solutions
           tailored specifically for corporate clients. Collaborate with Finwise
           School to provide your employees with seamless access to exclusive
@@ -294,34 +292,7 @@ const AboutUs = () => {
 
       <EarlyAccessTemplate/>
 
-      {/* <div className="flex p-10">
-        <div className="flex-1">
-          <h1 className="finwise-blue text-4xl font-bold mb-4 ">
-            Start Your Financial Journey Today
-          </h1>
-          <p className="text-justify pr-10 font-thin pb-10">
-            Your path to financial freedom is just a click away. Whether you’re
-            aiming to optimize your investments, create a solid savings plan, or
-            receive expert financial advice, FinWise is here to guide you every
-            step of the way. Take the first step towards achieving your
-            financial goals—explore our innovative planning tools or connect
-            with our team for personalized support tailored to your needs.
-          </p>
-        </div>
-        <div className="flex items-center ml-10">
-          <a
-            href="#"
-            className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-2 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300"
-            style={{
-              border: "5px solid",
-              borderRadius: "12px",
-              borderImage: "linear-gradient(90deg, #223876 0%, #3CB371 100%) 1",
-            }}
-          >
-            Request Early Access
-          </a>
-        </div>
-      </div> */}
+      
     </div>
   );
 };
