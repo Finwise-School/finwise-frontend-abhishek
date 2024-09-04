@@ -14,7 +14,7 @@ import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
 const AboutUs = () => {
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-between pt-[8%] pr-[8%] pl-[8%]">
+<div className="flex flex-col md:flex-row items-center justify-between  pt-[3%] pb-[3%] pr-[8%] pl-[8%]">
   <div className="w-full md:w-1/2">
     <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
     <p className="text-base mb-6 text-justify">
@@ -27,17 +27,18 @@ const AboutUs = () => {
       user's progress and performance, ensuring that each lesson is
       relevant and appropriately challenging.
     </p>
-    <div style={{marginLeft: "-40px"}}>
-          <EarlyAccessBtn/>
-          </div>
+    <div style={{ marginLeft: "-40px" }}>
+      <EarlyAccessBtn />
+    </div>
   </div>
 
   <img
     src={phone}
     alt="about-us"
-    className="w-full md:w-1/2 h-auto md:ml-10 animate-float"
+    className="w-[40%] md:w-[40%] md:h-[40%] max-h-[40%] h-auto md:ml-10 animate-float"
   />
 </div>
+
 
 
       <div className="p-8">
@@ -245,19 +246,18 @@ const AboutUs = () => {
 
 
   <div className="flex justify-center items-center space-x-[1%] pr-[10%] pl-[10%]">
-  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg">
-    <img src={inspire} className="h-[50%] w-[75%]" alt="Inspire" />
+  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg h-[300px] flex items-center justify-center">
+    <img src={inspire} className="h-[80%] w-auto" alt="Inspire" />
   </div>
 
-  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg">
-    <img src={barclays} className="h-[50%] w-[75%]" alt="Barclays" />
+  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg h-[300px] flex items-center justify-center">
+    <img src={barclays} className="h-[80%] w-auto" alt="Barclays" />
   </div>
 
-  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg">
-    <img src={univ} className="h-[50%] w-[75%]" alt="University" />
+  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg h-[300px] flex items-center justify-center">
+    <img src={univ} className="h-[80%] w-auto" alt="University" />
   </div>
 </div>
-
 
 
       <div className="flex flex-col items-center text-center p-10">
