@@ -10,6 +10,7 @@ const calculators = [
   { path: "/tools/fire", name: "FIRE Calculator" },
   { path: "/tools/cagr", name: "CAGR Calculator" },
   { path: "/tools/emi", name: "EMI Calculator" },
+  { path: "/tools/irr", name: "IRR Calculator" },
   { path: "/tools/mortgage", name: "Home Mortgage Calculator" },
   { path: "/tools/tax", name: "Tax Calculator" }
 ];
