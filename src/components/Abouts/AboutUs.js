@@ -11,11 +11,14 @@ import { FaGraduationCap } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
 import EarlyAccessTemplate from "../EarlyAccessTemplate";
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
+import Partner from "./partnerPortal"; 
+
 const AboutUs = () => {
   return (
     <div>
-<div className="flex flex-col md:flex-row items-center justify-between  pt-[3%] pb-[3%] pr-[8%] pl-[8%]">
-  <div className="w-full md:w-1/2">
+<div className="flex flex-col-reverse md:flex-row items-center justify-between pt-[3%] pb-[3%] pr-[8%] pl-[8%]">
+  {/* About Us Section */}
+  <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
     <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
     <p className="text-base mb-6 text-justify">
       At FinwiseSchool, we understand that everyone learns differently, so
@@ -27,17 +30,19 @@ const AboutUs = () => {
       user's progress and performance, ensuring that each lesson is
       relevant and appropriately challenging.
     </p>
-    <div style={{ marginLeft: "-40px" }}>
-      <EarlyAccessBtn />
-    </div>
+    <div style={{marginLeft: "-40px"}}>
+          <EarlyAccessBtn/>
+          </div>
   </div>
 
+  {/* Image Section */}
   <img
     src={phone}
     alt="about-us"
-    className="w-[40%] md:w-[40%] md:h-[40%] max-h-[40%] h-auto md:ml-10 animate-float"
+    className="w-[80%] md:w-[40%] max-w-[40%] h-auto md:ml-10 mb-8 md:mb-0 animate-float"
   />
 </div>
+
 
 
 
@@ -235,62 +240,11 @@ const AboutUs = () => {
   
 </div>
 
-<div className="text-center justify-center p-20">
-    <h1 className="finwise-blue text-4xl font-bold mb-4 ">
-      Meet our Supporters
-    </h1>
-    <p className="">
-      At Finwise School, our success is fueled by the support and expertise of our valued partners.
-    </p>
-  </div>
 
+  <CarouselCards/>
 
-  <div className="flex justify-center items-center space-x-[1%] pr-[10%] pl-[10%]">
-  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg h-[300px] flex items-center justify-center">
-    <img src={inspire} className="h-[80%] w-auto" alt="Inspire" />
-  </div>
-
-  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg h-[300px] flex items-center justify-center">
-    <img src={barclays} className="h-[80%] w-auto" alt="Barclays" />
-  </div>
-
-  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg h-[300px] flex items-center justify-center">
-    <img src={univ} className="h-[80%] w-auto" alt="University" />
-  </div>
-</div>
-
-
-      <div className="flex flex-col items-center text-center p-10">
-        <h1 className="finwise-blue text-4xl font-bold  mb-7 pt-16">
-          Partner Portal
-        </h1>
-        <p className=" pr-[8%] pl-[8%] mb-14 text-justify">
-          Our Partner Portal offers customized financial planning solutions
-          tailored specifically for corporate clients. Collaborate with Finwise
-          School to provide your employees with seamless access to exclusive
-          tools and expert advice, empowering them to achieve their financial
-          goals.
-        </p>
-        <div className="flex justify-center gap-9 mb-10">
-          <img
-            className="image1"
-            src={left}
-            height={500}
-            width={500}
-            alt="left"
-          />
-          <img
-            className="image1"
-            src={right}
-            height={200}
-            width={400}
-            alt="right"
-          />
-        </div>
-        <div className="border-t border-gray-300 w-full"></div>
-      </div>
-
-      <EarlyAccessTemplate/>
+  <Partner/>
+  <EarlyAccessTemplate/>
 
       
     </div>
