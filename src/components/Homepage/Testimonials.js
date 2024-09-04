@@ -53,7 +53,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center justify-center px-4 pt-15 mt-25 md:px-0 md:mt-0">
+    <section className="flex flex-col items-center justify-center px-4 py-10 mt-25 md:px-0 md:mt-0">
       <div className="flex flex-col items-center text-center">
         <h2 className="text-xl font-semibold text-blue-900 md:text-5xl max-w-full">Word from Our People</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">Read the success stories and heartfelt testimonials from our valued members.</p>
