@@ -30,7 +30,8 @@ const Hero = () => {
             <div className="mt-6">
               <EarlyAccessBtn />
             </div>
-            <div>
+            {/* Center the CountCards component only on mobile */}
+            <div className="count-cards-wrapper">
               <CountCards />
             </div>
           </div>
@@ -38,7 +39,7 @@ const Hero = () => {
       </div>
 
       {/* HeroFooter */}
-      <div className="rounded-lg">
+      <div className="hero-footer-container">
         <HeroFooter />
       </div>
 
@@ -72,6 +73,12 @@ const Hero = () => {
             text-align: left; /* Ensure the text alignment is left for the entire column */
             align-items: flex-start; /* Ensure items are aligned to the start */
           }
+          .count-cards-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 1.5rem; /* Adjust the spacing as needed */
+          }
         }
 
         @media (min-width: 768px) {
@@ -97,6 +104,14 @@ const Hero = () => {
             max-width: 101%;
           }
         }
+
+        /* Ensure HeroFooter is not affected by the layout */
+        .hero-footer-container {
+          width: 100%;
+          text-align: center; /* Ensure it's centered in larger layouts */
+          margin-top: 2rem; /* Add space between Hero section and footer */
+        }
+
       `}</style>
     </div>
   );

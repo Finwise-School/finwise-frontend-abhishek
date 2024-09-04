@@ -37,10 +37,12 @@ const AboutUs = () => {
 
   
   <img
-    src={phone}
-    alt="about-us"
-    className="w-[80%] md:w-[40%] max-w-[40%] h-auto md:ml-10 mb-8 md:mb-0 animate-float"
+  src={phone}
+  alt="about-us"
+  style={{ width: "100%", maxWidth: "600px", height: "auto" }}
+  className="animate-float"
   />
+
 </div>
 
 
