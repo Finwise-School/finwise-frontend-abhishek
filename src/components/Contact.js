@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import ContactImg from "../assets/images/contact/contact-finwise.png";
-import MailImg from "../assets/images/contact/mail.png";
-import CallImg from "../assets/images/contact/call.png";
-import LocationImg from "../assets/images/contact/location.png";
-import youtubeImg from "../assets/images/contact/youtube.png";
 import EarlyAccessTemplate from './EarlyAccessTemplate';
+import ContactFooter from './contact/ContactFooter';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -240,56 +237,7 @@ const ContactUs = () => {
           )}
         </div>
       </div>
-      <footer style={{ backgroundColor: "#000000" }} className="text-white py-8">
-  <div className="max-w-7xl mx-auto">
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      {/* Contact Item */}
-      <div className="flex items-center justify-center relative group">
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105" style={{ width: '280px', height: '120px', margin: '0px' }}>
-          <div className="relative">
-            <img src={MailImg} alt="Email Icon" className="w-12 h-12 mb-2 shiny-effect" />
-          </div>
-          <p className="text-white text-sm">
-            <a href="mailto:contact@finwiseschool.com" className="hover:underline">contact@finwiseschool.com</a>
-          </p>
-        </div>
-      </div>
-
-      {/* Phone Item */}
-      <div className="flex items-center justify-center relative group">
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105" style={{ width: '280px', height: '120px', margin: '0px' }}>
-          <div className="relative">
-            <img src={CallImg} alt="Phone Icon" className="w-12 h-12 mb-2 shiny-effect" />
-          </div>
-          <p className="text-white text-sm">
-            <a href="tel:+447741819337" className="hover:underline">+44 7741-819-337</a>
-          </p>
-        </div>
-      </div>
-
-      {/* Location Item */}
-      <div className="flex items-center justify-center relative group">
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105" style={{ width: '280px', height: '120px', margin: '0px' }}>
-          <div className="relative">
-            <img src={LocationImg} alt="Location Icon" className="w-12 h-12 mb-2 shiny-effect" />
-          </div>
-          <p className="text-white text-sm">Glasgow, UK</p>
-        </div>
-      </div>
-
-      {/* YouTube Item */}
-      <div className="flex items-center justify-center relative group">
-        <div className="relative z-10 flex flex-col items-center justify-center bg-[#1A1A1A] p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-105" style={{ width: '280px', height: '120px', margin: '0px' }}>
-          <div className="relative">
-            <img src={youtubeImg} alt="YouTube Icon" className="w-12 h-12 mb-2 shiny-effect" />
-          </div>
-          <p className="text-white text-sm">YouTube</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
+      <ContactFooter/>
 
       <EarlyAccessTemplate />
     </div>
