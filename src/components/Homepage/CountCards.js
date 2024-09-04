@@ -3,7 +3,7 @@ import CountUp from 'react-countup';
 
 const CountCards = () => {
   return (
-    <div className="mt-14 ml-10">
+    <div className="mt-14">
       {/* Mobile Layout */}
       <div className="block md:hidden">
         {/* First row: Two smaller cards */}
