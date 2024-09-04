@@ -126,7 +126,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-<div className="bg-black text-white pt-[2%]">
+<div className="bg-black text-white pt-[2%] pr-[5%] pl-[5%]">
   <div className="container mx-auto  py-[]">
     <div className="pb-12">
       <h1 className="text-4xl font-bold mb-4 ">
@@ -137,7 +137,7 @@ const AboutUs = () => {
       </p>
     </div>
 
-    <div className="flex flex-wrap justify-between p-5">
+    <div className="flex flex-wrap justify-between p-[1%]">
    <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 01
@@ -244,16 +244,16 @@ const AboutUs = () => {
   </div>
 
 
-  <div className="flex justify-center items-center space-x-[1%] pr-[8%] pl-[8%]">
-  <div className="border-2 p-[3%] border-black animate-spin-slow rounded-lg">
+  <div className="flex justify-center items-center space-x-[1%] pr-[10%] pl-[10%]">
+  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg">
     <img src={inspire} className="h-[50%] w-[75%]" alt="Inspire" />
   </div>
 
-  <div className="border-2 p-[3%] border-black animate-spin-slow rounded-lg">
+  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg">
     <img src={barclays} className="h-[50%] w-[75%]" alt="Barclays" />
   </div>
 
-  <div className="border-2 p-[3%] border-black animate-spin-slow rounded-lg">
+  <div className="border-2 p-[2%] border-black animate-spin-slow rounded-lg">
     <img src={univ} className="h-[50%] w-[75%]" alt="University" />
   </div>
 </div>
@@ -264,7 +264,7 @@ const AboutUs = () => {
         <h1 className="finwise-blue text-4xl font-bold  mb-7 pt-16">
           Partner Portal
         </h1>
-        <p className=" pr-[6%] pl-[6%] mb-14 text-justify">
+        <p className=" pr-[8%] pl-[8%] mb-14 text-justify">
           Our Partner Portal offers customized financial planning solutions
           tailored specifically for corporate clients. Collaborate with Finwise
           School to provide your employees with seamless access to exclusive
