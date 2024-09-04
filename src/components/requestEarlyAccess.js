@@ -56,7 +56,7 @@ const EarlyAccessForm = () => {
     e.preventDefault();
     if (validateStep()) {
       try {
-        const response = await fetch('http://localhost:5000/api/request-early-access', {
+        const response = await fetch('https://finwisebackend.onrender.com/api/request-early-access', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
