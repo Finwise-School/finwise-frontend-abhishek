@@ -57,27 +57,26 @@ function Footer() {
   const socialIcons = [
     { icon: <FaInstagram />, alt: "Instagram", url: "https://www.instagram.com/finwiseschool/" },
     { icon: <FaLinkedinIn />, alt: "LinkedIn", url: "https://uk.linkedin.com/company/finwiseschool" },
-    // { icon: <FaTwitter />, alt: "Twitter", url: "https://twitter.com" },
     { icon: <FaYoutube />, alt: "YouTube", url: "https://www.youtube.com/@finwiseschool" }
   ];
 
   return (
     <footer className="flex flex-col w-full bg-black">
-      <div className="flex gap-4 items-start px-4 py-6 w-full">
+      <div className="flex flex-wrap gap-4 items-start px-4 py-6 w-full justify-center md:justify-start">
         <EmailSubscription />
-        <div className="flex flex-1 gap-4 justify-between items-start font-medium flex-grow">
-  {footerColumns.map((column, index) => (
-    <FooterColumn key={index} title={column.title} items={column.items} />
-  ))}
-</div>
+        <div className="flex flex-1 gap-4 justify-between items-start font-medium flex-grow flex-wrap">
+          {footerColumns.map((column, index) => (
+            <FooterColumn key={index} title={column.title} items={column.items} />
+          ))}
+        </div>
       </div>
-      <div className="flex flex-wrap items-center px-4 py-2 bg-zinc-900 text-xs justify-between">
-        <div className="flex text-start text-white flex-row justify-evenly">
+      <div className="flex flex-wrap items-center justify-between px-4 py-2 bg-zinc-900 text-xs">
+        <div className="flex flex-wrap justify-center md:justify-start text-white">
           <p className="text-xs md:text-sm m-auto">@2024 Finwise School All Rights Reserved.</p>
           <a href="#terms" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Terms & Conditions</a>
           <a href="/privacy" target="blank" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Privacy Notice</a>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center justify-center md:justify-end">
           {socialIcons.map((social, index) => (
             <a 
               key={index} 
@@ -97,3 +96,4 @@ function Footer() {
 }
 
 export default Footer;
+  
