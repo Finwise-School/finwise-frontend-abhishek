@@ -20,7 +20,7 @@ const EarlyAccessTemplate = () => {
   };
 
   return (
-    <>
+    <div className='flex flex-col bg-white max-md:pb-24'>
       <hr className="w-screen h-0.5 my-8 bg-gray-800 border-0 dark:bg-gray-800" />
 
       <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center p-8 lg:p-24 -mt-16 -mb-16">
@@ -52,7 +52,7 @@ const EarlyAccessTemplate = () => {
           </style>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
