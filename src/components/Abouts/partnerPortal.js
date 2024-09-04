@@ -36,7 +36,7 @@ export default function Partner() {
           <h1 className='font-semibold md:text-5xl text-[28px] md:leading-[72px] leading-[42px] finwise-blue text-center'>Partner Portal</h1>
           <p className='font-medium md:text-lg text-sm md:leading-7 leading-5 finwise-para pr-[6%] pl-[6%] text-justify'>Our Partner Portal offers customized financial planning solutions tailored specifically for corporate clients. Collaborate with Finwise School to provide your employees with seamless access to exclusive tools and expert advice, empowering them to achieve their financial goals.</p>
         </div>
-        <div className="msContent gap-5 pl-[25%] md:gap-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:my-10">
+        <div className="msContent gap-5 lg:pl-[25%] md:gap-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:my-10">
           {(isLarge || isMedium) ? 
             data.slice(0, 4).map((item, index) => (
               <div key={index} className="supportersCard flex justify-center items-start p-5 md:p-[30px] gap-10 md:gap-[50px]">
