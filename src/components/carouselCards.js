@@ -35,12 +35,12 @@ export default function CarouselCards() {
       };
     return (
 <>
-      <div className='mainSupportersContainer flex flex-col justify-center items-center md:gap-3 gap-10 mt-32 mx-4 md:mx-10'>
+      <div className='mainSupportersContainer flex flex-col justify-center items-center md:gap-3 gap-10 mt-32 ml-[8%] mr-[8%] md:mx-10'>
         <div className='msHeader'>
           <h1 className='font-semibold md:text-5xl text-[28px] md:leading-[72px] leading-[42px] finwise-blue text-center'>Meet Our Supporters</h1>
           <p className='font-medium md:text-lg text-sm md:leading-7 leading-5 finwise-para text-center'>At Finwise School, our success is fueled by the support and expertise of our valued partners.</p>
         </div>
-        <div className='msContent gap-5 md:gap-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:my-10'>
+        <div className='msContent gap-5 md:gap-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:my-10 ml-[6%] mr-[6%]'>
           {isLarge || isMedium ? data.slice(0, 4).map((item, index) => (
             <div key={index} className='supportersCard rounded-xl border border-[#262626] p-5 md:p-[30px] gap-10 md:gap-[50px]'>
               <img src={item.img} alt={item.compName} className='rounded-[10px] md:rounded-xl cursor-pointer h-[200px] w-[318px] md:h-auto md:w-auto' onClick={() => handleClick(item.compLink)} />
