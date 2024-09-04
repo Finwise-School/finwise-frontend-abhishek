@@ -62,7 +62,7 @@ function Footer() {
 
   return (
     <footer className="flex flex-col w-full bg-black">
-      <div className="flex flex-wrap gap-2 items-start px-4 py-6 w-full justify-between md:justify-center">
+      <div className="flex flex-wrap gap-2 items-start px-2 py-6 w-full justify-between md:justify-center">
         <EmailSubscription />
         <div className="flex flex-1 gap-2 justify-between items-start font-medium flex-grow flex-wrap max-md:flex-col max-md:items-center">
           {footerColumns.map((column, index) => (
