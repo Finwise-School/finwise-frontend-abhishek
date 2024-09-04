@@ -14,7 +14,7 @@ const Hero = () => {
           <p className="text-base mb-6 text-justify">
             Finwise School is a revolutionary platform designed to teach Gen-Z the essentials of personal finance through personalized, gamified experiences.
           </p>
-          <div style={{ marginLeft: "-40px" }}>
+          <div style={{ marginLeft: "-40px", marginTop: "40px" }}>
             <EarlyAccessBtn />
           </div>
 
