@@ -80,7 +80,7 @@ const Navbar = () => {
       </div>
       
       {/* Horizontal line for mobile view */}
-      {/* <hr className="md:hidden border-t border-gray-800 dark:border-gray-700" /> */}
+      <hr className="md:hidden border-t border-gray-300 dark:border-gray-300" />
     </nav>
   );
 };
