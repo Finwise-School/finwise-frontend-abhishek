@@ -11,7 +11,7 @@ const HeroFooter = () => {
         <div className="grid-for-calci grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center">
           {/* Grocery Coupons Item */}
           <div className="flex items-center justify-center relative group w-full">
-            <div className="relative z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
+            <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
               <div className="relative mb-2">
                 <img src={Home} alt="Grocery Coupons" className="w-14 h-14" />
               </div>
@@ -21,7 +21,7 @@ const HeroFooter = () => {
 
           {/* Increase Disposable Income Item */}
           <div className="flex items-center justify-center relative group w-full">
-            <div className="relative z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
+            <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
               <div className="relative mb-2">
                 <img src={Money} alt="Increase Disposable Income" className="w-14 h-14" />
               </div>
@@ -31,7 +31,7 @@ const HeroFooter = () => {
 
           {/* Achieve Your Financial Goals Item */}
           <div className="flex items-center justify-center relative group w-full">
-            <div className="relative z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
+            <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
               <div className="relative mb-2">
                 <img src={Build} alt="Achieve Your Financial Goals" className="w-14 h-14" />
               </div>
@@ -41,7 +41,7 @@ const HeroFooter = () => {
 
           {/* Smart Investments Item */}
           <div className="flex items-center justify-center relative group w-full">
-            <div className="relative z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
+            <div className="relative shiny-effect z-10 flex flex-col items-center justify-center bg-black p-4 rounded-md shadow-md transition-transform duration-300 ease-in-out transform w-full h-full">
               <div className="relative mb-2">
                 <img src={Sun} alt="Smart Investments" className="w-14 h-14" />
               </div>
