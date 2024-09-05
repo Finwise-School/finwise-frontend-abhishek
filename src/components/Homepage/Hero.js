@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Heroos from '../Homepage/Hero/hero.gif';
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccessForHome";
 import CountCards from "../Homepage/CountCards";
 import HeroFooter from './HeroFooter';
 
 const Hero = () => {
+  // State to track viewport width
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 766);
+
+  // Update state on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 766);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="bg-white">
       <div className="max-w-screen-xl mx-auto px-4 py-8">
@@ -30,13 +46,13 @@ const Hero = () => {
             <div className="mt-6">
               <EarlyAccessBtn />
             </div>
-            {/* Center the CountCards component only on mobile */}
-            <div className="count-cards-wrapper">
-              <CountCards />
-            </div>
+            {/* Conditionally render CountCards */}
+            { !isMobile && <div className="count-cards-wrapper"><CountCards /></div> }
           </div>
         </div>
       </div>
+      {/* Render CountCards only on mobile */}
+      { isMobile && <CountCards /> }
 
       {/* HeroFooter */}
       <div className="hero-footer-container">
@@ -76,10 +92,7 @@ const Hero = () => {
           }
 
           .count-cards-wrapper {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 1.5rem;
+            display: none; /* Hide on mobile */
           }
         }
 
