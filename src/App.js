@@ -29,8 +29,8 @@ import ScrollToTop from "./components/ScrolltoTop";
 import Blogs from "./components/Blogs";
 import QuotesHeader from "./components/QuotesHeader";
 import UnderConst from "./components/UnderDevelopement";
-import ContactFooter from "./components/contact/ContactFooter";
 import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
+
 const ProtectedRoute = ({ element, ...rest }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? element : <Navigate to="/login" />;
@@ -40,16 +40,15 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-      <ScrollToTop />
-      <QuotesHeader />
+        <ScrollToTop />
+        <QuotesHeader />
         <div className="app">
-          <Header/> 
+          <Header />
           <Routes>
-          <Route path="/privacy" element={<PrivacyNotice />} />
+            <Route path="/privacy" element={<PrivacyNotice />} />
             <Route path="/early-access" element={<EarlyAccess />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/contact1" element={<ContactFooter />} />
             <Route path="/tools" element={<Calculator />} />
             <Route path="/maintainence" element={<UnderConst />} />
             <Route path="/about" element={<AboutUs />} />
