@@ -30,9 +30,10 @@ const AboutUs = () => {
       user's progress and performance, ensuring that each lesson is
       relevant and appropriately challenging.
     </p>
-        <div style={{marginLeft: "-40px"}}>
-          <EarlyAccessBtn/>
-        </div>
+    <div className="-ml-10 md:-ml-10">
+      <EarlyAccessBtn/>
+    </div>
+
   </div>
 
   
