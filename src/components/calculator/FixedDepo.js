@@ -193,7 +193,6 @@ const FixedDepo = () => {
         {/* Line Graph */}
         <div className="mt-8">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">Investment Over Time</h2>
-          <div className="bg-white p-4 border border-gray-300 rounded-lg">
             <Line
               data={chartData}
               options={{
@@ -253,7 +252,6 @@ const FixedDepo = () => {
                 },
               }}
             />
-          </div>
         </div>
 
         <Tool_Footer message="See the returns on your fixed deposits and make informed savings decisions. Let’s maximize your savings!"/>

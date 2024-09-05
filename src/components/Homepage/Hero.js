@@ -1,8 +1,8 @@
 import React from 'react';
 import Heroos from '../Homepage/Hero/hero.gif';
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccessForHome";
-import HeroFooter from "../Homepage/HeroFooter";
 import CountCards from "../Homepage/CountCards";
+import HeroFooter from './HeroFooter';
 
 const Hero = () => {
   return (
@@ -20,7 +20,7 @@ const Hero = () => {
           </div>
 
           {/* Left Content - Displayed below the image in mobile view */}
-          <div className="flex flex-col items-center md:items-start justify-center h-full space-y-6 text-center md:text-left w-full md:w-1/2 order-2 md:order-1">
+          <div className="content-wrapper flex flex-col items-center md:items-start justify-center h-full space-y-6 text-center md:text-left w-full md:w-1/2 order-2 md:order-1">
             <p id="heading" className="finwise-blue text-5xl md:text-5xl font-bold mb-4">
               Master Your Money with Finwise School
             </p>
@@ -40,7 +40,7 @@ const Hero = () => {
 
       {/* HeroFooter */}
       <div className="hero-footer-container">
-        <HeroFooter />
+        <HeroFooter/>
       </div>
 
       {/* Scoped CSS using styled-jsx */}
@@ -62,28 +62,30 @@ const Hero = () => {
           #heading {
             font-size: 1.3rem;
             text-align: left;
-            margin-left: 0; /* Resetting margin-left */
-            max-width: 100%; /* Ensure it does not overflow */
+            margin-left: 0;
+            max-width: 100%;
           }
           #para {
             text-align: left;
-            max-width: 100%; /* Ensure it does not overflow */
+            max-width: 100%;
           }
-          .flex-col.items-center {
-            text-align: left; /* Ensure the text alignment is left for the entire column */
-            align-items: flex-start; /* Ensure items are aligned to the start */
+
+          .content-wrapper {
+            text-align: left;
+            align-items: flex-start;
           }
+
           .count-cards-wrapper {
             display: flex;
             justify-content: center;
             width: 100%;
-            margin-top: 1.5rem; /* Adjust the spacing as needed */
+            margin-top: 1.5rem;
           }
         }
 
         @media (min-width: 768px) {
           #heading {
-            font-size: 3rem; /* Or your desired font size for larger screens */
+            font-size: 3rem;
           }
         }
 
@@ -105,13 +107,11 @@ const Hero = () => {
           }
         }
 
-        /* Ensure HeroFooter is not affected by the layout */
         .hero-footer-container {
           width: 100%;
-          text-align: center; /* Ensure it's centered in larger layouts */
-          margin-top: 2rem; /* Add space between Hero section and footer */
+          text-align: center;
+          margin-top: 2rem;
         }
-
       `}</style>
     </div>
   );

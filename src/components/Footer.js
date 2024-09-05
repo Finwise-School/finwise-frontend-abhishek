@@ -2,6 +2,8 @@ import React from "react";
 import FooterColumn from "./Homepage/Footer Files/FooterColumn";
 import EmailSubscription from "./Homepage/Footer Files/EmailSubscription";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const footerColumns = [
@@ -60,7 +62,14 @@ function Footer() {
     { icon: <FaYoutube />, alt: "YouTube", url: "https://www.youtube.com/@finwiseschool" }
   ];
 
+  const isLarge = useMediaQuery({ minWidth: 1024 });
+  const isMedium = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const isSmall = useMediaQuery({ maxWidth: 767 });
+
   return (
+    <>
+    {isLarge || isMedium ? (
+
     <footer className="flex flex-col w-full bg-black">
       {/* Top Section */}
       <div className="flex flex-wrap gap-2 items-start px-2 py-6 w-full justify-between md:justify-center max-md:flex-col max-md:items-center max-md:text-center">
@@ -98,6 +107,81 @@ function Footer() {
         </div>
       </div>
     </footer>
+    ) : (
+      <div className="footerMobile py-[50px] gap-[50px] bg-black"> 
+        <div className="fmUpperContainer gap-[50px] px-[16px] bg-black">
+          <div className="fmUpperSubContainer gap-5">
+            <EmailSubscription />
+          </div>
+        <div className="fmBottomSubContainer flex flex-col">
+          <div className="frame1 gap-5 flex flex-row justify-center">
+            <div className="border-b border-[#262626] pb-5 gap-4 w-2/4">
+              <p className="finwise-para font-medium text-base">{footerColumns[0].title}</p>
+              <div className="flex flex-col">
+                {footerColumns[0].items.map((items, index) => (
+                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                ))}
+              </div>
+            </div>
+            <div className="border-b border-l border-[#262626] pb-5 pl-5 gap-4 w-2/4">
+            <p className="finwise-para font-medium text-base">{footerColumns[1].title}</p>
+              <div className="flex flex-col">
+                {footerColumns[1].items.map((items, index) => (
+                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="frame2 gap-5">
+          <div className="frame1 gap-5 flex flex-row justify-center">
+            <div className="border-b border-[#262626] pb-5 gap-4 w-2/4 flex flex-col">
+            <div>
+              <p className="finwise-para font-medium text-base">{footerColumns[3].title}</p>
+              <div className="flex flex-col">
+                {footerColumns[3].items.map((items, index) => (
+                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                ))}
+              </div>
+              </div>
+              <div>
+              <p className="finwise-para font-medium text-base">{footerColumns[4].title}</p>
+              <div className="flex flex-col">
+                {footerColumns[4].items.map((items, index) => (
+                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                ))}
+              </div>
+              </div>
+            </div>
+            <div className=" border-[#262626]"></div>
+            <div className="border-b border-l border-[#262626] pb-5 pl-5 gap-4 w-2/4">
+            <p className="finwise-para font-medium text-base">{footerColumns[2].title}</p>
+              <div className="flex flex-col">
+                {footerColumns[2].items.map((items, index) => (
+                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div className="fmBottomContainer gap-5 border-t py-5 px-4 bg-[#1A1A1A]">
+          <div className="gap-2 flex flex-row justify-center items-center">
+            {socialIcons.map((items, index) => (
+            <a key={index} href={items.url} className="rounded-full p-5 gap-2 bg-[#141414] mx-1">
+              {items.icon}
+            </a>
+            ))}
+          </div>
+          <div className="flex justify-center flex-col items-center py-4">
+            <p className="font-medium text-sm leading-6 text-[#FFFFFF]">@2024 Finwise School All Rights Reserved.</p>
+            <Link className="font-medium text-sm leading-6 text-[#FFFFFF]">Terms & Conditions</Link>
+            <Link to="/privacy" className="font-medium text-sm leading-6 text-[#FFFFFF]">Privacy</Link>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
 
