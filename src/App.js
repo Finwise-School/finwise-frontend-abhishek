@@ -30,6 +30,8 @@ import Blogs from "./components/Blogs";
 import QuotesHeader from "./components/QuotesHeader";
 import UnderConst from "./components/UnderDevelopement";
 import ContactFooter from "./components/contact/ContactFooter";
+import VideoPopup from "./components/VideoPopup"; // Import the new component
+
 const ProtectedRoute = ({ element, ...rest }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? element : <Navigate to="/login" />;
@@ -39,10 +41,10 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-      <ScrollToTop />
-      <QuotesHeader />
+        <ScrollToTop />
+        <QuotesHeader />
         <div className="app">
-          <Header/> 
+          <Header />
           <Routes>
             <Route path="/early-access" element={<EarlyAccess />} />
             <Route path="/" element={<HomePage />} />
@@ -73,6 +75,7 @@ const App = () => {
           </Routes>
           <Chatbot />
           <Footer />
+          <VideoPopup /> {/* Add the VideoPopup component here */}
         </div>
       </Router>
     </AuthProvider>

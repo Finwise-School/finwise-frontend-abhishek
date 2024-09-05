@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 dark:bg-gray-900" style={{marginTop: "-15px"}}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Logo on the left */}
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -38,7 +38,7 @@ const Navbar = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
+              d="M1 1h15M1 7h15M8.5 13h7.5" // Updated last stroke to start from halfway
             />
           </svg>
         </button>
@@ -51,7 +51,7 @@ const Navbar = () => {
                 to="/about"
                 className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
-                About
+                About Us
               </Link>
             </li>
             <li>
@@ -78,6 +78,9 @@ const Navbar = () => {
           <REAButton />
         </div>
       </div>
+      
+      {/* Horizontal line for mobile view */}
+      {/* <hr className="md:hidden border-t border-gray-800 dark:border-gray-700" /> */}
     </nav>
   );
 };
