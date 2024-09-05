@@ -30,7 +30,7 @@ function Footer() {
     {
       title: "Tools",
       items: [
-        { name: "Budget Boss", path: "/tools/budget-boss" },
+        { name: "Budget Boss", path: "/maintainence" },
         { name: "Goal SIP", path: "/tools/goal-sip" },
         { name: "SIP Calculator", path: "/tools/sip" },
         { name: "F.I.R.E", path: "/tools/fire" },
@@ -152,7 +152,7 @@ function Footer() {
               </div>
               </div>
             </div>
-            <div className=" border-[#262626]"></div>
+            
             <div className="border-b border-l border-[#262626] pb-5 pl-5 gap-4 w-2/4">
             <p className="finwise-para font-medium text-base">{footerColumns[2].title}</p>
               <div className="flex flex-col">
