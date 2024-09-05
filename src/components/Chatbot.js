@@ -22,22 +22,20 @@ const Chatbot = () => {
   const [previousSubOptions, setPreviousSubOptions] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [query, setQuery] = useState(''); // New state for query
+  const [query, setQuery] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0); // State to store scroll position
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [typing, setTyping] = useState(false); // State to handle typing indicator
 
-  // Create a ref for the chat container
   const chatContainerRef = useRef(null);
 
-  // Scroll to bottom whenever messages change
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
 
-  // Scroll to the stored position when reopening the chat
   useEffect(() => {
     if (chatContainerRef.current && isOpen) {
       chatContainerRef.current.scrollTop = scrollPosition;
@@ -47,9 +45,10 @@ const Chatbot = () => {
   const handleMajorOptionClick = (option) => {
     setMessages([...messages, { text: option, isBot: false }]);
     setSelectedOption(option);
+
     if (option === "Other") {
       setShowForm(true);
-      setOptions([]); // Clear options when showing the form
+      setOptions([]);
     } else {
       const subOptionsList = subOptions[option] || [];
       setOptions(subOptionsList);
@@ -57,12 +56,18 @@ const Chatbot = () => {
       setPreviousSubOptions(subOptionsList);
       setShowForm(false);
     }
+    // No typing animation for major options
   };
 
   const handleSubOptionClick = (subOption) => {
     setMessages([...messages, { text: subOption, isBot: false }]);
-    const response = responses[subOption] || "I'm not sure about that.";
-    setMessages([...messages, { text: subOption, isBot: false }, { text: response, isBot: true }]);
+    // Show typing indicator and then respond
+    setTyping(true);
+    setTimeout(() => {
+      setTyping(false);
+      const response = responses[subOption] || "I'm not sure about that.";
+      setMessages(prevMessages => [...prevMessages, { text: response, isBot: true }]);
+    }, 1000); // Adjust the delay as needed
   };
 
   const handleClear = () => {
@@ -90,17 +95,15 @@ const Chatbot = () => {
     };
   
     try {
-      await axios.post('http://localhost:5000/api/chatbot', formData);
+      await axios.post('https://finwisebackend.onrender.com/api/chatbot', formData);
   
       setMessages([...messages, { text: `Name: ${name}, Email: ${email}, Query: ${query}`, isBot: false }]);
       setMessages([...messages, { text: "Thank you! We will get back to you soon.", isBot: true }]);
       
-      // Clear the form fields
       setName('');
       setEmail('');
       setQuery('');
   
-      // Hide the form and reset options
       setShowForm(false);
       setOptions([
         "I have some General Questions",
@@ -113,16 +116,13 @@ const Chatbot = () => {
       setCurrentLevel('main');
       setSelectedOption(null);
     } catch (error) {
-      // Handle any errors that occur during the request
       console.error('Error submitting the form:', error);
       setMessages([...messages, { text: "There was an error submitting the form. Please try again.", isBot: true }]);
     }
   };
-  
 
   const openButton = () => {
     if (isOpen) {
-      // Save scroll position when closing
       if (chatContainerRef.current) {
         setScrollPosition(chatContainerRef.current.scrollTop);
       }
@@ -132,8 +132,8 @@ const Chatbot = () => {
 
   return (
     <div>
-      <div className={`fixed bottom-4 right-4 z-50 border border-[#262626] rounded-lg overflow-hidden bg-[#1A1A1A] flex flex-col transition-all duration-500 ease-in-out ${
-        !isOpen ? "w-32 h-10 rounded-lg" : "w-[90vw] max-w-[400px] h-[80vh]"
+      <div className={`fixed md:bottom-12 bottom-10 right-4 z-50 border border-[#262626] rounded-lg overflow-hidden bg-[#1A1A1A] flex flex-col transition-all duration-300 ease-in-out ${
+        isOpen ? "w-[90vw] max-w-[400px] h-[80vh]" : "w-32 h-10 rounded-lg"
       }`}>
         {isOpen ? (
           <>
@@ -150,6 +150,13 @@ const Chatbot = () => {
                   {msg.text}
                 </div>
               ))}
+              {typing && (
+                <div className="typing-indicator">
+                  <div className="dot"></div>
+                  <div className="dot"></div>
+                  <div className="dot"></div>
+                </div>
+              )}
               {showForm && (
                 <>
                   <form onSubmit={handleFormSubmit} className="mt-4 space-y-2">

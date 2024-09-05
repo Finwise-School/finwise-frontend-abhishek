@@ -31,6 +31,7 @@ import QuotesHeader from "./components/QuotesHeader";
 import UnderConst from "./components/UnderDevelopement";
 import ContactFooter from "./components/contact/ContactFooter";
 import VideoPopup from "./components/VideoPopup"; // Import the new component
+import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
 
 const ProtectedRoute = ({ element, ...rest }) => {
   const { isAuthenticated } = useAuth();
@@ -46,6 +47,7 @@ const App = () => {
         <div className="app">
           <Header />
           <Routes>
+          <Route path="/privacy" element={<PrivacyNotice />} />
             <Route path="/early-access" element={<EarlyAccess />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<Contact />} />

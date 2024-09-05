@@ -1,7 +1,7 @@
 import React from "react";
 import FooterColumn from "./Homepage/Footer Files/FooterColumn";
 import EmailSubscription from "./Homepage/Footer Files/EmailSubscription";
-import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 function Footer() {
   const footerColumns = [
@@ -57,34 +57,40 @@ function Footer() {
   const socialIcons = [
     { icon: <FaInstagram />, alt: "Instagram", url: "https://www.instagram.com/finwiseschool/" },
     { icon: <FaLinkedinIn />, alt: "LinkedIn", url: "https://uk.linkedin.com/company/finwiseschool" },
-    // { icon: <FaTwitter />, alt: "Twitter", url: "https://twitter.com" },
     { icon: <FaYoutube />, alt: "YouTube", url: "https://www.youtube.com/@finwiseschool" }
   ];
 
   return (
     <footer className="flex flex-col w-full bg-black">
-      <div className="flex flex-wrap gap-4 items-start px-4 py-6 w-full">
+      {/* Top Section */}
+      <div className="flex flex-wrap gap-2 items-start px-2 py-6 w-full justify-between md:justify-center max-md:flex-col max-md:items-center max-md:text-center">
         <EmailSubscription />
-        <div className="flex flex-wrap flex-1 gap-4 justify-between items-start font-medium basis-0 min-w-[200px]">
+        {/* Footer Columns */}
+        <div className="flex flex-1 gap-2 justify-between items-start font-medium flex-grow flex-wrap max-md:flex-col max-md:items-center max-md:text-center">
           {footerColumns.map((column, index) => (
             <FooterColumn key={index} title={column.title} items={column.items} />
           ))}
         </div>
       </div>
-      <div className="flex flex-wrap items-center px-4 py-2 bg-zinc-900 text-xs">
-        <div className="flex-grow text-center text-white">
-          <p className="text-xs md:text-sm">@2024 Finwise School All Rights Reserved.</p>
-          <a href="#terms" className="text-gray-400 hover:text-white text-xs md:text-sm">Terms & Conditions</a>
+
+      {/* Bottom Section */}
+      <div className="flex flex-col md:flex-row items-center justify-between px-4 py-2 bg-zinc-900 text-xs text-center">
+        {/* Text Links */}
+        <div className="flex flex-col md:flex-row items-center text-white justify-center md:justify-start w-full md:w-auto">
+          <p className="text-xs md:text-sm m-auto md:m-0">@2024 Finwise School All Rights Reserved.</p>
+          <a href="#terms" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Terms & Conditions</a>
+          <a href="/privacy" target="_blank" className="text-gray-400 hover:text-white text-xs md:text-sm p-1 m-auto">Privacy Notice</a>
         </div>
-        <div className="flex gap-2 items-center">
+        {/* Social Icons */}
+        <div className="flex gap-2 items-center justify-center md:justify-end mt-4 md:mt-0">
           {socialIcons.map((social, index) => (
-            <a 
-              key={index} 
-              href={social.url} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              key={index}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={social.alt}
-              className="flex items-center justify-center p-1.5 bg-neutral-900 h-8 w-8 rounded-full text-white cursor-pointer hover:bg-neutral-700 transition-colors text-xs"
+              className="flex items-center justify-center p-1.5 bg-neutral-900 h-8 w-8 rounded-full text-white cursor-pointer hover:bg-neutral-700 transition-colors"
             >
               {social.icon}
             </a>

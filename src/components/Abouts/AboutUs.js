@@ -11,42 +11,48 @@ import { FaGraduationCap } from "react-icons/fa6";
 import { IoIosPeople } from "react-icons/io";
 import EarlyAccessTemplate from "../EarlyAccessTemplate";
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
+import Partner from "./partnerPortal"; 
+
 const AboutUs = () => {
   return (
     <div>
-      <div className="flex flex-col md:flex-row items-center justify-between p-10">
-        <div className="w-full md:w-1/2">
-          <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
-          <p className="text-base mb-6 text-justify">
-            At FinwiseSchool, we understand that everyone learns differently, so
-            we offer personalized learning paths tailored to each user's unique
-            financial knowledge, learning style, and goals. When users join,
-            they complete a short assessment to gauge their current financial
-            understanding and set personal financial goals. Our advanced
-            algorithms then customize the learning experience based on the
-            user's progress and performance, ensuring that each lesson is
-            relevant and appropriately challenging.
-          </p>
-          <div style={{marginLeft: "-40px"}}>
+<div className="flex flex-col-reverse md:flex-row items-center justify-between pt-[3%] pb-[3%] pr-[8%] pl-[8%]">
+  
+  <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
+    <h1 className="finwise-blue text-4xl font-bold mb-4">About Us</h1>
+    <p className="text-base mb-6 text-justify">
+      At FinwiseSchool, we understand that everyone learns differently, so
+      we offer personalized learning paths tailored to each user's unique
+      financial knowledge, learning style, and goals. When users join,
+      they complete a short assessment to gauge their current financial
+      understanding and set personal financial goals. Our advanced
+      algorithms then customize the learning experience based on the
+      user's progress and performance, ensuring that each lesson is
+      relevant and appropriately challenging.
+    </p>
+        <div style={{marginLeft: "-40px"}}>
           <EarlyAccessBtn/>
-          </div>
         </div>
-       <img
+  </div>
+
+  
+  <img
   src={phone}
-  height={500}
-  width={500}
   alt="about-us"
-  className="hidden md:block md:ml-10 animate-float"
-/>
+  style={{ width: "100%", maxWidth: "600px", height: "auto" }}
+  className="animate-float"
+  />
+
+</div>
 
 
-      </div>
+
 
       <div className="p-8">
-        <div className="flex flex-col md:flex-row mb-20">
+        <div className="flex flex-col md:flex-row mb-20 pr-[8%] pl-[7%]">
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
             <div className="flex">
-              <h1 className="finwise-blue text-4xl font-bold mb-4">
+              <h1 className="finwise-blue text-4xl font-bold mb-[1%]">
                 Our Values
               </h1>
             </div>
@@ -62,9 +68,11 @@ const AboutUs = () => {
             <div className="flex mb-10">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaStar className="finwise-blue text-xl" />
-                  </div>
+<div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+                  
                   <h1 className="finwise-blue text-lg font-bold">Trust</h1>
                 </div>
                 <p>
@@ -77,9 +85,13 @@ const AboutUs = () => {
 
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaGraduationCap className="finwise-blue text-xl" />
-                  </div>
+                
+                <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaGraduationCap className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+
+              
                   <h1 className="finwise-blue text-lg font-bold">Excellence</h1>
                 </div>
                 <p>
@@ -94,9 +106,14 @@ const AboutUs = () => {
             <div className="flex">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <IoIosPeople className="finwise-blue text-xl" />
-                  </div>
+              
+              
+                <div className="flex items-center justify-center w-10 h-8 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <IoIosPeople className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
+
+                
                   <h1 className="finwise-blue text-lg font-bold">
                     Community Focus
                   </h1>
@@ -111,9 +128,10 @@ const AboutUs = () => {
 
               <div className="flex-1">
                 <div className="flex items-center mb-5">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4">
-                    <FaStar className="finwise-blue text-xl" />
-                  </div>
+                <div className="flex items-center justify-center w-10 h-8 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+  <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+</div>
+
                   <h1 className="finwise-blue text-lg font-bold">
                     Our Commitment
                   </h1>
@@ -128,22 +146,24 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="bg-black text-white p-10">
-  <div className="container mx-auto px-8 py-8">
+<div className="bg-black text-white pt-[2%] pr-[5%] pl-[5%]">
+  <div className="container mx-auto  py-[]">
     <div className="pb-12">
-      <h1 className="text-4xl font-bold mb-4 ">
+      <h1 className="text-4xl font-bold mb-4 mt-10">
         Navigating the Finwise School Experience
       </h1>
       <p>
         Navigating the Finwise School process is simple and designed to guide you toward financial success. Here's a step-by-step overview:
       </p>
     </div>
-
-    <div className="flex flex-wrap justify-between p-5">
+<div className="flex flex-wrap justify-between p-[1%]">
+  
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 01
+     
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Sign Up and Create your Account</h2>
@@ -152,13 +172,17 @@ const AboutUs = () => {
         email, and password to create your account.
       </p>
     </div>
+    
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 02
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Complete a Financial Assessment</h2>
@@ -168,12 +192,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 03
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Start Learning with Financial Modules</h2>
@@ -183,12 +210,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 04
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Utilize Financial Tools and Resources</h2>
@@ -198,12 +228,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 05
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Monitor Progress and Get Expert Advice</h2>
@@ -213,12 +246,15 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 
+ 
   <div className="relative w-full md:w-[30%] p-5 mb-8">
     <h2 className="text-xl font-semibold mb-4 relative">
       Step 06
       <span className="absolute left-[-1px] bottom-[-4px] h-[1px] w-[calc(100%+1px)] bg-blue-700 shadow-md"></span>
+      <span className="absolute left-0 bottom-[-5px] h-2 w-full bg-gradient-to-r from-blue-700 to-transparent opacity-50"></span>
     </h2>
     <div className="text-center">
       <h2 className="text-lg font-bold mb-2">Achieve Goals and Earn Rewards</h2>
@@ -228,99 +264,23 @@ const AboutUs = () => {
       </p>
     </div>
     <div className="absolute top-0 left-0 h-full w-[1px] bg-blue-700 shadow-md"></div>
+    <div className="absolute top-0 left-0 h-full w-2 bg-gradient-to-b from-blue-700 to-transparent opacity-50"></div>
   </div>
 </div>
+
 
   </div>
 
   
 </div>
 
-<div className="text-center justify-center p-20">
-    <h1 className="finwise-blue text-4xl font-bold mb-4 ">
-      Meet our Supporters
-    </h1>
-    <p className="">
-      At Finwise School, our success is fueled by the support and expertise of our valued partners.
-    </p>
-  </div>
 
+  <CarouselCards/>
 
-      <div className="flex justify-center items-center space-x-10">
-  <div className="border-2 p-8 border-black animate-spin-slow rounded-lg">
-    <img src={inspire} className="h-40 w-60" alt="Inspire" />
-  </div>
+  <Partner/>
+  <EarlyAccessTemplate/>
 
-  <div className="border-2 p-8 border-black animate-spin-slow rounded-lg">
-    <img src={barclays} className="h-40 w-60" alt="Barclays" />
-  </div>
-
-  <div className="border-2 p-8 border-black animate-spin-slow rounded-lg">
-    <img src={univ} className="h-40 w-60" alt="University" />
-  </div>
-</div>
-
-
-      <div className="flex flex-col items-center text-center p-10">
-        <h1 className="finwise-blue text-4xl font-bold  mb-7 pt-16">
-          Partner Portal
-        </h1>
-        <p className=" px-10 mb-14 text-justify">
-          Our Partner Portal offers customized financial planning solutions
-          tailored specifically for corporate clients. Collaborate with Finwise
-          School to provide your employees with seamless access to exclusive
-          tools and expert advice, empowering them to achieve their financial
-          goals.
-        </p>
-        <div className="flex justify-center gap-9 mb-10">
-          <img
-            className="image1"
-            src={left}
-            height={500}
-            width={500}
-            alt="left"
-          />
-          <img
-            className="image1"
-            src={right}
-            height={200}
-            width={400}
-            alt="right"
-          />
-        </div>
-        <div className="border-t border-gray-300 w-full"></div>
-      </div>
-
-      <EarlyAccessTemplate/>
-
-      {/* <div className="flex p-10">
-        <div className="flex-1">
-          <h1 className="finwise-blue text-4xl font-bold mb-4 ">
-            Start Your Financial Journey Today
-          </h1>
-          <p className="text-justify pr-10 font-thin pb-10">
-            Your path to financial freedom is just a click away. Whether you’re
-            aiming to optimize your investments, create a solid savings plan, or
-            receive expert financial advice, FinWise is here to guide you every
-            step of the way. Take the first step towards achieving your
-            financial goals—explore our innovative planning tools or connect
-            with our team for personalized support tailored to your needs.
-          </p>
-        </div>
-        <div className="flex items-center ml-10">
-          <a
-            href="#"
-            className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-2 text-sm lg:text-base min-w-[150px] lg:min-w-[200px] text-center transition-all duration-300"
-            style={{
-              border: "5px solid",
-              borderRadius: "12px",
-              borderImage: "linear-gradient(90deg, #223876 0%, #3CB371 100%) 1",
-            }}
-          >
-            Request Early Access
-          </a>
-        </div>
-      </div> */}
+      
     </div>
   );
 };

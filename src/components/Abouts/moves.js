@@ -9,20 +9,11 @@ import EATemplate from './EarlyAccessTemplate';
 
 function Blogs() {
 
-  // const [data, setData] = useState([]); UNCOMMENT LATER (DON'T DELETE)
+
   const [front, setFront] = useState({});
   const [isOpen, setIsOpen] = useState(false);
 
-  //UNCOMMENT LATER (DON'T DELETE)
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/api')
-  //   .then(response => {
-  //     // setData(response.data[0].Heading);
-  //     setData(response.data);
-  //     setFront(response.data[0]);
-  //   })
-  //   .catch(error => console.error('Error fetching data:', error));
-  // }, []);
+ 
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
