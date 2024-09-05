@@ -1,8 +1,8 @@
 import React from 'react';
 import Heroos from '../Homepage/Hero/hero.gif';
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccessForHome";
-import HeroFooter from "../Homepage/HeroFooter";
 import CountCards from "../Homepage/CountCards";
+import HeroFooter from './HeroFooter';
 
 const Hero = () => {
   return (
@@ -40,7 +40,7 @@ const Hero = () => {
 
       {/* HeroFooter */}
       <div className="hero-footer-container">
-        <HeroFooter />
+        <HeroFooter/>
       </div>
 
       {/* Scoped CSS using styled-jsx */}
