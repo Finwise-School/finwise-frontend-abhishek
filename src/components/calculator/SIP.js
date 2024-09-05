@@ -215,7 +215,7 @@ const SIP = () => {
                     </div>
 
                     {/* Results Box */}
-                    <div className="p-4 border border-gray-300 rounded-lg">
+                    <div className="" style={{marginTop: "-5rem"}}>
                         <h2 className="text-lg font-semibold text-gray-800 mb-4">Results:</h2>
                         {result && (
                             <div className="space-y-4">
@@ -239,73 +239,78 @@ const SIP = () => {
                 </div>
 
                 {result && (
-                    <div className="mt-8 p-4 bg-white border border-gray-300 rounded-lg">
+                    <div className="" style={{marginTop: "-5rem"}}>
                         <h2 className="text-lg font-semibold text-gray-800 mb-4">Investment Growth Over Time</h2>
-                        <div className="flex flex-col md:flex-row">
-                            <div className="flex-1 pr-2 mb-4 md:mb-0" style={{ maxWidth: '600px', maxHeight: '600px' }}>
-                                <Line
-                                    data={getLineChartData()}
-                                    options={{
-                                        responsive: true,
-                                        plugins: {
-                                            legend: {
-                                                position: 'top',
-                                            },
-                                            tooltip: {
-                                                callbacks: {
-                                                    title: (tooltipItems) => {
-                                                        // Display year as title
-                                                        return `Year ${tooltipItems[0].label}`;
-                                                    },
-                                                    label: (tooltipItem) => {
-                                                        const value = tooltipItem.raw;
-                                                        return `£${Number(value).toFixed(0)}`;
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        scales: {
-                                            x: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'Years'
-                                                }
-                                            },
-                                            y: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'Amount'
+                        <div className="grid-for-calci grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="flex justify-center">
+                                <div className="w-full" style={{ maxWidth: '600px', maxHeight: '600px' }}>
+                                    <Line
+                                        data={getLineChartData()}
+                                        options={{
+                                            responsive: true,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'top',
                                                 },
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    }}
-                                />
-                            </div>
-                            <div className="flex-1 pl-2" style={{ maxWidth: '300px', maxHeight: '300px', marginLeft: '138px'  }}>
-                                <Doughnut
-                                    data={getChartData()}
-                                    options={{
-                                        responsive: true,
-                                        plugins: {
-                                            legend: {
-                                                position: 'top',
-                                            },
-                                            tooltip: {
-                                                callbacks: {
-                                                    label: (tooltipItem) => {
-                                                        return `${tooltipItem.label}: £${Number(tooltipItem.raw).toFixed(0)}`;
+                                                tooltip: {
+                                                    callbacks: {
+                                                        title: (tooltipItems) => {
+                                                            // Display year as title
+                                                            return `Year ${tooltipItems[0].label}`;
+                                                        },
+                                                        label: (tooltipItem) => {
+                                                            const value = tooltipItem.raw;
+                                                            return `£${Number(value).toFixed(0)}`;
+                                                        }
                                                     }
                                                 }
+                                            },
+                                            scales: {
+                                                x: {
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Years'
+                                                    }
+                                                },
+                                                y: {
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Amount'
+                                                    },
+                                                    beginAtZero: true
+                                                }
                                             }
-                                        },
-                                        cutout: '60%',
-                                    }}
-                                />
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex justify-center">
+                                <div className="w-full" style={{ maxWidth: '300px', maxHeight: '300px' }}>
+                                    <Doughnut
+                                        data={getChartData()}
+                                        options={{
+                                            responsive: true,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'top',
+                                                },
+                                                tooltip: {
+                                                    callbacks: {
+                                                        label: (tooltipItem) => {
+                                                            return `${tooltipItem.label}: £${Number(tooltipItem.raw).toFixed(0)}`;
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            cutout: '60%',
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                 )}
+
                 <Tool_Footer message="Analyze your mutual fund investments and their potential returns." />
                 <CalculatorList activeCalculator="SIP Calculator" />
             </div>
