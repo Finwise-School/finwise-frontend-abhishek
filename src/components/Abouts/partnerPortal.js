@@ -46,7 +46,7 @@ export default function Partner() {
             <Slider ref={sliderRef} {...settings}>
               {data.slice(0, 4).map((item, index) => (
                 <div key={index} className="supportersCard flex justify-center items-start rounded-xl border border-[#262626] p-5 md:p-[30px] gap-10 md:gap-[50px]">
-                  <img src={item.img} alt={item.compName} className="rounded-[10px] md:rounded-xl cursor-pointer md:h-auto md:w-auto" onClick={() => handleClick(item.compLink)} />
+                  <img src={item.img} alt={item.compName} className="rounded-[10px] md:rounded-xl cursor-pointer md:h-[300px] md:w-[318px]" onClick={() => handleClick(item.compLink)} />
                 </div>
               ))}
             </Slider>
