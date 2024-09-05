@@ -167,8 +167,9 @@ const Fire = () => {
                         )}
                     </div>
                 </div>
-
+                <div style={{marginTop: "-5rem"}}>
                 <Tool_Footer message="Discover how to achieve financial independence and retire early. Begin your journey to a secure future!"/>
+                </div>
 
 
                 <CalculatorList activeCalculator="FIRE Calculator" />
