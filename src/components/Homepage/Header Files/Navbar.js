@@ -24,10 +24,10 @@ const Navbar = () => {
     <nav className="bg-white border-gray-200 dark:bg-gray-900" style={{ marginTop: "-15px" }}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
         {/* Logo on the left */}
-        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src={Logo} className="h-12" alt="Finwise School Logo" />
           <span className="self-center text-1xl">Finwise School</span>
-        </a>
+        </Link>
         
         {/* Button to toggle mobile menu */}
         <button
@@ -56,7 +56,7 @@ const Navbar = () => {
         {/* Mobile Menu Wrapper */}
         <div
           className={`fixed inset-y-0 right-0 bg-white dark:bg-gray-900 transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden z-50`}
-          style={{ zIndex: 9999, width: '50%' }} // Set the width to 50%
+          style={{ zIndex: 9999, width: '60%' }} // Set the width to 50%
         >
           <div className="flex flex-col p-4 h-full">
             <button
@@ -113,7 +113,7 @@ const Navbar = () => {
               {/* only show this link in mobile view */}
               <Link
                 to="/early-access"
-                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/blogs')}`}
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/early-access')}`}
               >
                 Get Early Access &nbsp; <i className='fa fa-external-link'></i>
               </Link>
