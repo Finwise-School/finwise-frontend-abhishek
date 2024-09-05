@@ -34,10 +34,15 @@ const FAQ = () => {
       <div className="flex flex-col items-center text-center mb-8">
         <h2 className="text-xl font-semibold text-blue-900 mt-15 md:text-5xl max-w-full">Frequently Asked Questions</h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">Find answers to common questions about Finwise School.</p>
+      <Link to="/faqs">
+      <button className="px-6 py-3 mt-8 tracking-normal leading-none text-white finwise-green-bg rounded-xl border border-solid border-neutral-800" style={{textAlign: "left"}}>
+        View All FAQs
+      </button>
+    </Link>
       </div>
-      {/* Container for horizontal scrolling on mobile devices */}
-      <div className="overflow-x-auto w-full">
-        <div className="flex flex-nowrap gap-8 p-4 md:p-0">
+      {/* Container for desktop and mobile layouts */}
+      <div className="w-full overflow-x-auto md:overflow-hidden">
+        <div className="flex flex-nowrap justify-center gap-8 px-4 md:px-0">
           {faqs.map((faq, index) => (
             <FAQItem key={index} {...faq} />
           ))}
