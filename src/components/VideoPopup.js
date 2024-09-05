@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import VideoIntro from '../assets/video/finwise-intro.mp4';
 
 const VideoPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const initialTimer = setTimeout(() => {
+    // Show the popup after 10 seconds
+    const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 10000); 
+    }, 10000);
 
-    const intervalTimer = setInterval(() => {
-      setIsVisible(true);
-    }, 60000);
-
-    
-    return () => {
-      clearTimeout(initialTimer);
-      clearInterval(intervalTimer);
-    };
+    // Cleanup the timer when the component unmounts
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
@@ -42,18 +35,18 @@ const VideoPopup = () => {
               &#x2715;
             </button>
 
-            {/* Video */}
-            <video
-              className="w-full rounded-lg"
-              controls
-              playsInline
-            >
-              <source
-                src={VideoIntro}
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
+            {/* YouTube Video */}
+            <div className="w-full rounded-lg overflow-hidden">
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube-nocookie.com/embed/qi2yx_S4C_0"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
 
             {/* Get Early Access Button */}
             <div className="mt-6 flex justify-center">
