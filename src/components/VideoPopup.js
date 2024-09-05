@@ -5,12 +5,10 @@ const VideoPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Show the popup after 10 seconds
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 10000);
 
-    // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
   }, []);
 
