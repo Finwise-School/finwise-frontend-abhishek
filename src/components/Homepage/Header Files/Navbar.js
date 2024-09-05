@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation for determining current path
 import REAButton from '../Header Files/RequestEarlyAccessForHome'; // Importing your custom button component
 import Logo from '../../../assets/images/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation(); // Get current location
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLinkClick = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
+  // Helper function to determine if the link is active
+  const isActive = (path) => location.pathname === path ? 'text-green-500' : 'text-gray-900';
 
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900" style={{ marginTop: "-15px" }}>
@@ -38,17 +48,17 @@ const Navbar = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d="M1 1h15M1 7h15M8.5 13h7.5" // Updated last stroke to start from halfway
+              d="M1 1h15M1 7h15M8.5 13h7.5"
             />
           </svg>
         </button>
 
         {/* Mobile Menu Wrapper */}
         <div
-          className={`fixed inset-0 bg-white dark:bg-gray-900 transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden z-50`}
-          style={{ zIndex: 9999 }}
+          className={`fixed inset-y-0 right-0 bg-white dark:bg-gray-900 transition-transform transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden z-50`}
+          style={{ zIndex: 9999, width: '50%' }} // Set the width to 50%
         >
-          <div className="flex flex-col p-4">
+          <div className="flex flex-col p-4 h-full">
             <button
               type="button"
               className="self-end p-2 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -75,7 +85,8 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/about"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  className={`block py-2 px-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/about')}`}
+                  onClick={handleLinkClick} // Close menu on link click
                 >
                   About Us
                 </Link>
@@ -83,7 +94,8 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/tools"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  className={`block py-2 px-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/tools')}`}
+                  onClick={handleLinkClick} // Close menu on link click
                 >
                   Tools
                 </Link>
@@ -91,11 +103,21 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/blogs"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  className={`block py-2 px-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/blogs')}`}
+                  onClick={handleLinkClick} // Close menu on link click
                 >
                   Blog
                 </Link>
               </li>
+              <li>
+              {/* only show this link in mobile view */}
+              <Link
+                to="/early-access"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/blogs')}`}
+              >
+                Get Early Access &nbsp; <i className='fa fa-external-link'></i>
+              </Link>
+            </li>
             </ul>
           </div>
         </div>
@@ -106,7 +128,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/about')}`}
               >
                 About Us
               </Link>
@@ -114,7 +136,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/tools"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/tools')}`}
               >
                 Tools
               </Link>
@@ -122,11 +144,13 @@ const Navbar = () => {
             <li>
               <Link
                 to="/blogs"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/blogs')}`}
               >
                 Blog
               </Link>
             </li>
+            
+
           </ul>
         </div>
         
