@@ -11,20 +11,20 @@ function Footer() {
       title: "Home",
       items: [
         { name: "Welcome", path: "/" },
-        { name: "Features", path: "/features" },
+        { name: "Features", path: "/" },
         { name: "Tools", path: "/tools" },
-        { name: "Testimonials", path: "/testimonials" },
+        { name: "Testimonials", path: "/" },
         { name: "FAQ's", path: "/faqs" }
       ]
     },
     {
       title: "About Us",
       items: [
-        { name: "Our Story", path: "/about#our-story" },
-        { name: "Our Values", path: "/about#our-values" },
-        { name: "How It Works", path: "/about#how-it-works" },
-        { name: "Our Supporters", path: "/about#our-supporters" },
-        { name: "Our Partner Dashboard", path: "/about#partner-dashboard" }
+        { name: "Our Story", path: "/about" },
+        { name: "Our Values", path: "/about" },
+        { name: "How It Works", path: "/about" },
+        { name: "Our Supporters", path: "/about" },
+        { name: "Our Partner Dashboard", path: "/about" }
       ]
     },
     {
@@ -41,17 +41,17 @@ function Footer() {
       title: "Blogs",
       items: [
         { name: "UK Tax System", path: "/blogs/uk-tax-system" },
-        { name: "Debt Management", path: "/blogs/debt-management" },
-        { name: "Negotiation Wizardry", path: "/blogs/negotiation-wizardry" },
-        { name: "How to Budget", path: "/blogs/how-to-budget" },
-        { name: "Investing Yes or No ?", path: "/blogs/investing-yes-or-no" }
+        { name: "Debt Management", path: "/blogs" },
+        { name: "Negotiation Wizardry", path: "/blogs" },
+        { name: "How to Budget", path: "/blogs" },
+        { name: "Investing Yes or No ?", path: "/blogs" }
       ]
     },
     {
       title: "Contact Us",
       items: [
         { name: "Contact", path: "/contact" },
-        { name: "Our Offices", path: "/contact/offices" }
+        { name: "Our Offices", path: "/contact" }
       ]
     }
   ];
