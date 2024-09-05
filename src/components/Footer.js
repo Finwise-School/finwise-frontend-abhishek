@@ -30,7 +30,7 @@ function Footer() {
     {
       title: "Tools",
       items: [
-        { name: "Budget Boss", path: "/tools/maintainence" },
+        { name: "Budget Boss", path: "/maintainence" },
         { name: "Goal SIP", path: "/tools/goal-sip" },
         { name: "SIP Calculator", path: "/tools/sip" },
         { name: "F.I.R.E", path: "/tools/fire" },
