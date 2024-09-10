@@ -85,7 +85,7 @@ const FinancialTools = () => {
   ];
 
   return (
-    <section className="financial-tools-section flex flex-col items-center justify-center px-4 py-10 mt-25 md:px-0 md:mt-0">
+    <section id='features' className="financial-tools-section flex flex-col items-center justify-center px-4 py-10 mt-25 md:px-0 md:mt-0">
       <style>
         {`
           .scroll-view {
