@@ -65,7 +65,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="md:w-1/2">
+          <div className="w-1/2 md:w-1/2">
             <div className="flex mb-10">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
