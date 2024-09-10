@@ -70,7 +70,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="w-1/2 md:w-1/2">
+          <div className=" md:w-1/2">
             <div className="flex mb-10">
               <div className="flex-1">
                 <div className="flex items-center mb-5">
@@ -153,7 +153,7 @@ const AboutUs = () => {
       </p>
 
       {(isLarge || isMedium) ? (
-        <div className={`grid grid-cols-3 gap-2`}> 
+        <div className={`grid grid-cols-3 gap-2 -mb-12 -mt-4 -mr-6`}> 
         {/* md:grid-cols-1  */}
           <div className="bg-black rounded-lg p-6 relative shiny-effect">
              
