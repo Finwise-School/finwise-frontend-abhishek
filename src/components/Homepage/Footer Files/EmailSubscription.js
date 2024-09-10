@@ -15,30 +15,34 @@ function EmailSubscription() {
   // }
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-    isSubmit(true);
-
-    const phoneData = {
-      phone
-    }
-  
-    try {
-      const response = await axios.post('https://finwisebackend.onrender.com/api/phoneData', phoneData);
-
-      if (response.status === 201) { // Successful creation
-        console.log('Phone Number Received');
-        isSubmit(false);
-        setOpenModal(true);
-        // Reset form or navigate to another page
-        // resetForm();
-        // setIsSuccessful(true);
-      } else {
-        console.error('Error saving data:', response.data);
-        isSubmit(false);
-        // setIsSuccessful(false);
+    if(phone) {
+      if(phone.length === 10) {
+        e.preventDefault();
+        isSubmit(true);
+    
+        const phoneData = {
+          phone
+        }
+      
+        try {
+          const response = await axios.post('https://finwisebackend.onrender.com/api/phoneData', phoneData);
+    
+          if (response.status === 201) { // Successful creation
+            console.log('Phone Number Received');
+            isSubmit(false);
+            setOpenModal(true);
+            // Reset form or navigate to another page
+            // resetForm();
+            // setIsSuccessful(true);
+          } else {
+            console.error('Error saving data:', response.data);
+            isSubmit(false);
+            // setIsSuccessful(false);
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
       }
-    } catch (error) {
-      console.error('Error submitting the form:', error);
     }
   };
 
@@ -78,7 +82,7 @@ function EmailSubscription() {
         {submit ? (
                   <Spinner aria-label="Default status example" />
         ) : (
-                  <button aria-label="Submit phone" className="bg-blue-500 px-3 py-2 rounded-md text-white" onClick={onSubmit}>
+                  <button type="button" aria-label="Submit phone" className="bg-blue-500 px-3 py-2 rounded-md text-white" onClick={onSubmit}>
                   Submit
                 </button>
         )}
