@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 function FooterColumn({ title, items }) {
   return (
@@ -7,9 +8,21 @@ function FooterColumn({ title, items }) {
       <h3 className="text-xl tracking-normal leading-tight text-neutral-400">{title}</h3>
       <nav className="flex flex-col mt-4 text-lg leading-none text-white">
         {items.map((item, index) => (
-          <Link to={item.path} key={index} className={index > 0 ? "mt-3" : ""}>
-            {item.name}
-          </Link>
+          item.path.startsWith('#') ? (
+            <Link 
+              to={item.path.substring(1)} // Remove the '#' from the path
+              smooth={true}
+              duration={500}
+              key={index}
+              className={index > 0 ? "mt-3 cursor-pointer" : ""}
+            >
+              {item.name}
+              </Link>
+          ) : (
+            <RouterLink to={item.path} key={index} className={index > 0 ? "mt-3" : ""}>
+              {item.name}
+            </RouterLink>
+          )
         ))}
       </nav>
     </div>

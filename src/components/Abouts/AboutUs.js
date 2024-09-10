@@ -49,7 +49,7 @@ const AboutUs = () => {
 
 
 
-      <div className="p-8">
+      <div id="auValues" className="p-8">
         <div className="flex flex-col md:flex-row mb-20 pr-[8%] pl-[7%]">
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
             <div className="flex">
@@ -141,13 +141,13 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="bg-black text-white p-8 md:p-20">
+      <div id="auNav" className="bg-black text-white p-8 md:p-20">
       <h2 className="text-3xl font-bold mb-4">Navigating the Finwise School Experience</h2>
       <p className="text-sm mb-10">
         Navigating the Finwise School process is simple and designed to guide you toward financial success. Here's a step-by-step overview:
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3"> 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2"> 
         <div className="bg-black rounded-lg p-6 relative shiny-effect">
            
           <p className="text-sm uppercase font-medium mb-2">Step 01</p>
@@ -332,9 +332,9 @@ const AboutUs = () => {
 </div>
  */}
 
-  <CarouselCards/>
+  <CarouselCards />
 
-  <Partner/>
+  <Partner />
   <EarlyAccessTemplate/>
 
       

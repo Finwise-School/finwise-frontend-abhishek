@@ -3,7 +3,9 @@ import FooterColumn from "./Homepage/Footer Files/FooterColumn";
 import EmailSubscription from "./Homepage/Footer Files/EmailSubscription";
 import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 function Footer() {
   const footerColumns = [
@@ -13,7 +15,7 @@ function Footer() {
         { name: "Welcome", path: "/" },
         { name: "Features", path: "/" },
         { name: "Tools", path: "/tools" },
-        { name: "Testimonials", path: "/" },
+        { name: "Testimonials", path: "#testimonials" },
         { name: "FAQ's", path: "/faqs" }
       ]
     },
@@ -21,10 +23,10 @@ function Footer() {
       title: "About Us",
       items: [
         { name: "Our Story", path: "/about" },
-        { name: "Our Values", path: "/about" },
-        { name: "How It Works", path: "/about" },
-        { name: "Our Supporters", path: "/about" },
-        { name: "Our Partner Dashboard", path: "/about" }
+        { name: "Our Values", path: "#auValues" },
+        { name: "How It Works", path: "#auNav" },
+        { name: "Our Supporters", path: "#auSupporters" },
+        { name: "Our Partner Dashboard", path: "#auPortal" }
       ]
     },
     {
@@ -65,6 +67,13 @@ function Footer() {
   const isLarge = useMediaQuery({ minWidth: 1024 });
   const isMedium = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   const isSmall = useMediaQuery({ maxWidth: 767 });
+
+  const scrollToTestimonials = () => {
+    const testimonialsSection = document.getElementById('testimonials');
+    if (testimonialsSection) {
+      testimonialsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -119,7 +128,19 @@ function Footer() {
               <p className="finwise-para font-medium text-base">{footerColumns[0].title}</p>
               <div className="flex flex-col">
                 {footerColumns[0].items.map((items, index) => (
-                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                  items.path.startsWith('#') ? (
+                    <Link 
+              to={items.path.substring(1)} // Remove the '#' from the path
+              smooth={true}
+              duration={500}
+              key={index}
+              className={index > 0 ? "font-medium text-sm leading-6 text-[#FFFFFF] mb-1" : ""}
+            >
+              {items.name}
+              </Link>
+                  ) : (
+                    <RouterLink key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</RouterLink>
+                  )
                 ))}
               </div>
             </div>
@@ -127,7 +148,19 @@ function Footer() {
             <p className="finwise-para font-medium text-base">{footerColumns[1].title}</p>
               <div className="flex flex-col">
                 {footerColumns[1].items.map((items, index) => (
-                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                  items.path.startsWith('#') ? (
+                    <Link 
+              to={items.path.substring(1)} // Remove the '#' from the path
+              smooth={true}
+              duration={500}
+              key={index}
+              className={index > 0 ? "font-medium text-sm leading-6 text-[#FFFFFF] mb-1" : ""}
+            >
+              {items.name}
+              </Link>
+                  ) : (
+                    <RouterLink key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</RouterLink>
+                  )
                 ))}
               </div>
             </div>
