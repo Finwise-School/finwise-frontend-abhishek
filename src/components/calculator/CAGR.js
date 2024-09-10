@@ -159,7 +159,9 @@ const CAGRCalculator = () => {
                         </div>
                     </div>
                 </div>
+                <div style={{marginTop: "-5rem"}}>
                 <Tool_Footer message="Understand how your investments are growing. Let’s help you plan your financial future!"/>
+                </div>
                 <CalculatorList activeCalculator="CAGR Calculator" />
 
 

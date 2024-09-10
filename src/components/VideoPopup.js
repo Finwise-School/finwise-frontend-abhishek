@@ -2,15 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const VideoPopup = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 10000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const [isVisible, setIsVisible] = useState(true); 
 
   const handleClose = () => {
     setIsVisible(false);
