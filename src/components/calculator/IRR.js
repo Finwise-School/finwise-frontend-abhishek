@@ -136,7 +136,9 @@ const IRRCalculator = () => {
             </div>
           </div>
         </div>
+        <div style={{marginTop: "-5rem"}}>
         <Tool_Footer message="Evaluate the profitability of your investments. Get insights to make smarter financial decisions!"/>
+        </div>
 
         <CalculatorList activeCalculator="IRR Calculator" />
 
