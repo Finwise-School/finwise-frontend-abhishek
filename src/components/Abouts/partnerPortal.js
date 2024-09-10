@@ -40,19 +40,18 @@ export default function Partner() {
           {(isLarge || isMedium) ? 
             data.slice(0, 4).map((item, index) => (
               <div key={index} className="supportersCard flex justify-center items-start p-5 md:p-[30px] gap-10 md:gap-[50px]">
-                <img src={item.img} alt={item.compName} className="h-[200px] w-[318px] md:h-auto md:w-auto cursor-pointer" onClick={() => handleClick(item.compLink)} />
+                <img src={item.img} alt={item.compName} className="h-48 w-80 object-cover cursor-pointer" onClick={() => handleClick(item.compLink)} />
               </div>
             )) : 
             <Slider ref={sliderRef} {...settings}>
               {data.slice(0, 4).map((item, index) => (
-                <div key={index} className="supportersCard flex justify-center items-start rounded-xl border border-[#262626] p-5 md:p-[30px] gap-10 md:gap-[50px]">
-                  <img src={item.img} alt={item.compName} className="rounded-[10px] md:rounded-xl cursor-pointer md:h-[300px] md:w-[318px]" onClick={() => handleClick(item.compLink)} />
+                <div key={index} className="supportersCard flex justify-center items-center mx-auto rounded-xl border border-[#262626] p-5 md:p-[30px] gap-10 md:gap-[50px]">
+                  <img src={item.img} alt={item.compName} className="rounded-[10px] md:rounded-xl cursor-pointer h-48 w-80 object-cover" onClick={() => handleClick(item.compLink)} />
                 </div>
               ))}
             </Slider>
           }
         </div>
-
       </div>
       <div className="flex justify-center">
         <div className="msFooter flex flex-row justify-center items-center mx-auto my-3 md:hidden">
