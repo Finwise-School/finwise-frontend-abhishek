@@ -147,8 +147,8 @@ const AboutUs = () => {
         Navigating the Finwise School process is simple and designed to guide you toward financial success. Here's a step-by-step overview:
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 -mt-16 -mb-16 md:p-14"> 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:-mt-16 lg:-mb-16 md:p-14"> 
+        <div className="bg-black rounded-lg p-6 relative shiny-effect md:-mb-32">
            
           <p className="text-sm uppercase font-medium mb-2">Step 01</p>
           <h3 className="text-xl font-bold mb-2">Sign Up and Create Your Account</h3>
@@ -157,7 +157,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 relative shiny-effect sm:-mt-32">
           
           <p className="text-sm uppercase font-medium mb-2">Step 02</p>
           <h3 className="text-xl font-bold mb-2">Complete a Financial Assessment</h3>
@@ -175,7 +175,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 -mt-24 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
           
           <p className="text-sm uppercase font-medium mb-2">Step 04</p>
           <h3 className="text-xl font-bold mb-2">Utilize Financial Tools and Resources</h3>
@@ -184,7 +184,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 -mt-24 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
           
           <p className="text-sm uppercase font-medium mb-2">Step 05</p>
           <h3 className="text-xl font-bold mb-2">Monitor Progress and Get Expert Advice</h3>
@@ -193,7 +193,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 -mt-24 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
           <p className="text-sm uppercase font-medium mb-2">Step 06</p>
           <h3 className="text-xl font-bold mb-2">Achieve Goals and Earn Rewards</h3>
           <p className="text-sm">

@@ -24,9 +24,12 @@ module.exports = {
       },
       animation: {
         'carousel-slide': 'slide 6s infinite',
-        float: 'float 1.5s ease-in-out infinite', // Added floating animation
+        float: 'float 1.5s ease-in-out infinite',
       },
     },
+  },
+  variants: {
+    margin: ['responsive'],
   },
   plugins: [
     flowbite.plugin(),
