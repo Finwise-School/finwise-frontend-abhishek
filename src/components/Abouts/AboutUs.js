@@ -50,93 +50,91 @@ const AboutUs = () => {
         />
       </div>
 
-        <div id="auValues" className="p-8">
-          <div className="flex flex-col md:flex-row mb-20 pr-[8%] pl-[7%]">
-            <div className="w-full md:w-1/2 mb-8 md:mb-0">
-              <div className="flex">
-                <h1 className="finwise-blue text-4xl font-bold mb-[1%]">
-                  Our Values
-                </h1>
-              </div>
-              <p className="text-base pr-10 text-justify">
-                Our journey is one of relentless progress and transformation. We
-                began as a passionate group with a vision, dedicated to building
-                an educational platform that redefines the boundaries of
-                traditional financial learning.
-              </p>
+<div className="p-8">
+  <div className="flex flex-col md:flex-row mb-20 md:pr-[8%] md:pl-[7%]">
+    <div className="w-full md:w-1/2 mb-8 md:mb-0">
+      <div className="flex">
+        <h1 className="finwise-blue text-3xl md:text-4xl font-bold mb-4 md:mb-[1%]">
+          Our Values
+        </h1>
+      </div>
+      <p className="text-base md:pr-10 text-justify">
+        Our journey is one of relentless progress and transformation. We began
+        as a passionate group with a vision, dedicated to building an
+        educational platform that redefines the boundaries of traditional
+        financial learning.
+      </p>
+    </div>
+
+    <div className="w-full md:w-1/2">
+      <div className="flex flex-col md:flex-row mb-10">
+        <div className="flex-1 mb-5 md:mb-0">
+          <div className="flex items-center mb-5">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+              <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
             </div>
-
-            <div className=" md:w-1/2">
-              <div className="flex mb-10">
-                <div className="flex-1">
-                  <div className="flex items-center mb-5">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                      <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
-                    </div>
-
-                    <h1 className="finwise-blue text-lg font-bold">Trust</h1>
-                  </div>
-                  <p>
-                    We build lasting relationships through integrity,
-                    transparency, and trust.
-                  </p>
-                </div>
-
-                <div className="border-l-2 border-gray-500 mx-5 h-auto"></div>
-
-                <div className="flex-1">
-                  <div className="flex items-center mb-5">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                      <FaGraduationCap className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
-                    </div>
-
-                    <h1 className="finwise-blue text-lg font-bold">Excellence</h1>
-                  </div>
-                  <p>
-                    We strive for excellence in everything we do, ensuring high
-                    standards and quality.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border-t-2 border-gray-500 w-full mb-5"></div>
-
-              <div className="flex">
-                <div className="flex-1">
-                  <div className="flex items-center mb-5">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                      <IoIosPeople className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
-                    </div>
-                    <h1 className="finwise-blue text-lg font-bold">
-                      Community Focus
-                    </h1>
-                  </div>
-                  <p>
-                    We are committed to fostering a sense of community and support
-                    among our users.
-                  </p>
-                </div>
-
-                <div className="border-l-2 border-gray-500 mx-5 h-auto"></div>
-
-                <div className="flex-1">
-                  <div className="flex items-center mb-5">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
-                      <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out " />
-                    </div>
-                    <h1 className="finwise-blue text-lg font-bold">
-                      Our Commitment
-                    </h1>
-                  </div>
-                  <p>
-                    We are dedicated to our mission and to helping our users
-                    achieve their financial goals.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <h1 className="finwise-blue text-lg font-bold">Trust</h1>
           </div>
+          <p>
+            We build lasting relationships through integrity, transparency, and
+            trust.
+          </p>
+          <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
         </div>
+
+       
+
+        <div className="flex-1 mb-5 md:mb-0">
+          <div className="flex items-center mb-5">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+              <FaGraduationCap className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+            </div>
+            <h1 className="finwise-blue text-lg font-bold">Excellence</h1>
+          </div>
+          <p>
+            We strive for excellence in everything we do, ensuring high
+            standards and quality.
+          </p>
+        </div>
+      </div>
+      <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
+
+      <div className="border-t-2 border-gray-500 w-full mb-5"></div>
+
+      <div className="flex flex-col md:flex-row">
+        <div className="flex-1 mb-5 md:mb-0">
+          <div className="flex items-center mb-5">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+              <IoIosPeople className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+            </div>
+            <h1 className="finwise-blue text-lg font-bold">Community Focus</h1>
+          </div>
+          <p>
+            We are committed to fostering a sense of community and support among
+            our users.
+          </p>
+        </div>
+
+        <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
+
+        <div className="flex-1">
+          <div className="flex items-center mb-5">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-green-500 mr-4 hover:shadow-green-500 hover:shadow-lg hover:scale-105 transition-all duration-300 ease-in-out">
+              <FaStar className="finwise-blue text-xl shiny-effect transition-transform duration-300 ease-in-out" />
+            </div>
+            <h1 className="finwise-blue text-lg font-bold">Our Commitment</h1>
+          </div>
+          <p>
+            We are dedicated to our mission and to helping our users achieve
+            their financial goals.
+          </p>
+        </div>
+        <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       <div id="auNav" className="bg-black text-white p-8 md:p-20">
         <h2 className="text-3xl font-bold mb-4">
