@@ -79,14 +79,15 @@ const AboutUs = () => {
             </div>
             <h1 className="finwise-blue text-lg font-bold">Trust</h1>
           </div>
-          <p>
+          <p className=" mb-10">
             We build lasting relationships through integrity, transparency, and
             trust.
           </p>
-          <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
+        
+          <div className="border-t-2 border-gray-500 w-full mb-5 block md:hidden"></div>
         </div>
 
-       
+        <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
 
         <div className="flex-1 mb-5 md:mb-0">
           <div className="flex items-center mb-5">
@@ -95,15 +96,16 @@ const AboutUs = () => {
             </div>
             <h1 className="finwise-blue text-lg font-bold">Excellence</h1>
           </div>
-          <p>
+          <p className=" mb-10">
             We strive for excellence in everything we do, ensuring high
             standards and quality.
           </p>
+       
+          <div className="border-t-2 border-gray-500 w-full mb-5 block md:hidden"></div>
         </div>
       </div>
-      <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
 
-      <div className="border-t-2 border-gray-500 w-full mb-5"></div>
+      <div className="border-t-2 border-gray-500 w-full mb-5 hidden md:block"></div>
 
       <div className="flex flex-col md:flex-row">
         <div className="flex-1 mb-5 md:mb-0">
@@ -113,10 +115,12 @@ const AboutUs = () => {
             </div>
             <h1 className="finwise-blue text-lg font-bold">Community Focus</h1>
           </div>
-          <p>
+          <p className=" mb-10">
             We are committed to fostering a sense of community and support among
             our users.
           </p>
+         
+          <div className="border-t-2 border-gray-500 w-full mb-5 block md:hidden"></div>
         </div>
 
         <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
@@ -128,16 +132,17 @@ const AboutUs = () => {
             </div>
             <h1 className="finwise-blue text-lg font-bold">Our Commitment</h1>
           </div>
-          <p>
+          <p className=" mb-10">
             We are dedicated to our mission and to helping our users achieve
             their financial goals.
           </p>
+          
+          <div className="border-t-2 border-gray-500 w-full  block md:hidden"></div>
         </div>
-        <div className="border-l-2 border-gray-500 mx-5 hidden md:block"></div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
 
 
       <div id="auNav" className="bg-black text-white p-8 md:p-20">
