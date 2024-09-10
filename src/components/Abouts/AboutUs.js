@@ -148,12 +148,12 @@ const AboutUs = () => {
       </div>
 
       <div className="bg-black text-white p-8 md:p-20">
-      <h2 className="text-3xl font-bold mb-6">Navigating the Finwise School Experience</h2>
+      <h2 className="text-3xl font-bold mb-4">Navigating the Finwise School Experience</h2>
       <p className="text-sm mb-10">
         Navigating the Finwise School process is simple and designed to guide you toward financial success. Here's a step-by-step overview:
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:p-14"> 
+      <div className="grid grid-cols-1 md:grid-cols-3 -mt-16 -mb-16 md:p-14"> 
         <div className="bg-black rounded-lg p-6 relative shiny-effect">
            
           <p className="text-sm uppercase font-medium mb-2">Step 01</p>
@@ -181,7 +181,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 -mt-24 relative shiny-effect">
           
           <p className="text-sm uppercase font-medium mb-2">Step 04</p>
           <h3 className="text-xl font-bold mb-2">Utilize Financial Tools and Resources</h3>
@@ -190,7 +190,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 -mt-24 relative shiny-effect">
           
           <p className="text-sm uppercase font-medium mb-2">Step 05</p>
           <h3 className="text-xl font-bold mb-2">Monitor Progress and Get Expert Advice</h3>
@@ -199,7 +199,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 -mt-24 relative shiny-effect">
           <p className="text-sm uppercase font-medium mb-2">Step 06</p>
           <h3 className="text-xl font-bold mb-2">Achieve Goals and Earn Rewards</h3>
           <p className="text-sm">
