@@ -8,7 +8,7 @@ function EmailSubscription() {
         <img src={logo} alt="finwise school img" className="w-12 h-12" />
         <h2 className="text-2xl font-bold tracking-normal leading-none text-white">Finwise School</h2>
       </div>
-      <form className="flex gap-2.5 items-center px-4 py-4 mt-6 w-full max-w-full text-lg font-medium rounded-xl border border-solid bg-neutral-900 border-neutral-800">
+      <form className="flex gap-2.5 items-center px-4 py-4 mt-6 w-full md:w-[80%] max-w-full text-lg font-medium rounded-xl border border-solid bg-neutral-900 border-neutral-800">
         <input
           type="email"
           id="emailInput"

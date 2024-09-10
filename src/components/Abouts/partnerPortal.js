@@ -30,7 +30,7 @@ export default function Partner() {
   };
 
   return (
-    <section className='items-center'>
+    <section  id="auPortal" className='items-center'>
       <div className='mainSupportersContainer flex flex-col justify-center items-center md:gap-3 gap-10 mt-8 mx-4 md:mx-10'>
         <div className='msHeader'>
           <h1 className='font-semibold md:text-5xl text-[28px] md:leading-[72px] leading-[42px] finwise-blue text-center'>Partner Portal</h1>

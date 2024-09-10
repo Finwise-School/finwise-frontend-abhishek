@@ -12,8 +12,13 @@ import { IoIosPeople } from "react-icons/io";
 import EarlyAccessTemplate from "../EarlyAccessTemplate";
 import EarlyAccessBtn from "../Homepage/Header Files/RequestEarlyAccess";
 import Partner from "./partnerPortal"; 
+import { useMediaQuery } from "react-responsive";
 
 const AboutUs = () => {
+  const isLarge = useMediaQuery({ minWidth: 1024 });
+  const isMedium = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const isSmall = useMediaQuery({ maxWidth: 767 });
+
   return (
     <div>
 <div className="flex flex-col-reverse md:flex-row items-center justify-between pt-[3%] pb-[3%] pr-[8%] pl-[8%]">
@@ -49,7 +54,7 @@ const AboutUs = () => {
 
 
 
-      <div className="p-8">
+      <div id="auValues" className="p-8">
         <div className="flex flex-col md:flex-row mb-20 pr-[8%] pl-[7%]">
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
             <div className="flex">
@@ -141,14 +146,72 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="bg-black text-white p-8 md:p-20">
+      <div id="auNav" className="bg-black text-white p-8 md:p-20">
       <h2 className="text-3xl font-bold mb-4">Navigating the Finwise School Experience</h2>
       <p className="text-sm mb-10">
         Navigating the Finwise School process is simple and designed to guide you toward financial success. Here's a step-by-step overview:
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3"> 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+      {(isLarge || isMedium) ? (
+        <div className={`grid grid-cols-3 gap-2`}> 
+        {/* md:grid-cols-1  */}
+          <div className="bg-black rounded-lg p-6 relative shiny-effect">
+             
+            <p className="text-sm uppercase font-medium mb-2">Step 01</p>
+            <h3 className="text-xl font-bold mb-2">Sign Up and Create Your Account</h3>
+            <p className="text-sm">
+              Fill Out Registration Information: Provide your basic details like name, email, and password to create your account.
+            </p>
+          </div>
+  
+          <div className="bg-black rounded-lg p-6 relative shiny-effect">
+            
+            <p className="text-sm uppercase font-medium mb-2">Step 02</p>
+            <h3 className="text-xl font-bold mb-2">Complete a Financial Assessment</h3>
+            <p className="text-sm">
+              Answer Questions About Your Financial Goals: Share your short-term and long-term financial objectives to help tailor your plan.
+            </p>
+          </div>
+  
+          <div className="bg-black rounded-lg p-6 relative shiny-effect">
+            
+            <p className="text-sm uppercase font-medium mb-2">Step 03</p>
+            <h3 className="text-xl font-bold mb-2">Start Learning with Financial Modules</h3>
+            <p className="text-sm">
+              Complete Educational Modules: Work through interactive modules designed to build your financial knowledge and skills.
+            </p>
+          </div>
+  
+          <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
+            
+            <p className="text-sm uppercase font-medium mb-2">Step 04</p>
+            <h3 className="text-xl font-bold mb-2">Utilize Financial Tools and Resources</h3>
+            <p className="text-sm">
+              Access Financial Tools: Use tools to create and manage a budget, helping you track and control your spending.
+            </p>
+          </div>
+  
+          <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
+            
+            <p className="text-sm uppercase font-medium mb-2">Step 05</p>
+            <h3 className="text-xl font-bold mb-2">Monitor Progress and Get Expert Advice</h3>
+            <p className="text-sm">
+              Check the Leaderboard: See how you rank against other users by tracking your progress on the leaderboard.
+            </p>
+          </div>
+  
+          <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
+            <p className="text-sm uppercase font-medium mb-2">Step 06</p>
+            <h3 className="text-xl font-bold mb-2">Achieve Goals and Earn Rewards</h3>
+            <p className="text-sm">
+              Earn Rewards for Completing Modules: Receive rewards for completing modules and achieving milestones, motivating you to stay on track.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className={`flex flex-col`}> 
+      {/* md:grid-cols-1  */}
+        <div className="bg-black rounded-lg p-6 relative shiny-effect mb-6">
            
           <p className="text-sm uppercase font-medium mb-2">Step 01</p>
           <h3 className="text-xl font-bold mb-2">Sign Up and Create Your Account</h3>
@@ -157,7 +220,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 relative shiny-effect mb-6">
           
           <p className="text-sm uppercase font-medium mb-2">Step 02</p>
           <h3 className="text-xl font-bold mb-2">Complete a Financial Assessment</h3>
@@ -166,7 +229,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 relative shiny-effect mb-6">
           
           <p className="text-sm uppercase font-medium mb-2">Step 03</p>
           <h3 className="text-xl font-bold mb-2">Start Learning with Financial Modules</h3>
@@ -175,7 +238,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect mb-6">
           
           <p className="text-sm uppercase font-medium mb-2">Step 04</p>
           <h3 className="text-xl font-bold mb-2">Utilize Financial Tools and Resources</h3>
@@ -184,7 +247,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect mb-6">
           
           <p className="text-sm uppercase font-medium mb-2">Step 05</p>
           <h3 className="text-xl font-bold mb-2">Monitor Progress and Get Expert Advice</h3>
@@ -193,7 +256,7 @@ const AboutUs = () => {
           </p>
         </div>
 
-        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect">
+        <div className="bg-black rounded-lg p-6 lg:-mt-24 relative shiny-effect mb-6">
           <p className="text-sm uppercase font-medium mb-2">Step 06</p>
           <h3 className="text-xl font-bold mb-2">Achieve Goals and Earn Rewards</h3>
           <p className="text-sm">
@@ -201,7 +264,10 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
-    </div>
+      )}
+          </div>
+
+      
 
 {/* <div className="bg-black text-white pt-[2%] pr-[5%] pl-[5%]">
   <div className="container mx-auto  py-[]">
@@ -332,9 +398,9 @@ const AboutUs = () => {
 </div>
  */}
 
-  <CarouselCards/>
+  <CarouselCards />
 
-  <Partner/>
+  <Partner />
   <EarlyAccessTemplate/>
 
       

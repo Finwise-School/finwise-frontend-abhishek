@@ -31,7 +31,7 @@ export default function CarouselCards() {
   };
   return (
     <>
-  <div className="mainSupportersContainer flex flex-col justify-center items-center md:gap-3 gap-10 mt-16 ml-[8%] mr-[8%] md:mx-10">
+  <div  id="auSupporters" className="mainSupportersContainer flex flex-col justify-center items-center md:gap-3 gap-10 mt-16 ml-[8%] mr-[8%] md:mx-10">
     <div className="msHeader">
       <h1 className="font-semibold md:text-5xl text-[28px] md:leading-[72px] leading-[42px] finwise-blue text-center">
         Meet Our Supporters
