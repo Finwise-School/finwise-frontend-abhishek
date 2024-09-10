@@ -128,12 +128,12 @@ const AboutUs = () => {
             </div>
             <h1 className="finwise-blue text-lg font-bold">Our Commitment</h1>
           </div>
-          <p className=" mb-10">
+          <p className=" mb-5">
             We are dedicated to our mission and to helping our users achieve
             their financial goals.
           </p>
           
-          <div className="border-t-2 border-gray-500 w-full  block md:hidden"></div>
+          
         </div>
       </div>
     </div>
