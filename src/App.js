@@ -25,6 +25,8 @@ import CAGRCalculator from "./components/calculator/CAGR";
 import Chatbot from "./components/Chatbot";
 import MortgageCalculator from "./components/calculator/Mortgage";
 import IRRCalculator from "./components/calculator/IRR";
+import RentalYeildCalculator from "./components/calculator/RentalYeild";
+import MortgageBorrowerCalculator from "./components/calculator/MortgageBorrower";
 import ScrollToTop from "./components/ScrolltoTop";
 import Blogs from "./components/Blogs";
 import QuotesHeader from "./components/QuotesHeader";
@@ -63,7 +65,9 @@ const App = () => {
             <Route path="/tools/emi" element={<EMICalculator />} />
             <Route path="/tools/cagr" element={<CAGRCalculator />} />
             <Route path="/tools/mortgage" element={<MortgageCalculator />} />
+            <Route path="/tools/mortgage-borrower" element={<MortgageBorrowerCalculator />} />
             <Route path="/tools/irr" element={<IRRCalculator />} />
+            <Route path="/tools/rental-yield" element={<RentalYeildCalculator />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
             <Route
