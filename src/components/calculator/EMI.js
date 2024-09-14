@@ -60,6 +60,13 @@ const EMICalculator = () => {
         return EMI;
     };
 
+    const formatDate = (date) => {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    };
+
     const calculatePayment = () => {
         if (!validateForm()) {
             return;
@@ -114,14 +121,14 @@ const EMICalculator = () => {
 
             scheduleData.push({
                 paymentNo: i,
-                paymentDate: paymentDate.toISOString().split('T')[0],
+                // paymentDate: paymentDate.toISOString().split('T')[0],
+                paymentDate: formatDate(paymentDate),
                 interestRate: annualInterestRate.toFixed(2) + '%',
-                interestDue: interestDue.toFixed(2),
-                paymentDue: EMI.toFixed(2),
-                // extraPayments: "0",
-                // additionalPayment: "0",
-                principalPaid: principalPaid.toFixed(2),
-                balance: balance.toFixed(2),
+                interestDue: interestDue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                paymentDue: EMI.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                principalPaid: principalPaid.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                balance: balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+    
                 // taxReturned: "0",
                 // cumulativeTaxReturned: "0"
             });
