@@ -241,6 +241,15 @@ const EMICalculator = () => {
             body: tableRows,
             startY: startY,
             theme: 'striped',
+            columnStyles: {
+                0: { halign: 'right' ,cellWidth: 20 },   // Align "Payment No" to the right
+                1: { halign: 'right' },  // Align "Payment Date" to the right
+                2: { halign: 'right' },  // Align "Interest Rate" to the right
+                3: { halign: 'right' },  // Align "Interest Due" to the right
+                4: { halign: 'right' },  // Align "Payment Due" to the right
+                5: { halign: 'right' },  // Align "Principal Paid" to the right
+                6: { halign: 'right' },  // Align "Balance" to the right
+            },
             didDrawPage: function (data) {
                 const pageNumber = doc.internal.getNumberOfPages();
                 
