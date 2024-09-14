@@ -175,7 +175,7 @@ const EMICalculator = () => {
             doc.text(issueDate, pageWidth - doc.getTextWidth(issueDate) - 10, issueDateYPosition);
     
             // Add Title with red background in the center
-            const titleText = 'EMI Statement';
+            const titleText = 'EMI Payment Sheet';
             const titleWidth = doc.getTextWidth(titleText);
             const titleX = (pageWidth - titleWidth) / 2;
     
