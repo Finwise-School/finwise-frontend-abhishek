@@ -221,36 +221,41 @@ const MortgageBorrowerCalculator = () => {
                     </div>
                 </div>
 
-                {/* Doughnut Chart */}
-                <div className="flex flex-col items-center justify-center bg-white shadow-lg p-12 rounded-lg max-w-xl mx-auto" style={{marginTop: "-62px"}}>
-                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">Borrowing Information:</h2>
-                    <div className="relative w-80 h-80 mx-auto">
-                        <Doughnut
-                            data={data}
-                            options={{
-                                responsive: true,
-                                cutout: '70%',
-                                plugins: {
-                                    legend: { display: false },
-                                    tooltip: { enabled: false },
-                                },
-                            }}
-                        />
-                        <div className="absolute inset-0 flex flex-col justify-center items-center">
-                            <p className="finwise-blue text-2xl font-bold">&#163;{formatNumber(annualSalary * 4)}</p>
-                            <p className="text-gray-700">
-                                <span className="font-semibold text-xl">{ltvPercentage.toFixed(0)}%</span> Loan to Value (LTV)
-                            </p>
+                <div className="flex flex-col items-center justify-center bg-white shadow-lg p-6 sm:p-12 rounded-lg max-w-xl mx-auto mt-4 sm:mt-6">
+                    <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">Borrowing Information:</h2>
+                    <div className="relative w-full sm:w-80 h-80 mx-auto">
+                        {/* Donut Circle */}
+                        <div className="relative flex items-center justify-center w-full h-full">
+                            <div className="relative w-full h-full">
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    {/* Outer Circle */}
+                                    <div className="w-full h-full rounded-full border-8 border-orange-500 border-solid">
+                                        {/* Inner Circle (cutout) */}
+                                        <div className="absolute inset-2 bg-white rounded-full"></div>
+                                    </div>
+                                </div>
+                                {/* Text Overlay */}
+                                <div className="absolute inset-0 flex flex-col justify-center items-center px-4 py-2">
+                                    <p className="text-xl sm:text-2xl font-bold text-orange-500">
+                                        &#163;{formatNumber(parseFloat(result.borrowingAmount.replace(/,/g, '')))}
+                                    </p>
+                                    <p className="text-gray-700 text-base sm:text-lg text-center">
+                                        <span className="font-semibold text-lg sm:text-xl">{ltvPercentage.toFixed(0)}%</span> Loan to Value (LTV)
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="text-center mt-6">
-                        <p className="text-gray-700 text-lg">
+                    <div className="text-center mt-4 sm:mt-6">
+                        <p className="text-gray-700 text-base sm:text-lg">
                             Based on your salary and deposit, you could buy a property up to{' '}
-                            <span className="font-semibold text-2xl">&#163;{formatNumber(totalPropertyValue)}</span>.
+                            <span className="font-semibold text-lg sm:text-2xl">&#163;{formatNumber(totalPropertyValue)}</span>.
                         </p>
                     </div>
                 </div>
+
+
 
                 <Tool_Footer message="Calculate how much you can borrow based on your income and deposit!" />
                 <CalculatorList activeCalculator="Mortgage Borrower Calculator" />
