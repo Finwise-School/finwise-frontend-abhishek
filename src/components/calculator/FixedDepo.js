@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Tool_Footer from './Tools_footer';
-import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import CalculatorList from './Calulators_List';
@@ -13,25 +12,29 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const FixedDepo = () => {
   const [amountInvested, setAmountInvested] = useState(100000);
   const [annualInterestRate, setAnnualInterestRate] = useState(6);
-  const [fdInterestStructure, setFdInterestStructure] = useState("monthly");
+  const [fdInterestStructure, setFdInterestStructure] = useState('monthly');
   const [timePeriod, setTimePeriod] = useState(5);
   const [result, setResult] = useState(null);
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
   const [errors, setErrors] = useState({});
 
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat('en-GB', { style: 'decimal', maximumFractionDigits: 0 }).format(number);
+  };
+
   const validateForm = () => {
     const validationErrors = {};
 
     if (amountInvested <= 0) {
-      validationErrors.amountInvested = "Amount invested should be greater than 0";
+      validationErrors.amountInvested = 'Amount invested should be greater than 0';
     }
 
     if (annualInterestRate <= 0) {
-      validationErrors.annualInterestRate = "Interest rate should be greater than 0";
+      validationErrors.annualInterestRate = 'Interest rate should be greater than 0';
     }
 
     if (timePeriod <= 0) {
-      validationErrors.timePeriod = "Time period should be greater than 0";
+      validationErrors.timePeriod = 'Time period should be greater than 0';
     }
 
     setErrors(validationErrors);
@@ -62,20 +65,20 @@ const FixedDepo = () => {
     const rate = annualRate / 100 / n;
     const time = years * n;
 
-    const maturityValue = principal * Math.pow((1 + rate), time);
+    const maturityValue = principal * Math.pow(1 + rate, time);
     const totalInterest = maturityValue - principal;
 
     setResult({
-      totalInvestment: principal.toFixed(0),
-      totalInterest: totalInterest.toFixed(0),
-      maturityValue: maturityValue.toFixed(0),
+      totalInvestment: formatNumber(principal),
+      totalInterest: formatNumber(totalInterest),
+      maturityValue: formatNumber(maturityValue),
     });
 
     // Generate data for the chart
     const labels = [];
     const data = [];
     for (let i = 1; i <= years; i++) {
-      const yearlyMaturityValue = principal * Math.pow((1 + rate), i * n);
+      const yearlyMaturityValue = principal * Math.pow(1 + rate, i * n);
       labels.push(i);
       data.push(yearlyMaturityValue.toFixed(0));
     }
@@ -124,7 +127,7 @@ const FixedDepo = () => {
                 </div>
               </div>
               {errors.amountInvested && <p className="text-red-500 text-sm mt-1">{errors.amountInvested}</p>}
-              
+
               <div className={`flex items-center justify-between p-4 border rounded-lg ${errors.annualInterestRate ? 'border-red-500' : 'border-gray-300'}`}>
                 <label htmlFor="annual-interest-rate" className="text-gray-700">Annual Interest Rate (%)</label>
                 <input
@@ -136,7 +139,7 @@ const FixedDepo = () => {
                 />
               </div>
               {errors.annualInterestRate && <p className="text-red-500 text-sm mt-1">{errors.annualInterestRate}</p>}
-              
+
               <div className="flex items-center justify-between p-4 border border-gray-300 rounded-lg">
                 <label htmlFor="fd-interest-structure" className="text-gray-700">FD Interest Structure</label>
                 <select
@@ -151,7 +154,7 @@ const FixedDepo = () => {
                   <option value="yearly">Yearly</option>
                 </select>
               </div>
-              
+
               <div className={`flex items-center justify-between p-4 border rounded-lg ${errors.timePeriod ? 'border-red-500' : 'border-gray-300'}`}>
                 <label htmlFor="time-period" className="text-gray-700">Time Period (Years)</label>
                 <input
@@ -193,68 +196,54 @@ const FixedDepo = () => {
         {/* Line Graph */}
         <div className="mt-8">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">Investment Over Time</h2>
-            <Line
-              data={chartData}
-              options={{
-                responsive: true,
-                plugins: {
-                  legend: {
-                    position: 'top',
-                  },
-                  tooltip: {
-                    callbacks: {
-                      label: function (tooltipItem) {
-                        // Format tooltip label
-                        if (tooltipItem.raw >= 1000000) {
-                          return `${tooltipItem.label} year${tooltipItem.label > 1 ? 's' : ''}: £${(tooltipItem.raw / 1000000).toFixed(1)}M`;
-                        } else if (tooltipItem.raw >= 1000) {
-                          return `${tooltipItem.label} year${tooltipItem.label > 1 ? 's' : ''}: £${(tooltipItem.raw / 1000).toFixed(1)}K`;
-                        } else {
-                          return `${tooltipItem.label} year${tooltipItem.label > 1 ? 's' : ''}: £${tooltipItem.raw}`;
-                        }
-                      },
-                      title: function () {
-                        return '';
-                      },
-                    },
-                    titleFont: {
-                      size: 14,
-                    },
-                    bodyFont: {
-                      size: 16,
+          <Line
+            data={chartData}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top',
+                },
+                tooltip: {
+                  callbacks: {
+                    label: function (tooltipItem) {
+                      // Format tooltip label using formatNumber
+                      const formattedValue = formatNumber(tooltipItem.raw);
+                      return `${tooltipItem.label} year${tooltipItem.label > 1 ? 's' : ''}: £${formattedValue}`;
                     },
                   },
                 },
-                scales: {
-                  x: {
-                    title: {
-                      display: true,
-                      text: 'Years',
-                    },
+              },
+              scales: {
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Years',
                   },
-                  y: {
-                    title: {
-                      display: true,
-                      text: 'Amount (£)',
-                    },
-                    ticks: {
-                      callback: function (value) {
-                        if (value >= 1000000) {
-                          return '£' + (value / 1000000).toFixed(1) + 'M';
-                        } else if (value >= 1000) {
-                          return '£' + (value / 1000).toFixed(1) + 'K';
-                        } else {
-                          return '£' + value;
-                        }
-                      },
+                },
+                y: {
+                  title: {
+                    display: true,
+                    text: 'Amount (£)',
+                  },
+                  ticks: {
+                    callback: function (value) {
+                      if (value >= 1000000) {
+                        return formatNumber((value / 1000000).toFixed(1)) + 'm'; // millions
+                      } else if (value >= 1000) {
+                        return formatNumber((value / 1000).toFixed(1)) + 'k'; // thousands
+                      }
+                      return formatNumber(value); // default formatting
                     },
                   },
                 },
-              }}
-            />
+              },
+            }}
+          />
+
         </div>
 
-        <Tool_Footer message="See the returns on your fixed deposits and make informed savings decisions. Let’s maximize your savings!"/>
+        <Tool_Footer message="See the returns on your fixed deposits and make informed savings decisions. Let’s maximize your savings!" />
 
         <CalculatorList activeCalculator="Fixed Deposit Calculator" />
       </div>
