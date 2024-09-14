@@ -196,7 +196,7 @@ const EMICalculator = () => {
         // Function to add the centered, transparent watermark
         const addWatermark = () => {
             const watermarkText = 'finwiseschool.com';
-            
+    
             // Set font size and transparency
             doc.setFontSize(50);
             doc.setTextColor(150, 150, 150); // Light gray for the watermark
@@ -214,7 +214,8 @@ const EMICalculator = () => {
             // Reset transparency for other content
             doc.setGState(new doc.GState({ opacity: 1 }));
         };
-                // Add the table
+    
+        // Add the table
         const tableColumn = ["Payment No", "Payment Date", "Interest Rate", "Interest Due", "Payment Due", "Principal Paid", "Balance"];
         const tableRows = schedule.map(row => [
             row.paymentNo,
@@ -234,7 +235,7 @@ const EMICalculator = () => {
         // Add watermark on every page
         addWatermark();
     
-        // Generate table
+        // First pass to calculate total number of pages
         doc.autoTable({
             head: [tableColumn],
             body: tableRows,
@@ -242,21 +243,28 @@ const EMICalculator = () => {
             theme: 'striped',
             didDrawPage: function (data) {
                 const pageNumber = doc.internal.getNumberOfPages();
-    
+                
                 // Add header only on the first page, skip for others
-                if (pageNumber === 1) {
+                if (data.pageNumber === 1) {
                     addHeader();
                 }
     
                 // Add watermark on each page
                 addWatermark();
+    
+                // Add page number to the bottom right side of each page
+                doc.setFontSize(10);
+                doc.setFont("helvetica", "normal");
+                doc.setTextColor(0, 0, 0); // Black color for the page number
+                const pageNumberText = `Page ${data.pageNumber}`;
+                doc.text(pageNumberText, pageWidth - doc.getTextWidth(pageNumberText) - 10, pageHeight - 10);
             }
         });
     
         // Save the PDF
         doc.save('EMI_Statement.pdf');
     };
-                
+                    
     // const exportToExcel = () => {
     //     const worksheet = XLSX.utils.json_to_sheet(schedule);
     
