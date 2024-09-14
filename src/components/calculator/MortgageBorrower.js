@@ -61,6 +61,10 @@ const MortgageBorrowerCalculator = () => {
         return valid;
     };
 
+    const formatNumber = (num) => {
+        return parseFloat(num).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    };
+
     const calculateBorrowing = () => {
         if (!validateForm()) return;
 
@@ -76,8 +80,8 @@ const MortgageBorrowerCalculator = () => {
         const borrowingAmount = totalIncome * borrowingMultiplier;
 
         setResult({
-            borrowingAmount: borrowingAmount.toFixed(0),
-            depositAmount: parseFloat(deposit).toFixed(0),
+            borrowingAmount: formatNumber(borrowingAmount),
+            depositAmount: formatNumber(deposit),
         });
     };
 
@@ -86,8 +90,8 @@ const MortgageBorrowerCalculator = () => {
     }, [annualSalary, otherIncome, secondApplicant, secondAnnualSalary, secondOtherIncome, deposit]);
 
     // Data for the Doughnut graph
-    const totalPropertyValue = parseFloat(result.borrowingAmount) + parseFloat(result.depositAmount);
-    const ltvPercentage = (parseFloat(result.borrowingAmount) / totalPropertyValue) * 100;
+    const totalPropertyValue = parseFloat(result.borrowingAmount.replace(/,/g, '')) + parseFloat(result.depositAmount.replace(/,/g, ''));
+    const ltvPercentage = (parseFloat(result.borrowingAmount.replace(/,/g, '')) / totalPropertyValue) * 100;
 
     const data = {
         labels: ['Borrowing Amount'],
@@ -213,7 +217,6 @@ const MortgageBorrowerCalculator = () => {
                                 <p className="finwise-blue">Deposit Amount</p>
                                 <p className="finwise-green font-semibold text-xl">&#163;{result.depositAmount}</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -234,7 +237,7 @@ const MortgageBorrowerCalculator = () => {
                             }}
                         />
                         <div className="absolute inset-0 flex flex-col justify-center items-center">
-                            <p className="finwise-blue text-2xl font-bold">&#163;{annualSalary * 4}</p>
+                            <p className="finwise-blue text-2xl font-bold">&#163;{formatNumber(annualSalary * 4)}</p>
                             <p className="text-gray-700">
                                 <span className="font-semibold text-xl">{ltvPercentage.toFixed(0)}%</span> Loan to Value (LTV)
                             </p>
@@ -244,11 +247,10 @@ const MortgageBorrowerCalculator = () => {
                     <div className="text-center mt-6">
                         <p className="text-gray-700 text-lg">
                             Based on your salary and deposit, you could buy a property up to{' '}
-                            <span className="font-semibold">&#163;{totalPropertyValue.toFixed(0)}</span>.
+                            <span className="font-semibold text-2xl">&#163;{formatNumber(totalPropertyValue)}</span>.
                         </p>
                     </div>
                 </div>
-
 
                 <Tool_Footer message="Calculate how much you can borrow based on your income and deposit!" />
                 <CalculatorList activeCalculator="Mortgage Borrower Calculator" />
