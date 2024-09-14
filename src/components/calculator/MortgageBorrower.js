@@ -221,41 +221,51 @@ const MortgageBorrowerCalculator = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col items-center justify-center bg-white shadow-lg p-6 sm:p-12 rounded-lg max-w-xl mx-auto mt-4 sm:mt-6">
-                    <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">Borrowing Information:</h2>
-                    <div className="relative w-full sm:w-80 h-80 mx-auto">
-                        {/* Donut Circle */}
-                        <div className="relative flex items-center justify-center w-full h-full">
-                            <div className="relative w-full h-full">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    {/* Outer Circle */}
-                                    <div className="w-full h-full rounded-full border-8 border-orange-500 border-solid">
-                                        {/* Inner Circle (cutout) */}
-                                        <div className="absolute inset-2 bg-white rounded-full"></div>
+                <div style={{marginTop: "-100px"}} className="flex items-center justify-center">
+                    <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+                        <h1 className="text-center text-lg font-bold text-[#004B87] mb-6">You could borrow up to</h1>
+
+                        <div className="flex items-center justify-center mb-6">
+                            <div className="relative">
+                                {/* Updated width and height for responsive and bigger graph */}
+                                <div style={{borderWidth: "29px"}} className="w-64 h-64 rounded-full border-8 border-orange-500 flex items-center justify-center">
+                                    <div className="text-center">
+                                        <p className="text-3xl font-bold text-orange-500">
+                                            &#163;{formatNumber(parseFloat(result.borrowingAmount.replace(/,/g, '')))}
+                                        </p>
+                                        <p className="text-sm text-gray-500">
+                                            <span className="font-semibold text-lg">{ltvPercentage.toFixed(0)}%</span> Loan to Value
+                                            <span className="fas fa-info-circle text-[#004B87] ml-1"></span>
+                                        </p>
                                     </div>
-                                </div>
-                                {/* Text Overlay */}
-                                <div className="absolute inset-0 flex flex-col justify-center items-center px-4 py-2">
-                                    <p className="text-xl sm:text-2xl font-bold text-orange-500">
-                                        &#163;{formatNumber(parseFloat(result.borrowingAmount.replace(/,/g, '')))}
-                                    </p>
-                                    <p className="text-gray-700 text-base sm:text-lg text-center">
-                                        <span className="font-semibold text-lg sm:text-xl">{ltvPercentage.toFixed(0)}%</span> Loan to Value (LTV)
-                                    </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="text-center mt-4 sm:mt-6">
-                        <p className="text-gray-700 text-base sm:text-lg">
-                            Based on your salary and deposit, you could buy a property up to{' '}
-                            <span className="font-semibold text-lg sm:text-2xl">&#163;{formatNumber(totalPropertyValue)}</span>.
+                        <div className="flex justify-between mb-4">
+                            <div className="text-center">
+                                <p className="text-green-600 font-medium">Borrowing amount</p>
+                                <p className="text-[#004B87] font-bold">&#163;{formatNumber(parseFloat(result.borrowingAmount.replace(/,/g, '')))}</p>
+                            </div>
+                            <div className="text-center">
+                                <p className="text-orange-500 font-medium">Deposit amount</p>
+                                <p className="text-[#004B87] font-bold">&#163;{formatNumber(parseFloat(result.depositAmount.replace(/,/g, '')))}</p>
+                            </div>
+                        </div>
+
+                        <hr className="border-t border-gray-300 mb-4" />
+
+                        <p className="text-center text-sm text-gray-500 mb-4">
+                            Based on your salary and deposit, you could buy a property up to
                         </p>
+
+                        {/* Increased font size and made the value bigger */}
+                        <p className="text-center text-[#004B87] text-4xl font-bold mb-4">
+                            &#163;{formatNumber(totalPropertyValue)}
+                        </p>
+
                     </div>
                 </div>
-
-
 
                 <Tool_Footer message="Calculate how much you can borrow based on your income and deposit!" />
                 <CalculatorList activeCalculator="Mortgage Borrower Calculator" />
