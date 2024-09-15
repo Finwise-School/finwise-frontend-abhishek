@@ -56,7 +56,7 @@ const EarlyAccessForm = () => {
     e.preventDefault();
     if (validateStep()) {
       try {
-        const response = await fetch('http://finwise-backend-node-env.eba-mpt7wnyh.ap-south-1.elasticbeanstalk.com/api/request-early-access', {
+        const response = await fetch('/api/request-early-access', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

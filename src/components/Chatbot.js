@@ -95,7 +95,7 @@ const Chatbot = () => {
     };
   
     try {
-      await axios.post('http://finwise-backend-node-env.eba-mpt7wnyh.ap-south-1.elasticbeanstalk.com/api/chatbot', formData);
+      await axios.post('/api/chatbot', formData);
   
       setMessages([...messages, { text: `Name: ${name}, Email: ${email}, Query: ${query}`, isBot: false }]);
       setMessages([...messages, { text: "Thank you! We will get back to you soon.", isBot: true }]);
