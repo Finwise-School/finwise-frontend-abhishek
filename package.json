@@ -1,7 +1,6 @@
 {
   "name": "website-mern",
   "version": "0.1.0",
-  "proxy": "http://finwise-backend-node-env.eba-mpt7wnyh.ap-south-1.elasticbeanstalk.com",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
