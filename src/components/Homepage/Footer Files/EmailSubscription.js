@@ -25,7 +25,7 @@ function EmailSubscription() {
         }
       
         try {
-          const response = await axios.post('https://finwisebackend.onrender.com/api/phoneData', phoneData);
+          const response = await axios.post('http://finwise-backend-node-env.eba-mpt7wnyh.ap-south-1.elasticbeanstalk.com/api/phoneData', phoneData);
     
           if (response.status === 201) { // Successful creation
             console.log('Phone Number Received');
