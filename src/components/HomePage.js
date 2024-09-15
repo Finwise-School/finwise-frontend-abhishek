@@ -11,11 +11,20 @@ const HomePage = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 10000);
+    // Check sessionStorage if the popup has already been shown in this tab
+    const hasPopupShown = sessionStorage.getItem('videoPopupShown');
 
-    return () => clearTimeout(timer);
+    if (!hasPopupShown) {
+      // Set the timer to show the popup after 10 seconds
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+        // Mark in sessionStorage that the popup has been shown
+        sessionStorage.setItem('videoPopupShown', 'true');
+      }, 10000);
+
+      // Cleanup the timer
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
@@ -25,7 +34,7 @@ const HomePage = () => {
       <Testimonials />
       <FAQ />
       <CallToAction />
-      
+
       {showPopup && <VideoPopup />}
     </Layout>
   );

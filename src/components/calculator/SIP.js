@@ -89,6 +89,10 @@ const SIP = () => {
         return data;
     };
 
+    const formatNumber = (num) => {
+        return new Intl.NumberFormat().format(num);
+    };
+
     const calculateMutualFund = () => {
         if (!validateForm()) return; // Stop if the form is invalid
 
@@ -120,9 +124,9 @@ const SIP = () => {
         const returnsGenerated = totalAmount - investedAmount;
 
         setResult({
-            investedAmount: investedAmount.toFixed(0),
-            returnsGenerated: returnsGenerated.toFixed(0),
-            totalAmount: totalAmount.toFixed(0),
+            investedAmount: formatNumber(investedAmount.toFixed(0)),
+            returnsGenerated: formatNumber(returnsGenerated.toFixed(0)),
+            totalAmount: formatNumber(totalAmount.toFixed(0)),
         });
     };
 
@@ -260,7 +264,7 @@ const SIP = () => {
                                                         },
                                                         label: (tooltipItem) => {
                                                             const value = tooltipItem.raw;
-                                                            return `£${Number(value).toFixed(0)}`;
+                                                            return `£${formatNumber(value)}`;
                                                         }
                                                     }
                                                 }
@@ -297,7 +301,7 @@ const SIP = () => {
                                                 tooltip: {
                                                     callbacks: {
                                                         label: (tooltipItem) => {
-                                                            return `${tooltipItem.label}: £${Number(tooltipItem.raw).toFixed(0)}`;
+                                                            return `${tooltipItem.label}: £${formatNumber(tooltipItem.raw)}`;
                                                         }
                                                     }
                                                 }

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import logo from '../../../assets/images/logo.png';
-import { Spinner, TextInput } from "flowbite-react";
+import { Spinner, TextInput, Button, Modal } from "flowbite-react";
 import axios from 'axios';
 
 function EmailSubscription() {
   const [submit, isSubmit] = useState(false);
   const [phone, setPhone] = useState();
+  const [openModal, setOpenModal] = useState(false);
   // const onSubmit = () => {
   //   if(phone) {
   //     isSubmit(true);
@@ -14,33 +15,55 @@ function EmailSubscription() {
   // }
 
   const onSubmit = async (e) => {
-    e.preventDefault();
-    isSubmit(true);
-
-    const phoneData = {
-      phone
-    }
-  
-    try {
-      const response = await axios.post('https://finwisebackend.onrender.com/api/phoneData', phoneData);
-
-      if (response.status === 201) { // Successful creation
-        console.log('Phone Number Received');
-        isSubmit(false);
-        // Reset form or navigate to another page
-        // resetForm();
-        // setIsSuccessful(true);
-      } else {
-        console.error('Error saving data:', response.data);
-        isSubmit(false);
-        // setIsSuccessful(false);
+    if(phone) {
+      if(phone.length === 10) {
+        e.preventDefault();
+        isSubmit(true);
+    
+        const phoneData = {
+          phone
+        }
+      
+        try {
+          const response = await axios.post('https://finwisebackend.onrender.com/api/phoneData', phoneData);
+    
+          if (response.status === 201) { // Successful creation
+            console.log('Phone Number Received');
+            isSubmit(false);
+            setOpenModal(true);
+            // Reset form or navigate to another page
+            // resetForm();
+            // setIsSuccessful(true);
+          } else {
+            console.error('Error saving data:', response.data);
+            isSubmit(false);
+            // setIsSuccessful(false);
+          }
+        } catch (error) {
+          console.error('Error submitting the form:', error);
+        }
       }
-    } catch (error) {
-      console.error('Error submitting the form:', error);
     }
   };
 
   return (
+    <>
+      <Modal show={openModal} size="md" onClose={() => setOpenModal(false)} popup>
+        <Modal.Header />
+        <Modal.Body>
+          <div className="text-center">
+            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+              Thank you for providing your phone number. We will be in touch with you shortly.
+            </h3>
+            <div className="flex justify-center gap-4">
+              <Button color="gray" onClick={() => setOpenModal(false)}>
+                OK
+              </Button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+
     <div className="flex flex-col items-start min-h-[204px] w-full md:w-[538px]">
       <div className="flex items-center space-x-4">
         <img src={logo} alt="finwise school img" className="w-12 h-12" />
@@ -59,12 +82,13 @@ function EmailSubscription() {
         {submit ? (
                   <Spinner aria-label="Default status example" />
         ) : (
-                  <button aria-label="Submit phone" className="bg-blue-500 px-3 py-2 rounded-md text-white" onClick={onSubmit}>
+                  <button type="button" aria-label="Submit phone" className="bg-blue-500 px-3 py-2 rounded-md text-white" onClick={onSubmit}>
                   Submit
                 </button>
         )}
       </form>
     </div>
+    </>
   );
 }
 

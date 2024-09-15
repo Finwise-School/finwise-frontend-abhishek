@@ -6,7 +6,7 @@ import * as XLSX from 'xlsx';
 import Tool_Footer from "./Tools_footer";
 import CalculatorList from './Calulators_List';
 import logo from '../../assets/images/logo-for-excel.png'; 
-import logo1 from '../../assets/images/logo-for-pdf.png'; 
+import logo from '../../assets/images/logo-for-pdf.png'; 
 import ExcelJS from 'exceljs';
 
 const EMICalculator = () => {
@@ -58,13 +58,6 @@ const EMICalculator = () => {
         const EMI = principal * (rate * Math.pow(1 + rate, totalPayments)) /
             (Math.pow(1 + rate, totalPayments) - 1);
         return EMI;
-    };
-
-    const formatDate = (date) => {
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-        const year = date.getFullYear();
-        return `${day}-${month}-${year}`;
     };
 
     const calculatePayment = () => {
@@ -121,14 +114,14 @@ const EMICalculator = () => {
 
             scheduleData.push({
                 paymentNo: i,
-                // paymentDate: paymentDate.toISOString().split('T')[0],
-                paymentDate: formatDate(paymentDate),
+                paymentDate: paymentDate.toISOString().split('T')[0],
                 interestRate: annualInterestRate.toFixed(2) + '%',
-                interestDue: interestDue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-                paymentDue: EMI.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-                principalPaid: principalPaid.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-                balance: balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-    
+                interestDue: interestDue.toFixed(2),
+                paymentDue: EMI.toFixed(2),
+                // extraPayments: "0",
+                // additionalPayment: "0",
+                principalPaid: principalPaid.toFixed(2),
+                balance: balance.toFixed(2),
                 // taxReturned: "0",
                 // cumulativeTaxReturned: "0"
             });
@@ -149,71 +142,44 @@ const EMICalculator = () => {
     const exportToPDF = () => {
         const doc = new jsPDF();
     
-        // Logo dimensions and new margin settings
-        const logoWidth = 15;
-        const logoHeight = 23;
-        const marginTop = 10; // New top margin
-        const marginLeft = 5; // New left margin
+        // Logo dimensions and margin settings
+        const logoWidth = 30;
+        const logoHeight = 30;
+        const margin = 1;
         const pageWidth = doc.internal.pageSize.width;
-        const pageHeight = doc.internal.pageSize.height;
     
-        // Function to add the header on the first page
-        const addHeader = () => {
-            // Add Logo on the left side with the new margin
-            doc.addImage(logo1, 'PNG', marginLeft, marginTop, logoWidth, logoHeight);
+        // Function to add the header on each page
+        const addHeader = (pageNumber, totalPages) => {
+            // Add Logo on the left side
+            doc.addImage(logo, 'PNG', margin, 0, logoWidth, logoHeight); // Header starts exactly from the top
     
-            // Add the issue date in bold, italic, and colored format on the top right corner
+            // Add the issue date and page number on the top right corner
             const issueDate = `Issue Date: ${new Date().toLocaleDateString()}`;
+            const pageNumberText = `Page ${pageNumber} of ${totalPages}`;
             doc.setFontSize(10);
-            doc.setFont("helvetica", "bolditalic"); // Bold and italic
-            doc.setTextColor(0, 102, 204); // Blue color
-    
-            // Set the Y position of the issue date to align with the bottom of the logo
-            const issueDateYPosition = marginTop + logoHeight - 2; // Slightly adjust for better alignment
-    
-            // Add the issue date text to the top right of the page
-            doc.text(issueDate, pageWidth - doc.getTextWidth(issueDate) - 10, issueDateYPosition);
+            doc.text(issueDate, pageWidth - doc.getTextWidth(issueDate) - margin, margin + 5);
+            doc.text(pageNumberText, pageWidth - doc.getTextWidth(pageNumberText) - margin, margin + 15);
     
             // Add Title with red background in the center
-            const titleText = 'EMI Payment Sheet';
+            const titleText = 'EMI Statement';
             const titleWidth = doc.getTextWidth(titleText);
             const titleX = (pageWidth - titleWidth) / 2;
     
             // Draw red background bar for title
             doc.setFillColor(128, 0, 0); // Dark red
-            doc.rect(0, marginTop + logoHeight, pageWidth, 12, 'F'); // Full width rectangle
+            doc.rect(0, logoHeight, pageWidth, 12, 'F'); // Full width rectangle
     
             // Add Title Text in the center of the red background
             doc.setTextColor(255, 255, 255); // White text
             doc.setFontSize(12);
-            doc.text(titleText, titleX, marginTop + logoHeight + 9); // Position text inside the red bar
+            doc.text(titleText, titleX, logoHeight + 9); // Position text inside the red bar
     
-            // Reset text color and font for the rest of the document
+            // Reset text color to black for the rest of the document
             doc.setTextColor(0, 0, 0);
-            doc.setFont("helvetica", "normal"); // Reset font style
         };
     
-        // Function to add the centered, transparent watermark
-        const addWatermark = () => {
-            const watermarkText = 'finwiseschool.com';
-    
-            // Set font size and transparency
-            doc.setFontSize(50);
-            doc.setTextColor(150, 150, 150); // Light gray for the watermark
-    
-            // Set transparency level for the watermark (1 = fully opaque, 0 = fully transparent)
-            doc.setGState(new doc.GState({ opacity: 0.1 })); // Light transparent
-    
-            // Calculate the center of the page
-            const xPosition = pageWidth / 1.8;
-            const yPosition = pageHeight / 1.6;
-    
-            // Add the watermark text diagonally in the center
-            doc.text(watermarkText, xPosition, yPosition, { angle: 45, align: 'center' });
-    
-            // Reset transparency for other content
-            doc.setGState(new doc.GState({ opacity: 1 }));
-        };
+        // Get total pages
+        const totalPagesExp = '{totalPages}'; // Placeholder for total page count
     
         // Add the table
         const tableColumn = ["Payment No", "Payment Date", "Interest Rate", "Interest Due", "Payment Due", "Principal Paid", "Balance"];
@@ -227,53 +193,31 @@ const EMICalculator = () => {
             row.balance,
         ]);
     
-        const startY = marginTop + logoHeight + 20;
+        const startY = logoHeight + margin + 20;
     
-        // Add header only on the first page
-        addHeader();
-    
-        // Add watermark on every page
-        addWatermark();
-    
-        // First pass to calculate total number of pages
+        // Generate table and use the header on each page
         doc.autoTable({
             head: [tableColumn],
             body: tableRows,
             startY: startY,
             theme: 'striped',
-            columnStyles: {
-                0: { halign: 'right' ,cellWidth: 20 },   // Align "Payment No" to the right
-                1: { halign: 'right' },  // Align "Payment Date" to the right
-                2: { halign: 'right' },  // Align "Interest Rate" to the right
-                3: { halign: 'right' },  // Align "Interest Due" to the right
-                4: { halign: 'right' },  // Align "Payment Due" to the right
-                5: { halign: 'right' },  // Align "Principal Paid" to the right
-                6: { halign: 'right' },  // Align "Balance" to the right
-            },
             didDrawPage: function (data) {
+                // Add header and dynamic page numbering
                 const pageNumber = doc.internal.getNumberOfPages();
-                
-                // Add header only on the first page, skip for others
-                if (data.pageNumber === 1) {
-                    addHeader();
-                }
-    
-                // Add watermark on each page
-                addWatermark();
-    
-                // Add page number to the bottom right side of each page
-                doc.setFontSize(10);
-                doc.setFont("helvetica", "normal");
-                doc.setTextColor(0, 0, 0); // Black color for the page number
-                const pageNumberText = `Page ${data.pageNumber}`;
-                doc.text(pageNumberText, pageWidth - doc.getTextWidth(pageNumberText) - 10, pageHeight - 10);
+                addHeader(pageNumber, totalPagesExp);
             }
         });
+    
+        // Replace the placeholder with total pages number
+        if (typeof doc.putTotalPages === 'function') {
+            doc.putTotalPages(totalPagesExp);
+        }
     
         // Save the PDF
         doc.save('EMI_Statement.pdf');
     };
-                    
+        
+
     // const exportToExcel = () => {
     //     const worksheet = XLSX.utils.json_to_sheet(schedule);
     
