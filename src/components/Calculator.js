@@ -8,7 +8,7 @@ import TaxImg from "../assets/images/calci_images/tax.png";
 import BudgetImg from "../assets/images/calci_images/budget.png";
 import MortgageImg from "../assets/images/calci_images/mortgage.png";
 import IRRImg from "../assets/images/calci_images/irr.png";
-import LoanImg from "../assets/images/calci_images/loan.png";
+import LoanImg from "../assets/images/calci_images/mortgage-borrower.png";
 import EMIImg from "../assets/images/calci_images/emi.png";
 import CAGRImg from "../assets/images/calci_images/cagr.png";
 import RentalImg from "../assets/images/calci_images/rental.png";
