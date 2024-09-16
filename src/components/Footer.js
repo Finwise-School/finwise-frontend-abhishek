@@ -208,7 +208,7 @@ function Footer() {
           </div>
           <div className="flex justify-center flex-col items-center py-4">
             <p className="font-medium text-sm leading-6 text-[#FFFFFF]">@2024 Finwise School All Rights Reserved.</p>
-            <Link className="font-medium text-sm leading-6 text-[#FFFFFF]">Terms & Conditions</Link>
+            <Link to="#" className="font-medium text-sm leading-6 text-[#FFFFFF]">Terms & Conditions</Link>
             <Link to="/privacy" className="font-medium text-sm leading-6 text-[#FFFFFF]">Privacy</Link>
           </div>
         </div>
