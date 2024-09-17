@@ -5,6 +5,16 @@ import signupimage from "../../assets/images/login/signup.png";
 import { GoogleLogin } from "@react-oauth/google";
 
 const LoginPage = () => {
+
+  const handleSuccess = (response) => {
+    console.log("Login Success:", response);
+    
+  };
+
+  const handleFailure = (error) => {
+    console.error("Login Failed:", error);
+  };
+
   const { isAuthenticated, login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +54,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className=" grid grid-cols-2 justify-center align pl-[15%] pt-[5%]">
+    <div className=" grid grid-cols-2 justify-center align pl-[10%] pt-[5%]">
       <div className=" text">
         <h1 className=" text-3xl text-black font-bold">Get Started Now</h1>
 
@@ -140,23 +150,33 @@ const LoginPage = () => {
           >
             Signup
           </button>
-          <div className=' flex justify-center items-center my-3 mb-28 mt-16'>
-             <div className=' w-1/4 h-px bg-gray-300'></div>
-             <span className=' mx-4 text-gray-500'>or</span>
-             <div className=' w-1/4 h-px bg-gray-300 '></div>
+          <div className=" flex justify-center items-center my-3 mb-20 mt-16">
+            <div className=" w-1/4 h-px bg-gray-300"></div>
+            <span className=" mx-4 text-gray-500">or</span>
+            <div className=" w-1/4 h-px bg-gray-300 "></div>
+          </div>
 
-           </div>
- 
+          <div className="w-full max-w-sm p-6 ">
+        
+        <GoogleLogin
+          onSuccess={handleSuccess}
+          onFailure={handleFailure}
+          buttonText="Sign in with Google"
+          className="w-full bg-blue-500 text-white py-2  rounded-lg shadow-md hover:bg-blue-600 items-center justify-center "
+        />
+      </div>
 
           <div className="flex justify-center items-center mt-4">
-  <span className="text-black font-bold">
-    Have an account?{' '}
-    <Link to="/login" className="text-blue-600 underline hover:text-blue-800">
-      Sign in
-    </Link>
-  </span>
-</div>
-
+            <span className="text-black font-bold">
+              Have an account?{" "}
+              <Link
+                to="/login"
+                className="text-blue-600 underline hover:text-blue-800"
+              >
+                Sign in
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
 

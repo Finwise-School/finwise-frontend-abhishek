@@ -4,7 +4,17 @@ import { useAuth } from './AuthContext';
 import loginimage from '../../assets/images/login/loging.png'
 import { GoogleLogin } from "@react-oauth/google";
 
+
 const LoginPage = () => {
+  const handleSuccess = (response) => {
+    console.log("Login Success:", response);
+    
+  };
+
+  const handleFailure = (error) => {
+    console.error("Login Failed:", error);
+  };
+
   const { isAuthenticated, login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -46,26 +56,11 @@ const LoginPage = () => {
   return (
     <div className=' grid grid-cols-2 justify-center align pl-[15%] pt-[5%]'>
        <div className=' text'>
-          <h1 className=' text-3xl text-black font-bold'>Welcome Back!</h1>
-          <p className=' text-black font-semibold mb-3'>Enter your Credentials to access your account</p>
+          <h1 className=' text-3xl text-black font-bold mb-3'>Welcome Back!</h1>
+          <p className=' text-black font-semibold mb-6'>Enter your Credentials to access your account</p>
 
           <form onSubmit={handleLogin}>
-          <div className="formGroup mb-4">
-              <label htmlFor="username" className='block  mb-2 pt-[5%] font-extrabold'>Name</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Enter your name"
-                required
-                autoComplete="off"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="mt-1 w-full px-4 py-2 bg-white border border-slate-300 rounded-md shadow-sm
-                focus:outline-none focus:border-white focus:ring-1 focus:ring-blue-500"
-              />
-            </div>
-
+          
             <div>
               <label htmlFor='email' className='block  mb-2 pt-[5%] font-extrabold'>Email address</label>
               <input
@@ -121,13 +116,23 @@ const LoginPage = () => {
             Signup
           </button>
 
-           <div className=' flex justify-center items-center my-3 mb-28 mt-16'>
+           <div className=' flex justify-center items-center my-3 mb-20 mt-16 '>
              <div className=' w-1/4 h-px bg-gray-300'></div>
              <span className=' mx-4 text-gray-500'>or</span>
              <div className=' w-1/4 h-px bg-gray-300 '></div>
 
            </div>
  
+           <div className="w-full max-w-sm p-6 ">
+        
+        <GoogleLogin
+          onSuccess={handleSuccess}
+          onFailure={handleFailure}
+          buttonText="Sign in with Google"
+          className="w-full bg-blue-500 text-white py-2  rounded-lg shadow-md hover:bg-blue-600 items-center justify-center "
+        />
+      </div>
+
           <div className="flex justify-center items-center mt-4">
           <span className="text-black font-bold">
     Don't have an account?{' '}
@@ -137,6 +142,10 @@ const LoginPage = () => {
   </span>
           
           </div>
+
+         
+      
+    
           </form>
        </div>
 
