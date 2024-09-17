@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
+import Info from './info/Rental_Info';
 
 const RentalYieldCalculator = () => {
   const [purchaseCost, setPurchaseCost] = useState(200000);
@@ -154,10 +155,10 @@ const RentalYieldCalculator = () => {
             </div>
           </div>
         </div>
-        <div style={{marginTop: "-40px"}}>
+        <div style={{marginTop: "-5rem"}}>
         <Tool_Footer message="Evaluate your rental property yield and make informed decisions!"/>
         </div>
-
+        <Info/>
         <CalculatorList activeCalculator="Rental Yield Calculator" />
 
       </div>

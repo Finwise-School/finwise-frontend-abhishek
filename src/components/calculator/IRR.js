@@ -5,6 +5,7 @@ import Tool_Footer from './Tools_footer';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import CalculatorList from './Calulators_List';
 import { irr } from 'node-irr';
+import Info from './info/IRR_Info';
 
 const IRRCalculator = () => {
   const [initialInvestment, setInitialInvestment] = useState(5000);
@@ -136,9 +137,10 @@ const IRRCalculator = () => {
             </div>
           </div>
         </div>
-        <div style={{marginTop: "-5rem"}}>
+        <div style={{marginTop: "0rem"}}>
         <Tool_Footer message="Evaluate the profitability of your investments. Get insights to make smarter financial decisions!"/>
         </div>
+        <Info/>
 
         <CalculatorList activeCalculator="IRR Calculator" />
 

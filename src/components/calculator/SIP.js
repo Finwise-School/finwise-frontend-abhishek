@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
 import { Doughnut, Line } from 'react-chartjs-2';
+import Info from './info/SIP_Info';
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, LineElement, PointElement, CategoryScale, LinearScale } from 'chart.js';
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, LineElement, PointElement, CategoryScale, LinearScale);
@@ -316,6 +317,7 @@ const SIP = () => {
                 )}
 
                 <Tool_Footer message="Analyze your mutual fund investments and their potential returns." />
+                <Info/>
                 <CalculatorList activeCalculator="SIP Calculator" />
             </div>
         </div>

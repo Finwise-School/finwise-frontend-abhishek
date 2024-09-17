@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
+import Info from './info/CAGR_Info';
 
 
 const CAGRCalculator = () => {
@@ -162,6 +163,7 @@ const CAGRCalculator = () => {
                 <div style={{marginTop: "-5rem"}}>
                 <Tool_Footer message="Understand how your investments are growing. Let’s help you plan your financial future!"/>
                 </div>
+                <Info/>
                 <CalculatorList activeCalculator="CAGR Calculator" />
 
 

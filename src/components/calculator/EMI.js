@@ -8,6 +8,7 @@ import CalculatorList from './Calulators_List';
 import logo from '../../assets/images/logo-for-excel.png'; 
 import logo1 from '../../assets/images/logo-for-pdf.png'; 
 import ExcelJS from 'exceljs';
+import Info from './info/EMI_Info';
 
 const EMICalculator = () => {
     const [loanAmount, setLoanAmount] = useState(10000.00);
@@ -524,7 +525,10 @@ const EMICalculator = () => {
                         </button>
                     </div>
                 </div>
+                
+            
                 <Tool_Footer message="Get a clear view of your monthly EMI payments. Start managing your finances with ease!"/>
+                <Info/>
 
                 <CalculatorList activeCalculator="EMI Calculator" />
 
