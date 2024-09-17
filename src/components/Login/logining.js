@@ -44,7 +44,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className=' grid grid-cols-2 justify-center align pl-[20%] pt-[5%]'>
+    <div className=' grid grid-cols-2 justify-center align pl-[15%] pt-[5%]'>
        <div className=' text'>
           <h1 className=' text-3xl text-black font-bold'>Welcome Back!</h1>
           <p className=' text-black font-semibold mb-3'>Enter your Credentials to access your account</p>
@@ -107,34 +107,36 @@ const LoginPage = () => {
               className='h-4 w-4 text-blue-600 border-gray-300 rounded'
               />
 
-<label htmlFor='agree-to-terms' className='ml-2 text-sm'>
-              I agree to the{' '}
-              <Link to='/terms' className='text-blue-600 underline'>
-                terms and conditions
-              </Link>
+<label htmlFor='agree-to-terms' className='ml-2 text-sm text-black'>
+              Remember for 30 days
             </label>
             </div>
 
-            {message && <p className='text-red-600 mb-4 '>{message}</p>}
-
+            
             <button
             type='submit'
-            className={`w-full py-2 px-4 bg-blue-900 text-white rounded ${
-              !agreeToTerms ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            disabled={!agreeToTerms}
+            className="w-full py-2 px-4 bg-blue-900 text-white rounded "
+              
           >
             Signup
           </button>
 
-           <div className=' flex justify-center items-center my-3'>
+           <div className=' flex justify-center items-center my-3 mb-28 mt-16'>
              <div className=' w-1/4 h-px bg-gray-300'></div>
              <span className=' mx-4 text-gray-500'>or</span>
-             <div className=' w-1/4 h-px bg-gray-300'></div>
+             <div className=' w-1/4 h-px bg-gray-300 '></div>
 
            </div>
-
+ 
+          <div className="flex justify-center items-center mt-4">
+          <span className="text-black font-bold">
+    Don't have an account?{' '}
+    <Link to="/signup" className="text-blue-600 underline hover:text-blue-800 justify-center align-middle items-center">
+      Sign up
+    </Link>
+  </span>
           
+          </div>
           </form>
        </div>
 

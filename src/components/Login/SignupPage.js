@@ -44,7 +44,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className=" grid grid-cols-2 justify-center align pl-[20%] pt-[5%]">
+    <div className=" grid grid-cols-2 justify-center align pl-[15%] pt-[5%]">
       <div className=" text">
         <h1 className=" text-3xl text-black font-bold">Get Started Now</h1>
 
@@ -121,7 +121,7 @@ const LoginPage = () => {
               className="h-4 w-4 text-blue-600 border-gray-300 rounded"
             />
 
-            <label htmlFor="agree-to-terms" className="ml-2 text-sm">
+            <label htmlFor="agree-to-terms" className="ml-2 text-sm text-black">
               I agree to the{" "}
               <Link to="/terms" className="text-blue-600 underline">
                 terms and conditions
@@ -140,12 +140,23 @@ const LoginPage = () => {
           >
             Signup
           </button>
+          <div className=' flex justify-center items-center my-3 mb-28 mt-16'>
+             <div className=' w-1/4 h-px bg-gray-300'></div>
+             <span className=' mx-4 text-gray-500'>or</span>
+             <div className=' w-1/4 h-px bg-gray-300 '></div>
 
-          <div className=" flex justify-center items-center my-3">
-            <div className=" w-1/4 h-px bg-gray-300"></div>
-            <span className=" mx-4 text-gray-500">or</span>
-            <div className=" w-1/4 h-px bg-gray-300"></div>
-          </div>
+           </div>
+ 
+
+          <div className="flex justify-center items-center mt-4">
+  <span className="text-black font-bold">
+    Have an account?{' '}
+    <Link to="/login" className="text-blue-600 underline hover:text-blue-800">
+      Sign in
+    </Link>
+  </span>
+</div>
+
         </form>
       </div>
 
