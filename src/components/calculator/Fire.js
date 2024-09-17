@@ -4,6 +4,7 @@ import { faInfoCircle, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
+import Info from './info/FIRE_Info';
 
 const Fire = () => {
   const [monthlyExpense, setMonthlyExpense] = useState(50000);
@@ -146,19 +147,19 @@ const Fire = () => {
                     <p className="finwise-green font-semibold text-xl">&#163;{result.expenseToday}</p>
                   </div>
                   <div className="p-4 border border-gray-300 rounded-lg">
-                    <p className="finwise-blue flex items-center">Expense at {retirementAge} <FontAwesomeIcon icon={faInfoCircle} className="text-gray-400 ml-2" /></p>
+                    <p className="finwise-blue flex items-center">Expense at {retirementAge}  </p>
                     <p className="finwise-green font-semibold text-xl">&#163;{result.expenseAtRetirement}</p>
                   </div>
                   <div className="p-4 border border-gray-300 rounded-lg">
-                    <p className="finwise-blue flex items-center">Lean FIRE <FontAwesomeIcon icon={faInfoCircle} className="text-gray-400 ml-2" /></p>
+                    <p className="finwise-blue flex items-center">Lean FIRE  </p>
                     <p className="finwise-green font-semibold text-xl">&#163;{result.leanFIRE}</p>
                   </div>
                   <div className="p-4 border border-gray-300 rounded-lg">
-                    <p className="finwise-blue flex items-center">FIRE <FontAwesomeIcon icon={faInfoCircle} className="text-gray-400 ml-2" /></p>
+                    <p className="finwise-blue flex items-center">FIRE  </p>
                     <p className="finwise-green font-semibold text-xl">&#163;{result.fire}</p>
                   </div>
                   <div className="p-4 border border-gray-300 rounded-lg">
-                    <p className="finwise-blue flex items-center">FAT FIRE <FontAwesomeIcon icon={faInfoCircle} className="text-gray-400 ml-2" /></p>
+                    <p className="finwise-blue flex items-center">FAT FIRE  </p>
                     <p className="finwise-green font-semibold text-xl">&#163;{result.fatFIRE}</p>
                   </div>
                 </div>
@@ -169,7 +170,7 @@ const Fire = () => {
         <div style={{ marginTop: "-5rem" }}>
           <Tool_Footer message="Discover how to achieve financial independence and retire early. Begin your journey to a secure future!" />
         </div>
-
+        <Info/>
         <CalculatorList activeCalculator="FIRE Calculator" />
       </div>
     </div>
