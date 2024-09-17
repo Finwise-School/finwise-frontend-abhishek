@@ -4,6 +4,8 @@ import { Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
 import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
+import Info from './info/Borrower_Info';
+
 
 const MortgageBorrowerCalculator = () => {
     const [annualSalary, setAnnualSalary] = useState(50000);
@@ -268,6 +270,7 @@ const MortgageBorrowerCalculator = () => {
                 </div>
 
                 <Tool_Footer message="Calculate how much you can borrow based on your income and deposit!" />
+                <Info/>
                 <CalculatorList activeCalculator="Mortgage Borrower Calculator" />
             </div>
         </div>

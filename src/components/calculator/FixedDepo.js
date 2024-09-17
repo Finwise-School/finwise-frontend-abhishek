@@ -6,6 +6,8 @@ import Tool_Footer from './Tools_footer';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import CalculatorList from './Calulators_List';
+import Info from './info/Fixed_Info';
+
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -104,7 +106,7 @@ const FixedDepo = () => {
   return (
     <div className="bg-gray-50 p-2">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
-        <div className="mb-6">
+        <div className="mb-0">
           <h1 className="text-2xl font-semibold finwise-green">Fixed Deposit Calculator</h1>
           <p className="finwise-blue">Find out the maturity amount of your fixed deposits and optimize your savings</p>
         </div>
@@ -180,11 +182,11 @@ const FixedDepo = () => {
                     <p className="finwise-green font-semibold text-xl">&#163;{result.totalInvestment}</p>
                   </div>
                   <div className="p-4 border border-gray-300 rounded-lg">
-                    <p className="finwise-blue flex items-center">Total Interest Earned <FontAwesomeIcon icon={faInfoCircle} className="text-gray-400 ml-2" /></p>
+                    <p className="finwise-blue flex items-center">Total Interest Earned  </p>
                     <p className="finwise-green font-semibold text-xl">&#163;{result.totalInterest}</p>
                   </div>
                   <div className="p-4 border border-gray-300 rounded-lg" >
-                    <p className="finwise-blue flex items-center">Maturity Value <FontAwesomeIcon icon={faInfoCircle} className="text-gray-400 ml-2" /></p>
+                    <p className="finwise-blue flex items-center">Maturity Value  </p>
                     <p className="finwise-green font-semibold text-xl">&#163;{result.maturityValue}</p>
                   </div>
                 </div>
@@ -194,7 +196,7 @@ const FixedDepo = () => {
         </div>
 
         {/* Line Graph */}
-        <div className="mt-8">
+        <div className="">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">Investment Over Time</h2>
           <Line
             data={chartData}
@@ -244,7 +246,7 @@ const FixedDepo = () => {
         </div>
 
         <Tool_Footer message="See the returns on your fixed deposits and make informed savings decisions. Let’s maximize your savings!" />
-
+        <Info/>
         <CalculatorList activeCalculator="Fixed Deposit Calculator" />
       </div>
     </div>

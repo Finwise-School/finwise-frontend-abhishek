@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
+import Info from './info/GoalSIP_Info';
 
 const GoalSIP = () => {
   const [goalAmount, setGoalAmount] = useState(100000);
@@ -222,7 +223,7 @@ const GoalSIP = () => {
             />
         </div>
         <Tool_Footer message="Plan your investments to reach your financial goals. Start your journey towards achieving them now!"/>
-
+        <Info/>
         <CalculatorList activeCalculator="Goal SIP Calculator" />
 
       </div>
