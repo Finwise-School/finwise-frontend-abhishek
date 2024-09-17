@@ -9,7 +9,7 @@ const FdCalculatorInfo = () => {
 
   return (
     <div className="mt-8 bg-white">
-      <h1 className="text-2xl font-bold mb-4 finwise-green">Fixed Deposit Calculator</h1>
+      <h1 className="text-2xl font-bold mb-4 finwise-green">About Fixed Deposit Calculator</h1>
       <p className="mb-6 text-base text-gray-700">
         Use our Fixed Deposit Calculator to estimate the future value of your FD investments. This tool will help you calculate the maturity amount and interest earned based on your investment details.
       </p>

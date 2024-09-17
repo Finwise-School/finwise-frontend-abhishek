@@ -9,7 +9,7 @@ const FireCalculatorInfo = () => {
 
   return (
     <div className="mt-8 bg-white">
-      <h1 className="text-2xl font-bold mb-4 finwise-green">FIRE Calculator</h1>
+      <h1 className="text-2xl font-bold mb-4 finwise-green">About FIRE Calculator</h1>
       <p className="mb-6 text-base text-gray-700">
         Achieve financial independence and plan for early retirement with our FIRE Calculator. This tool helps you estimate when you can retire based on your savings, investments, and spending habits.
       </p>

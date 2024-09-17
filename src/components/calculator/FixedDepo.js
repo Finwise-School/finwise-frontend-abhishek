@@ -107,7 +107,7 @@ const FixedDepo = () => {
     <div className="bg-gray-50 p-2">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
         <div className="mb-0">
-          <h1 className="text-2xl font-semibold finwise-green">About Fixed Deposit Calculator</h1>
+          <h1 className="text-2xl font-semibold finwise-green">Fixed Deposit Calculator</h1>
           <p className="finwise-blue">Find out the maturity amount of your fixed deposits and optimize your savings</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
