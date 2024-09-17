@@ -64,11 +64,16 @@ const GoalSIP = () => {
     // Calculate total invested amount
     const totalInvested = P * n;
 
-    // Set the result
+    // Round up values
+    const roundedMonthlySIP = Math.ceil(P);
+    const roundedTotalInvested = Math.ceil(totalInvested);
+    const roundedGoalAmount = Math.ceil(FV);
+
+    // Set the result with comma formatting
     setResult({
-      monthlySIP: P.toFixed(0),
-      totalInvested: totalInvested.toFixed(0),
-      goalAmount: FV.toFixed(0),
+      monthlySIP: roundedMonthlySIP.toLocaleString(),
+      totalInvested: roundedTotalInvested.toLocaleString(),
+      goalAmount: roundedGoalAmount.toLocaleString(),
     });
 
     // Prepare chart data
@@ -76,7 +81,7 @@ const GoalSIP = () => {
     const investedData = newLabels.map(year => {
       const currentN = year * 12;
       const currentInvested = P * currentN;
-      return currentInvested.toFixed(0);
+      return Math.ceil(currentInvested); // Round up for chart data
     });
 
     setChartData({

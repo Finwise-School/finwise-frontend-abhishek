@@ -8,7 +8,7 @@ import TaxImg from "../assets/images/calci_images/tax.png";
 import BudgetImg from "../assets/images/calci_images/budget.png";
 import MortgageImg from "../assets/images/calci_images/mortgage.png";
 import IRRImg from "../assets/images/calci_images/irr.png";
-import LoanImg from "../assets/images/calci_images/loan.png";
+import LoanImg from "../assets/images/calci_images/mortgage-borrower.png";
 import EMIImg from "../assets/images/calci_images/emi.png";
 import CAGRImg from "../assets/images/calci_images/cagr.png";
 import RentalImg from "../assets/images/calci_images/rental.png";
@@ -38,10 +38,10 @@ const FinancialPlanningTools = () => {
           <ToolCard title="Budget Boss Calculator" image={BudgetImg} path="/maintainence" />
           <ToolCard title="Mortgage Calculator" image={MortgageImg} path="/tools/mortgage" />
           <ToolCard title="IRR" image={IRRImg} path="/tools/irr" />
-          <ToolCard title="Ideal Loan Payback Period" image={LoanImg} path="/maintainence" />
+          <ToolCard title="Mortgage Borrower Calculator" image={LoanImg} path="/tools/mortgage-borrower" />
           <ToolCard title="EMI Calculator" image={EMIImg} path="/tools/emi" />
           <ToolCard title="CAGR" image={CAGRImg} path="/tools/cagr" />
-          <ToolCard title="Rental Yield" image={RentalImg} path="/maintainence" />
+          <ToolCard title="Rental Yield" image={RentalImg} path="/tools/rental-yield" />
         </div>
       </div>
 
