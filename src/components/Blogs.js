@@ -6,6 +6,7 @@ import axios from 'axios';
 import CardsBottom from './Blogs/cardsBottom';
 import Blogswrite from './Blogs/Blogswrite'
 import EATemplate from './EarlyAccessTemplate';
+import { useNavigate } from 'react-router-dom';
 
 function Blogs() {
 
@@ -24,6 +25,12 @@ function Blogs() {
   //   .catch(error => console.error('Error fetching data:', error));
   // }, []);
 
+  const navigate = useNavigate();
+
+  const handleBwClick = () => {
+    navigate('/blogswriting');
+  }
+
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   }
@@ -35,8 +42,11 @@ function Blogs() {
     return (
       <>
           <div className='m-4 md:px-12 gap-20 md:mb-20'>
-      <h1 className='flex justify-start font-semibold text-5xl leading-[72px] finwise-blue items-start'>Blogs</h1>
-      <h2 className='flex sm:justify-start justify-center text-2xl font-bold my-8 finwise-blue'>Top Stories</h2>
+            <div className='flex flex-row justify-between'>
+              <h1 className='flex justify-start font-semibold text-5xl leading-[72px] finwise-blue items-start'>Blogs</h1>
+              <button className='finwise-green-bg border border-[#223876] text-[#FFFFFF]' onClick={handleBwClick}>Write your own Blog!</button>
+            </div>
+            <h2 className='flex sm:justify-start justify-center text-2xl font-bold my-8 finwise-blue'>Top Stories</h2>
         <div>
             <div className='flex md:flex-row flex-col justify-between'>
             <div className='mainCard md:w-4/6 bg-slate-100 rounded-xl'>

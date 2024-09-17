@@ -27,9 +27,11 @@ import MortgageCalculator from "./components/calculator/Mortgage";
 import IRRCalculator from "./components/calculator/IRR";
 import ScrollToTop from "./components/ScrolltoTop";
 import Blogs from "./components/Blogs";
+import BlogsWriting from "./components/BlogsWriting";
 import QuotesHeader from "./components/QuotesHeader";
 import UnderConst from "./components/UnderDevelopement";
 import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
+import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
 
 const ProtectedRoute = ({ element, ...rest }) => {
   const { isAuthenticated } = useAuth();
@@ -65,7 +67,9 @@ const App = () => {
             <Route path="/tools/mortgage" element={<MortgageCalculator />} />
             <Route path="/tools/irr" element={<IRRCalculator />} />
             <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogswriting" element={<BlogsWriting />} />
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
+            <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
             <Route
               path="/profile"
               element={<ProtectedRoute element={<Profile />} />}

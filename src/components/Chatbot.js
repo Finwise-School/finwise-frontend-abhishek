@@ -6,6 +6,15 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import axios from 'axios';
 
 const Chatbot = () => {
+  const formatDate = (date) => {
+    const options = { day: 'numeric', month: 'short', year: '2-digit' };
+    return new Intl.DateTimeFormat('en-GB', options).format(date);
+};
+
+const date = new Date();
+
+const writeDate = formatDate(date);
+
   const [messages, setMessages] = useState([
     { text: "Hi there! How can I assist you today?", isBot: true }
   ]);
@@ -91,7 +100,8 @@ const Chatbot = () => {
     const formData = {
       name,
       email,
-      query
+      query,
+      writeDate
     };
   
     try {
