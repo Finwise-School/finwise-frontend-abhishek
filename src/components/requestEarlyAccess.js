@@ -5,12 +5,22 @@ import 'react-phone-input-2/lib/style.css';
 import successImg from "../assets/images/book/success.gif";
 
 const EarlyAccessForm = () => {
+  const formatDate = (date) => {
+    const options = { day: 'numeric', month: 'short', year: '2-digit' };
+    return new Intl.DateTimeFormat('en-GB', options).format(date);
+};
+
+const date = new Date();
+
+const writeDate = formatDate(date);
+
   const [started, setStarted] = useState(false);
   const [formStep, setFormStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    date: writeDate,
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
