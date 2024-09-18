@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Table } from "flowbite-react";
 import BlogsDataModal from './BlogsDataModal';
+import DeletePage from './DeletePage';
 
 const BlogsData = () => {
   const [blogsData, setBlogsData] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [deleteBlogId, setDeleteBlogId] = useState(null);
+  let i = 1;
 
   const handleOpenModal = (blog) => {
     setSelectedBlog(blog);
@@ -15,31 +19,58 @@ const BlogsData = () => {
     setSelectedBlog(null);
   };
 
-  const handleApproveOption = async (id) => {
-    try {
-      const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-delete', { id });
-      if (response.status === 201) {
-        console.log('Content Deleted');
-    } else {
-        console.error('Error:', response.data);
-    }
-    } catch (error) {
-      console.log('Error', error);
-    }
-  }
+  const handleOpenDeleteModal = (blogId) => {
+    setDeleteBlogId(blogId);
+    setOpenDeleteModal(true);
+  };
 
-  const handleDeleteOption = async (id) => {
-    try {
-      const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-delete', { id });
-      if (response.status === 201) {
-        console.log('Content Deleted');
-    } else {
-        console.error('Error:', response.data);
+  const handleCloseDeleteModal = () => {
+    setDeleteBlogId(null);
+    setOpenDeleteModal(false);
+  };
+
+  const handleDeleteOption = async () => {
+    if (deleteBlogId) {
+      try {
+        const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-delete', { id: deleteBlogId });
+        if (response.status === 201) {
+          console.log('Content Deleted');
+          // Remove deleted blog from state
+          setBlogsData(blogsData.filter(blog => blog._id !== deleteBlogId));
+          handleCloseDeleteModal();
+        } else {
+          console.error('Error:', response.data);
+        }
+      } catch (error) {
+        console.log('Error', error);
+      }
     }
-    } catch (error) {
-      console.log('Error', error);
+  };
+
+  const handleApproveOption = async () => {
+    if (selectedBlog) {
+      const approveid = selectedBlog._id; // Get the ID of the selected blog
+      const newApprovalStatus = !selectedBlog.isApproved; // Toggle the approval status
+      try {
+        const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-isApproved', { id: approveid });
+        if (response.status === 200) {
+          console.log('Status Changed');
+          // Update the state based on the new approval status
+          setBlogsData((prevBlogs) =>
+            prevBlogs.map((blog) =>
+              blog._id === approveid ? { ...blog, isApproved: newApprovalStatus } : blog
+            )
+          );
+          handleCloseModal();
+        } else {
+          console.error('Error:', response.data);
+        }
+      } catch (error) {
+        console.log('Error', error);
+      }
     }
-  }
+  };
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,56 +86,74 @@ const BlogsData = () => {
 
   return (
     <div>
-
-    <div className="overflow-x-auto">
-    <Table hoverable>
-      <Table.Head>
-        <Table.HeadCell>Title</Table.HeadCell>
-        <Table.HeadCell>Date</Table.HeadCell>
-        <Table.HeadCell>Status</Table.HeadCell>
-        <Table.HeadCell>
-          <span className="sr-only">Edit</span>
-        </Table.HeadCell>
-      </Table.Head>
-      <Table.Body className="divide-y">
-        {blogsData.map((item) => (
-        <Table.Row key={item._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-          <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-            {item.title}
-          </Table.Cell>
-          <Table.Cell>{item.writeDate}</Table.Cell>
-          <Table.Cell><p className={`${item.isApproved ? 'text-green-800' : 'text-red-800'}`}>{item.isApproved ? 'Approved' : 'Not Approved'}</p></Table.Cell>
-          <Table.Cell>
-            <button className="font-medium text-cyan-600 hover:underline dark:text-cyan-500" onClick={() => handleOpenModal(item)}>
-              View
-            </button>
-          </Table.Cell>
-          <Table.Cell>
-            <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleDeleteOption(item._id)}>
-              Delete
-            </button>
-          </Table.Cell>
-        </Table.Row>
-        ))}
-              {selectedBlog && (
-        <BlogsDataModal
-          setOpenModal={handleCloseModal}
-          setDelete={handleDeleteOption}
-          item_id={selectedBlog._id}
-          item_title={selectedBlog.title}
-          item_content={selectedBlog.content}
-          item_date={selectedBlog.writeDate}
-          item_approved={selectedBlog.isApproved}
-        />
+      {blogsData.length > 0 ? (
+        <>
+              <div className="overflow-x-auto">
+              <Table hoverable>
+                <Table.Head>
+                  <Table.HeadCell>S.No</Table.HeadCell>
+                  <Table.HeadCell>Title</Table.HeadCell>
+                  <Table.HeadCell>Date</Table.HeadCell>
+                  <Table.HeadCell>Status</Table.HeadCell>
+                  <Table.HeadCell>
+                    <span className="sr-only">Edit</span>
+                  </Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
+                  {blogsData.map((item) => (
+                    <Table.Row key={item._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                                    <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                                       {i++}
+                                    </Table.Cell>
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        {item.title}
+                      </Table.Cell>
+                      <Table.Cell>{item.writeDate}</Table.Cell>
+                      <Table.Cell><p className={`${item.isApproved ? 'text-green-800' : 'text-red-800'}`}>{item.isApproved ? 'Approved' : 'Not Approved'}</p></Table.Cell>
+                      <Table.Cell>
+                        <button className="font-medium text-cyan-600 hover:underline dark:text-cyan-500" onClick={() => handleOpenModal(item)}>
+                          View
+                        </button>
+                      </Table.Cell>
+                      <Table.Cell>
+                        <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
+                          Delete
+                        </button>
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+                  {selectedBlog && (
+                    <BlogsDataModal
+                      setOpenModal={handleCloseModal}
+                      setApproveoption={handleApproveOption}
+                      item_id={selectedBlog._id}
+                      item_title={selectedBlog.title}
+                      item_content={selectedBlog.content}
+                      item_date={selectedBlog.writeDate}
+                      item_approved={selectedBlog.isApproved}
+                    />
+                  )}
+                </Table.Body>
+              </Table>
+            </div>
+      
+            {openDeleteModal && (
+              <DeletePage
+                openModal={openDeleteModal}
+                setOpenModal={handleCloseDeleteModal}
+                handleDeleteOption={handleDeleteOption}
+              />
+            )}
+            </>
+      ) : (
+        <div>No Data is Available</div>
       )}
-      </Table.Body>
-    </Table>
-  </div>
-  </div>
+    </div>
   );
 };
 
 export default BlogsData;
+
 
 
         // <div key={item._id} className="blog-item">

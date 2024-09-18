@@ -43,10 +43,10 @@ function Blogs() {
       <>
           <div className='m-4 md:px-12 gap-20 md:mb-20'>
             {/* UNCOMMENT WHEN DONE */}
-            {/* <div className='flex flex-row justify-between'>
+            <div className='flex flex-row justify-between'>
               <h1 className='flex justify-start font-semibold text-5xl leading-[72px] finwise-blue items-start'>Blogs</h1>
               <button className='finwise-green-bg border border-[#223876] text-[#FFFFFF]' onClick={handleBwClick}>Write your own Blog!</button>
-            </div> */}
+            </div>
             <h2 className='flex sm:justify-start justify-center text-2xl font-bold my-8 finwise-blue'>Top Stories</h2>
         <div>
             <div className='flex md:flex-row flex-col justify-between'>

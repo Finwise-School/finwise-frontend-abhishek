@@ -4,6 +4,8 @@ import BlogsData from './ADMINDASHBOARD/BlogsData';
 import ChatBotQueries from './ADMINDASHBOARD/ChatBotQueries';
 import PhoneNumberQueries from './ADMINDASHBOARD/PhoneNumberQueries';
 import RequestEarlyAccessQueries from './ADMINDASHBOARD/RequestEarlyAccessQueries';
+import axios from 'axios';
+import SdError from './ADMINDASHBOARD/sdError';
 // import CollectionList from './ADMINDASHBOARD/collectionList';
 // import CollectionData from './ADMINDASHBOARD/collectionData';
 // import axios from 'axios';
@@ -12,6 +14,34 @@ import RequestEarlyAccessQueries from './ADMINDASHBOARD/RequestEarlyAccessQuerie
 
 const ADMINDASHBOARD = () => {
     const [selectedContent, setSelectedContent] = useState('');
+    const [server, isServerRunning] = useState(false);
+    const [database, isDbConnected] = useState(false);
+
+    // TEMPORARY
+    axios.defaults.baseURL = 'http://localhost:5000';
+    useEffect(() => {
+      axios.get('/')
+       .then(response => {
+        response.status === 200 ? isServerRunning(true) : isServerRunning(false);
+       })
+       .catch(error => {
+        console.log('Error:', error);
+        isServerRunning(false);
+       })
+  
+       axios.get('/isDbConnected')
+       .then(response => {
+        response.status === 200 ? isDbConnected(true) : isDbConnected(false);
+       })
+       .catch(error => {
+        console.log('Error:', error);
+        isDbConnected(false);
+       })
+    }, )
+
+    const refreshPage = () => {
+      window.location.reload();
+    }
 
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -27,6 +57,7 @@ const ADMINDASHBOARD = () => {
 
   return (
     <>
+    {(!server || !database) && <SdError refresh={refreshPage} />}
     <h1 className={`text-center font-black text-4xl`}>ADMIN DASHBOARD</h1>
      <div className='dataSearchCard'>
      <Card className="m-6">
