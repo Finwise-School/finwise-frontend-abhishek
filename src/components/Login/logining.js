@@ -30,7 +30,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://api.finwiseschool.com/login', { // Match with backend route
+      const response = await fetch('https://api.finwiseschool.com/api/login', { // Match with backend route
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
