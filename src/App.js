@@ -36,10 +36,16 @@ import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
 import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const ProtectedRoute = ({ element, ...rest }) => {
+const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? element : <Navigate to="/login" />;
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return children;
 };
+
 
 const App = () => {
   return (
@@ -77,7 +83,11 @@ const App = () => {
             <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
             <Route
               path="/profile"
-              element={<ProtectedRoute element={<Profile />} />}
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
             />
             <Route path="/faqs" element={<FAQ />} />
           </Routes>
