@@ -20,7 +20,7 @@ const writeDate = formatDate(date);
     name: '',
     email: '',
     phone: '',
-    date: writeDate,
+    writeDate: formatDate(new Date()),
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
@@ -66,7 +66,7 @@ const writeDate = formatDate(date);
     e.preventDefault();
     if (validateStep()) {
       try {
-        const response = await fetch('https://finwisebackend.onrender.com/api/request-early-access', {
+        const response = await fetch('https://api.finwiseschool.com/api/request-early-access', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

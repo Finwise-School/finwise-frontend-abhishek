@@ -33,7 +33,7 @@ const writeDate = formatDate(date);
       const phoneData = { phone, writeDate };
 
       try {
-        const response = await axios.post('https://finwisebackend.onrender.com/api/phoneData', phoneData);
+        const response = await axios.post('https://api.finwiseschool.com/api/phoneData', phoneData);
 
         if (response.status === 201) { // Successful creation
           console.log('Phone Number Received');

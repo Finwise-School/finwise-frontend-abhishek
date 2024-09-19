@@ -8,18 +8,20 @@ const ChatBotQueries = () => {
   const [chatbotId, setChatbotId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   let i = 1;
+  let count = 0;
+  const [btnClick, setBtnClick] = useState(count);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/admindashboard/chatbot');
+        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/chatbot');
         setChatbotData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
       }
     };
     fetchData();
-  }, []);
+  }, [btnClick]);
 
   const handleOpenDeleteModal = (id) => {
     setChatbotId(id);
@@ -34,7 +36,7 @@ const ChatBotQueries = () => {
   const handleDeleteOption = async () => {
     if (chatbotId) {
       try {
-        const response = await axios.post('http://localhost:5000/api/admindashboard/chatbot-delete', { id: chatbotId });
+        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/chatbot-delete', { id: chatbotId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted chatbot query from state
@@ -51,6 +53,7 @@ const ChatBotQueries = () => {
 
   return (
     <>
+    <p onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>Refresh</p>
     {chatbotData.length > 0 ? (
           <div className="overflow-x-auto">
           <Table hoverable>

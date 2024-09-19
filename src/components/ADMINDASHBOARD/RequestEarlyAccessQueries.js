@@ -8,18 +8,20 @@ const RequestEarlyAccessQueries = () => {
   const [deleteId, setDeleteId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   let i = 1;
+  let count = 0;
+  const [btnClick, setBtnClick] = useState(count);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/admindashboard/requestearlyaccess');
+        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/requestearlyaccess');
         setReaData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
       }
     };
     fetchData();
-  }, []);
+  }, [btnClick]);
 
   const handleOpenDeleteModal = (id) => {
     setDeleteId(id);
@@ -34,7 +36,7 @@ const RequestEarlyAccessQueries = () => {
   const handleDeleteOption = async () => {
     if (deleteId) {
       try {
-        const response = await axios.post('http://localhost:5000/api/admindashboard/requestearlyaccess-delete', { id: deleteId });
+        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/requestearlyaccess-delete', { id: deleteId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted request from state
@@ -51,6 +53,7 @@ const RequestEarlyAccessQueries = () => {
 
   return (
     <>
+    <p onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>Refresh</p>
     {reaData.length > 0 ? (
       <div className="overflow-x-auto">
       <Table hoverable>
