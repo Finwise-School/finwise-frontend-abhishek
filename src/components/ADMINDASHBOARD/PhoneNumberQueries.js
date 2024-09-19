@@ -14,7 +14,7 @@ const PhoneNumberQueries = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://finwisebackend.onrender.com/api/admindashboard/phonedata');
+        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/phonedata');
         setPhoneData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
@@ -36,7 +36,7 @@ const PhoneNumberQueries = () => {
   const handleDeleteOption = async () => {
     if (deleteId) {
       try {
-        const response = await axios.post('https://finwisebackend.onrender.com/api/admindashboard/phonedata-delete', { id: deleteId });
+        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/phonedata-delete', { id: deleteId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted phone entry from state

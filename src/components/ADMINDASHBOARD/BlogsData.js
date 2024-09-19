@@ -34,7 +34,7 @@ const BlogsData = () => {
   const handleDeleteOption = async () => {
     if (deleteBlogId) {
       try {
-        const response = await axios.post('https://finwisebackend.onrender.com/api/admindashboard/blogs-delete', { id: deleteBlogId });
+        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/blogs-delete', { id: deleteBlogId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted blog from state
@@ -54,7 +54,7 @@ const BlogsData = () => {
       const approveid = selectedBlog._id; // Get the ID of the selected blog
       const newApprovalStatus = !selectedBlog.isApproved; // Toggle the approval status
       try {
-        const response = await axios.post('https://finwisebackend.onrender.com/api/admindashboard/blogs-isApproved', { id: approveid });
+        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/blogs-isApproved', { id: approveid });
         if (response.status === 200) {
           console.log('Status Changed');
           // Update the state based on the new approval status
@@ -77,7 +77,7 @@ const BlogsData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://finwisebackend.onrender.com/api/admindashboard/blogs');
+        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/blogs');
         setBlogsData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);

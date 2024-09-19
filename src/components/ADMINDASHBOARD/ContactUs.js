@@ -20,7 +20,7 @@ const ContactUs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://finwisebackend.onrender.com/api/admindashboard/contactus');
+        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/contactus');
         setContactData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
@@ -42,7 +42,7 @@ const ContactUs = () => {
   const handleDeleteOption = async () => {
     if (contactId) {
       try {
-        const response = await axios.post('http://localhost:5000/api/admindashboard/contactus-delete', { id: contactId });
+        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/contactus-delete', { id: contactId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted contact query from state

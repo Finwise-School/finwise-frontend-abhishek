@@ -14,7 +14,7 @@ const ChatBotQueries = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://finwisebackend.onrender.com/api/admindashboard/chatbot');
+        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/chatbot');
         setChatbotData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
@@ -36,7 +36,7 @@ const ChatBotQueries = () => {
   const handleDeleteOption = async () => {
     if (chatbotId) {
       try {
-        const response = await axios.post('https://finwisebackend.onrender.com/api/admindashboard/chatbot-delete', { id: chatbotId });
+        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/chatbot-delete', { id: chatbotId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted chatbot query from state

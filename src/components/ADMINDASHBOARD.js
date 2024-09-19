@@ -21,7 +21,7 @@ const ADMINDASHBOARD = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     // TEMPORARY
-    axios.defaults.baseURL = 'https://finwisebackend.onrender.com';
+    axios.defaults.baseURL = 'https://api.finwiseschool.com';
     useEffect(() => {
       axios.get('/')
        .then(response => {

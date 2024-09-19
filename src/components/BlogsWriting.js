@@ -60,7 +60,7 @@ const BlogsWriting = ({ placeholder }) => {
     //     },
     //   };
 
-    axios.defaults.baseURL = 'http://localhost:5000';
+    axios.defaults.baseURL = 'https://api.finwiseschool.com';
 
     const handleSubmit = async (event) => {
         event.preventDefault();
