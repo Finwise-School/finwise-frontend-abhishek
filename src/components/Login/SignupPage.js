@@ -30,7 +30,7 @@ const SignupPage = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/signup", {
+      const response = await fetch("https://api.finwiseschool.com/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -148,18 +148,18 @@ const SignupPage = () => {
             Signup
           </button>
 
-          <div className="flex justify-center items-center my-3 mb-20 mt-16">
+          <div className="flex justify-center items-center my-3 mb-14 mt-16">
             <div className="w-1/4 h-px bg-gray-300"></div>
             <span className="mx-4 text-gray-500">or</span>
             <div className="w-1/4 h-px bg-gray-300"></div>
           </div>
 
-          <div className="w-full max-w-sm p-6">
+          <div className="w-full max-w-sm p-4 justify-center items-center align-middle self-center ml-32"  >
             <GoogleLogin
               onSuccess={handleSuccess}
               onFailure={handleFailure}
               buttonText="Sign up with Google"
-              className="w-full bg-blue-500 text-white py-2 rounded-lg shadow-md hover:bg-blue-600 items-center justify-center"
+              className="w-full bg-blue-500 text-white py-2 rounded-lg shadow-md hover:bg-blue-600 "
             />
           </div>
 

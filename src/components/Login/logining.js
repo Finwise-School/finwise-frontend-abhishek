@@ -30,7 +30,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/login', { // Match with backend route
+      const response = await fetch('http://localhost:5000/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,10 @@ const LoginPage = () => {
           </div>
 
           <div>
+            <div className=' flex items-center justify-between '>
             <label htmlFor='password' className='block mb-2 pt-[5%] font-extrabold'>Password</label>
+            <Link className='text-blue-600 underline hover:text-blue-800 block mb-2 pt-[5%] font-extrabold'>forgot password</Link>
+            </div>
             <input
               type='password'
               id='password'
@@ -83,7 +86,7 @@ const LoginPage = () => {
               required
               autoComplete='off'
               value={password}
-              onChange={(e) => setPassword(e.target.value)} // Correct password input
+              onChange={(e) => setPassword(e.target.value)} 
               className="mt-1 w-full px-4 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-blue-500"
             />
           </div>
@@ -108,13 +111,13 @@ const LoginPage = () => {
             Login
           </button>
 
-          <div className='flex justify-center items-center my-3 mb-20 mt-16'>
+          <div className='flex justify-center items-center my-3 mb-14 mt-12'>
             <div className='w-1/4 h-px bg-gray-300'></div>
             <span className='mx-4 text-gray-500'>or</span>
             <div className='w-1/4 h-px bg-gray-300'></div>
           </div>
 
-          <div className="w-full max-w-sm p-6">
+          <div className="w-full max-w-sm p-6 ml-28">
             <GoogleLogin
               onSuccess={handleSuccess}
               onFailure={handleFailure}
