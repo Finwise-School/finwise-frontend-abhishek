@@ -10,6 +10,8 @@ const BlogsData = () => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [deleteBlogId, setDeleteBlogId] = useState(null);
   let i = 1;
+  let count = 0;
+  const [btnClick, setBtnClick] = useState(count);
 
   const handleOpenModal = (blog) => {
     setSelectedBlog(blog);
@@ -32,7 +34,7 @@ const BlogsData = () => {
   const handleDeleteOption = async () => {
     if (deleteBlogId) {
       try {
-        const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-delete', { id: deleteBlogId });
+        const response = await axios.post('https://finwisebackend.onrender.com/api/admindashboard/blogs-delete', { id: deleteBlogId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted blog from state
@@ -52,7 +54,7 @@ const BlogsData = () => {
       const approveid = selectedBlog._id; // Get the ID of the selected blog
       const newApprovalStatus = !selectedBlog.isApproved; // Toggle the approval status
       try {
-        const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-isApproved', { id: approveid });
+        const response = await axios.post('https://finwisebackend.onrender.com/api/admindashboard/blogs-isApproved', { id: approveid });
         if (response.status === 200) {
           console.log('Status Changed');
           // Update the state based on the new approval status
@@ -75,17 +77,18 @@ const BlogsData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/admindashboard/blogs');
+        const response = await axios.get('https://finwisebackend.onrender.com/api/admindashboard/blogs');
         setBlogsData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
       }
     };
     fetchData();
-  }, []);
+  }, [btnClick]);
 
   return (
     <div>
+      <p onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>Refresh</p>
       {blogsData.length > 0 ? (
         <>
               <div className="overflow-x-auto">
