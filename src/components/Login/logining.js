@@ -30,7 +30,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://api.finwiseschool.com/login', { // Match with backend route
+      const response = await fetch('https://api.finwiseschool.com/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ const LoginPage = () => {
             <div className='w-1/4 h-px bg-gray-300'></div>
           </div>
 
-          <div className="w-full max-w-sm p-6 ml-28">
+          <div className="w-full max-w-sm p-6 ml-20">
             <GoogleLogin
               onSuccess={handleSuccess}
               onFailure={handleFailure}
