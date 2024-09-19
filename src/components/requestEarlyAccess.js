@@ -20,7 +20,7 @@ const writeDate = formatDate(date);
     name: '',
     email: '',
     phone: '',
-    date: writeDate,
+    writeDate: formatDate(new Date()),
   });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
