@@ -105,7 +105,7 @@ const writeDate = formatDate(date);
     };
   
     try {
-      await axios.post('https://finwisebackend.onrender.com/api/chatbot', formData);
+      await axios.post('https://api.finwiseschool.com/api/chatbot', formData);
   
       setMessages([...messages, { text: `Name: ${name}, Email: ${email}, Query: ${query}`, isBot: false }]);
       setMessages([...messages, { text: "Thank you! We will get back to you soon.", isBot: true }]);

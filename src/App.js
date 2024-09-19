@@ -13,7 +13,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Calculator from "./components/Calculator";
 import AboutUs from "./components/Abouts/AboutUs";
-import LoginPage from "./components/Login/login";
+import LoginPage from "./components/Login/logining";
 import SignupPage from "./components/Login/SignupPage";
 import Fire from "./components/calculator/Fire";
 import GoalSIP from "./components/calculator/GoalSIP";
@@ -33,12 +33,19 @@ import BlogsWriting from "./components/BlogsWriting";
 import QuotesHeader from "./components/QuotesHeader";
 import UnderConst from "./components/UnderDevelopement";
 import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
-// import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
+import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-const ProtectedRoute = ({ element, ...rest }) => {
+const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? element : <Navigate to="/login" />;
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return children;
 };
+
 
 const App = () => {
   return (
@@ -73,10 +80,14 @@ const App = () => {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogswriting" element={<BlogsWriting />} />
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
-            {/* <Route path="/admindashboard" element={<ADMINDASHBOARD />} /> */}
+            <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
             <Route
               path="/profile"
-              element={<ProtectedRoute element={<Profile />} />}
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
             />
             <Route path="/faqs" element={<FAQ />} />
           </Routes>
