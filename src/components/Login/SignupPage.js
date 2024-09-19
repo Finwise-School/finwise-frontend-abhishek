@@ -154,7 +154,7 @@ const SignupPage = () => {
             <div className="w-1/4 h-px bg-gray-300"></div>
           </div>
 
-          <div className="w-full max-w-sm p-4 justify-center items-center align-middle self-center ml-32"  >
+          <div className="w-full max-w-sm p-4 justify-center items-center align-middle self-center ml-20"  >
             <GoogleLogin
               onSuccess={handleSuccess}
               onFailure={handleFailure}
