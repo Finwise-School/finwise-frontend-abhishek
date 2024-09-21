@@ -27,6 +27,7 @@ import MortgageCalculator from "./components/calculator/Mortgage";
 import IRRCalculator from "./components/calculator/IRR";
 import RentalYeildCalculator from "./components/calculator/RentalYeild";
 import MortgageBorrowerCalculator from "./components/calculator/MortgageBorrower";
+import Budget_Boss from "./components/calculator/Budget_Boss";
 import ScrollToTop from "./components/ScrolltoTop";
 import Blogs from "./components/Blogs";
 import BlogsWriting from "./components/BlogsWriting";
@@ -77,6 +78,7 @@ const App = () => {
             <Route path="/tools/mortgage-borrower" element={<MortgageBorrowerCalculator />} />
             <Route path="/tools/irr" element={<IRRCalculator />} />
             <Route path="/tools/rental-yield" element={<RentalYeildCalculator />} />
+            <Route path="/tools/budget-boss" element={<Budget_Boss />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogswriting" element={<BlogsWriting />} />
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
