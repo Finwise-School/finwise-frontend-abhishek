@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Tool_Footer from './Tools_footer';
+import CalculatorList from './Calulators_List';
 
 const TaxCalculator = () => {
   const [grossAmount, setGrossAmount] = useState("");
@@ -250,6 +252,8 @@ const TaxCalculator = () => {
                 </tr>
               </tbody>
             </table>
+            <Tool_Footer message="Evaluate your tax liabilities and discover potential savings with our tax calculator"/>
+            <CalculatorList activeCalculator="Tax Calculator" />
           </div>
         )}
       </div>

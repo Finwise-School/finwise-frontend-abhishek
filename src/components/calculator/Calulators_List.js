@@ -13,7 +13,7 @@ const calculators = [
   { path: "/tools/budget-boss", name: "Budget Calculator" },
   { path: "/tools/irr", name: "IRR Calculator" },
   { path: "/maintainence", name: "Home Mortgage Calculator" },
-  { path: "/maintainence", name: "Tax Calculator" },
+  { path: "/tools/tax", name: "Tax Calculator" },
   { path: "/tools/rental-yield", name: "Rental Yield Calculator" },
   { path: "/tools/mortgage-borrower", name: "Mortgage Borrower Calculator" }
 ];
