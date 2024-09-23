@@ -1,259 +1,258 @@
-import React, { useState, useEffect } from 'react';
-import { Pie } from 'react-chartjs-2';
-import 'chart.js/auto';
-import Tool_Footer from './Tools_footer';
-import CalculatorList from './Calulators_List';
+import React, { useState, useEffect } from "react";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const TaxCalculator = () => {
-  const [grossSalary, setGrossSalary] = useState(60000); // Default gross salary
-  const [period, setPeriod] = useState('Per Annum'); // Default period
-  const [result, setResult] = useState({
-    yearlyIncome: 0,
-    monthlyIncome: 0,
-    weeklyIncome: 0,
-    incomeTax: 0,
-    nationalInsurance: 0,
-    takeHomePay: 0,
-    monthlyIncomeTax: 0,
-    weeklyIncomeTax: 0,
-    monthlyNationalInsurance: 0,
-    weeklyNationalInsurance: 0,
-    monthlyTakeHomePay: 0,
-    weeklyTakeHomePay: 0,
-  });
+  const [grossAmount, setGrossAmount] = useState("");
+  const [frequency, setFrequency] = useState("monthly");
+  const [hoursOrDays, setHoursOrDays] = useState("");
+  const [isScottishTax, setIsScottishTax] = useState("no");
+  const [results, setResults] = useState(null);
+  const [view, setView] = useState("yearly"); // New state for table view
 
-  const [chartData, setChartData] = useState({
-    labels: ['Income Tax', 'National Insurance', 'Take Home Pay'],
-    datasets: [],
-  });
-
-  // Constants for 2024/25 UK tax calculations
-  const personalAllowance = 12570;
-  const basicRateLimit = 50270;
-  const higherRateLimit = 125140;
-  const basicRate = 0.20;
-  const higherRate = 0.40;
-  const niLowerLimit = 12570;
-  const niUpperLimit = 50270;
-  const niBasicRate = 0.12;
-  const niHigherRate = 0.02;
-
-  // Function to calculate income details
-  const calculateIncome = () => {
-    let yearlyIncome;
-    let taxableIncome;
-    let incomeTax;
-    let nationalInsurance;
-    let takeHomePay;
-
-    switch (period) {
-      case 'Per Annum':
-        yearlyIncome = parseFloat(grossSalary);
-        break;
-      case 'Per Month':
-        yearlyIncome = parseFloat(grossSalary) * 12;
-        break;
-      case 'Per Week':
-        yearlyIncome = parseFloat(grossSalary) * 52;
-        break;
-      case 'Per Day':
-        yearlyIncome = parseFloat(grossSalary) * 260; // Assuming 5 working days per week
-        break;
-      case 'Per Hour':
-        yearlyIncome = parseFloat(grossSalary) * 2080; // Assuming 40 hours per week
-        break;
-      default:
-        yearlyIncome = parseFloat(grossSalary);
-    }
-
-    // Income Tax Calculation
-    taxableIncome = Math.max(yearlyIncome - personalAllowance, 0);
-    if (taxableIncome <= basicRateLimit - personalAllowance) {
-      incomeTax = taxableIncome * basicRate;
-    } else {
-      incomeTax = (basicRateLimit - personalAllowance) * basicRate + (taxableIncome - (basicRateLimit - personalAllowance)) * higherRate;
-    }
-
-    // National Insurance Calculation
-    taxableIncome = Math.max(yearlyIncome - niLowerLimit, 0);
-    if (taxableIncome <= niUpperLimit - niLowerLimit) {
-      nationalInsurance = taxableIncome * niBasicRate;
-    } else {
-      nationalInsurance = (niUpperLimit - niLowerLimit) * niBasicRate + (taxableIncome - (niUpperLimit - niLowerLimit)) * niHigherRate;
-    }
-
-    // Take Home Pay Calculation
-    takeHomePay = yearlyIncome - incomeTax - nationalInsurance;
-
-    // Monthly and weekly breakdowns
-    const monthlyIncome = yearlyIncome / 12;
-    const weeklyIncome = yearlyIncome / 52;
-
-    const monthlyIncomeTax = incomeTax / 12;
-    const weeklyIncomeTax = incomeTax / 52;
-    const monthlyNationalInsurance = nationalInsurance / 12;
-    const weeklyNationalInsurance = nationalInsurance / 52;
-    const monthlyTakeHomePay = takeHomePay / 12;
-    const weeklyTakeHomePay = takeHomePay / 52;
-
-    setResult({
-      yearlyIncome: yearlyIncome.toFixed(2),
-      monthlyIncome: monthlyIncome.toFixed(2),
-      weeklyIncome: weeklyIncome.toFixed(2),
-      incomeTax: incomeTax.toFixed(2),
-      monthlyIncomeTax: monthlyIncomeTax.toFixed(2),
-      weeklyIncomeTax: weeklyIncomeTax.toFixed(2),
-      nationalInsurance: nationalInsurance.toFixed(2),
-      monthlyNationalInsurance: monthlyNationalInsurance.toFixed(2),
-      weeklyNationalInsurance: weeklyNationalInsurance.toFixed(2),
-      takeHomePay: takeHomePay.toFixed(2),
-      monthlyTakeHomePay: monthlyTakeHomePay.toFixed(2),
-      weeklyTakeHomePay: weeklyTakeHomePay.toFixed(2),
-    });
-
-    setChartData({
-      labels: ['Income Tax', 'National Insurance', 'Take Home Pay'],
-      datasets: [
-        {
-          label: 'Income Breakdown',
-          data: [incomeTax, nationalInsurance, takeHomePay],
-          backgroundColor: ['#0000FF', '#000080', '#FF00FF'],
-          hoverBackgroundColor: ['#0000FF', '#000080', '#FF00FF'],
-        },
-      ],
-    });
-  };
 
   useEffect(() => {
-    calculateIncome();
-  }, [grossSalary, period]);
+    calculateTax();
+  }, [grossAmount, frequency, hoursOrDays, isScottishTax]);
+
+  const calculateTax = () => {
+    if (!grossAmount) return;
+
+    const parsedGrossAmount = parseFloat(grossAmount);
+    if (isNaN(parsedGrossAmount)) return;
+
+    const annualGross = frequency === "hourly"
+      ? parsedGrossAmount * hoursOrDays * 52
+      : frequency === "daily"
+        ? parsedGrossAmount * hoursOrDays * 52
+        : frequency === "weekly"
+          ? parsedGrossAmount * 52
+          : frequency === "monthly"
+            ? parsedGrossAmount * 12
+            : parsedGrossAmount;
+
+    const personalAllowances = Math.min(12570, annualGross);
+    const taxableIncome = Math.max(0, annualGross - personalAllowances);
+
+    let taxDue = 0;
+    let taxAt19 = 0, taxAt20 = 0, taxAt21 = 0, taxAt42 = 0, taxAt45 = 0, taxAt48 = 0, taxAt40 = 0;
+
+    if (isScottishTax === "yes") {
+      if (taxableIncome > 0) {
+        taxAt19 = Math.max(0, Math.min(taxableIncome, 14876 - 12570)) * 0.19;
+        let remainingIncome = taxableIncome - (Math.min(taxableIncome, 14876 - 12570));
+
+        if (remainingIncome > 0) {
+          taxAt20 = Math.max(0, Math.min(remainingIncome, 26561 - 14876)) * 0.20;
+          remainingIncome -= (Math.min(remainingIncome, 26561 - 14876));
+
+          if (remainingIncome > 0) {
+            taxAt21 = Math.max(0, Math.min(remainingIncome, 43662 - 26561)) * 0.21;
+            remainingIncome -= (Math.min(remainingIncome, 43662 - 26561));
+
+            if (remainingIncome > 0) {
+              taxAt42 = Math.max(0, Math.min(remainingIncome, 75000 - 43662)) * 0.42;
+              remainingIncome -= (Math.min(remainingIncome, 75000 - 43662));
+
+              if (remainingIncome > 0) {
+                taxAt45 = Math.max(0, Math.min(remainingIncome, 125140 - 75000)) * 0.45;
+                remainingIncome -= (Math.min(remainingIncome, 125140 - 75000));
+
+                if (remainingIncome > 0) {
+                  taxAt48 = Math.max(0, remainingIncome) * 0.48;
+                }
+              }
+            }
+          }
+        }
+      }
+    } else {
+      if (taxableIncome > 0) {
+        // 20% band
+        taxAt20 = Math.max(0, Math.min(taxableIncome, 50270 - 12570)) * 0.20;
+        let remainingIncome = taxableIncome - (Math.min(taxableIncome, 50270 - 12570));
+
+        // 40% band
+        if (remainingIncome > 0) {
+          taxAt40 = Math.max(0, Math.min(remainingIncome, 125140 - 50270)) * 0.40;
+          remainingIncome -= (Math.min(remainingIncome, 125140 - 50270));
+
+          // 45% band
+          if (remainingIncome > 0) {
+            taxAt45 = Math.max(0, remainingIncome) * 0.45;
+          }
+        }
+      }
+    }
+
+    taxDue = taxAt19 + taxAt20 + taxAt21 + taxAt42 + taxAt45 + taxAt48 + taxAt40;
+
+    const niThreshold = 12570;
+    const niUpperThreshold = 50270;
+
+    let nationalInsurance = 0;
+
+    if (annualGross > niThreshold) {
+      if (annualGross <= niUpperThreshold) {
+        nationalInsurance = (annualGross - niThreshold) * 0.08;
+      } else {
+        nationalInsurance = (niUpperThreshold - niThreshold) * 0.08 + (annualGross - niUpperThreshold) * 0.02;
+      }
+    }
+
+    const takeHomePay = annualGross - taxDue - nationalInsurance;
+
+    setResults({
+      annualGross,
+      personalAllowances,
+      taxableIncome,
+      taxDue,
+      nationalInsurance,
+      takeHomePay,
+      taxAmounts: {
+        scottish: [taxAt19, taxAt20, taxAt21, taxAt42, taxAt45, taxAt48],
+        nonScottish: [taxAt20, taxAt40, taxAt45],
+      },
+    });
+  };
 
   return (
     <div className="bg-gray-50 p-2">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
-        <div className="mb-6">
-          <h1 className="text-2xl font-semibold finwise-green">Tax Calculator</h1>
-          <p className="finwise-blue">Estimate your tax and take-home pay</p>
-        </div>
+        <h1 className="text-2xl font-bold mb-4 finwise-green">Tax Calculator</h1>
+        <p className="mb-6 text-base text-gray-700">
+          Calculate your take-home pay after tax deductions based on your gross salary.
+        </p>
 
-        {/* Input Fields */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">Input fields:</h2>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 border border-gray-300 rounded-lg">
-                <label htmlFor="grossSalary" className="text-gray-700">Gross Salary (£)</label>
-                <input
-                  type="number"
-                  id="grossSalary"
-                  value={grossSalary}
-                  onChange={(e) => setGrossSalary(e.target.value)}
-                  className="bg-green-100 text-gray-800 font-semibold text-right p-2 rounded-lg w-24"
-                />
-              </div>
-
-              <div className="flex items-center justify-between p-4 border border-gray-300 rounded-lg">
-                <label htmlFor="period" className="text-gray-700">Select Period</label>
-                <select
-                  id="period"
-                  value={period}
-                  onChange={(e) => setPeriod(e.target.value)}
-                  className="bg-green-100 text-gray-800 font-semibold p-2 rounded-lg w-36"
-                >
-                  <option>Per Annum</option>
-                  <option>Per Month</option>
-                  <option>Per Week</option>
-                  <option>Per Day</option>
-                  <option>Per Hour</option>
-                </select>
-              </div>
-            </div>
+        <h2 className="text-lg font-semibold mb-4 finwise-green">Input Your Details</h2>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between p-4 border rounded-lg">
+            <label className="text-gray-700">Gross Amount</label>
+            <input
+              type="number"
+              value={grossAmount}
+              onChange={(e) => setGrossAmount(e.target.value)}
+              className="border p-2 rounded-lg w-32"
+            />
           </div>
 
-          {/* Output Fields */}
-          <div>
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">Estimation:</h2>
-            <div className="space-y-4">
-              <div className="p-4 border border-gray-300 rounded-lg">
-                <p className="finwise-blue">Gross Salary (Yearly)</p>
-                <p className="finwise-green font-semibold text-xl">&#163;{result.yearlyIncome}</p>
-              </div>
-              <div className="p-4 border border-gray-300 rounded-lg">
-                <p className="finwise-blue">Income Tax</p>
-                <p className="finwise-green font-semibold text-xl">&#163;{result.incomeTax}</p>
-              </div>
-              <div className="p-4 border border-gray-300 rounded-lg">
-                <p className="finwise-blue">National Insurance</p>
-                <p className="finwise-green font-semibold text-xl">&#163;{result.nationalInsurance}</p>
-              </div>
-              <div className="p-4 border border-gray-300 rounded-lg">
-                <p className="finwise-blue">Take Home Pay</p>
-                <p className="finwise-green font-semibold text-xl">&#163;{result.takeHomePay}</p>
-              </div>
+          <div className="flex items-center justify-between p-4 border rounded-lg">
+            <label className="text-gray-700">Frequency of Payment</label>
+            <select
+              value={frequency}
+              onChange={(e) => setFrequency(e.target.value)}
+              className="border p-2 rounded-lg"
+            >
+              <option value="hourly">Hourly</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="annually">Annually</option>
+            </select>
+          </div>
+
+          {(frequency === "hourly" || frequency === "daily") && (
+            <div className="flex items-center justify-between p-4 border rounded-lg">
+              <label className="text-gray-700">How many {frequency === "hourly" ? "hours" : "days"} do you work in a week?</label>
+              <input
+                type="number"
+                value={hoursOrDays}
+                onChange={(e) => setHoursOrDays(e.target.value)}
+                className="border p-2 rounded-lg w-32"
+              />
             </div>
+          )}
+
+          <div className="flex items-center justify-between p-4 border rounded-lg">
+            <label className="text-gray-700">Do you pay Scottish Income Tax?</label>
+            <select
+              value={isScottishTax}
+              onChange={(e) => setIsScottishTax(e.target.value)}
+              className="border p-2 rounded-lg"
+            >
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
           </div>
         </div>
 
-        {/* Estimation Table */}
-        <div className="mt-8">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Estimation Table</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-300">
+        {results && (
+          <div className="mt-4">
+            <h2 className="text-3xl font-semibold mb-8 finwise-green">Calculation Results</h2>
+            <div className="mb-4">
+              <button
+                onClick={() => setView("yearly")}
+                className={`mr-2 p-2 rounded ${view === "yearly" ? "bg-green-500 text-white" : "bg-gray-300"}`}>
+                Yearly
+              </button>
+              <button
+                onClick={() => setView("monthly")}
+                className={`mr-2 p-2 rounded ${view === "monthly" ? "bg-green-500 text-white" : "bg-gray-300"}`}>
+                Monthly
+              </button>
+              <button
+                onClick={() => setView("weekly")}
+                className={`p-2 rounded ${view === "weekly" ? "bg-green-500 text-white" : "bg-gray-300"}`}>
+                Weekly
+              </button>
+            </div>
+            <div className="flex items-center justify-center text-3xl sm:text-4xl finwise-green-bg text-center font-bold p-6 w-full h-28 text-white">
+              £{(view === "yearly" ? results.takeHomePay : view === "monthly" ? (results.takeHomePay / 12) : (results.takeHomePay / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {view === "yearly" ? "a year" : view === "monthly" ? "a month" : "a week"}
+            </div>
+
+
+            <table className="border-collapse border text-center border-gray-300 w-full overflow-hidden">
               <thead>
-                <tr>
-                  <th className="border px-4 py-2">Item</th>
-                  <th className="border px-4 py-2">Yearly</th>
-                  <th className="border px-4 py-2">Monthly</th>
-                  <th className="border px-4 py-2">Weekly</th>
+                <tr className="finwise-green">
+                  <th className="border border-gray-300 p-2">Description</th>
+                  <th className="border border-gray-300 p-2">Amount</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border px-4 py-2">Gross Salary</td>
-                  <td className="border px-4 py-2">&#163;{result.yearlyIncome}</td>
-                  <td className="border px-4 py-2">&#163;{result.monthlyIncome}</td>
-                  <td className="border px-4 py-2">&#163;{result.weeklyIncome}</td>
+                  <td className="border border-gray-300 p-2">Gross Salary</td>
+                  <td className="border border-gray-300 p-2">£{(view === "yearly" ? results.annualGross : view === "monthly" ? (results.annualGross / 12) : (results.annualGross / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>
                 <tr>
-                  <td className="border px-4 py-2">Income Tax</td>
-                  <td className="border px-4 py-2">&#163;{result.incomeTax}</td>
-                  <td className="border px-4 py-2">&#163;{result.monthlyIncomeTax}</td>
-                  <td className="border px-4 py-2">&#163;{result.weeklyIncomeTax}</td>
+                  <td className="border border-gray-300 p-2">Personal Allowance</td>
+                  <td className="border border-gray-300 p-2">£{(view === "yearly" ? results.personalAllowances : view === "monthly" ? (results.personalAllowances / 12) : (results.personalAllowances / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>
+                {results.taxableIncome > 0 && (
+                  <tr>
+                    <td className="border border-gray-300 p-2">Taxable Income</td>
+                    <td className="border border-gray-300 p-2">£{(view === "yearly" ? results.taxableIncome : view === "monthly" ? (results.taxableIncome / 12) : (results.taxableIncome / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                  </tr>
+                )}
+                {/* Conditional rendering for tax bands */}
+                {isScottishTax === "yes" ? results.taxAmounts.scottish.map((amount, index) => (
+                  amount > 0 && (
+                    <tr key={index}>
+                      <td className="border border-gray-300 p-2">{[19, 20, 21, 42, 45, 48][index]}% Tax</td>
+                      <td className="border border-gray-300 p-2">£{(view === "yearly" ? amount : view === "monthly" ? (amount / 12) : (amount / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    </tr>
+                  )
+                )) : results.taxAmounts.nonScottish.map((amount, index) => (
+                  amount > 0 && (
+                    <tr key={index}>
+                      <td className="border border-gray-300 p-2">{[20, 40, 45][index]}% Tax</td>
+                      <td className="border border-gray-300 p-2">£{(view === "yearly" ? amount : view === "monthly" ? (amount / 12) : (amount / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    </tr>
+                  )
+                ))}
+                {results.nationalInsurance > 0 && (
+                  <tr>
+                    <td className="border border-gray-300 p-2">National Insurance</td>
+                    <td className="border border-gray-300 p-2">£{(view === "yearly" ? results.nationalInsurance : view === "monthly" ? (results.nationalInsurance / 12) : (results.nationalInsurance / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                  </tr>
+                )}
                 <tr>
-                  <td className="border px-4 py-2">National Insurance</td>
-                  <td className="border px-4 py-2">&#163;{result.nationalInsurance}</td>
-                  <td className="border px-4 py-2">&#163;{result.monthlyNationalInsurance}</td>
-                  <td className="border px-4 py-2">&#163;{result.weeklyNationalInsurance}</td>
-                </tr>
-                <tr>
-                  <td className="border px-4 py-2">Take Home Pay</td>
-                  <td className="border px-4 py-2">&#163;{result.takeHomePay}</td>
-                  <td className="border px-4 py-2">&#163;{result.monthlyTakeHomePay}</td>
-                  <td className="border px-4 py-2">&#163;{result.weeklyTakeHomePay}</td>
+                  <td className="border border-gray-300 p-2">Take Home Pay</td>
+                  <td className="border border-gray-300 p-2">£{(view === "yearly" ? results.takeHomePay : view === "monthly" ? (results.takeHomePay / 12) : (results.takeHomePay / 52)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </div>
-
-
-        <div className="mt-8 justify-center items-center">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Income Breakdown</h2>
-          <div className="w-full h-[400px] max-w-md">
-            <Pie
-              data={chartData}
-              options={{
-                maintainAspectRatio: false
-              }}
-            />
-          </div>
-        </div>
-
-      <Tool_Footer message="Calculate your tax liabilities and explore ways to save more. Get started on planning your tax strategy now!" />
-      <CalculatorList activeCalculator="Tax Calculator" />
+        )}
       </div>
-
     </div>
   );
 };
