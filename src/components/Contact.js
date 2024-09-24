@@ -44,7 +44,7 @@ const ContactUs = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await fetch('https://finwisebackend.onrender.com/api/contact', {
+        const response = await fetch('https://api.finwiseschool.com/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
