@@ -94,7 +94,9 @@ const writeDate = formatDate(date);
               Submit
             </button>
           )}
+          
         </form>
+        <h1 className=' text-white mt-[2%] ml-[1%]'>Signup for monthly newsletter</h1>
       </div>
     </>
   );
