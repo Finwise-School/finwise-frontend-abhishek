@@ -27,7 +27,7 @@ const Books = () => {
           <div className="flex justify-center space-x-6 overflow-x-scroll">
             {['book1.png', 'book2.png', 'book3.png', 'book4.png'].map((book, index) => (
               <div key={index} className="rounded-full bg-white p-2">
-                <img src={`/path/to/${book}`} alt={`Book ${index}`} className="w-24 h-24 object-cover rounded-full" />
+                <img src={`/assets/images/books/${book}`} alt={`Book ${index}`} className="w-24 h-24 object-cover rounded-full" />
               </div>
             ))}
           </div>
