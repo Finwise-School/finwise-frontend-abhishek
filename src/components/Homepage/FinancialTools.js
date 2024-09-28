@@ -148,15 +148,15 @@ const FinancialTools = () => {
           <ToolCard key={index} {...tool} />
         ))}
       </div>
-      <div className="dots-container">
-        {tools.map((_, index) => (
-          <div
-            key={index}
-            className={`dot ${activeDot === index ? 'active' : ''}`}
-            onClick={() => handleDotClick(index)}
-          />
-        ))}
-      </div>
+      <div className="dots-container hidden md:hidden">
+  {tools.map((_, index) => (
+    <div
+      key={index}
+      className={`dot ${activeDot === index ? 'active' : ''}`}
+      onClick={() => handleDotClick(index)}
+    />
+  ))}
+</div>
     </section>
   );
 };
