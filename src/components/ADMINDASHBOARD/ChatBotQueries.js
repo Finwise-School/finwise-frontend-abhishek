@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Table } from "flowbite-react";
 import axios from 'axios';
 import DeletePage from './DeletePage';
+import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 'react-icons/hi'; // Importing icons
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 
 const ChatBotQueries = () => {
   const [chatbotData, setChatbotData] = useState([]);
@@ -15,6 +18,7 @@ const ChatBotQueries = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/chatbot');
+        // const response = await axios.get('http://localhost:5000/api/admindashboard/chatbot');
         setChatbotData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
@@ -37,6 +41,7 @@ const ChatBotQueries = () => {
     if (chatbotId) {
       try {
         const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/chatbot-delete', { id: chatbotId });
+        // const response = await axios.post('http://localhost:5000/api/admindashboard/chatbot-delete', { id: chatbotId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted chatbot query from state
@@ -51,9 +56,62 @@ const ChatBotQueries = () => {
     }
   };
 
+  const handleDeleteAll = async () => {
+    const userInput = prompt("Type 'TRUE' to confirm deletion of all Chatbot data:");
+    
+    if (userInput !== 'TRUE') {
+      alert("Deletion canceled. Please type 'TRUE' to proceed.");
+      return;
+    }
+  
+    try {
+      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-chatbot');
+      if (response.status === 200) {
+        console.log('All blogs deleted');
+        // Refresh the blogs data here
+        setChatbotData([]); // Clear the state or refetch the blogs
+        // Optionally, you could also fetch the latest blogs after deletion
+        // fetchBlogs(); // Assuming you have a fetchBlogs function
+      } else {
+        console.error('Error:', response.data);
+      }
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
+
+  const fetchDataAndDownloadExcel = async () => {
+    try {
+      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/chatbot'); // Replace with your API endpoint
+      const data = await response.json();
+  
+      // Convert cleaned data to worksheet
+      const worksheet = XLSX.utils.json_to_sheet(data);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+  
+      // Generate buffer and save file
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+      saveAs(blob, 'Chatbotdata.xlsx'); // Name your file as needed
+    } catch (error) {
+      console.error("Error downloading Excel file:", error);
+    }
+  };
+
   return (
     <>
-    <p onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>Refresh</p>
+      <div className='flex flex-row justify-between mb-4'>
+      <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
+        <HiRefresh className="inline mr-1 m-auto" /> Refresh
+      </button>
+      <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${chatbotData.length > 0 ? 'block' : 'hidden'}`}>
+        Delete All
+      </button>
+      <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
+        <HiDownload className="inline mr-1 m-auto" /> Download Excel
+      </button>
+      </div>
     {chatbotData.length > 0 ? (
           <div className="overflow-x-auto">
           <Table hoverable>
@@ -80,8 +138,8 @@ const ChatBotQueries = () => {
                   <Table.Cell>{item.query}</Table.Cell>
                   <Table.Cell>{item.writeDate}</Table.Cell>
                   <Table.Cell>
-                    <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
-                      Delete
+                   <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
+                   <HiTrash className="inline-block mr-1" /> Delete
                     </button>
                   </Table.Cell>
                 </Table.Row>
