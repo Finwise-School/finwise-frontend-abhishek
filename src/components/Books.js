@@ -134,7 +134,7 @@ const Books = () => {
 
 {/* Promotion Section */}
 <div>
-<div className="bg-pink-200 text-black flex pt-10 h-auto px-10 ml-40 mr-10 items-center w-[79%] h-[50%]">
+<div className="bg-pink-200 text-black flex pt-10 h-auto px-10 mr-10 items-center w-[79%] h-[50%]">
   <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
     <div className="md:w-1/2">
       <div className="flex mb-4">
