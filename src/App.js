@@ -35,6 +35,8 @@ import QuotesHeader from "./components/QuotesHeader";
 import UnderConst from "./components/UnderDevelopement";
 import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
 import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
+import Errors from "./components/error";
+import Books from "./components/Books";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const ProtectedRoute = ({ children }) => {
@@ -83,6 +85,7 @@ const App = () => {
             <Route path="/blogswriting" element={<BlogsWriting />} />
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
             <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
+            <Route path="/books" element={<Books />} />
             <Route
               path="/profile"
               element={
@@ -92,6 +95,7 @@ const App = () => {
               }
             />
             <Route path="/faqs" element={<FAQ />} />
+            <Route path="*" element={<Errors/>}/>
           </Routes>
           <Chatbot />
           <Footer />

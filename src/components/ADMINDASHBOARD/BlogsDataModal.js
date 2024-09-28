@@ -1,6 +1,8 @@
 import { Button, Modal } from "flowbite-react";
+import { HiCheckCircle, HiXCircle } from 'react-icons/hi'; // Import icons
 
-const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, item_content, item_date, item_approved }) => {
+
+const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, item_content, item_date, item_imgurl, item_approved }) => {
   return (
     <Modal show={true} size="7xl" onClose={() => setOpenModal()}>
       <Modal.Header>
@@ -8,6 +10,10 @@ const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, i
       </Modal.Header>
       <Modal.Body>
         <div className="space-y-6">
+          <div className="flex flex-row">
+           <img src={item_imgurl} alt="" />
+           <p>This is Thumbnail</p>
+          </div>
           <p dangerouslySetInnerHTML={{ __html: item_content }} />
           <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
             Write Date: {item_date}
@@ -16,9 +22,11 @@ const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, i
       </Modal.Body>
       <Modal.Footer className="flex flex-row justify-between">
         <div className="flex flex-row">
-          <Button color={!item_approved ? "success" : "failure"} onClick={() => setApproveoption(item_id)} className="mx-1">
-            {!item_approved ? "Approve" : "Revoke"}
-          </Button>
+        <Button color={!item_approved ? "success" : "failure"} onClick={() => setApproveoption(item_id)} className="mx-1">
+          {!item_approved ? <HiCheckCircle className="inline mr-1 m-auto" /> : <HiXCircle className="inline mr-1 m-auto" />}
+          {!item_approved ? "Approve" : "Revoke"}
+        </Button>
+
           <Button color="gray" onClick={() => setOpenModal()} className="mx-1">
             Decline
           </Button>
