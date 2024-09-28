@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Modal } from "flowbite-react";
-import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { HiOutlineExclamationCircle, HiCheck, HiX } from "react-icons/hi";
+
 
 const DeletePage = ({ openModal, setOpenModal, handleDeleteOption }) => {
   return (
@@ -13,12 +14,13 @@ const DeletePage = ({ openModal, setOpenModal, handleDeleteOption }) => {
             Are you sure you want to delete this Data?
           </h3>
           <div className="flex justify-center gap-4">
-            <Button color="failure" onClick={handleDeleteOption}>
-              {"Yes, I'm sure"}
-            </Button>
-            <Button color="gray" onClick={() => setOpenModal(false)}>
-              No, cancel
-            </Button>
+          <Button color="failure" onClick={handleDeleteOption}>
+           <HiCheck className="inline-block mr-1 m-auto" /> Yes, I'm sure
+          </Button>
+          <Button color="gray" onClick={() => setOpenModal(false)}>
+           <HiX className="inline-block mr-1 m-auto" /> No, cancel
+          </Button>
+
           </div>
         </div>
       </Modal.Body>
