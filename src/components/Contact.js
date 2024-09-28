@@ -199,9 +199,9 @@ const ContactUs = () => {
               {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
             </div>
 
-            {/* Checkbox and Button Section */}
+            
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-              {/* Checkbox */}
+             
               <div className="flex items-center mb-4 md:mb-0">
                 <input
                   id="terms"
@@ -217,7 +217,7 @@ const ContactUs = () => {
                 {errors.terms && <p className="text-red-500 text-sm">{errors.terms}</p>}
               </div>
 
-              {/* Submit Button */}
+        
               <div className="text-right">
                 <button
                   type="submit"
