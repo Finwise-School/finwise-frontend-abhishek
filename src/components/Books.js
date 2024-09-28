@@ -4,7 +4,6 @@ import heroo from "../assets/images/books/heroo.png";
 import join from "../assets/images/books/joined.png"
 // Book and guide data
 
-const d= new Date();
 const bookList = [
   {
     imageSrc: require("../assets/images/books/budget.png"),
@@ -90,7 +89,7 @@ const Books = () => {
   return (
     <div className="font-sans">
       {/* Hero Section */}
-      <section className="bg-green-600 text-white pt-16">
+      <section className="fin-head text-white pt-16">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
           <div className="md:w-1/2">
             <h1 className="text-4xl font-bold mb-4">2-Week Plan to Jump-Start Your Healing</h1>
@@ -109,7 +108,7 @@ const Books = () => {
       </section>
  {/* carousel section */}
    
- <div className="p-16 flex flex-col items-center ">  
+ <div className=" p-14 flex flex-col items-center ">  
   <h2 className="font-bold text-black text-2xl text-center mb-[4%]">Browse by Category</h2> 
   <div className="container mx-auto">          
     <div className="flex justify-center space-x-6 overflow-x-scroll">
@@ -133,7 +132,7 @@ const Books = () => {
 
 {/* Promotion Section */}
 <div>
-<div className="bg-pink-200 text-black flex pt-10 h-auto px-10">
+<div className="finwise-back ml-[14%] mr-[14%] m text-black flex pt-10 h-auto px-10">
   <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
     <div className="md:w-1/2">
       <div className="flex mb-4">
@@ -156,7 +155,7 @@ const Books = () => {
 </div>
 
       {/* Book List Section */}
-      <section className=" mb-[10%]">
+      <section className=" mb-[10%] ml-[13%] mr-[13%]">
       <h2 className="font-semibold text-black text-3xl  p-12 "> New Arrivals</h2> 
         <div className="container mx-auto grid grid-cols-2 md:grid-cols-4  text-start">
           {bookList.map((book, index) => (
@@ -174,7 +173,7 @@ const Books = () => {
       </section>
 
       {/* Guides of the Day Section */}
-      <div className="bg-orange-300 py-16">
+      <div className="fin-back py-16">
         <div className="container mx-auto">
          <div className=' flex'>
          <h2 className="text-black text-3xl font-bold  "> Guides of the Day</h2>

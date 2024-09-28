@@ -375,4 +375,14 @@ strong {
   width: 1.75rem;
 }
 
+.finwise-back {
+  background-color: #fbd6e8;
+}
 
+.fin-back{
+  background-color: #fce1d1;
+}
+
+.fin-head{
+  background-color: rgb(41, 154, 93);
+}
