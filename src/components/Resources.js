@@ -190,14 +190,14 @@ const Books = () => {
           <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-1"> {new Date().toLocaleDateString()}</h2>
 
          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 ">
             {guides.map((guide, index) => (
               <div>
                 <div key={index} className="bg-white p-5 grid grid-cols-2">
                 <img
                   src={guide.imageSrc}
                   alt={`Guide ${index}`}
-                  className="w-full h-40 object-cover mb-4"
+                  className="w-full h-40 object-cover mb-4 col-span-1"
                 />   
                 <p className=''>{guide.author}</p>
                 <h2 className=' font-bold text-black mb-10'>{guide.title}</h2>
