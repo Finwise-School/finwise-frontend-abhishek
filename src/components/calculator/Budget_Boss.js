@@ -1,78 +1,77 @@
 import React, { useState } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import { Pie } from 'react-chartjs-2';
-import CalculatorList from './Calulators_List';
-import Info from './info/Budget_Info.js';
+import IncomeSection from './budget/IncomeSection';
+import HouseholdEssentialsSection from './budget/HouseholdEssentialsSection';
+import OtherSpendingsSection from './budget/OtherSpendingsSection';
+import SummarySection from './budget/SummarySection';
 import Tool_Footer from './Tools_footer';
+import Info from './info/Budget_Info.js';
+import CalculatorList from './Calulators_List';
 
 const BudgetCalculator = () => {
   const [incomes, setIncomes] = useState([
     { source: 'Salary', amount: 2000, frequency: 'monthly' },
-    { source: 'Freelance', amount: 500, frequency: 'monthly' },
   ]);
+
   const [homeEssentials, setHomeEssentials] = useState([
-    { name: 'Rent', spending: 800, frequency: 'monthly' },
-    { name: 'Groceries', spending: 300, frequency: 'monthly' },
+    { name: 'Rent or Mortgage', spending: 0, frequency: 'monthly' },
+    { name: 'Food & Groceries', spending: 0, frequency: 'weekly' },
+    { name: 'Home Insurance', spending: 0, frequency: 'monthly' },
+    { name: 'Boiler Cover', spending: 0, frequency: 'monthly' },
+    { name: 'Pet Expenditure (Insurance/Food/Walking)', spending: 0, frequency: 'monthly' },
+    { name: 'Gas', spending: 0, frequency: 'monthly' },
+    { name: 'Electricity', spending: 0, frequency: 'monthly' },
+    { name: 'Water', spending: 0, frequency: 'monthly' },
+    { name: 'Council Tax', spending: 0, frequency: 'monthly' }
   ]);
-  const [otherSpendings, setOtherSpendings] = useState([
-    { name: 'Entertainment', spending: 150, frequency: 'monthly' },
+
+  const [technologySpendings, setTechnologySpendings] = useState([
+    { name: 'Internet', spending: 0, frequency: 'monthly' },
+    { name: 'TV Package', spending: 0, frequency: 'monthly' },
+    { name: 'Streaming Services', spending: 0, frequency: 'monthly' },
+    { name: 'TV Licence', spending: 0, frequency: 'monthly' },
+    { name: 'Mobile Phones', spending: 0, frequency: 'monthly' },
   ]);
-  const [showHomeEssentials, setShowHomeEssentials] = useState(false);
-  const [showOtherSpendings, setShowOtherSpendings] = useState(false);
-  const [isFilled, setIsFilled] = useState(true);
 
-  const addIncome = () => setIncomes([...incomes, { source: '', amount: 0, frequency: 'monthly' }]);
-  const removeIncome = (index) => setIncomes(incomes.filter((_, i) => i !== index));
+  const [entertainmentSpendings, setEntertainmentSpendings] = useState([
+    { name: 'Eating out', spending: 0, frequency: 'monthly' },
+    { name: 'Hobbies', spending: 0, frequency: 'monthly' },
+    { name: 'Books', spending: 0, frequency: 'monthly' },
+    { name: 'Music', spending: 0, frequency: 'monthly' },
+    { name: 'Film', spending: 0, frequency: 'monthly' },
+  ]);
 
-  const handleIncomeChange = (index, field, value) => {
-    const newIncomes = [...incomes];
-    newIncomes[index][field] = value;
+  const [healthSpendings, setHealthSpendings] = useState([
+    { name: 'Fitness', spending: 0, frequency: 'monthly' },
+    { name: 'Gym', spending: 0, frequency: 'monthly' },
+    { name: 'Sports', spending: 0, frequency: 'monthly' },
+    { name: 'Medical Expenses', spending: 0, frequency: 'monthly' },
+    { name: 'Health Insurance', spending: 0, frequency: 'monthly' },
+    { name: 'Life Insurance', spending: 0, frequency: 'monthly' },
+    { name: 'Hairdressers', spending: 0, frequency: 'monthly' },
+  ]);
 
-    // Validate only the amount
-    const isValid = field === 'amount' ? !isNaN(value) && value.trim() !== '' : true;
-    newIncomes[index].isValid = isValid;
+  const [transportSpendings, setTransportSpendings] = useState([
+    { name: 'Car Insurance', spending: 0, frequency: 'monthly' },
+    { name: 'Car Maintenance', spending: 0, frequency: 'monthly' },
+    { name: 'Fuel', spending: 0, frequency: 'monthly' },
+    { name: 'Public Transport', spending: 0, frequency: 'monthly' },
+    { name: 'Parking', spending: 0, frequency: 'monthly' },
+    { name: 'Tax & MOT', spending: 0, frequency: 'monthly' },
+    { name: "Taxi's", spending: 0, frequency: 'monthly' },
+    { name: 'Car Finance (PCP/Lease/Loan)', spending: 0, frequency: 'monthly' },
+  ]);
 
-    setIncomes(newIncomes);
-    checkIfFilled();
-  };
+  const [familySpendings, setFamilySpendings] = useState([
+    { name: 'School Fees', spending: 0, frequency: 'monthly' },
+    { name: 'Childcare', spending: 0, frequency: 'monthly' },
+  ]);
 
-
-  const addHomeEssential = () => setHomeEssentials([...homeEssentials, { name: '', spending: 0, frequency: 'monthly' }]);
-  const removeHomeEssential = (index) => setHomeEssentials(homeEssentials.filter((_, i) => i !== index));
-
-  const handleHomeEssentialChange = (index, field, value) => {
-    const newEssentials = [...homeEssentials];
-    newEssentials[index][field] = value;
-
-    // Validate only the spending amount
-    const isValid = field === 'spending' ? !isNaN(value) && value.trim() !== '' : true;
-    newEssentials[index].isValid = isValid;
-
-    setHomeEssentials(newEssentials);
-    checkIfFilled();
-  };
-  const addOtherSpending = () => setOtherSpendings([...otherSpendings, { name: '', spending: 0, frequency: 'monthly' }]);
-  const removeOtherSpending = (index) => setOtherSpendings(otherSpendings.filter((_, i) => i !== index));
-
-
-  const handleOtherSpendingChange = (index, field, value) => {
-    const newSpendings = [...otherSpendings];
-    newSpendings[index][field] = value;
-
-    // Validate only the spending amount
-    const isValid = field === 'spending' ? !isNaN(value) && value.trim() !== '' : true;
-    newSpendings[index].isValid = isValid;
-
-    setOtherSpendings(newSpendings);
-    checkIfFilled();
-  };
-
-  const checkIfFilled = () => {
-    const filledIn = incomes.some(income => income.source && income.amount > 0) ||
-      homeEssentials.some(essential => essential.name && essential.spending > 0) ||
-      otherSpendings.some(spending => spending.name && spending.spending > 0);
-    setIsFilled(filledIn);
-  };
+  const [financeSpendings, setFinanceSpendings] = useState([
+    { name: 'Loan Repayments', spending: 0, frequency: 'monthly' },
+    { name: 'Loan', spending: 0, frequency: 'monthly' },
+    { name: 'Credit Card Repayments', spending: 0, frequency: 'monthly' },
+    { name: 'Charity', spending: 0, frequency: 'monthly' },
+  ]);
 
   const calculateMonthlyAmount = (amount, frequency) => {
     return frequency === 'weekly' ? amount * 4.3 : amount;
@@ -81,272 +80,91 @@ const BudgetCalculator = () => {
   const calculateTotals = () => {
     const totalIncome = incomes.reduce((sum, income) => sum + calculateMonthlyAmount(parseFloat(income.amount) || 0, income.frequency), 0);
     const totalHomeEssentials = homeEssentials.reduce((sum, essential) => sum + calculateMonthlyAmount(parseFloat(essential.spending) || 0, essential.frequency), 0);
-    const totalOtherSpendings = otherSpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
-    const totalSpending = totalHomeEssentials + totalOtherSpendings;
+    const totalTechnology = technologySpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
+    const totalEntertainment = entertainmentSpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
+    const totalHealth = healthSpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
+    const totalTransport = transportSpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
+    const totalFamily = familySpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
+    const totalFinance = financeSpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
 
+    const totalOtherSpendings = totalTechnology + totalEntertainment + totalHealth + totalTransport + totalFamily + totalFinance;
+    const totalSpending = totalHomeEssentials + totalOtherSpendings;
     return { totalIncome, totalHomeEssentials, totalOtherSpendings, totalSpending };
   };
 
-  const { totalIncome, totalHomeEssentials, totalOtherSpendings, totalSpending } = calculateTotals();
+  const totals = calculateTotals();
+  const { totalIncome, totalSpending } = totals;
 
-  const pieLabels = [...homeEssentials.map(e => e.name), ...otherSpendings.map(s => s.name)];
-  const pieDataValues = [...homeEssentials.map(e => calculateMonthlyAmount(e.spending, e.frequency)), ...otherSpendings.map(s => calculateMonthlyAmount(s.spending, s.frequency))];
-
-  const pieChartData = {
-    labels: pieLabels.length > 0 ? pieLabels : ['No Spendings'],
-    datasets: [{
-      data: pieDataValues.length > 0 ? pieDataValues : [1],
-      backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
-      hoverBackgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF'],
-    }],
-  };
-
-  const financialStatus = totalIncome > totalSpending ? 'Great news! You are within budget.' :
-    totalIncome === totalSpending ? 'Not too bad, you are breaking even.' :
-      'Danger! Your spending exceeds your income.';
+  // Determine Financial Status
+  const financialStatus = totalIncome > totalSpending ? 'You are within your budget!' :
+                          totalIncome === totalSpending ? 'You are exactly at your budget!' :
+                          'You are over your budget!';
 
   return (
     <div className="bg-gray-50 p-2">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
-        <div className="mb-0">
-          <h1 className="text-2xl font-semibold finwise-green">Budget Boss Calculator</h1>
-          <p className="finwise-blue">Manage your income and expenses effortlessly to achieve your financial goals.</p>
-        </div>
-
-        {/* Income Section */}
-        <div className="section mt-16 mb-6">
-          <h2 className="text-2xl font-semibold text-green-600 mb-4">Enter Income Details</h2>
-          {incomes.map((income, index) => (
-            <div key={index} className="flex flex-col md:flex-row md:items-center md:space-x-4 mb-4">
-              <span className="text-sm text-gray-600">Income Source {index + 1}</span>
-              <input
-                type="text"
-                value={income.source}
-                onChange={(e) => handleIncomeChange(index, 'source', e.target.value)}
-                placeholder="Income Source"
-                className="p-2 border rounded-lg flex-grow mb-2 md:mb-0"
-              />
-              <div className="flex items-center mb-2 md:mb-0">
-                <div className="relative w-32">
-                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2">£</span>
-                  <input
-                    type="number"
-                    value={income.amount}
-                    onChange={(e) => handleIncomeChange(index, 'amount', e.target.value)}
-                    placeholder="Amount"
-                    className={`pl-6 p-2 border rounded-lg w-full ${income.isValid !== undefined && !income.isValid ? 'border-red-500' : ''}`}
-                  />
+        <div className="mb-6">
+                    <h1 className="text-2xl font-semibold finwise-green">Budget Boss Calculator</h1>
+                    <p className="finwise-blue">Manage your income and expenses effortlessly to achieve your financial goals.</p>
                 </div>
+        <IncomeSection incomes={incomes} setIncomes={setIncomes} />
+        <HouseholdEssentialsSection homeEssentials={homeEssentials} setHomeEssentials={setHomeEssentials} />
+        <OtherSpendingsSection
+          technologySpendings={technologySpendings}
+          setTechnologySpendings={setTechnologySpendings}
+          entertainmentSpendings={entertainmentSpendings}
+          setEntertainmentSpendings={setEntertainmentSpendings}
+          healthSpendings={healthSpendings}
+          setHealthSpendings={setHealthSpendings}
+          transportSpendings={transportSpendings}
+          setTransportSpendings={setTransportSpendings}
+          familySpendings={familySpendings}
+          setFamilySpendings={setFamilySpendings}
+          financeSpendings={financeSpendings}
+          setFinanceSpendings={setFinanceSpendings}
+        />
 
-                <span className="ml-2">per</span>
-                <select
-                  value={income.frequency}
-                  onChange={(e) => handleIncomeChange(index, 'frequency', e.target.value)}
-                  className="p-2 border rounded-lg ml-2"
-                >
-                  <option value="weekly">Week</option>
-                  <option value="monthly">Month</option>
-                </select>
-                <button onClick={() => removeIncome(index)} className="ml-2 text-red-500">
-                  <i className="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          ))}
-          <button onClick={addIncome} className="bg-green-500 text-white p-2 rounded-lg hover:bg-green-600">
-            <i className="fas fa-plus mr-2"></i>Add Income
-          </button>
-        </div>
-        <hr className="border-t-2 border-gray-500 my-4" />
-
-        {/* Home Essentials Section */}
-        <div className="section mb-6">
-          <h2 className="text-2xl font-semibold finwise-blue mt-8 mb-8">Enter your Spendings 💸</h2>
-          <h2 className="text-2xl font-semibold text-green-600">Household Essentials 🏠</h2>
-          <p className="text-gray-500 mb-4 text-sm">This can include essential spending on Rent, Utilities, Groceries, Insurance, and more.</p>
-          {homeEssentials.map((essential, index) => (
-            <div key={index} className="flex flex-col md:flex-row md:items-center md:space-x-4 mb-4">
-              <span className="text-sm text-gray-600">Household Essential {index + 1}</span>
-              <input
-                type="text"
-                value={essential.name}
-                onChange={(e) => handleHomeEssentialChange(index, 'name', e.target.value)}
-                placeholder="Expense Name"
-                className="p-2 border rounded-lg w-full mb-2 md:mb-0"
-              />
-              <div className="flex items-center mb-2 md:mb-0">
-                <div className="relative w-32">
-                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2">£</span>
-                  <input
-                    type="number"
-                    value={essential.spending}
-                    onChange={(e) => handleHomeEssentialChange(index, 'spending', e.target.value)}
-                    placeholder="Spending Amount"
-                    className={`pl-6 p-2 border rounded-lg w-full ${essential.isValid !== undefined && !essential.isValid ? 'border-red-500' : ''}`}
-                  />
-                </div>
-
-                <span className="ml-2">per</span>
-                <select
-                  value={essential.frequency}
-                  onChange={(e) => handleHomeEssentialChange(index, 'frequency', e.target.value)}
-                  className="p-2 border rounded-lg ml-2"
-                >
-                  <option value="weekly">Week</option>
-                  <option value="monthly">Month</option>
-                </select>
-                <button onClick={() => removeHomeEssential(index)} className="ml-2 text-red-500">
-                  <i className="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          ))}
-          <button onClick={addHomeEssential} className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
-            <i className="fas fa-plus mr-2"></i>Add Expense
-          </button>
+     
+        <SummarySection
+          totals={totals}
+          homeEssentials={homeEssentials}
+          otherSpendings={[
+            ...technologySpendings,
+            ...entertainmentSpendings,
+            ...healthSpendings,
+            ...transportSpendings,
+            ...familySpendings,
+            ...financeSpendings,
+          ]}
+        />
+   {/* Financial Status Message */}
+   <div className="text-center mt-4">
+          <h1 style={{fontSize: "40px", fontWeight: "bold"}} className={totalIncome > totalSpending ? 'text-green-500' : totalIncome === totalSpending ? 'text-gray-700' : 'text-red-600'}>
+            {financialStatus}
+          </h1>
         </div>
 
-        {/* Other Spendings Section */}
-        <div className="section mb-6">
-          <h2 className="text-2xl font-semibold text-green-600 mb-2">Other Spendings 💵</h2>
-          <p className="text-gray-500 mb-4 text-sm">This can include spending on Technology, Entertainment, Health, Transport, Family & Kids, Finance, and more.</p>
-          {otherSpendings.map((spending, index) => (
-            <div key={index} className="flex flex-col md:flex-row md:items-center md:space-x-4 mb-4">
-              <span className="text-sm text-gray-600">Other Spending {index + 1}</span>
-              <input
-                type="text"
-                value={spending.name}
-                onChange={(e) => handleOtherSpendingChange(index, 'name', e.target.value)}
-                placeholder="Spending Name"
-                className="p-2 border rounded-lg w-full mb-2 md:mb-0"
-              />
+        {/* Summary Section */}
+        <div className="mt-8 text-center">
+          <h1 className="text-5xl font-bold">£{totalIncome.toFixed(2)}</h1>
+          <p className="text-xl">Monthly Income</p>
+          <h1 className="text-5xl font-bold">£{totalSpending.toFixed(2)}</h1>
+          <p className="text-xl">Monthly Expenses</p>
 
-              <div className="flex items-center mb-2 md:mb-0">
-                <div className="relative w-32">
-                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2">£</span>
-                  <input
-                    type="number"
-                    value={spending.spending}
-                    onChange={(e) => handleOtherSpendingChange(index, 'spending', e.target.value)}
-                    placeholder="Spending Amount"
-                    className={`pl-6 p-2 border rounded-lg w-full ${spending.isValid !== undefined && !spending.isValid ? 'border-red-500' : ''}`}
-                  />
-                </div>
-
-                <span className="ml-2">per</span>
-                <select
-                  value={spending.frequency}
-                  onChange={(e) => handleOtherSpendingChange(index, 'frequency', e.target.value)}
-                  className="p-2 border rounded-lg ml-2"
-                >
-                  <option value="weekly">Week</option>
-                  <option value="monthly">Month</option>
-                </select>
-                <button onClick={() => removeOtherSpending(index)} className="ml-2 text-red-500">
-                  <i className="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          ))}
-          <button onClick={addOtherSpending} className="bg-purple-500 text-white p-2 rounded-lg hover:bg-purple-600">
-            <i className="fas fa-plus mr-2"></i>Add Spending
-          </button>
-        </div>
-        <hr className="border-t-2 border-gray-500 my-4" />
-
-        {/* Conditional Rendering of Summary Table and Pie Chart */}
-        {isFilled && (
-          <>
-            {/* Summary Table */}
-            <div className="section mb-6">
-              <h2 className="text-2xl font-bold text-green-600 mb-4">Summary</h2>
-              <table className="min-w-full border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-200">
-                    <th className="border p-2">Category</th>
-                    <th className="border p-2">Total (£)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-2 text-center">Total Income</td>
-                    <td className="border p-2 text-center text-green-600">£{totalIncome.toFixed(2)}</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-2 text-center">
-                      <button onClick={() => setShowHomeEssentials(!showHomeEssentials)} className="text-blue-500">
-                        Home Essentials {showHomeEssentials ? '-' : '+'}
-                      </button>
-                    </td>
-                    <td className="border p-2 text-center">£{totalHomeEssentials.toFixed(2)}</td>
-                  </tr>
-                  {showHomeEssentials && homeEssentials.map((essential, index) => (
-                    <tr key={index}>
-                      <td className="border p-2 pl-6 text-center">• {essential.name}</td>
-                      <td className="border p-2 text-center">£{(calculateMonthlyAmount(parseFloat(essential.spending) || 0, essential.frequency)).toFixed(2)}</td>
-                    </tr>
-                  ))}
-                  <tr>
-                    <td className="border p-2 text-center">
-                      <button onClick={() => setShowOtherSpendings(!showOtherSpendings)} className="text-blue-500">
-                        Other Spendings {showOtherSpendings ? '-' : '+'}
-                      </button>
-                    </td>
-                    <td className="border p-2 text-center">£{totalOtherSpendings.toFixed(2)}</td>
-                  </tr>
-                  {showOtherSpendings && otherSpendings.map((spending, index) => (
-                    <tr key={index}>
-                      <td className="border p-2 pl-6 text-center">• {spending.name}</td>
-                      <td className="border p-2 text-center">£{(calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency)).toFixed(2)}</td>
-                    </tr>
-                  ))}
-                  <tr className="font-bold">
-                    <td className="border p-2 text-center">Total Spending</td>
-                    <td className="border p-2 text-red-600 text-center">£{totalSpending.toFixed(2)}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* Pie Chart */}
-            <h2 className="text-2xl font-semibold text-green-600">Spending Breakdown</h2>
-            <div className="section flex justify-center mb-6">
-              <div style={{ width: '300px', height: '300px' }}>
-                <Pie data={pieChartData} />
-              </div>
-            </div>
-
-            {/* Financial Status Message */}
-            <div className="text-center mt-4">
-              <h1 className={totalIncome > totalSpending ? 'text-green-500' : totalIncome === totalSpending ? 'text-gray-700' : 'text-red-600'}>
-                {financialStatus}
+          {totalIncome <= totalSpending && (
+            <>
+              <h1 className="text-4xl font-bold mt-4" style={{ color: 'red' }}>
+                It's not great news
               </h1>
-            </div>
-
-            {/* Summary Section */}
-            <div className="mt-8 text-center">
-              <h1 className="text-5xl font-bold">£{totalIncome.toFixed(2)}</h1>
-              <p className="text-xl">Monthly Income</p>
-              <h1 className="text-5xl font-bold">£{totalSpending.toFixed(2)}</h1>
-              <p className="text-xl">Monthly Expenses</p>
-
-              {totalIncome <= totalSpending && (
-                <>
-                  <h1 className="text-4xl font-bold mt-4" style={{ color: 'red' }}>
-                    It's not great news
-                  </h1>
-                  <p className="text-3xl mt-2">
-                    After accounting for your monthly expenses, you'll face a shortfall of
-                    <span className="font-bold text-red-500"> £{(totalSpending - totalIncome).toFixed(2)}</span>.
-                  </p>
-                </>
-              )}
-            </div>
-          </>
-        )}
-        <div style={{ marginTop: "-0rem" }}>
-          <Tool_Footer message="Understand your income and expenses better to make smarter financial choices." />
+              <p className="text-3xl mt-2">
+                After accounting for your monthly expenses, you'll face a shortfall of
+                <span className="font-bold text-red-500"> £{(totalSpending - totalIncome).toFixed(2)}</span>.
+              </p>
+            </>
+          )}
         </div>
+
+        <Tool_Footer message="Understand your income and expenses better to make smarter financial choices." />
         <Info />
         <CalculatorList activeCalculator="Budget Calculator" />
       </div>

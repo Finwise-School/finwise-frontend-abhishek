@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ToolCard = ({ title, description, imageSrc, redirect }) => (
   <div className="financial-tool-card flex overflow-hidden flex-col items-center p-5 bg-green-500 rounded-xl border border-solid border-neutral-800 w-full md:w-[30.94vw] max-w-[371px] min-w-[309px]">
@@ -7,10 +7,17 @@ const ToolCard = ({ title, description, imageSrc, redirect }) => (
       <Link to={redirect}>
         <h3 className="text-2xl font-semibold text-white">{title}</h3>
       </Link>
-      <p className="mt-3 text-lg font-medium leading-7 text-blue-900 text-wrap">{description}</p>
+      <p className="mt-3 text-lg font-medium leading-7 text-blue-900 text-wrap">
+        {description}
+      </p>
     </div>
     <Link to={redirect}>
-      <img loading="lazy" src={imageSrc} alt={title} className="object-contain mt-8 w-full rounded-xl aspect-[0.62]" />
+      <img
+        loading="lazy"
+        src={imageSrc}
+        alt={title}
+        className="object-contain mt-8 w-full rounded-xl aspect-[0.62]"
+      />
     </Link>
   </div>
 );
@@ -30,7 +37,8 @@ const FinancialTools = () => {
       const gap = 16; // Gap between cards
       const scrollAmount = cardWidth + gap;
       const numCards = scrollContainer.children.length;
-      const newActiveDot = Math.floor((scrollLeft + containerWidth / 2) / scrollAmount) % numCards;
+      const newActiveDot =
+        Math.floor((scrollLeft + containerWidth / 2) / scrollAmount) % numCards;
       setActiveDot(newActiveDot);
     };
 
@@ -39,7 +47,6 @@ const FinancialTools = () => {
       // const cardWidth = scrollContainer.children[0]?.clientWidth || 0;
       // const gap = 16; // Gap between cards
       // const scrollAmount = cardWidth + gap;
-
       // if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth) {
       //   scrollContainer.scrollLeft = 0;
       // } else {
@@ -66,26 +73,32 @@ const FinancialTools = () => {
   const tools = [
     {
       title: "F.I.R.E Tool",
-      description: "Calculate your Financial Independence Retire Early (F.I.R.E) Number.",
-      imageSrc: require('../Homepage/Tools/fire.png'),
-      redirect: "/tools/fire"
+      description:
+        "Calculate your Financial Independence Retire Early (F.I.R.E) Number.",
+      imageSrc: require("../Homepage/Tools/fire.png"),
+      redirect: "/tools/fire",
     },
     {
       title: "Goal SIP Tool",
-      description: "Plan and implement your financial goals with our Goal SIP tool",
-      imageSrc: require('../Homepage/Tools/goal_sip.png'),
-      redirect: "/tools/goal-sip"
+      description:
+        "Plan and implement your financial goals with our Goal SIP tool",
+      imageSrc: require("../Homepage/Tools/goal_sip.png"),
+      redirect: "/tools/goal-sip",
     },
     {
       title: "More Financial Tools",
-      description: "Use over 10+ calculators and tools that help you with every financial decision.",
-      imageSrc: require('../Homepage/Tools/calc_tools.png'),
-      redirect: "/tools"
-    }
+      description:
+        "Use over 10+ calculators and tools that help you with every financial decision.",
+      imageSrc: require("../Homepage/Tools/calc_tools.png"),
+      redirect: "/tools",
+    },
   ];
 
   return (
-    <section id='features' className="financial-tools-section flex flex-col items-center justify-center px-4 py-10 mt-25 md:px-0 md:mt-0">
+    <section
+      id="features"
+      className="financial-tools-section flex flex-col items-center justify-center px-4 py-10 mt-25 md:px-0 md:mt-0"
+    >
       <style>
         {`
           .scroll-view {
@@ -125,6 +138,11 @@ const FinancialTools = () => {
             display: flex;
             gap: 8px;
           }
+          @media (min-width: 768px) {
+          .dots-container {
+         display: none;
+          }
+          }
           .dot {
             width: 10px;
             height: 10px;
@@ -138,9 +156,12 @@ const FinancialTools = () => {
         `}
       </style>
       <div className="flex flex-col items-center text-center">
-        <h2 className="text-xl font-semibold text-blue-900 mt-15 md:text-5xl max-w-full">10+ Financial Planning Tools</h2>
+        <h2 className="text-xl font-semibold text-blue-900 mt-15 md:text-5xl max-w-full">
+          10+ Financial Planning Tools
+        </h2>
         <p className="mt-3.5 text-lg font-medium text-neutral-400 max-w-full">
-          Tailor your journey to financial freedom with our exclusive financial planning tools.
+          Tailor your journey to financial freedom with our exclusive financial
+          planning tools.
         </p>
       </div>
       <div className="scroll-view mt-10 w-full" ref={scrollContainerRef}>
@@ -149,14 +170,14 @@ const FinancialTools = () => {
         ))}
       </div>
       <div className="dots-container hidden md:hidden">
-  {tools.map((_, index) => (
-    <div
-      key={index}
-      className={`dot ${activeDot === index ? 'active' : ''}`}
-      onClick={() => handleDotClick(index)}
-    />
-  ))}
-</div>
+        {tools.map((_, index) => (
+          <div
+            key={index}
+            className={`dot ${activeDot === index ? "active" : ""}`}
+            onClick={() => handleDotClick(index)}
+          />
+        ))}
+      </div>
     </section>
   );
 };
