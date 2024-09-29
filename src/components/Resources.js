@@ -165,58 +165,55 @@ const Books = () => {
 
       {/* Book List Section */}
       <section className="mb-[8%] ml-[10%] w-[80%]">
-  <h2 className="font-semibold text-black text-3xl p-12">New Arrivals</h2>
-  <div className="container grid grid-cols-2 md:grid-cols-6 gap-1">
-    {bookList.map((book, index) => (
-      <div key={index} className="text-left">
-        <img
-          src={book.imageSrc}
-          alt={`Book ${index}`}
-          className="w-full h-24 object-cover mb-4" 
-        />
-        <p className="font-light italic text-sm">{book.author}</p>
-        <h3 className="font-semibold">{book.title}</h3>
-      </div>
-    ))}
-  </div>
-</section>
+        <h2 className="font-semibold text-black text-3xl p-12">New Arrivals</h2>
+        <div className="container grid grid-cols-2 md:grid-cols-6 gap-1">
+          {bookList.map((book, index) => (
+            <div key={index} className="text-left">
+              <img
+                src={book.imageSrc}
+                alt={`Book ${index}`}
+                className="w-[150%] h-[65%] object-cover mb-4" 
+              />
+              <p className="font-light italic text-sm">{book.author}</p>
+              <h3 className="font-semibold">{book.title}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
 
 
       {/* Guides of the Day Section */}
-      <div className="fin-back pt-[5%]">      
+      <div className="fin-back pt-[5%] mb-[-4%]">      
         <div className="container ">
          <div className=' flex'>
           <h2 className="text-black text-3xl font-bold ml-28"> Guides of the Day</h2>
           <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-1"> {new Date().toLocaleDateString()}</h2>
           </div>
           <div className="grid grid-cols-1 ml-28 md:grid-cols-3 w-[85%]">
-  {guides.map((guide, index) => (
-    <div key={index} className="bg-white p-5 grid grid-cols-2 gap-6 items-center">
-      
-      <div className="w-full h-full">
-        <img
-          src={guide.imageSrc}
-          alt={`Guide ${index}`}
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      
-      <div className="flex flex-col justify-between h-full">
-        <div>
-          <p className="text-gray-500 italic">{guide.author}</p>
-          <h2 className="font-bold text-xl text-black">{guide.title}</h2>
-          <p className="text-gray-500 italic">About the book</p>
+            {guides.map((guide, index) => (
+              <div key={index} className="bg-white p-5 grid grid-cols-2 items-center w-[125%] h-[60%]">
+                
+                <div className="w-[120%] h-[110%]">
+                  <img
+                    src={guide.imageSrc}
+                    alt={`Guide ${index}`}
+                    className="w-[175%] h-[90%] object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-between h-[90%]">
+                  <div>
+                    <p className="text-gray-500 italic ml-[-8%]">{guide.author}</p>
+                    <h2 className="font-bold mt-[8%] mb-[4%] text-[75%] ml-[-8%] text-black">{guide.title}</h2>
+                    <p className="text-gray-500 italic ml-[-8%]">About the book</p>
+                  </div>
+                  <button className="mt-6 ml-[-10%] bg-black text-white py-2 px-4 rounded font-semibold hover:bg-gray-800">
+                    Get Now
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <button className="mt-6 bg-black text-white py-2 px-4 rounded font-semibold hover:bg-gray-800">
-          Get Now
-        </button>
-      </div>
-    </div>
-  ))}
-</div>
-
-         </div>
       </div>
       <EarlyAccessTemplate />
     
