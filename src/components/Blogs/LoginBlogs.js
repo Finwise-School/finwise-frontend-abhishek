@@ -8,7 +8,7 @@ const LoginBlogs = ({ authentication, data }) => {
     const [password, setPassword] = useState('');
     const [incorrect, setIncorrect] = useState(false);
 
-    axios.defaults.baseURL = 'http://localhost:5000';
+    axios.defaults.baseURL = 'https://api.finwiseschool.com';
 
     useEffect(() => {
       const savedEmail = localStorage.getItem('blogsUserEmail');

@@ -25,7 +25,7 @@ const BlogsWriting = ({ placeholder }) => {
         const fetchBlogs = async () => {
             if (userData.length > 0) {
                 try {
-                    const response = await axios.post('http://localhost:5000/api/userBlogsContentFetch', {
+                    const response = await axios.post('https://api.finwiseschool.com/api/userBlogsContentFetch', {
                         ids: userData[0].blogPost // Assuming this is an array of IDs
                     });
                     if (response.status === 200) {
