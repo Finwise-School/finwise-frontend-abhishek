@@ -26,6 +26,9 @@ module.exports = {
         'carousel-slide': 'slide 6s infinite',
         float: 'float 1.5s ease-in-out infinite',
       },
+      colors: {
+        customOrange: '#F1592B', // Add your custom color here
+      },
     },
   },
   variants: {

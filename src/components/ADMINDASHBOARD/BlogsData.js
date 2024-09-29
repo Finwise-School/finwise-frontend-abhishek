@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Card, Table } from "flowbite-react";
+import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 'react-icons/hi'; // Importing icons
 import BlogsDataModal from './BlogsDataModal';
 import DeletePage from './DeletePage';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 
 const BlogsData = () => {
   const [blogsData, setBlogsData] = useState([]);
@@ -35,6 +38,7 @@ const BlogsData = () => {
     if (deleteBlogId) {
       try {
         const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/blogs-delete', { id: deleteBlogId });
+        // const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-delete', { id: deleteBlogId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted blog from state
@@ -49,12 +53,40 @@ const BlogsData = () => {
     }
   };
 
+  const handleDeleteAll = async () => {
+    const userInput = prompt("Type 'TRUE' to confirm deletion of all blogs:");
+    
+    if (userInput !== 'TRUE') {
+      alert("Deletion canceled. Please type 'TRUE' to proceed.");
+      return;
+    }
+  
+    try {
+      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-blogs');
+      if (response.status === 200) {
+        console.log('All blogs deleted');
+        // Refresh the blogs data here
+        setBlogsData([]); // Clear the state or refetch the blogs
+        // Optionally, you could also fetch the latest blogs after deletion
+        // fetchBlogs(); // Assuming you have a fetchBlogs function
+      } else {
+        console.error('Error:', response.data);
+      }
+    } catch (error) {
+      console.log('Error', error);
+    }
+  };
+  
+  
+  
+
   const handleApproveOption = async () => {
     if (selectedBlog) {
       const approveid = selectedBlog._id; // Get the ID of the selected blog
       const newApprovalStatus = !selectedBlog.isApproved; // Toggle the approval status
       try {
         const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/blogs-isApproved', { id: approveid });
+        // const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-isApproved', { id: approveid });
         if (response.status === 200) {
           console.log('Status Changed');
           // Update the state based on the new approval status
@@ -78,6 +110,7 @@ const BlogsData = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/blogs');
+        // const response = await axios.get('http://localhost:5000/api/admindashboard/blogs');
         setBlogsData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
@@ -85,16 +118,79 @@ const BlogsData = () => {
     };
     fetchData();
   }, [btnClick]);
+  
+  // const fetchDataAndDownloadExcel = async () => {
+  //   try {
+  //     const response = await axios.get('http://localhost:5000/api/admindashboard/blogs-excel', {
+  //       responseType: 'blob', // Set response type to 'blob'
+  //     });
+  
+  //     // Create a Blob from the response data
+  //     const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      
+  //     // Save the file with the desired name
+  //     saveAs(blob, 'Blogsdata.xlsx');
+  //   } catch (error) {
+  //     console.error("Error downloading Excel file:", error);
+  //   }
+  // };
+
+  const fetchDataAndDownloadExcel = async () => {
+    try {
+      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/blogs'); // Replace with your API endpoint
+      const data = await response.json();
+  
+      // Function to remove HTML tags
+      const stripHtmlTags = (html) => {
+        return html.replace(/<[^>]*>/g, ''); // Regular expression to remove HTML tags
+      };
+  
+      // Clean up the data
+      const cleanedData = data.map(item => {
+        return {
+          ...item,
+          // Assuming 'content' is the attribute containing HTML. Replace it with your actual attribute name.
+          content: stripHtmlTags(item.content) // Strip HTML tags from 'content'
+        };
+      });
+  
+      // Convert cleaned data to worksheet
+      const worksheet = XLSX.utils.json_to_sheet(cleanedData);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+  
+      // Generate buffer and save file
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+      saveAs(blob, 'Blogsdata.xlsx'); // Name your file as needed
+    } catch (error) {
+      console.error("Error downloading Excel file:", error);
+    }
+  };
+  
+  
 
   return (
     <div>
-      <p onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>Refresh</p>
+      <div className='flex flex-row justify-between mb-4'>
+      <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
+        <HiRefresh className="inline mr-1 m-auto" /> Refresh
+      </button>
+      <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${blogsData.length > 0 ? 'block' : 'hidden'}`}>
+        Delete All
+      </button>
+      <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
+        <HiDownload className="inline mr-1 m-auto" /> Download Excel
+      </button>
+      </div>
       {blogsData.length > 0 ? (
         <>
               <div className="overflow-x-auto">
               <Table hoverable>
                 <Table.Head>
                   <Table.HeadCell>S.No</Table.HeadCell>
+                  <Table.HeadCell>Writen By</Table.HeadCell>
+                  <Table.HeadCell>Blogs ID</Table.HeadCell>
                   <Table.HeadCell>Title</Table.HeadCell>
                   <Table.HeadCell>Date</Table.HeadCell>
                   <Table.HeadCell>Status</Table.HeadCell>
@@ -105,23 +201,34 @@ const BlogsData = () => {
                 <Table.Body className="divide-y">
                   {blogsData.map((item) => (
                     <Table.Row key={item._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                                    <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                       {i++}
-                                    </Table.Cell>
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        {i++}
+                      </Table.Cell>
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        {item.By}
+                      </Table.Cell>
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        {item._id}
+                      </Table.Cell>              
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {item.title}
                       </Table.Cell>
                       <Table.Cell>{item.writeDate}</Table.Cell>
-                      <Table.Cell><p className={`${item.isApproved ? 'text-green-800' : 'text-red-800'}`}>{item.isApproved ? 'Approved' : 'Not Approved'}</p></Table.Cell>
                       <Table.Cell>
-                        <button className="font-medium text-cyan-600 hover:underline dark:text-cyan-500" onClick={() => handleOpenModal(item)}>
-                          View
-                        </button>
+                        <p className={`${item.isApproved ? 'text-green-800' : 'text-red-800'}`}>
+                        {item.isApproved ? <HiCheckCircle className="inline m-auto" /> : <HiXCircle className="inline m-auto" />} 
+                        {item.isApproved ? ' Approved' : ' Not Approved'}
+                        </p>
                       </Table.Cell>
                       <Table.Cell>
-                        <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
-                          Delete
-                        </button>
+                      <button className="font-medium text-cyan-600 hover:underline dark:text-cyan-500" onClick={() => handleOpenModal(item)}>
+                       <HiEye className="inline mr-1 m-auto" /> View
+                      </button>
+                      </Table.Cell>
+                      <Table.Cell>
+                      <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
+                        <HiTrash className="inline mr-1 m-auto" /> Delete
+                      </button>
                       </Table.Cell>
                     </Table.Row>
                   ))}
@@ -133,6 +240,7 @@ const BlogsData = () => {
                       item_title={selectedBlog.title}
                       item_content={selectedBlog.content}
                       item_date={selectedBlog.writeDate}
+                      item_imgurl={selectedBlog.imageUrl}
                       item_approved={selectedBlog.isApproved}
                     />
                   )}

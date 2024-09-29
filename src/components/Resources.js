@@ -129,6 +129,13 @@ const Books = () => {
                 className="max-w-full max-h-full object-cover"
               />
             </div>
+            <div className="w-28 h-28 mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
+              <img
+                src={bookImages.imageSrc}
+                alt={`Book ${index}`}
+                className="max-w-full max-h-full object-cover"
+              />
+            </div>
           </div>
           <div className="flex text-center mt-5 mb-[50%]">
             <h2>{bookImages.title}</h2>
@@ -142,6 +149,7 @@ const Books = () => {
 {/* Promotion Section */}
 <div>
 <div className="finwise-back ml-[14%] mr-[14%] m text-black flex pt-10 h-auto px-10">
+<div className="bg-pink-200 text-black flex pt-10 h-auto px-10 mr-10 items-center w-[79%] h-[50%]">
   <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
     <div className="md:w-1/2">
       <div className="flex mb-4">
@@ -181,16 +189,35 @@ const Books = () => {
   </div>
 </section>
 
+      <section className=" mb-[10%]">
+        <h2 className="font-semibold text-black text-3xl p-12 ml-28"> New Arrivals</h2> 
+        <div className="container w-[86%] grid grid-cols-2 md:grid-cols-6 text-start">
+          {bookList.map((book, index) => (
+            <div key={index} className="text-center">
+              <img
+                src={book.imageSrc}
+                alt={`Book ${index}`}
+                className="w-full object-cover mb-4"
+              />
+              <p className=' font-light italic text-sm'>{book.author}</p>
+              <h3 className="font-semibold">{book.title}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Guides of the Day Section */}
       <div className="fin-back pl-[10%] pr-[10%] pt-[5%]">
         <div className="container mx-auto ">
+      <div className="bg-[rgba(241,89,43,0.2)] py-16">
+        <div className="container mx-auto">
          <div className=' flex'>
-         <h2 className="text-black text-3xl font-bold  "> Guides of the Day</h2>
+         <h2 className="text-black text-3xl font-bold ml-28"> Guides of the Day</h2>
           <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-1"> {new Date().toLocaleDateString()}</h2>
 
          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 ">
+          <div className="grid grid-cols-1 ml-28 md:grid-cols-3 gap-[-4] bg w-[85%]">
             {guides.map((guide, index) => (
               <div>
                 <div key={index} className="bg-white p-5 grid grid-cols-2">
