@@ -24,6 +24,9 @@ function HamburgerMenu({ isMenuOpen, toggleMenu }) {
             <li>
               <a href="/blogs" className="block px-4 py-2 hover:bg-gray-100">Blogs</a>
             </li>
+            <li>
+              <a href="/books" className="block px-4 py-2 hover:bg-gray-100">Resources</a>
+            </li>
           </ul>
         </div>
       )}
