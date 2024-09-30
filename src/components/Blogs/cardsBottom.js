@@ -101,7 +101,7 @@ const CardsBottom = ({ onToggle }) => {
 
   // DONT DELETE
   useEffect(() => {
-    axios.get('http://localhost:5000/api/blogsContentFetch')
+    axios.get('https://api.finwiseschool.com/api/blogsContentFetch')
     .then(response => {
       // setData(response.data[0].Heading);
       setData(response.data);
