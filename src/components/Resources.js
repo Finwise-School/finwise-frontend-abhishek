@@ -3,6 +3,7 @@ import EarlyAccessTemplate from './EarlyAccessTemplate';
 import heroo from "../assets/images/books/heroo.png";
 import join from "../assets/images/books/joined.png"
 import { FaArrowRight } from "react-icons/fa";
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
 // Book and guide data
 
 const bookList = [
@@ -118,7 +119,7 @@ const Books = () => {
  <div className=" p-14 flex flex-col items-center ">  
   <h2 className="font-bold text-black text-2xl text-center mb-[4%]">Browse by Category</h2> 
   <div className="container mx-auto">          
-    <div className="flex justify-center space-x-6 overflow-x-scroll">
+    <div className="flex justify-center space-x-6">
       {bookImages.map((bookImages, index) => (
         <div key={index} className="flex flex-col items-center">
           <div className="bg-gray-200 w-32 h-32 rounded-full flex items-center justify-center">
@@ -187,7 +188,9 @@ const Books = () => {
         <div className="container ">
          <div className=' flex'>
           <h2 className="text-black text-3xl font-bold ml-28"> Guides of the Day</h2>
-          <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-1"> {new Date().toLocaleDateString()}</h2>
+          <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-1"> 
+              {new Date().toLocaleDateString('en-GB', options)}
+            </h2>
           </div>
           <div className="grid grid-cols-1 ml-28 md:grid-cols-3 w-[85%]">
   {guides.map((guide, index) => (
