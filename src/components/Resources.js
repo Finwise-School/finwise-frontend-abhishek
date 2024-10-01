@@ -62,33 +62,39 @@ const GuidesGrid = ({ guides }) => {
 const bookList = [
   {
     imageSrc: require("../assets/images/books/budget.png"),
-    author: "By Arthur Gonzalez",
-    title: "The Story of Success",
+    author: "finwise School",
+    title: "Budget Master",
+      path:"/basics"
   },
   {
     imageSrc: require("../assets/images/books/blue.png"),
-    author: "By Sabela Hupter",
-    title: "A God Who Hates Women",
+    author: "finwise School",
+    title: "Blue is a darkness weekened by light",
+     path:"/basics"
   },
   {
     imageSrc: require("../assets/images/books/father.png"),
-    author: "By Glenna Berge",
-    title: "My Dearest Darkest",
+    author: "finwise School",
+    title: "My Feather Thief",
+     path:"/basics"
   },
   {
     imageSrc: require("../assets/images/books/analysis.png"),
-    author: "By Gilberto Mills",
-    title: "House of Sky and Breath",
+    author: "finwise School",
+    title: "Basics of Technical Analysis",
+     path:"/basics"
   },
   {
     imageSrc: require("../assets/images/books/illness.png"),
-    author: "By Dana Chambers",
+    author: "finwise School",
     title: "The Illness Lesson",
+       path:"/basics"
   },
   {
     imageSrc: require("../assets/images/books/butch.png"),
-    author: "By Suzanne Casey",
-    title: "Treachery: Alpha Colony",
+    author: "finwise School",
+    title: "The Butcher and the wren",
+      path:"/basics"
   },
 ];
 
@@ -163,10 +169,12 @@ const Books = () => {
               healthy and support your body.
             </p>
             <button className="bg-blue-900 text-white py-2 px-7 font-semibold hover:bg-blue-800">
-              <div className="flex">
-                Meet Our Bestsellers
-                <FaArrowRight className="ml-2" />
+              <Link to="/basics">
+              <div className="flex">               
+               Meet Our Bestsellers
+               <FaArrowRight className="ml-2" />
               </div>
+              </Link>
             </button>
           </div>
           <div className="md:w-1/2 flex justify-center">
@@ -218,7 +226,7 @@ const Books = () => {
             <h1 className="font-extrabold text-3xl">Free for all</h1>
             <h1 className="text-5xl mb-6 font-bold">Early members</h1>
             <button className="bg-black text-white py-2 px-4 rounded font-semibold hover:bg-gray-800">
-              Get Now
+              <Link to="/finance">Get Now</Link>
             </button>
           </div>
           <div className="md:w-1/2 flex justify-center">
@@ -232,15 +240,19 @@ const Books = () => {
         <h2 className="font-semibold text-black text-3xl p-12">New Arrivals</h2>
         <div className="container grid grid-cols-2 md:grid-cols-6 gap-1">
           {bookList.map((book, index) => (
+            
             <div key={index} className="text-left">
+              <Link to={book.path}>
               <img
                 src={book.imageSrc}
                 alt={`Book ${index}`}
                 className="w-[150%] h-[65%] object-cover mb-4"
               />
+              </Link>
               <p className="font-light italic text-sm">{book.author}</p>
-              <h3 className="font-semibold">{book.title}</h3>
+              <Link to={book.path}><h3 className="font-semibold">{book.title}</h3></Link>
             </div>
+
           ))}
         </div>
       </section>
