@@ -18,6 +18,8 @@ const BlogsUserCreate = ({ openParentModal }) => {
     const [emailAlready, setEmailAlready] = useState(false);
     // const [success, setSuccess] = useState(false);
 
+    axios.defaults.baseURL = 'https://api.finwiseschool.com';
+
     const onCloseModal = () => {
         setOpenModal(false);
         openParentModal(false);
@@ -39,7 +41,7 @@ const BlogsUserCreate = ({ openParentModal }) => {
         };
 
         try {
-            const response = await axios.post('https://api.finwiseschool.com/api/blogsuser', data);
+            const response = await axios.post('/api/blogsuser', data);
 
             if (response.status === 201) {
                 console.log("User Created");
