@@ -48,7 +48,7 @@ const BasicsOfTechnicalAnalysis = () => {
         isSubmit(false);
       }
     } else {
-      console.error('Invalid email address. It should be exactly 10 digits.');
+      console.error('Invalid email address.');
     }
   };
   return (
