@@ -154,35 +154,39 @@ const guides = [
 const Books = () => {
   return (
     <div className="font-sans">
-      {/* Hero Section */}
-      <section className="fin-head text-white pt-16">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
-          <div className="md:w-1/2 pl-[10%]">
-            <p className="text-sm font-thin italic mb-[3%]">
-              Internationally Bestselling Book
-            </p>
-            <h1 className="text-5xl mb-[1%] font-semibold">2-Week Plan to</h1>
-            <h1 className="text-5xl font-semibold mb-[1%]">Jump-Start</h1>
-            <h1 className="text-5xl font-semibold mb-[8%]">Your Healing</h1>
-            <p className="mb-6 pr-[30%] font-thin">
-              Check out the new book by Dr. Martin to find out how to stay
-              healthy and support your body.
-            </p>
-            <button className="bg-blue-900 text-white py-2 px-7 font-semibold hover:bg-blue-800">
-              <Link to="/basics">
-              <div className="flex">               
-               Meet Our Bestsellers
-               <FaArrowRight className="ml-2" />
-              </div>
-              </Link>
-            </button>
+     {/* Hero Section */}
+<section className="fin-head text-white pt-10 md:pt-16 md:px-5">
+  <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-6">
+    <div className="w-full md:w-1/2 md:pl-[10%]">
+      <p className="text-xs md:text-sm font-thin italic mb-2 md:mb-[3%]">
+        Internationally Bestselling Book
+      </p>
+      <h1 className="text-3xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
+        2-Week Plan to
+      </h1>
+      <h1 className="text-3xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
+        Jump-Start
+      </h1>
+      <h1 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-[8%]">
+        Your Healing
+      </h1>
+      <p className="mb-4 md:mb-6 pr-0 md:pr-[30%] font-thin">
+        Check out the new book by Dr. Martin to find out how to stay healthy and support your body.
+      </p>
+      <button className="bg-blue-900 text-white py-2 px-4 md:px-7 font-semibold hover:bg-blue-800">
+        <Link to="/basics">
+          <div className="flex items-center">
+            Meet Our Bestsellers
+            <FaArrowRight className="ml-2" />
           </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img src={heroo} alt="Person" className=" pr-[10%]"/>
-           
-          </div>
-        </div>
-      </section>
+        </Link>
+      </button>
+    </div>
+    <div className="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+      <img src={heroo} alt="Person" className="max-w-[80%] md:max-w-full pr-0 md:pr-[10%]" />
+    </div>
+  </div>
+</section>
 
       {/* Carousel Section */}
 <div className="p-6 md:p-14 flex flex-col items-center">
@@ -244,7 +248,7 @@ const Books = () => {
   </h2>
 
   {/* Mobile Carousel */}
-  <div className="block md:hidden overflow-x-scroll whitespace-nowrap py-4 px-6 space-x-4">
+  <div className="block md:hidden overflow-x-scroll whitespace-nowrap py-4 px-6 space-x-4 md:px-[4%]">
     {bookList.map((book, index) => (
       <div key={index} className="inline-block text-center">
         <Link to={book.path}>
