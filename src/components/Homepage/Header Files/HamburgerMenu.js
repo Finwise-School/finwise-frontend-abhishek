@@ -10,6 +10,8 @@ function HamburgerMenu({ isMenuOpen, toggleMenu }) {
         <span className="block w-6 h-0.5 bg-black mb-1"></span>
         <span className="block w-6 h-0.5 bg-black mb-1"></span>
         <span className="block w-6 h-0.5 bg-black"></span>
+        
+        <span className="block w-6 h-0.5 bg-black"></span>
       </button>
       
       {isMenuOpen && (
