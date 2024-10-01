@@ -36,8 +36,16 @@ import UnderConst from "./components/UnderDevelopement";
 import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
 import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
 import Errors from "./components/error";
-import Books from "./components/Books";
+import Books from "./components/Resources";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import Stocks from "./components/stock";
+import BasicsOfTechnicalAnalysis from "./components/Resources/basicsOfTechnicalAnalysis";
+import BudgetBlueprint from "./components/Resources/budgetBlue";
+import Taxes from "./components/Resources/taxation";
+import Budgetings from "./components/Resources/Budgeting";
+import Retirement from "./components/Resources/retirement";
+import Smart from "./components/Resources/Smartmoney";
+import Finance from "./components/Resources/finance";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -86,6 +94,15 @@ const App = () => {
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
             <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/stock" element={<Stocks />} />
+            <Route path="/basics" element={<BasicsOfTechnicalAnalysis/>} />
+            <Route path="/budgetBlue" element={<BudgetBlueprint/>} />
+            <Route path="/taxation" element={<Taxes/>} />
+            <Route path="/budgeting" element={<Budgetings/>} />
+            <Route path="/retirement" element={<Retirement/>} />
+            <Route path="/smart" element={<Smart/>} />
+            <Route path="/finance" element={<Finance/>} />
+
             <Route
               path="/profile"
               element={
