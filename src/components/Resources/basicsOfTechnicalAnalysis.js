@@ -121,7 +121,7 @@ const BasicsOfTechnicalAnalysis = () => {
               />
             </div>
             <div className="flex justify-center">
-              <Button color="success" onClick={() => setOpenModal(false)} onSubmit={setSubmit}>
+              <Button color="success" onClick={() => setOpenModal(false)} onSubmit={onSubmit}>
                 <a href="https://drive.usercontent.google.com/u/0/uc?id=1vGrwxwJ4Avdr5-WoIDRYdzqBR0w1ctx2&export=download" download={'https://drive.usercontent.google.com/u/0/uc?id=1vGrwxwJ4Avdr5-WoIDRYdzqBR0w1ctx2&export=download'}>Download Now</a>
               </Button>
             </div>
