@@ -3,35 +3,43 @@ import { Link } from 'react-router-dom'
 const images =[
     {
         imageSrc:require("../assets/images/books/budget.png"),
-        name:"Da Vinci Code"
+        name:"Da Vinci Code",
+         path:"/basics"
     },
     {
         imageSrc:require("../assets/images/books/analysis.png"),
-         name:"Basics of technical Analysis"
+         name:"Basics of technical Analysis",
+         path:"/basics"
     },
     {
         imageSrc:require("../assets/images/books/book1.png"),
-         name:"Angels and Demons"
+         name:"Angels and Demons",
+         path:"/basics"
     },
     {
         imageSrc:require("../assets/images/books/butch.png"),
-         name:"TFIOS"
+         name:"TFIOS",
+         path:"/basics"
     },
     {
         imageSrc:require("../assets/images/books/blueprint.jpg"),
-         name:"13 reasons why"
+         name:"The Budgeting Blueprint",
+         path:"/budgetBlue"
     },
     {
         imageSrc:require("../assets/images/books/guide2.png"),
-         name:"Kite Runner"
+         name:"Kite Runner",
+         path:"/basics"
     },
     {
         imageSrc:require("../assets/images/books/guide3.png"),
-         name:"Castle in sky"
+         name:"Castle in sky",
+         path:"/basics"
     },
     {
         imageSrc:require("../assets/images/books/guide1.png"),
-         name:"Immortals of Meluha"
+         name:"Immortals of Meluha",
+         path:"/basics"
     },
 ]
 
@@ -44,7 +52,7 @@ const Stocks = () => {
        
         {images.map((image, index) => (
             <div key={index} className="m-0 p-0">
-                <Link>
+                <Link to={image.path}>
                 <img
                     src={image.imageSrc}
                     alt={`Book ${index}`}

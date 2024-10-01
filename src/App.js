@@ -40,6 +40,7 @@ import Books from "./components/Resources";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Stocks from "./components/stock";
 import BasicsOfTechnicalAnalysis from "./components/Resources/basicsOfTechnicalAnalysis";
+import BudgetBlueprint from "./components/Resources/budgetBlue";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -91,7 +92,8 @@ const App = () => {
             <Route path="/books" element={<Books />} />
             <Route path="/stock" element={<Stocks />} />
             <Route path="/basics" element={<BasicsOfTechnicalAnalysis/>} />
-         
+            <Route path="/budgetBlue" element={<BudgetBlueprint/>} />
+
             <Route
               path="/profile"
               element={
