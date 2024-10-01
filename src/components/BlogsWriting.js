@@ -17,6 +17,9 @@ const BlogsWriting = ({ placeholder }) => {
     const [thumbnailUrl, setThumbnailUrl] = useState('');
 
 
+    axios.defaults.baseURL = 'https://api.finwiseschool.com';
+
+
     const handleReload = () => {
       window.location.reload(); // Reload the page
   };
@@ -25,7 +28,7 @@ const BlogsWriting = ({ placeholder }) => {
         const fetchBlogs = async () => {
             if (userData.length > 0) {
                 try {
-                    const response = await axios.post('https://api.finwiseschool.com/api/userBlogsContentFetch', {
+                    const response = await axios.post('/api/userBlogsContentFetch', {
                         ids: userData[0].blogPost // Assuming this is an array of IDs
                     });
                     if (response.status === 200) {
@@ -57,12 +60,16 @@ const BlogsWriting = ({ placeholder }) => {
             const response = await axios.post('/api/upload-image', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            setUploadedImageUrl(response.data.url); // Store the uploaded image URL
-            success(response.data.url); // Assuming your backend returns the URL of the uploaded image
+            if (response.data.url) {
+                success(response.data.url); // Use the URL returned from the backend
+            } else {
+                failure('Image upload failed: No URL returned.');
+            }
         } catch (error) {
             failure('Image upload failed: ' + error.message);
         }
     };
+    
 
     const handleThumbnailChange = async (event) => {
         const file = event.target.files[0];

@@ -57,7 +57,7 @@ const LoginBlogs = ({ authentication, data }) => {
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
             </div>
-            <TextInput id="email1" value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="name@flowbite.com" required />
+            <TextInput id="email1" value={email} onChange={(event) => setEmail(event.target.value)} type="email" required />
           </div>
           <div>
             <div className="mb-2 block">

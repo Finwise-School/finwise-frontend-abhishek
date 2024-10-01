@@ -7,14 +7,18 @@ import DeletePage from './DeletePage';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const BlogsData = () => {
+const BlogsData = ({ majorRights }) => {
   const [blogsData, setBlogsData] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [deleteBlogId, setDeleteBlogId] = useState(null);
+  const [deletionReason, setDeletionReason] = useState('');
   let i = 1;
   let count = 0;
+  let isItBlog = true;
   const [btnClick, setBtnClick] = useState(count);
+
+  axios.defaults.baseURL = 'https://api.finwiseschool.com';
 
   const handleOpenModal = (blog) => {
     setSelectedBlog(blog);
@@ -31,13 +35,14 @@ const BlogsData = () => {
 
   const handleCloseDeleteModal = () => {
     setDeleteBlogId(null);
+    setDeletionReason('');
     setOpenDeleteModal(false);
   };
 
   const handleDeleteOption = async () => {
     if (deleteBlogId) {
       try {
-        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/blogs-delete', { id: deleteBlogId });
+        const response = await axios.post('/api/admindashboard/blogs-delete', { id: deleteBlogId, deletionReason: deletionReason });
         // const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-delete', { id: deleteBlogId });
         if (response.status === 201) {
           console.log('Content Deleted');
@@ -49,6 +54,7 @@ const BlogsData = () => {
         }
       } catch (error) {
         console.log('Error', error);
+        alert('Error deleting blog. Please try again.');
       }
     }
   };
@@ -62,7 +68,7 @@ const BlogsData = () => {
     }
   
     try {
-      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-blogs');
+      const response = await axios.delete('/api/delete-all-blogs');
       if (response.status === 200) {
         console.log('All blogs deleted');
         // Refresh the blogs data here
@@ -85,7 +91,7 @@ const BlogsData = () => {
       const approveid = selectedBlog._id; // Get the ID of the selected blog
       const newApprovalStatus = !selectedBlog.isApproved; // Toggle the approval status
       try {
-        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/blogs-isApproved', { id: approveid });
+        const response = await axios.post('/api/admindashboard/blogs-isApproved', { id: approveid });
         // const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-isApproved', { id: approveid });
         if (response.status === 200) {
           console.log('Status Changed');
@@ -109,7 +115,7 @@ const BlogsData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/blogs');
+        const response = await axios.get('/api/admindashboard/blogs');
         // const response = await axios.get('http://localhost:5000/api/admindashboard/blogs');
         setBlogsData(response.data);
       } catch (error) {
@@ -176,9 +182,11 @@ const BlogsData = () => {
       <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
         <HiRefresh className="inline mr-1 m-auto" /> Refresh
       </button>
-      <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${blogsData.length > 0 ? 'block' : 'hidden'}`}>
-        Delete All
-      </button>
+      {majorRights && (
+              <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${blogsData.length > 0 ? 'block' : 'hidden'}`}>
+              Delete All
+            </button>
+      )}
       <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
         <HiDownload className="inline mr-1 m-auto" /> Download Excel
       </button>
@@ -190,7 +198,7 @@ const BlogsData = () => {
                 <Table.Head>
                   <Table.HeadCell>S.No</Table.HeadCell>
                   <Table.HeadCell>Writen By</Table.HeadCell>
-                  <Table.HeadCell>Blogs ID</Table.HeadCell>
+                  <Table.HeadCell>Blogs TITLE</Table.HeadCell>
                   <Table.HeadCell>Title</Table.HeadCell>
                   <Table.HeadCell>Date</Table.HeadCell>
                   <Table.HeadCell>Status</Table.HeadCell>
@@ -208,7 +216,7 @@ const BlogsData = () => {
                         {item.By}
                       </Table.Cell>
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                        {item._id}
+                        {item.title}
                       </Table.Cell>              
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {item.title}
@@ -225,15 +233,18 @@ const BlogsData = () => {
                        <HiEye className="inline mr-1 m-auto" /> View
                       </button>
                       </Table.Cell>
-                      <Table.Cell>
-                      <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
-                        <HiTrash className="inline mr-1 m-auto" /> Delete
-                      </button>
-                      </Table.Cell>
+                      {majorRights && (
+                                              <Table.Cell>
+                                              <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
+                                                <HiTrash className="inline mr-1 m-auto" /> Delete
+                                              </button>
+                                              </Table.Cell>
+                      )}
                     </Table.Row>
                   ))}
                   {selectedBlog && (
                     <BlogsDataModal
+                      majorRights={majorRights}
                       setOpenModal={handleCloseModal}
                       setApproveoption={handleApproveOption}
                       item_id={selectedBlog._id}
@@ -253,6 +264,9 @@ const BlogsData = () => {
                 openModal={openDeleteModal}
                 setOpenModal={handleCloseDeleteModal}
                 handleDeleteOption={handleDeleteOption}
+                isBlogs={isItBlog}
+                deletion={deletionReason}
+                setdeletion={setDeletionReason}
               />
             )}
             </>
