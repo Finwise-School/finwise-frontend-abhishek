@@ -14,43 +14,47 @@ const BasicsOfTechnicalAnalysis = () => {
 
   const date = new Date();
   const writeDate = formatDate(date);
-  const [submit, isSubmit] = useState(false);
+  const [submit, setSubmit] = useState(false);
   const [email, setEmail] = useState('');
   const [openModal, setOpenModal] = useState(false);
 
+  // Email validation regex
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleEmailChange = (e) => {
-    const { value } = e.target;
-    // Remove non-numeric characters and limit to 10 digits
-    const cleanedValue = value.replace(/\D/g, '');
-    setEmail(cleanedValue);
+    setEmail(e.target.value); // No need to clean the input, emails can have symbols, letters, numbers, etc.
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate email address
-    if (email.length === 10) {
-      isSubmit(true);
-      const emailData = { email, writeDate };
+    // Validate email address with regex
+    if (validateEmail(email)) {
+      setSubmit(true); // Set submitting state
+      const emailData = { email, writeDate: new Date().toISOString() }; // Assuming `writeDate` is current date
 
       try {
         const response = await axios.post('https://api.finwiseschool.com/api/emailData', emailData);
 
-        if (response.status === 201) { // Successful creation
+        if (response.status === 201) {
           console.log('Email Address Received');
-          setOpenModal(true);
+          setOpenModal(true); // Open modal on success
         } else {
           console.error('Error saving data:', response.data);
         }
       } catch (error) {
         console.error('Error submitting the form:', error);
       } finally {
-        isSubmit(false);
+        setSubmit(false); // Reset submitting state
       }
     } else {
       console.error('Invalid email address.');
     }
   };
+
   return (
     <div className=" p-[5%]">
       <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[4%] text-center">
@@ -112,6 +116,8 @@ const BasicsOfTechnicalAnalysis = () => {
                 placeholder="Enter your email"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-[6%]"
                 required
+                onChange={handleEmailChange}
+
               />
             </div>
             <div className="flex justify-center">
