@@ -119,7 +119,7 @@ const Books = () => {
             </button>
           </div>
           <div className="md:w-1/2 flex justify-center">
-            <img src={heroo} alt="Person" className=" pr-[10%] " />
+            <img src={heroo} alt="Person" className=" pr-[10%]"/>
            
           </div>
         </div>
