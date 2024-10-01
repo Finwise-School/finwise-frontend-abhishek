@@ -110,6 +110,15 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  to="/books"
+                  className={`block py-2 px-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/books')}`}
+                  onClick={handleLinkClick} // Close menu on link click
+                >
+                  Resources
+                </Link>
+              </li>
+              <li>
               {/* only show this link in mobile view */}
               <Link
                 to="/early-access"
