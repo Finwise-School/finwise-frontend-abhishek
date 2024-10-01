@@ -13,7 +13,7 @@ const BudgetBlueprint = () => {
       <div className=" flex justify-center">
       <img src={blues} className=" h-[20%] w-[20%]  " />
       </div>
-      <p className="mb-[6%] mt-[4%] font-medium text-left text-black ">
+      <p className="mb-[4%] mt-[4%] font-medium text-black text-justify mx-[10%]">
         A **technical analysis book** delves into the study of price movements,
         chart patterns, and market indicators to help traders and investors
         forecast the future performance of financial instruments like stocks,

@@ -46,9 +46,9 @@ const images =[
 const Stocks = () => {
   return (
     <div className='p-[5%]'>
-    <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[4%] text-center">Stock Market</h1>
+    <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[8%] text-center">Stock Market</h1>
    
-    <div className='grid grid-cols-4 gap-0'>
+    <div className='grid grid-cols-4 gap-[-10%] px-[8%]'>
        
         {images.map((image, index) => (
             <div key={index} className="m-0 p-0">
@@ -56,10 +56,10 @@ const Stocks = () => {
                 <img
                     src={image.imageSrc}
                     alt={`Book ${index}`}
-                    className="w-full h-full object-cover m-0 p-0"
+                    className="w-[100%] h-[100%] mt-[-20%] m-0"
                 />
                 </Link>
-                <h2 className='font-bold mt-[8%] mb-[4%] text-sm text-center  text-black'>{image.name}</h2>
+                <h2 className='font-bold mt-[8%] mb-[4%] text-sm text-center text-black'>{image.name}</h2>
             </div>
         ))}
         

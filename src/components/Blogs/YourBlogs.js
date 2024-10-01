@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Modal } from 'flowbite-react'; // Assuming you're using flowbite for the Card component
+import { Card, Button, Modal, Badge, Accordion } from 'flowbite-react'; // Assuming you're using flowbite for the Card component
 
 const YourBlogs = ({ dataYourBlogs }) => {
 
@@ -32,13 +32,23 @@ const YourBlogs = ({ dataYourBlogs }) => {
                   </Modal.Footer>
                 </Modal>
         )}
-                <Card key={blog._id} className="p-4">
+                <Card key={blog._id} className={`p-2 ${blog.isDeleted && 'border border-red-800'}`}>
                     <h2 className="text-xl font-semibold">{blog.title}</h2>
                     <div className='flex flex-row justify-between'>
                       <p>{blog.writeDate}</p>
-                      {blog.isApproved ? (<p className='text-green-700'>APPROVED</p>) : (<p className='text-red-700'>NOT APPROVED</p>)}
+                      {blog.isDeleted ? (<Badge color="failure">Deleted</Badge>) : blog.isApproved ? (<p className='text-green-700'>APPROVED</p>) : (<p className='text-red-700'>NOT APPROVED</p>)}
                     </div>
                     <Button onClick={() => handleOpenModal(blog)}>View Full Content</Button>
+                    {blog.isDeleted && (
+                    <Accordion collapseAll>
+      <Accordion.Panel>
+        <Accordion.Title>Deletion Reason</Accordion.Title>
+        <Accordion.Content>
+          <p>{blog.deletionReason}</p>
+        </Accordion.Content>
+      </Accordion.Panel>
+      </Accordion>
+      )}
                 </Card>
                 </>
             ))}

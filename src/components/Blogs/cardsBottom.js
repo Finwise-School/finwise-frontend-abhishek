@@ -99,9 +99,11 @@ const CardsBottom = ({ onToggle }) => {
   const [data, setData] = useState([]);
   const carouselRef = useRef(null);
 
+  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+
   // DONT DELETE
   useEffect(() => {
-    axios.get('https://api.finwiseschool.com/api/blogsContentFetch')
+    axios.get('/api/blogsContentFetch')
     .then(response => {
       // setData(response.data[0].Heading);
       setData(response.data);

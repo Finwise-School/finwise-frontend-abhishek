@@ -1,8 +1,12 @@
 import { Button, Modal } from "flowbite-react";
 import { HiCheckCircle, HiXCircle } from 'react-icons/hi'; // Import icons
+import axios from "axios";
 
 
-const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, item_content, item_date, item_imgurl, item_approved }) => {
+const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, item_content, item_date, item_imgurl, item_approved, majorRights }) => {
+
+  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+
   return (
     <Modal show={true} size="7xl" onClose={() => setOpenModal()}>
       <Modal.Header>
@@ -21,6 +25,7 @@ const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, i
         </div>
       </Modal.Body>
       <Modal.Footer className="flex flex-row justify-between">
+        {majorRights && (
         <div className="flex flex-row">
         <Button color={!item_approved ? "success" : "failure"} onClick={() => setApproveoption(item_id)} className="mx-1">
           {!item_approved ? <HiCheckCircle className="inline mr-1 m-auto" /> : <HiXCircle className="inline mr-1 m-auto" />}
@@ -31,6 +36,7 @@ const BlogsDataModal = ({ setOpenModal, setApproveoption, item_id, item_title, i
             Decline
           </Button>
         </div>
+        )}
       </Modal.Footer>
     </Modal>
   );

@@ -16,8 +16,10 @@ const ADMINDASHBOARD = () => {
     const [server, isServerRunning] = useState(false);
     const [database, isDbConnected] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [adminDATA, setAdminData] = useState();
 
     axios.defaults.baseURL = 'https://api.finwiseschool.com';
+    // axios.defaults.baseURL = 'http://localhost:5000';
 
     useEffect(() => {
         axios.get('/').then(response => {
@@ -38,18 +40,20 @@ const ADMINDASHBOARD = () => {
     };
 
     const handleLogOut = () => {
-        localStorage.removeItem('userEmail');
+        localStorage.removeItem('ADMINEMAIL');
+        setAdminData();
         setIsAuthenticated(false);
         refreshPage();
     };
 
     return (
         <>
-            <Login authentication={setIsAuthenticated} />
+            <Login authentication={setIsAuthenticated} admin={setAdminData} />
             {(!server || !database) && <SdError refresh={refreshPage} />}
             {isAuthenticated ? (
                 <>
                     <h1 className={`text-center font-black text-4xl`}>ADMIN DASHBOARD</h1>
+                    <h1 className={`text-center font-medium text-base`}>{adminDATA.NAME}</h1>
                     <div className='dataSearchCard'>
                         <Card className="m-6">
                         <p className={`cursor-pointer`} onClick={handleLogOut}>
@@ -70,12 +74,12 @@ const ADMINDASHBOARD = () => {
                         <Card className="m-6">
                             {selectedContent ? (
                                 <>
-                                    {selectedContent === 'blogsdata' && <BlogsData />}
-                                    {selectedContent === 'blogsuser' && <BlogsUser />}
-                                    {selectedContent === 'chatbotqueries' && <ChatBotQueries />}
-                                    {selectedContent === 'contactus' && <ContactUs />}
-                                    {selectedContent === 'phonenumberqueries' && <PhoneNumberQueries />}
-                                    {selectedContent === 'requestearlyaccessqueries' && <RequestEarlyAccessQueries />}
+                                    {selectedContent === 'blogsdata' && <BlogsData majorRights={adminDATA.MAJOR_RIGHTS} />}
+                                    {selectedContent === 'blogsuser' && <BlogsUser majorRights={adminDATA.MAJOR_RIGHTS} />}
+                                    {selectedContent === 'chatbotqueries' && <ChatBotQueries majorRights={adminDATA.MAJOR_RIGHTS} />}
+                                    {selectedContent === 'contactus' && <ContactUs majorRights={adminDATA.MAJOR_RIGHTS} />}
+                                    {selectedContent === 'phonenumberqueries' && <PhoneNumberQueries majorRights={adminDATA.MAJOR_RIGHTS} />}
+                                    {selectedContent === 'requestearlyaccessqueries' && <RequestEarlyAccessQueries majorRights={adminDATA.MAJOR_RIGHTS} />}
                                 </>
                             ) : (<p className='text-center'>Click on any tab to view data</p>)}
                         </Card>

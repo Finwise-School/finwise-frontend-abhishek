@@ -12,8 +12,10 @@ function Blogs() {
   const [front, setFront] = useState({});
   const [isOpen, setIsOpen] = useState(false);
 
+  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+
   useEffect(() => {
-    axios.get('https://api.finwiseschool.com/api/blogsContentFetch')
+    axios.get('/api/blogsContentFetch')
     .then(response => {
       // setData(response.data[0].Heading);
       setData(response.data);
