@@ -1,18 +1,17 @@
 import React from "react";
-import blues from "../../assets/images/books/analysis.png";
 import { useNavigate } from 'react-router-dom';
-import book from "../../assets/booksDownload/Blueprint.pdf"
+import blues from "../../assets/images/books/blueprint.jpg";
+import book from "../../assets/booksDownload/budget.pdf"
 
-const BasicsOfTechnicalAnalysis = () => {
+const BudgetBlueprint = () => {
   return (
     <div className=" p-[5%]">
       <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[4%] text-center">
-       
-        Basics of Technical Analysis
+      The Budgeting Blueprint
       </h1>
       <div className=" mt-[4%] mr-[%]">
       <div className=" flex justify-center">
-      <img src={blues} className=" h-auto w-auto  " />
+      <img src={blues} className=" h-[20%] w-[20%]  " />
       </div>
       <p className="mb-[6%] mt-[4%] font-medium text-left text-black ">
         A **technical analysis book** delves into the study of price movements,
@@ -57,4 +56,4 @@ const BasicsOfTechnicalAnalysis = () => {
   );
 };
 
-export default BasicsOfTechnicalAnalysis;
+export default BudgetBlueprint;

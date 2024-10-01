@@ -6,6 +6,7 @@ import join from "../assets/images/books/joined.png"
 import { FaArrowRight } from "react-icons/fa";
 const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
+
 // Book and guide data
 
 const bookList = [
@@ -45,33 +46,34 @@ const bookImages = [
   {
     imageSrc: require("../assets/images/books/budget.png"),
     title:"Budgeting",
-    path:"/"
+    path:"/budgeting"
   },
   {
     imageSrc: require("../assets/images/books/analysis.png"),
     title:"Stock Market",
-    path:"/stock"
+    path:"/stock",
+    booklocal:"/basics"
   },
   
   {
     imageSrc: require("../assets/images/books/book2.png"),
     title:"Taxation",
-    path:"/"
+    path:"/taxation"
   },
   {
     imageSrc: require("../assets/images/books/book3.png"),
     title:"Retirement Planning",
-    path:"/"
+    path:"/retirement"
   },
   {
     imageSrc: require("../assets/images/books/book4.png"),
     title:"Smart with money",
-    path:"/"
+    path:"/smart"
   },
   {
     imageSrc: require("../assets/images/books/book1.png"),
     title:"Finance hacks",
-    path:"/"
+    path:"/finance"
   },
 ];
 
@@ -131,13 +133,15 @@ const Books = () => {
       {bookImages.map((bookImages, index) => (
         <div key={index} className="flex flex-col items-center">
           <div className="bg-gray-200 w-32 h-32 rounded-full flex items-center justify-center">
+            <Link to={bookImages.booklocal}>
           <div className="w-28 h-28 mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
               <img
                 src={bookImages.imageSrc}
                 alt={`Book ${index}`}
                 className="max-w-full max-h-full object-cover"
               />
-            </div>            
+            </div> 
+            </Link>           
           </div>
           <div className="flex text-center mt-5 mb-[50%]">
           <Link to={bookImages.path}> <h2>{bookImages.title}</h2></Link> 
