@@ -185,35 +185,37 @@ const Books = () => {
       </section>
 
       {/* Carousel Section */}
-      <div className="p-14 flex flex-col items-center">
-        <h2 className="font-bold text-black text-2xl text-center mb-[4%]">
-          Browse by Category
-        </h2>
-        <div className="container mx-auto">
-          <div className="flex justify-center space-x-6">
-            {bookImages.map((bookImages, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="bg-gray-200 w-32 h-32 rounded-full flex items-center justify-center">
-                  <Link to={bookImages.booklocal}>
-                    <div className="w-28 h-28 mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
-                      <img
-                        src={bookImages.imageSrc}
-                        alt={`Book ${index}`}
-                        className="max-w-full max-h-full object-cover"
-                      />
-                    </div>
-                  </Link>
-                </div>
-                <div className="flex text-center mt-5 mb-[50%]">
-                  <Link to={bookImages.path}>
-                    <h2>{bookImages.title}</h2>
-                  </Link>
-                </div>
+<div className="p-6 md:p-14 flex flex-col items-center">
+  <h2 className="font-bold text-black text-xl md:text-2xl text-center mb-6 md:mb-[4%]">
+    Browse by Category
+  </h2>
+  <div className="container mx-auto">
+    <div className="flex justify-center md:justify-center space-x-4 md:space-x-6 overflow-x-auto w-full">
+      {bookImages.map((bookImages, index) => (
+        <div key={index} className="flex flex-col items-center">
+          <div className="bg-gray-200 w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
+            <Link to={bookImages.booklocal}>
+              <div className="w-20 h-20 md:w-28 md:h-28 mt-2 md:mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
+                <img
+                  src={bookImages.imageSrc}
+                  alt={`Book ${index}`}
+                  className="max-w-full max-h-full object-cover"
+                />
               </div>
-            ))}
+            </Link>
+          </div>
+          <div className="flex text-center mt-4 md:mt-5 mb-8 md:mb-[50%]">
+            <Link to={bookImages.path}>
+              <h2 className="text-sm md:text-base">{bookImages.title}</h2>
+            </Link>
           </div>
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
 
       {/* Promotion Section */}
       <div className="finwise-back ml-[14%] mr-[14%] text-black flex pt-10 h-auto px-10">
@@ -235,27 +237,52 @@ const Books = () => {
         </div>
       </div>
 
-      {/* Book List Section */}
-      <section className="mb-[8%] ml-[10%] w-[80%]">
-        <h2 className="font-semibold text-black text-3xl p-12">New Arrivals</h2>
-        <div className="container grid grid-cols-2 md:grid-cols-6 gap-1">
-          {bookList.map((book, index) => (
-            
-            <div key={index} className="text-left">
-              <Link to={book.path}>
-              <img
-                src={book.imageSrc}
-                alt={`Book ${index}`}
-                className="w-[150%] h-[65%] object-cover mb-4"
-              />
-              </Link>
-              <p className="font-light italic text-sm">{book.author}</p>
-              <Link to={book.path}><h3 className="font-semibold">{book.title}</h3></Link>
-            </div>
+{/* Book List Section with Carousel for Mobile */}
+<section className="mb-[8%] w-full md:w-[80%] mx-auto">
+  <h2 className="font-semibold text-black text-3xl px-6 md:px-12 py-6 md:py-12 text-center md:text-left">
+    New Arrivals
+  </h2>
 
-          ))}
-        </div>
-      </section>
+  {/* Mobile Carousel */}
+  <div className="block md:hidden overflow-x-scroll whitespace-nowrap py-4 px-6 space-x-4">
+    {bookList.map((book, index) => (
+      <div key={index} className="inline-block text-center">
+        <Link to={book.path}>
+          <img
+            src={book.imageSrc}
+            alt={`Book ${index}`}
+            className="w-40 h-60 object-cover mb-2 rounded"
+          />
+        </Link>
+        <p className="font-light italic text-sm">{book.author}</p>
+        <Link to={book.path}>
+          <h3 className="font-semibold">{book.title}</h3>
+        </Link>
+      </div>
+    ))}
+  </div>
+
+  {/* Desktop Grid View */}
+  <div className="hidden md:grid grid-cols-2 md:grid-cols-6 gap-4">
+    {bookList.map((book, index) => (
+      <div key={index} className="text-center md:text-left">
+        <Link to={book.path}>
+          <img
+            src={book.imageSrc}
+            alt={`Book ${index}`}
+            className="w-full h-auto object-cover mb-2 md:mb-4"
+          />
+        </Link>
+        <p className="font-light italic text-sm">{book.author}</p>
+        <Link to={book.path}>
+          <h3 className="font-semibold">{book.title}</h3>
+        </Link>
+      </div>
+    ))}
+  </div>
+</section>
+
+
 
       {/* Guides of the Day Section */}
       <div className="fin-back pt-[5%] mb-[-4%]">
