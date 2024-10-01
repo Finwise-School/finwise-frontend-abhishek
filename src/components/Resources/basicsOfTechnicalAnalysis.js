@@ -87,7 +87,7 @@ const BasicsOfTechnicalAnalysis = () => {
       <div className="mt-6 lg:mt-0 lg:ml-10">
       <Button onClick={() => setOpenModal(true)}
         // onClick={handleClick}
-        className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300"
+        className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300 bg-white hover:bg-white"
         style={{
           border: '5px solid',
           borderRadius: '12px',
