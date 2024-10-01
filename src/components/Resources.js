@@ -1,8 +1,11 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import EarlyAccessTemplate from './EarlyAccessTemplate';
 import heroo from "../assets/images/books/heroo.png";
 import join from "../assets/images/books/joined.png"
 import { FaArrowRight } from "react-icons/fa";
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
 // Book and guide data
 
 const bookList = [
@@ -41,28 +44,34 @@ const bookList = [
 const bookImages = [
   {
     imageSrc: require("../assets/images/books/budget.png"),
-    title:"Budgeting"
+    title:"Budgeting",
+    path:"/"
   },
   {
     imageSrc: require("../assets/images/books/analysis.png"),
-    title:"Stock Market"
+    title:"Stock Market",
+    path:"/stock"
   },
   
   {
     imageSrc: require("../assets/images/books/book2.png"),
-    title:"Taxation"
+    title:"Taxation",
+    path:"/"
   },
   {
     imageSrc: require("../assets/images/books/book3.png"),
-    title:"Retirement Planning"
+    title:"Retirement Planning",
+    path:"/"
   },
   {
     imageSrc: require("../assets/images/books/book4.png"),
-    title:"Smart with money"
+    title:"Smart with money",
+    path:"/"
   },
   {
     imageSrc: require("../assets/images/books/book1.png"),
-    title:"Finance hacks"
+    title:"Finance hacks",
+    path:"/"
   },
 ];
 
@@ -94,8 +103,8 @@ const Books = () => {
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
           <div className="md:w-1/2 pl-[10%] ">
             <p className=' text-sm font-thin italic mb-[3%]'>Internationally Bestselling Book</p>
-            <h1 className="text-5xl mb-4 font-semibold">2-Week Plan to</h1>
-            <h1 className="text-5xl font-semibold mb-4"> Jump-Start</h1>
+            <h1 className="text-5xl mb-[1%] font-semibold">2-Week Plan to</h1>
+            <h1 className="text-5xl font-semibold mb-[1%]"> Jump-Start</h1>
             <h1 className="text-5xl font-semibold mb-[8%]">Your Healing</h1>
             <p className="mb-6 pr-[30%] font-thin">
               Check out the new book by Dr. Martin to find out how to stay healthy and support your body.
@@ -118,7 +127,7 @@ const Books = () => {
  <div className=" p-14 flex flex-col items-center ">  
   <h2 className="font-bold text-black text-2xl text-center mb-[4%]">Browse by Category</h2> 
   <div className="container mx-auto">          
-    <div className="flex justify-center space-x-6 overflow-x-scroll">
+    <div className="flex justify-center space-x-6">
       {bookImages.map((bookImages, index) => (
         <div key={index} className="flex flex-col items-center">
           <div className="bg-gray-200 w-32 h-32 rounded-full flex items-center justify-center">
@@ -131,7 +140,7 @@ const Books = () => {
             </div>            
           </div>
           <div className="flex text-center mt-5 mb-[50%]">
-            <h2>{bookImages.title}</h2>
+          <Link to={bookImages.path}> <h2>{bookImages.title}</h2></Link> 
           </div>
         </div>
       ))} 
@@ -187,7 +196,9 @@ const Books = () => {
         <div className="container ">
          <div className=' flex'>
           <h2 className="text-black text-3xl font-bold ml-28"> Guides of the Day</h2>
-          <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-1"> {new Date().toLocaleDateString()}</h2>
+          <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-1"> 
+              {new Date().toLocaleDateString('en-GB', options)}
+            </h2>
           </div>
           <div className="grid grid-cols-1 ml-28 md:grid-cols-3 w-[85%]">
             {guides.map((guide, index) => (
