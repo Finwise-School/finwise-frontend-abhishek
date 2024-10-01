@@ -38,6 +38,9 @@ import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
 import Errors from "./components/error";
 import Books from "./components/Resources";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import Stocks from "./components/stock";
+import BasicsOfTechnicalAnalysis from "./components/Resources/basicsOfTechnicalAnalysis";
+
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -86,6 +89,9 @@ const App = () => {
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
             <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/stock" element={<Stocks />} />
+            <Route path="/basics" element={<BasicsOfTechnicalAnalysis/>} />
+         
             <Route
               path="/profile"
               element={
