@@ -21,7 +21,7 @@ const BasicsOfTechnicalAnalysis = () => {
   const handleEmailChange = (e) => {
     const { value } = e.target;
     // Remove non-numeric characters and limit to 10 digits
-    const cleanedValue = value.replace(/\D/g, '').slice(0, 10);
+    const cleanedValue = value.replace(/\D/g, '');
     setEmail(cleanedValue);
   };
 
