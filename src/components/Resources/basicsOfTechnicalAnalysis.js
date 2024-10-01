@@ -87,7 +87,7 @@ const BasicsOfTechnicalAnalysis = () => {
       <div className="mt-6 lg:mt-0 lg:ml-10">
       <Button onClick={() => setOpenModal(true)}
         // onClick={handleClick}
-        className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300 bg-white hover:bg-white"
+        className="inline-block text-[#263871] hover:text-green-500 hover:bg-white rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300 bg-white"
         style={{
           border: '5px solid',
           borderRadius: '12px',
@@ -114,7 +114,7 @@ const BasicsOfTechnicalAnalysis = () => {
             </div>
             <div className="flex justify-center">
               <Button color="success" onClick={() => setOpenModal(false)} onSubmit={onSubmit}>
-                <a href="" download={book}>Download Now</a>
+                <a href="https://drive.usercontent.google.com/u/0/uc?id=1vGrwxwJ4Avdr5-WoIDRYdzqBR0w1ctx2&export=download" download={'https://drive.usercontent.google.com/u/0/uc?id=1vGrwxwJ4Avdr5-WoIDRYdzqBR0w1ctx2&export=download'}>Download Now</a>
               </Button>
             </div>
           </div>
