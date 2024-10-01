@@ -2,51 +2,51 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 const images =[
     {
-        imageSrc:require("../assets/images/books/budget.png"),
+        imageSrc:require("../../assets/images/books/budget.png"),
         name:"Da Vinci Code",
          path:"/basics"
     },
     {
-        imageSrc:require("../assets/images/books/analysis.png"),
+        imageSrc:require("../../assets/images/books/analysis.png"),
          name:"Basics of technical Analysis",
          path:"/basics"
     },
     {
-        imageSrc:require("../assets/images/books/book1.png"),
+        imageSrc:require("../../assets/images/books/book1.png"),
          name:"Angels and Demons",
          path:"/basics"
     },
     {
-        imageSrc:require("../assets/images/books/butch.png"),
+        imageSrc:require("../../assets/images/books/butch.png"),
          name:"TFIOS",
          path:"/basics"
     },
     {
-        imageSrc:require("../assets/images/books/blueprint.jpg"),
+        imageSrc:require("../../assets/images/books/blueprint.jpg"),
          name:"The Budgeting Blueprint",
          path:"/budgetBlue"
     },
     {
-        imageSrc:require("../assets/images/books/guide2.png"),
+        imageSrc:require("../../assets/images/books/guide2.png"),
          name:"Kite Runner",
          path:"/basics"
     },
     {
-        imageSrc:require("../assets/images/books/guide3.png"),
+        imageSrc:require("../../assets/images/books/guide3.png"),
          name:"Castle in sky",
          path:"/basics"
     },
     {
-        imageSrc:require("../assets/images/books/guide1.png"),
+        imageSrc:require("../../assets/images/books/guide1.png"),
          name:"Immortals of Meluha",
          path:"/basics"
     },
 ]
 
-const Stocks = () => {
+const Finance = () => {
   return (
     <div className='p-[5%]'>
-    <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[4%] text-center">Stock Market</h1>
+    <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[4%] text-center">Finance Hacks</h1>
    
     <div className='grid grid-cols-4 gap-0'>
        
@@ -70,4 +70,4 @@ const Stocks = () => {
   )
 }
 
-export default Stocks
+export default Finance
