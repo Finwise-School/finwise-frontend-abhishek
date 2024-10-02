@@ -10,6 +10,7 @@ import ChatBotQueries from './ADMINDASHBOARD/ChatBotQueries';
 import PhoneNumberQueries from './ADMINDASHBOARD/PhoneNumberQueries';
 import RequestEarlyAccessQueries from './ADMINDASHBOARD/RequestEarlyAccessQueries';
 import ContactUs from './ADMINDASHBOARD/ContactUs';
+import EmailQueries from './ADMINDASHBOARD/EmailBooksQueries';
 
 const ADMINDASHBOARD = () => {
     const [selectedContent, setSelectedContent] = useState('');
@@ -65,6 +66,7 @@ const ADMINDASHBOARD = () => {
                                 <Button color="gray" onClick={() => setSelectedContent('blogsdata')}>Blogs Data</Button>
                                 <Button color="gray" onClick={() => setSelectedContent('blogsuser')}>Blogs User</Button>
                                 <Button color="gray" onClick={() => setSelectedContent('chatbotqueries')}>Chatbot Queries</Button>
+                                <Button color="gray" onClick={() => setSelectedContent('emailqueries')}>Email Queries</Button>
                                 <Button color="gray" onClick={() => setSelectedContent('contactus')}>Contact Us Queries</Button>
                                 <Button color="gray" onClick={() => setSelectedContent('phonenumberqueries')}>Phone Number Queries</Button>
                                 <Button color="gray" onClick={() => setSelectedContent('requestearlyaccessqueries')}>Request Early Access Data</Button>
@@ -79,6 +81,7 @@ const ADMINDASHBOARD = () => {
                                     {selectedContent === 'blogsuser' && <BlogsUser majorRights={adminDATA.MAJOR_RIGHTS} />}
                                     {selectedContent === 'chatbotqueries' && <ChatBotQueries majorRights={adminDATA.MAJOR_RIGHTS} />}
                                     {selectedContent === 'contactus' && <ContactUs majorRights={adminDATA.MAJOR_RIGHTS} />}
+                                    {selectedContent === 'emailqueries' && <EmailQueries majorRights={adminDATA.MAJOR_RIGHTS} />}
                                     {selectedContent === 'phonenumberqueries' && <PhoneNumberQueries majorRights={adminDATA.MAJOR_RIGHTS} />}
                                     {selectedContent === 'requestearlyaccessqueries' && <RequestEarlyAccessQueries majorRights={adminDATA.MAJOR_RIGHTS} />}
                                 </>
