@@ -13,6 +13,7 @@ const Login = ({ authentication, admin }) => {
   // const validPassword = "Thisiscompletelytrial";
 
   axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  // axios.defaults.baseURL = 'http://localhost:5000';
 
 
   useEffect(() => {
@@ -105,3 +106,4 @@ const Login = ({ authentication, admin }) => {
 };
 
 export default Login;
+

@@ -19,6 +19,7 @@ const ADMINDASHBOARD = () => {
     const [adminDATA, setAdminData] = useState();
 
     axios.defaults.baseURL = 'https://api.finwiseschool.com';
+
     // axios.defaults.baseURL = 'http://localhost:5000';
 
     useEffect(() => {

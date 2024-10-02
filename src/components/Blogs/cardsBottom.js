@@ -100,6 +100,7 @@ const CardsBottom = ({ onToggle }) => {
   const carouselRef = useRef(null);
 
   axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  // axios.defaults.baseURL = 'http://localhost:5000';
 
   // DONT DELETE
   useEffect(() => {
