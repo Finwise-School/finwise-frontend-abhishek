@@ -138,14 +138,16 @@ const guides = [
     author: "By Finwise School",
     title: "Basics of Technical Analysis",
     path: "/basics",
-    description: "This is your go-to guide for understanding and applying technical analysis in financial markets."
+    description:
+      "This is your go-to guide for understanding and applying technical analysis in financial markets.",
   },
   {
     imageSrc: require("../assets/images/books/guide2.png"),
     author: "By Finwise School",
     title: "The Budgeting Blueprint",
     path: "/budgetBlue",
-    description: "This is a practical guide designed to help you master the art of budgeting and achieve financial freedom."
+    description:
+      "This is a practical guide designed to help you master the art of budgeting and achieve financial freedom.",
   },
   {
     imageSrc: require("../assets/images/books/guide3.png"),
@@ -163,16 +165,16 @@ const Books = () => {
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-2 md:px-6">
           <div className="md:w-1/2 md:pl-[10%]">
             <p className="text-xs md:text-sm font-thin italic mb-1 md:mb-[3%] md:pt-[4%]">
-            Free Guide to Jump-Start Your Financial Journey
+              Internationally Bestselling Book
             </p>
             <h1 className="text-2xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
-            Take Control of
+              Free Guide to
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
-            Your Finances
+              Jump-Start
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-[8%]">
-            in Just 2 Weeks
+              Your Financial Journey
             </h1>
             <p className="mb-3 md:mb-6 pr-0 md:pr-[30%] font-thin">
               Get started with our free, expert-created guide designed to help
@@ -324,8 +326,7 @@ const Books = () => {
           </div>
 
           {/* GuidesGrid component */}
-          <div className="grid grid-cols-1 gap-[1%] md:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
-            {" "}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
             {/* Align grid to the heading on desktop */}
             {guides.map((guide, index) => (
               <div
@@ -357,7 +358,7 @@ const Books = () => {
                     </Link>
                   </div>
                   <p className="text-sm whitespace-normal text-left mb-2">
-                     {guide.description}
+                    {guide.description}
                   </p>
 
                   {/* Button */}
