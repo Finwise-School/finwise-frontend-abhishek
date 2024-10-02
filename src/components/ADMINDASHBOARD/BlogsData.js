@@ -13,12 +13,14 @@ const BlogsData = ({ majorRights }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [deleteBlogId, setDeleteBlogId] = useState(null);
   const [deletionReason, setDeletionReason] = useState('');
+  const [revokeReason, setRevokeReason] = useState('');
   let i = 1;
   let count = 0;
   let isItBlog = true;
   const [btnClick, setBtnClick] = useState(count);
 
   axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  // axios.defaults.baseURL = 'http://localhost:5000';
 
   const handleOpenModal = (blog) => {
     setSelectedBlog(blog);
@@ -82,6 +84,32 @@ const BlogsData = ({ majorRights }) => {
       console.log('Error', error);
     }
   };
+
+
+  // const handleApproveOption = async () => {
+  //   if (selectedBlog) {
+  //     const approveid = selectedBlog._id; // Get the ID of the selected blog
+  //     const newApprovalStatus = !selectedBlog.isApproved; // Toggle the approval status
+  //     try {
+  //       const response = await axios.post('/api/admindashboard/blogs-isApproved', { id: approveid, approve: true });
+  //       // const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-isApproved', { id: approveid });
+  //       if (response.status === 200) {
+  //         console.log('Status Changed');
+  //         // Update the state based on the new approval status
+  //         setBlogsData((prevBlogs) =>
+  //           prevBlogs.map((blog) =>
+  //             blog._id === approveid ? { ...blog, isApproved: newApprovalStatus } : blog
+  //           )
+  //         );
+  //         handleCloseModal();
+  //       } else {
+  //         console.error('Error:', response.data);
+  //       }
+  //     } catch (error) {
+  //       console.log('Error', error);
+  //     }
+  //   }
+  // };
   
   
   
@@ -89,16 +117,14 @@ const BlogsData = ({ majorRights }) => {
   const handleApproveOption = async () => {
     if (selectedBlog) {
       const approveid = selectedBlog._id; // Get the ID of the selected blog
-      const newApprovalStatus = !selectedBlog.isApproved; // Toggle the approval status
       try {
-        const response = await axios.post('/api/admindashboard/blogs-isApproved', { id: approveid });
-        // const response = await axios.post('http://localhost:5000/api/admindashboard/blogs-isApproved', { id: approveid });
+        const response = await axios.post('/api/admindashboard/blogs-isApproved', { id: approveid, approve: true });
         if (response.status === 200) {
           console.log('Status Changed');
           // Update the state based on the new approval status
           setBlogsData((prevBlogs) =>
             prevBlogs.map((blog) =>
-              blog._id === approveid ? { ...blog, isApproved: newApprovalStatus } : blog
+              blog._id === approveid ? { ...blog, isApproved: true } : blog
             )
           );
           handleCloseModal();
@@ -110,6 +136,32 @@ const BlogsData = ({ majorRights }) => {
       }
     }
   };
+  
+
+  const handleRevokeOption = async () => {
+    if (selectedBlog) {
+      const approveid = selectedBlog._id; // Get the ID of the selected blog
+      try {
+        const response = await axios.post('/api/admindashboard/blogs-isApproved', { id: approveid, approve: false, revokeReason });
+        if (response.status === 200) {
+          console.log('Status Changed');
+          // Update the state based on the new approval status
+          setBlogsData((prevBlogs) =>
+            prevBlogs.map((blog) =>
+              blog._id === approveid ? { ...blog, isApproved: false, revokeReason } : blog
+            )
+          );
+          setRevokeReason('');
+          handleCloseModal();
+        } else {
+          console.error('Error:', response.data);
+        }
+      } catch (error) {
+        console.log('Error', error);
+      }
+    }
+  };
+  
   
 
   useEffect(() => {
@@ -198,7 +250,7 @@ const BlogsData = ({ majorRights }) => {
                 <Table.Head>
                   <Table.HeadCell>S.No</Table.HeadCell>
                   <Table.HeadCell>Writen By</Table.HeadCell>
-                  <Table.HeadCell>Blogs TITLE</Table.HeadCell>
+                  {/* <Table.HeadCell>Blogs TITLE</Table.HeadCell> */}
                   <Table.HeadCell>Title</Table.HeadCell>
                   <Table.HeadCell>Date</Table.HeadCell>
                   <Table.HeadCell>Status</Table.HeadCell>
@@ -215,9 +267,9 @@ const BlogsData = ({ majorRights }) => {
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {item.By}
                       </Table.Cell>
-                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                      {/* <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {item.title}
-                      </Table.Cell>              
+                      </Table.Cell>               */}
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {item.title}
                       </Table.Cell>
@@ -247,6 +299,9 @@ const BlogsData = ({ majorRights }) => {
                       majorRights={majorRights}
                       setOpenModal={handleCloseModal}
                       setApproveoption={handleApproveOption}
+                      setRevokeoption={handleRevokeOption}
+                      revokeReason={revokeReason}
+                      setRevokeReason={setRevokeReason}
                       item_id={selectedBlog._id}
                       item_title={selectedBlog.title}
                       item_content={selectedBlog.content}

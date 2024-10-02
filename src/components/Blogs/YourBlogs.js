@@ -41,14 +41,24 @@ const YourBlogs = ({ dataYourBlogs }) => {
                     <Button onClick={() => handleOpenModal(blog)}>View Full Content</Button>
                     {blog.isDeleted && (
                     <Accordion collapseAll>
-      <Accordion.Panel>
-        <Accordion.Title>Deletion Reason</Accordion.Title>
-        <Accordion.Content>
-          <p>{blog.deletionReason}</p>
-        </Accordion.Content>
-      </Accordion.Panel>
-      </Accordion>
-      )}
+                      <Accordion.Panel>
+                      <Accordion.Title>Deletion Reason</Accordion.Title>
+                      <Accordion.Content>
+                      <p>{blog.deletionReason}</p>
+                      </Accordion.Content>
+                      </Accordion.Panel>
+                    </Accordion>
+                    )}
+                    {blog.revokeReason && (
+                                        <Accordion collapseAll>
+                                          <Accordion.Panel>
+                                          <Accordion.Title>Revoke Reason</Accordion.Title>
+                                          <Accordion.Content>
+                                          <p>{blog.revokeReason}</p>
+                                          </Accordion.Content>
+                                          </Accordion.Panel>
+                                        </Accordion>
+                    )}
                 </Card>
                 </>
             ))}
