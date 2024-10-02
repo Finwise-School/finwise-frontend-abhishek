@@ -120,19 +120,19 @@ const BasicsOfTechnicalAnalysis = () => {
         </p>
         <div className="flex justify-center mr-[4%]">
           <div className="mt-6 lg:mt-0 lg:ml-10">
-            <Button
-              onClick={() => setOpenModal(true)}
-              className="inline-block text-[#263871] hover:text-green-500 rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300 bg-white"
-              style={{
-                border: "5px solid",
-                borderRadius: "12px",
-                borderImage:
-                  "linear-gradient(90deg, #223876 0%, #3CB371 100%) 1",
-                backgroundColor: "white", // Ensure background is white
-              }}
-            >
-              Download Now
-            </Button>
+          <Button
+           onClick={() => setOpenModal(true)}
+           className="text-[#263871] hover:text-green-500 rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300 bg-white flex justify-center items-center"
+            style={{
+            border: "5px solid",
+            borderRadius: "12px",
+            borderImage: "linear-gradient(90deg, #223876 0%, #3CB371 100%) 1",
+            backgroundColor: "white", 
+           }}
+           >
+           Download Now
+           </Button>
+
 
             <Modal
               show={openModal}
