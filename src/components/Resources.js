@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import EarlyAccessTemplate from "./EarlyAccessTemplate";
-import heroo from "../assets/images/books/heroo.png";
+import heroo from "../assets/images/books/heroo.gif";
 import join from "../assets/images/books/joined.png";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -182,11 +182,11 @@ const Books = () => {
               </Link>
             </button>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+          <div className="w-[150%] h-[250%] md:w-1/2 flex justify-center mt-6 md:mt-0">
             <img
               src={heroo}
               alt="Person"
-              className="max-w-[80%] md:max-w-full pr-0 md:pr-[10%]"
+              className="md:max-w-full w-[150%] h-[150%] pr-0 lg:ml-[-10%] lg:mb-[10%] md:pr-[10%]"
             />
           </div>
         </div>

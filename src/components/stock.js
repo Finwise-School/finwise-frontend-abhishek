@@ -12,8 +12,8 @@ const images =[
          path:"/basics"
     },
     {
-        imageSrc:require("../assets/images/books/book1.png"),
-         name:"Angels and Demons",
+        imageSrc:require("../assets/images/books/magic.png"),
+         name:"Magic Of Moving Averages",
          path:"/basics"
     },
     {
@@ -55,7 +55,7 @@ const Stocks = () => {
             <img
               src={image.imageSrc}
               alt={`Book ${index}`}
-              className="w-full h-auto mt-0 m-0"
+              className="w-full h-[80%] mt-0 m-0"
             />
           </Link>
           <h2 className="font-bold mt-4 mb-2 text-sm text-center text-black">
