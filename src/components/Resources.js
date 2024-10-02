@@ -94,7 +94,7 @@ const bookList = [
     imageSrc: require("../assets/images/books/butch.png"),
     author: "Finwise School",
     title: "The Butcher and the wren",
-    path:"/comingSoon",
+    path: "/comingSoon",
   },
 ];
 
@@ -135,21 +135,23 @@ const bookImages = [
 const guides = [
   {
     imageSrc: require("../assets/images/books/guide1.png"),
-    author: "By Arthur Gonzalez",
-    title: "A God Who Hates Women",
-    path:"/comingSoon",
+    author: "By Finwise School",
+    title: "Basics of Technical Analysis",
+    path: "/basics",
+    description: "This is your go-to guide for understanding and applying technical analysis in financial markets."
   },
   {
     imageSrc: require("../assets/images/books/guide2.png"),
-    author: "By Sabela Hupter",
-    title: "Hans Christian Andersen",
-    path:"/comingSoon",
+    author: "By Finwise School",
+    title: "The Budgeting Blueprint",
+    path: "/budgetBlue",
+    description: "This is a practical guide designed to help you master the art of budgeting and achieve financial freedom."
   },
   {
     imageSrc: require("../assets/images/books/guide3.png"),
-    author: "By Alyce Kris",
-    title: "Castle In The Sky",
-    path:"/comingSoon",
+    author: "By Finwise School",
+    title: "Magic of Moving Averages",
+    path: "/comingSoon",
   },
 ];
 
@@ -354,6 +356,9 @@ const Books = () => {
                       </h3>
                     </Link>
                   </div>
+                  <p className="text-sm whitespace-normal text-left mb-2">
+                     {guide.description}
+                  </p>
 
                   {/* Button */}
                   <div>
