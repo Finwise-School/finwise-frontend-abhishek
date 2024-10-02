@@ -72,7 +72,7 @@ const BasicsOfTechnicalAnalysis = () => {
               decisions!
             </h2>
             <p className="mb-4">
-              <strong>"Basics of Technical Analysis"</strong> by Finwise School
+              <strong className="font-bold">"Basics of Technical Analysis"</strong> by Finwise School
               is your go-to guide for understanding and applying technical
               analysis in financial markets. Whether you're a beginner or
               looking to sharpen your skills, this handbook provides a solid
@@ -82,35 +82,35 @@ const BasicsOfTechnicalAnalysis = () => {
             <p className="mb-4">In this book, you'll discover:</p>
             <ul className="list-disc list-inside mb-4 space-y-2">
               <li>
-                <strong>Key Concepts of Technical Analysis:</strong> Learn how
+                <strong className="font-bold">Key Concepts of Technical Analysis:</strong> Learn how
                 to use historical price and volume data to forecast future
                 market movements.
               </li>
               <li>
-                <strong>Understanding Chart Types:</strong> Get familiar with
+                <strong className="font-bold">Understanding Chart Types:</strong> Get familiar with
                 line, bar, and candlestick charts, and learn how to interpret
                 them for better trading decisions.
               </li>
               <li>
-                <strong>Spotting Market Trends:</strong> Master the art of
+                <strong className="font-bold">Spotting Market Trends:</strong> Master the art of
                 identifying uptrends, downtrends, and range-bound markets to
                 capitalize on market momentum.
               </li>
               <li>
-                <strong>Chart Patterns and Indicators:</strong> Understand
+                <strong className="font-bold">Chart Patterns and Indicators:</strong> Understand
                 powerful patterns like Head & Shoulders and Double Tops, along
                 with essential indicators like Moving Averages and the Relative
                 Strength Index (RSI).
               </li>
               <li>
-                <strong>Psychological Insights:</strong> Gain insight into how
+                <strong className="font-bold">Psychological Insights:</strong> Gain insight into how
                 emotions like fear and greed drive market movements and how to
                 maintain discipline in your trades.
               </li>
             </ul>
             <p className="mb-4">
               With clear explanations and practical examples,{" "}
-              <strong>"Basics of Technical Analysis"</strong> gives you the
+              <strong className="font-bold">"Basics of Technical Analysis"</strong> gives you the
               tools needed to make informed, confident trading decisions.
               Whether you're interested in stocks, commodities, or forex, this
               guide will help you navigate the markets with precision and

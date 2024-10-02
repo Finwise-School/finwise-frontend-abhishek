@@ -72,7 +72,7 @@ const BasicsOfTechnicalAnalysis = () => {
               want!
             </h2>
             <p className="mb-4">
-              <strong>"The Budgeting Blueprint"</strong> by Finwise School is a
+              <strong className="font-bold">"The Budgeting Blueprint"</strong> by Finwise School is a
               practical guide designed to help you master the art of budgeting
               and achieve financial freedom. This easy-to-follow guide walks you
               through every step, from understanding the basics of budgeting to
@@ -82,33 +82,33 @@ const BasicsOfTechnicalAnalysis = () => {
             <p className="mb-4">In this book, you'll learn how to:</p>
             <ul className="list-disc list-inside mb-4 space-y-2">
               <li>
-                <strong>Create a Personalized Budget:</strong> Break down your
+                <strong className="font-bold">Create a Personalized Budget:</strong> Break down your
                 income, expenses, and savings in a way that suits your unique
                 lifestyle.
               </li>
               <li>
-                <strong>Set SMART Financial Goals:</strong> Whether you're
+                <strong className="font-bold">Set SMART Financial Goals:</strong> Whether you're
                 saving for a dream vacation or paying off debt, discover how to
                 reach your goals with clear, actionable steps.
               </li>
               <li>
-                <strong>Build Smart Spending Habits:</strong> Learn how to track
+                <strong className="font-bold">Build Smart Spending Habits:</strong> Learn how to track
                 your expenses, cut unnecessary spending, and make smarter
                 financial choices.
               </li>
               <li>
-                <strong>Manage Debt Efficiently:</strong> Explore strategies to
+                <strong className="font-bold">Manage Debt Efficiently:</strong> Explore strategies to
                 tackle debt, reduce interest payments, and gain financial
                 control.
               </li>
               <li>
-                <strong>Invest for the Future:</strong> Get an introduction to
+                <strong className="font-bold">Invest for the Future:</strong> Get an introduction to
                 basic investing principles and start building long-term wealth.
               </li>
             </ul>
             <p className="mb-4">
               With practical tips, budgeting hacks, and simple strategies,{" "}
-              <strong>"The Budgeting Blueprint"</strong> turns managing your
+              <strong className="font-bold">"The Budgeting Blueprint"</strong> turns managing your
               money into an approachable and rewarding task. Whether you're just
               starting your financial journey or looking for ways to refine your
               budget, this guide will give you the tools to create a secure
