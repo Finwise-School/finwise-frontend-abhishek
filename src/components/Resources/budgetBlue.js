@@ -66,26 +66,55 @@ const BasicsOfTechnicalAnalysis = () => {
           <img src={blues} className="h-auto w-auto" alt="Book Cover" />
         </div>
         <p className="mb-[4%] mt-[4%] font-medium text-black text-justify mx-[10%]">
-          A **technical analysis book** delves into the study of price movements,
-          chart patterns, and market indicators to help traders and investors
-          forecast the future performance of financial instruments like stocks,
-          commodities, or currencies. It typically starts by introducing various
-          chart types, such as candlestick, bar, and line charts, to teach readers
-          how to visualize and interpret market data. The book also covers a range
-          of indicators and oscillators, including moving averages, the relative
-          strength index (RSI), and MACD, providing detailed guidance on how these
-          tools can help identify trends, overbought or oversold conditions, and
-          potential entry or exit points. Readers learn about support and
-          resistance levels, key price points where markets tend to reverse or
-          consolidate, and how to draw trendlines to follow market direction.
-          Additionally, the book explains how to recognize classic chart patterns
-          like head and shoulders, triangles, and flags, which often signal market
-          continuations or reversals. Volume analysis is another key focus,
-          helping traders confirm the strength of price movements. Lastly, the
-          book emphasizes risk management strategies, such as setting stop-loss
-          orders, to minimize potential losses and protect gains, making it an
-          essential resource for anyone looking to navigate the complexities of
-          financial markets.
+          <div className="p-6 bg-white rounded-lg shadow-md max-w-4xl mx-auto">
+            <h2 className="text-xl italic mb-4 font-bold">
+              Take control of your finances and start building the life you
+              want!
+            </h2>
+            <p className="mb-4">
+              <strong>"The Budgeting Blueprint"</strong> by Finwise School is a
+              practical guide designed to help you master the art of budgeting
+              and achieve financial freedom. This easy-to-follow guide walks you
+              through every step, from understanding the basics of budgeting to
+              setting meaningful financial goals, managing debt, and even
+              investing for the future.
+            </p>
+            <p className="mb-4">In this book, you'll learn how to:</p>
+            <ul className="list-disc list-inside mb-4 space-y-2">
+              <li>
+                <strong>Create a Personalized Budget:</strong> Break down your
+                income, expenses, and savings in a way that suits your unique
+                lifestyle.
+              </li>
+              <li>
+                <strong>Set SMART Financial Goals:</strong> Whether you're
+                saving for a dream vacation or paying off debt, discover how to
+                reach your goals with clear, actionable steps.
+              </li>
+              <li>
+                <strong>Build Smart Spending Habits:</strong> Learn how to track
+                your expenses, cut unnecessary spending, and make smarter
+                financial choices.
+              </li>
+              <li>
+                <strong>Manage Debt Efficiently:</strong> Explore strategies to
+                tackle debt, reduce interest payments, and gain financial
+                control.
+              </li>
+              <li>
+                <strong>Invest for the Future:</strong> Get an introduction to
+                basic investing principles and start building long-term wealth.
+              </li>
+            </ul>
+            <p className="mb-4">
+              With practical tips, budgeting hacks, and simple strategies,{" "}
+              <strong>"The Budgeting Blueprint"</strong> turns managing your
+              money into an approachable and rewarding task. Whether you're just
+              starting your financial journey or looking for ways to refine your
+              budget, this guide will give you the tools to create a secure
+              financial future.
+            </p>
+          </div>
         </p>
         <div className="flex justify-center mr-[4%]">
           <div className="mt-6 lg:mt-0 lg:ml-10">

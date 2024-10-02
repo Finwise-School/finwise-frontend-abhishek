@@ -66,26 +66,57 @@ const BasicsOfTechnicalAnalysis = () => {
           <img src={blues} className="h-auto w-auto" alt="Book Cover" />
         </div>
         <p className="mb-[4%] mt-[4%] font-medium text-black text-justify mx-[10%]">
-          A **technical analysis book** delves into the study of price movements,
-          chart patterns, and market indicators to help traders and investors
-          forecast the future performance of financial instruments like stocks,
-          commodities, or currencies. It typically starts by introducing various
-          chart types, such as candlestick, bar, and line charts, to teach readers
-          how to visualize and interpret market data. The book also covers a range
-          of indicators and oscillators, including moving averages, the relative
-          strength index (RSI), and MACD, providing detailed guidance on how these
-          tools can help identify trends, overbought or oversold conditions, and
-          potential entry or exit points. Readers learn about support and
-          resistance levels, key price points where markets tend to reverse or
-          consolidate, and how to draw trendlines to follow market direction.
-          Additionally, the book explains how to recognize classic chart patterns
-          like head and shoulders, triangles, and flags, which often signal market
-          continuations or reversals. Volume analysis is another key focus,
-          helping traders confirm the strength of price movements. Lastly, the
-          book emphasizes risk management strategies, such as setting stop-loss
-          orders, to minimize potential losses and protect gains, making it an
-          essential resource for anyone looking to navigate the complexities of
-          financial markets.
+          <div className="p-6 bg-white rounded-lg shadow-md max-w-4xl mx-auto">
+            <h2 className="text-xl italic mb-4 font-bold">
+              Unlock the power of market trends and make smarter trading
+              decisions!
+            </h2>
+            <p className="mb-4">
+              <strong>"Basics of Technical Analysis"</strong> by Finwise School
+              is your go-to guide for understanding and applying technical
+              analysis in financial markets. Whether you're a beginner or
+              looking to sharpen your skills, this handbook provides a solid
+              foundation in analyzing price movements, spotting trends, and
+              predicting future market behavior.
+            </p>
+            <p className="mb-4">In this book, you'll discover:</p>
+            <ul className="list-disc list-inside mb-4 space-y-2">
+              <li>
+                <strong>Key Concepts of Technical Analysis:</strong> Learn how
+                to use historical price and volume data to forecast future
+                market movements.
+              </li>
+              <li>
+                <strong>Understanding Chart Types:</strong> Get familiar with
+                line, bar, and candlestick charts, and learn how to interpret
+                them for better trading decisions.
+              </li>
+              <li>
+                <strong>Spotting Market Trends:</strong> Master the art of
+                identifying uptrends, downtrends, and range-bound markets to
+                capitalize on market momentum.
+              </li>
+              <li>
+                <strong>Chart Patterns and Indicators:</strong> Understand
+                powerful patterns like Head & Shoulders and Double Tops, along
+                with essential indicators like Moving Averages and the Relative
+                Strength Index (RSI).
+              </li>
+              <li>
+                <strong>Psychological Insights:</strong> Gain insight into how
+                emotions like fear and greed drive market movements and how to
+                maintain discipline in your trades.
+              </li>
+            </ul>
+            <p className="mb-4">
+              With clear explanations and practical examples,{" "}
+              <strong>"Basics of Technical Analysis"</strong> gives you the
+              tools needed to make informed, confident trading decisions.
+              Whether you're interested in stocks, commodities, or forex, this
+              guide will help you navigate the markets with precision and
+              clarity.
+            </p>
+          </div>
         </p>
         <div className="flex justify-center mr-[4%]">
           <div className="mt-6 lg:mt-0 lg:ml-10">
