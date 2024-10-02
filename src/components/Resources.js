@@ -240,7 +240,7 @@ const Books = () => {
           <div className="md:w-1/2 flex justify-center">
             <img
               src={join}
-              className="h-auto w-[70%] max-w-full"
+              className="h-auto w-[70%] max-w-full mt-[8%] lg:mt-[0%]"
               alt="Join now"
             />
           </div>
