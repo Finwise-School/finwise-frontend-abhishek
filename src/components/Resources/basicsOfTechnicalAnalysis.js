@@ -129,7 +129,7 @@ const BasicsOfTechnicalAnalysis = () => {
         </Modal.Body>
       </Modal>
 
-    {/*  */}
+   
       
     </div>
       </div>
