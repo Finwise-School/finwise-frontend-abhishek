@@ -163,16 +163,16 @@ const Books = () => {
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-2 md:px-6">
           <div className="md:w-1/2 md:pl-[10%]">
             <p className="text-xs md:text-sm font-thin italic mb-1 md:mb-[3%] md:pt-[4%]">
-              Internationally Bestselling Book
+            Free Guide to Jump-Start Your Financial Journey
             </p>
             <h1 className="text-2xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
-              Free Guide to
+            Take Control of
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
-              Jump-Start
+            Your Finances
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-[8%]">
-              Your Financial Journey
+            in Just 2 Weeks
             </h1>
             <p className="mb-3 md:mb-6 pr-0 md:pr-[30%] font-thin">
               Get started with our free, expert-created guide designed to help
