@@ -18,6 +18,7 @@ const BlogsUser = ({ majorRights }) => {
   const [btnClick, setBtnClick] = useState(count);
 
   axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  // axios.defaults.baseURL = 'http://localhost:5000';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -136,7 +137,7 @@ const BlogsUser = ({ majorRights }) => {
                 <Table.HeadCell>Password<span className='cursor-pointer text-center' onClick={() => setShowPassword(!showPassword)}>{showPassword ? <HiEyeOff /> : <HiEye />}</span></Table.HeadCell>
               )}
               <Table.HeadCell>Created</Table.HeadCell>
-              <Table.HeadCell>Blogs</Table.HeadCell>
+              {/* <Table.HeadCell>Blogs</Table.HeadCell> */}
               <Table.HeadCell>
                 <span className="sr-only">Edit</span>
               </Table.HeadCell>
@@ -155,12 +156,12 @@ const BlogsUser = ({ majorRights }) => {
                     <Table.Cell><p className={`${showPassword ? 'block' : 'hidden'}`}>{item.password}</p></Table.Cell>
                   )}
                   <Table.Cell>{item.writeDate}</Table.Cell>
-                  <Table.Cell>{item.blogPost.map((bitem, index) => (
+                  {/* <Table.Cell>{item.blogPost.map((bitem, index) => (
                     <div className='flex flex-row justify-start' key={index}>
                      <p className='me-5'>{index + 1}</p>
                      <p>{bitem}</p>
                     </div>
-                  ))}</Table.Cell>
+                  ))}</Table.Cell> */}
                   {majorRights && (
                   <Table.Cell>
                     <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>

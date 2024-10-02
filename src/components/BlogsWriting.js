@@ -71,24 +71,24 @@ const BlogsWriting = ({ placeholder }) => {
     //     }
     // };
 
-    const handleImageUpload = async (blobInfo, success, failure) => {
-        const formData = new FormData();
-        formData.append('image', blobInfo.blob(), blobInfo.filename());
-        formData.append('key', '65f8bb755163a2c0fb7741e95ee4944c'); // Your Imgbb API key
+    // const handleImageUpload = async (blobInfo, success, failure) => {
+    //     const formData = new FormData();
+    //     formData.append('image', blobInfo.blob(), blobInfo.filename());
+    //     formData.append('key', '65f8bb755163a2c0fb7741e95ee4944c'); // Your Imgbb API key
 
-        try {
-            const response = await axios.post('https://api.imgbb.com/1/upload', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
-            if (response.data && response.data.data && response.data.data.url) {
-                success(response.data.data.url); // Use the URL returned from Imgbb
-            } else {
-                failure('Image upload failed: No URL returned.');
-            }
-        } catch (error) {
-            failure('Image upload failed: ' + error.message);
-        }
-    };
+    //     try {
+    //         const response = await axios.post('https://api.imgbb.com/1/upload', formData, {
+    //             headers: { 'Content-Type': 'multipart/form-data' }
+    //         });
+    //         if (response.data && response.data.data && response.data.data.url) {
+    //             success(response.data.data.url); // Use the URL returned from Imgbb
+    //         } else {
+    //             failure('Image upload failed: No URL returned.');
+    //         }
+    //     } catch (error) {
+    //         failure('Image upload failed: ' + error.message);
+    //     }
+    // };
     
 
     const handleThumbnailUpload = async (file) => {
@@ -248,7 +248,7 @@ const BlogsWriting = ({ placeholder }) => {
     </div>
     <FileInput 
         id="file-upload-helper-text" 
-        helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." 
+        helperText="SVG, PNG, JPG or GIF" 
         type="file" 
         name="Thumbnail" 
         accept=".jpeg, .png, .gif, .bmp, .tiff" 
@@ -272,10 +272,10 @@ const BlogsWriting = ({ placeholder }) => {
                                 apiKey='ypo1fmswbyn1ye2jhqzf5k7otdoe4qi3l7a3oe58xisjkd1w'
                                 init={{
                                     plugins: [
-                                        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+                                        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'searchreplace', 'table', 'visualblocks', 'wordcount',
                                     ],
                                     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-                                    images_upload_handler: handleImageUpload,
+                                    // images_upload_handler: handleImageUpload,
                                 }}
                                 initialValue="Start writing your Blogs!"
                                 onEditorChange={(newContent) => setContent(newContent)}
