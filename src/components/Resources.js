@@ -227,7 +227,7 @@ const Books = () => {
       <div className="finwise-back ml-[14%] mr-[14%] text-black flex pt-10 h-auto px-10">
         <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2">
-            <div className="flex mb-4">
+            <div className="flex mb-4 mt-[-20%]">
               <h2 className="font-bold text-lg">100% off</h2>
               <h2 className="font-semibold ml-1 text-lg">on all guides</h2>
             </div>
@@ -237,10 +237,11 @@ const Books = () => {
               <Link to="/finance">Get Now</Link>
             </button>
           </div>
-          <div className="md:w-1/2 flex justify-center">
+          <div className="md:w-1/2 flex justify-center hidden md:flex">
+            {/* Image will be hidden on mobile screens */}
             <img
               src={join}
-              className="h-auto w-[70%] max-w-full mt-[8%] lg:mt-[0%]"
+              className="lg:h-auto lg:w-[70%] lg:max-w-full mt-[8%] lg:mt-[0%]"
               alt="Join now"
             />
           </div>
