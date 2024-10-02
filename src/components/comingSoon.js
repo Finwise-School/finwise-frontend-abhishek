@@ -1,12 +1,12 @@
 import React from 'react'
-import err from '../../src/assets/images/ss.jpg'
+import come from "../assets/images/Comming.png"
 
-const Errors = () => {
+const Coming = () => {
   return (
     <div className=' flex justify-center items-center h-screen'>
-      <img src={err}   className=' max-h-full max-w-full object-contain'/>
+      <img src={come}   className=' max-h-full max-w-full object-contain'/>
     </div>
   )
 }
 
-export default Errors 
+export default Coming
