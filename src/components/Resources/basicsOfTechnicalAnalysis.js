@@ -118,7 +118,7 @@ const BasicsOfTechnicalAnalysis = () => {
             </p>
           </div>
         </p>
-        <div className="flex justify-center mr-[4%]">
+        <div className="flex justify-center mr-[2%]">
           <div className="mt-6 lg:mt-0 lg:ml-10">
             <Button
               onClick={() => setOpenModal(true)}
