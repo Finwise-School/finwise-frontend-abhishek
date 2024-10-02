@@ -13,6 +13,7 @@ function Blogs() {
   const [isOpen, setIsOpen] = useState(false);
 
   axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  // axios.defaults.baseURL = 'http://localhost:5000';
 
   useEffect(() => {
     axios.get('/api/blogsContentFetch')
