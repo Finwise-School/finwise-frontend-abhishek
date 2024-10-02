@@ -70,13 +70,13 @@ const bookList = [
     imageSrc: require("../assets/images/books/blue.png"),
     author: "Finwise School",
     title: "Blue is a darkness weekened by light",
-    path: "/basics",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/father.png"),
     author: "Finwise School",
     title: "My Feather Thief",
-    path: "/basics",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/analysis.png"),
@@ -88,13 +88,13 @@ const bookList = [
     imageSrc: require("../assets/images/books/illness.png"),
     author: "Finwise School",
     title: "The Illness Lesson",
-    path: "/basics",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/butch.png"),
     author: "Finwise School",
     title: "The Butcher and the wren",
-    path: "/basics",
+    path:"/comingSoon",
   },
 ];
 
@@ -137,16 +137,19 @@ const guides = [
     imageSrc: require("../assets/images/books/guide1.png"),
     author: "By Arthur Gonzalez",
     title: "A God Who Hates Women",
+    path:"/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/guide2.png"),
     author: "By Sabela Hupter",
     title: "Hans Christian Andersen",
+    path:"/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/guide3.png"),
     author: "By Alyce Kris",
     title: "Castle In The Sky",
+    path:"/comingSoon",
   },
 ];
 
@@ -355,7 +358,7 @@ const Books = () => {
                   {/* Button */}
                   <div>
                     <button className="bg-black text-white text-sm font-semibold px-4 py-2 rounded w-full">
-                      Get Now
+                      <Link to={guide.path}>Get Now</Link>
                     </button>
                   </div>
                 </div>
