@@ -297,8 +297,6 @@ const Books = () => {
 
       {/* Guides of the Day Section */}
       <div className="fin-back pt-4 pb-12 md:pb-16 mb-[-4%] bg-[#f5dac3]">
-        {" "}
-        {/* Added background color and extended padding */}
         <div className="container mx-auto">
           {/* Mobile View */}
           <div className="block md:hidden px-4 text-center">

@@ -57,16 +57,20 @@ const BasicsOfTechnicalAnalysis = () => {
   };
 
   return (
-    <div className="p-[5%]">
-      <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[4%] text-center">
-        The Budget Blueprint
-      </h1>
-      <div className="mt-[4%] mr-[%]">
+    <div className="p-[5%] bg-slate-50 my-[2%] rounded-lg shadow-xl max-w-4xl mx-auto">
+     <div className="  flex-col md:flex-row items-center md:items-start columns-2 px-[8%]">
+      <div className="mt-[4%] ">
         <div className="flex justify-center">
           <img src={blues} className="h-auto w-auto" alt="Book Cover" />
         </div>
+        <h1 className="finwise-blue text-3xl md:text-5xl font-bold mt-6 md:mt-[100%] text-center">
+        The Budget Blueprint
+      </h1>
+      </div>
+     </div>
+        <div className="mt-[4%] mr-[%]">
         <p className="mb-[4%] mt-[4%] font-medium text-black text-justify mx-[10%]">
-          <div className="p-6 bg-white rounded-lg shadow-md max-w-4xl mx-auto">
+          <div className="">
             <h2 className="text-xl italic mb-4 font-bold">
               Take control of your finances and start building the life you
               want!
