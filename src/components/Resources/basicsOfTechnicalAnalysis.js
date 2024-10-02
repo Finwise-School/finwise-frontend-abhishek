@@ -63,7 +63,7 @@ const BasicsOfTechnicalAnalysis = () => {
           <div className="flex justify-center">
             <img src={blues} className="h-auto w-auto" alt="Book Cover" />
           </div>
-          <h1 className="finwise-blue text-3xl md:text-5xl font-bold pt-[30%] lg:pt-[40%] text-center">
+          <h1 className="finwise-blue text-3xl md:text-5xl font-bold pt-[40%] lg:pt-[35%] text-center">
            Basics of Technical Analysis
           </h1>
         </div>
