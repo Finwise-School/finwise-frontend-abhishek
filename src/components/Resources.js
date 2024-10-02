@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import EarlyAccessTemplate from "./EarlyAccessTemplate";
-import heroo from "../assets/images/books/heroo.png";
+import header from "../assets/video/header.gif"
 import join from "../assets/images/books/joined.png";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -155,41 +155,41 @@ const Books = () => {
     <div className="font-sans">
       {/* Hero Section */}
       <section className="fin-head text-white pt-10 md:pt-16 md:px-5">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-6">
-          <div className="w-full md:w-1/2 md:pl-[10%]">
-            <p className="text-xs md:text-sm font-thin italic mb-2 md:mb-[3%]">
-              Internationally Bestselling Book
-            </p>
-            <h1 className="text-3xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
-              2-Week Plan to
-            </h1>
-            <h1 className="text-3xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
-              Jump-Start
-            </h1>
-            <h1 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-[8%]">
-              Your Healing
-            </h1>
-            <p className="mb-4 md:mb-6 pr-0 md:pr-[30%] font-thin">
-              Check out the new book by Dr. Martin to find out how to stay
-              healthy and support your body.
-            </p>
-            <button className="bg-blue-900 text-white py-2 px-4 md:px-7 font-semibold hover:bg-blue-800">
-              <Link to="/basics">
-                <div className="flex items-center">
-                  Meet Our Bestsellers
-                  <FaArrowRight className="ml-2" />
-                </div>
-              </Link>
-            </button>
-          </div>
-          <div className="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
-            <img
-              src={heroo}
-              alt="Person"
-              className="max-w-[80%] md:max-w-full pr-0 md:pr-[10%]"
-            />
-          </div>
+      <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-2 md:px-6">
+  <div className="w-full md:w-1/2 md:pl-[10%]">
+    <p className="text-xs md:text-sm font-thin italic mb-1 md:mb-[3%]">
+      Internationally Bestselling Book
+    </p>
+    <h1 className="text-2xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
+      Free Guide to
+    </h1>
+    <h1 className="text-2xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
+      Jump-Start
+    </h1>
+    <h1 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-[8%]">
+      Your Financial Journey
+    </h1>
+    <p className="mb-3 md:mb-6 pr-0 md:pr-[30%] font-thin">
+      Get started with our free, expert-created guide designed to help you build strong financial habits and achieve your goals.
+    </p>
+    <button className="bg-blue-900 text-white py-2 px-3 md:px-7 font-semibold hover:bg-blue-800">
+      <Link to="/basics">
+        <div className="flex items-center">
+          Download Our Free Resources
+          <FaArrowRight className="ml-2" />
         </div>
+      </Link>
+    </button>
+  </div>
+  <div className="w-full md:w-1/2 flex justify-center mt-4 md:mt-0">
+    <img
+      src={header}
+      alt="Person"
+      className="max-w-[90%] md:max-w-full pr-0 md:pr-[10%]"
+    />
+  </div>
+</div>
+
       </section>
 
       {/* Carousel Section */}
