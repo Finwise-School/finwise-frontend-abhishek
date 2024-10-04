@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const images =[
-    {
-        imageSrc:require("../assets/images/books/budget.png"),
-        name:"Da Vinci Code",
-         path:"/comingSoon"
-    },
+    // {
+    //     imageSrc:require("../assets/images/books/budget.png"),
+    //     name:"Da Vinci Code",
+    //      path:"/comingSoon"
+    // },
     {
         imageSrc:require("../assets/images/books/analysis.png"),
          name:"Basics of technical Analysis",
@@ -16,31 +16,31 @@ const images =[
          name:"Magic Of Moving Averages",
          path:"/comingSoon"
     },
-    {
-        imageSrc:require("../assets/images/books/butch.png"),
-         name:"TFIOS",
-         path:"/comingSoon"
-    },
-    {
-        imageSrc:require("../assets/images/books/blueprint.jpg"),
-         name:"The Budgeting Blueprint",
-         path:"/budgetBlue"
-    },
-    {
-        imageSrc:require("../assets/images/books/guide2.png"),
-         name:"Kite Runner",
-         path:"/comingSoon"
-    },
-    {
-        imageSrc:require("../assets/images/books/guide3.png"),
-         name:"Castle in sky",
-         path:"/comingSoon"
-    },
-    {
-        imageSrc:require("../assets/images/books/guide1.png"),
-         name:"Immortals of Meluha",
-         path:"/comingSoon"
-    },
+    // {
+    //     imageSrc:require("../assets/images/books/butch.png"),
+    //      name:"TFIOS",
+    //      path:"/comingSoon"
+    // },
+    // {
+    //     imageSrc:require("../assets/images/books/blueprint.jpg"),
+    //      name:"The Budgeting Blueprint",
+    //      path:"/budgetBlue"
+    // },
+    // {
+    //     imageSrc:require("../assets/images/books/guide2.png"),
+    //      name:"Kite Runner",
+    //      path:"/comingSoon"
+    // },
+    // {
+    //     imageSrc:require("../assets/images/books/guide3.png"),
+    //      name:"Castle in sky",
+    //      path:"/comingSoon"
+    // },
+    // {
+    //     imageSrc:require("../assets/images/books/guide1.png"),
+    //      name:"Immortals of Meluha",
+    //      path:"/comingSoon"
+    // },
 ]
 
 const Stocks = () => {

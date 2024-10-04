@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import EarlyAccessTemplate from "./EarlyAccessTemplate";
 import header from "../assets/video/header.gif";
-import join from "../assets/images/books/joined.png";
+import join from "../assets/images/books/PINK.png";
 import { FaArrowRight } from "react-icons/fa";
 
 const options = { year: "numeric", month: "long", day: "numeric" };
@@ -67,15 +67,15 @@ const bookList = [
     path: "/budgetBlue",
   },
   {
-    imageSrc: require("../assets/images/books/blue.png"),
+    imageSrc: require("../assets/images/books/Retirement.png"),
     author: "Finwise School",
-    title: "Blue is a darkness weekened by light",
+    title: "Retirement Planning",
     path: "/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/father.png"),
+    imageSrc: require("../assets/images/books/Tax.png"),
     author: "Finwise School",
-    title: "My Feather Thief",
+    title: "The Tax Planning Playbook",
     path: "/comingSoon",
   },
   {
@@ -85,50 +85,50 @@ const bookList = [
     path: "/basics",
   },
   {
-    imageSrc: require("../assets/images/books/illness.png"),
+    imageSrc: require("../assets/images/books/finances.png"),
     author: "Finwise School",
-    title: "The Illness Lesson",
+    title: "101 Finance Hacks",
     path: "/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/butch.png"),
+    imageSrc: require("../assets/images/books/smart.png"),
     author: "Finwise School",
-    title: "The Butcher and the wren",
+    title: "Smart With Money",
     path: "/comingSoon",
   },
 ];
 
 const bookImages = [
   {
-    imageSrc: require("../assets/images/books/budget.png"),
+    imageSrc: require("../assets/images/books/blueprint.jpg"),
     title: "Budgeting",
     path: "/budgeting",
   },
   {
-    imageSrc: require("../assets/images/books/analysis.png"),
+    imageSrc: require("../assets/images/books/cover.png"),
     title: "Stock Market",
     path: "/stock",
     booklocal: "/basics",
   },
   {
-    imageSrc: require("../assets/images/books/book2.png"),
+    imageSrc: require("../assets/images/books/Tax.png"),
     title: "Taxation",
-    path: "/taxation",
+    path:"/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/book3.png"),
+    imageSrc: require("../assets/images/books/Retirement.png"),
     title: "Retirement Planning",
-    path: "/retirement",
+    path: "/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/book4.png"),
+    imageSrc: require("../assets/images/books/smart.png"),
     title: "Smart with money",
-    path: "/smart",
+    path: "/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/book1.png"),
+    imageSrc: require("../assets/images/books/finances.png"),
     title: "Finance hacks",
-    path: "/finance",
+    path: "/comingSoon",
   },
 ];
 
@@ -165,16 +165,16 @@ const Books = () => {
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-2 md:px-6">
           <div className="md:w-1/2 md:pl-[10%]">
             <p className="text-xs md:text-sm font-thin italic mb-1 md:mb-[3%] md:pt-[4%]">
-              Internationally Bestselling Book
+            Free Guide to Jump-Start Your Financial Journey
             </p>
             <h1 className="text-2xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
-              Free Guide to
+            Take Control of 
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
-              Jump-Start
+            Your Finances
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-[8%]">
-              Your Financial Journey
+            in Just 2 Weeks
             </h1>
             <p className="mb-3 md:mb-6 pr-0 md:pr-[30%] font-thin">
               Get started with our free, expert-created guide designed to help
@@ -208,7 +208,8 @@ const Books = () => {
           <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
             {bookImages.map((bookImage, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="bg-gray-200 w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
+                <div className="bg-blue-900 bg-opacity-95 backdrop-blur-sm w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
+
                   <Link to={bookImage.path}>
                     <div className="w-20 h-20 md:w-28 md:h-28 mt-2 md:mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
                       <img
@@ -231,7 +232,7 @@ const Books = () => {
       </div>
 
       {/* Promotion Section */}
-      <div className="finwise-back ml-[14%] mr-[14%] text-black flex pt-10 h-auto px-10">
+      <div className=" fin-head ml-[14%] mr-[14%] text-white flex pt-10 h-auto px-10">
         <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2">
             <div className="flex mb-4 mt-[-20%]">
@@ -240,7 +241,7 @@ const Books = () => {
             </div>
             <h1 className="font-extrabold text-3xl">Free for all</h1>
             <h1 className="text-5xl mb-6 font-bold">Early members</h1>
-            <button className="bg-black text-white py-2 px-4 rounded font-semibold hover:bg-gray-800">
+            <button className="bg-blue-900 text-white py-2 px-4 rounded font-semibold hover:bg-blue-800">
               <Link to="/finance">Get Now</Link>
             </button>
           </div>
@@ -303,30 +304,30 @@ const Books = () => {
       </section>
 
       {/* Guides of the Day Section */}
-      <div className="fin-back pt-4 pb-12 md:pb-16 mb-[-4%] bg-[#f5dac3]">
+      <div className="fin-back pt-4 pb-12 md:pb-16 mb-[-4%] fin-head">
         <div className="container mx-auto">
           {/* Mobile View */}
           <div className="block md:hidden px-4 text-center">
-            <h2 className="text-black text-2xl font-bold">
+            <h2 className="text-blue-900 text-2xl font-bold">
               Guides of the Day -
             </h2>
-            <h2 className="text-orange-800 text-2xl font-bold mb-4">
+            <h2 className="text-white text-2xl font-bold mb-4">
               {new Date().toLocaleDateString("en-GB", options)}
             </h2>
           </div>
 
           {/* Laptop/Tablet View */}
           <div className="hidden md:flex">
-            <h2 className="text-black text-3xl font-bold ml-[7%]">
+            <h2 className="text-white text-3xl font-bold ml-[7%]">
               Guides of the Day -
             </h2>
-            <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-[1%]">
+            <h2 className="text-white text-3xl font-light mb-8 pl-[1%]">
               {new Date().toLocaleDateString("en-GB", options)}
             </h2>
           </div>
 
           {/* GuidesGrid component */}
-          <div className="flex flex-col gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
+          <div className="flex flex-col gap-8  sm:grid sm:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
   {guides.map((guide, index) => (
     <div
       key={index}
@@ -362,7 +363,7 @@ const Books = () => {
 
         {/* Button */}
         <div>
-          <button className="bg-black text-white text-sm font-semibold px-4 py-2 rounded w-full">
+          <button className="bg-blue-900 text-white text-sm font-semibold px-4 py-2 rounded w-full  hover:bg-blue-800">
             <Link to={guide.path}>Get Now</Link>
           </button>
         </div>
