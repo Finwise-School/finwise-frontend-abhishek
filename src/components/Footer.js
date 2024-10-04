@@ -10,26 +10,6 @@ import { Link, animateScroll as scroll } from "react-scroll";
 function Footer() {
   const footerColumns = [
     {
-      title: "Home",
-      items: [
-        { name: "Welcome", path: "/" },
-        { name: "Features", path: "#features" },
-        { name: "Tools", path: "/tools" },
-        { name: "Testimonials", path: "#testimonials" },
-        { name: "FAQ's", path: "/faqs" }
-      ]
-    },
-    {
-      title: "About Us",
-      items: [
-        { name: "Our Story", path: "/about" },
-        { name: "Our Values", path: "#auValues" },
-        { name: "How It Works", path: "#auNav" },
-        { name: "Our Supporters", path: "#auSupporters" },
-        { name: "Our Partner Dashboard", path: "#auPortal" }
-      ]
-    },
-    {
       title: "Tools",
       items: [
         { name: "Budget Boss", path: "/maintainence" },
@@ -47,6 +27,16 @@ function Footer() {
         { name: "Negotiation Wizardry", path: "/blogs" },
         { name: "How to Budget", path: "/blogs" },
         { name: "Investing Yes or No ?", path: "/blogs" }
+      ]
+    },
+    {
+      title: "Resources",
+      items: [
+        { name: "Budgeting", path: "/budgeting" },
+        { name: "Stock Market", path: "/stock" },
+        { name: "Taxation", path: "/taxation" },
+        { name: "Retirement Planning", path: "/retirement" },
+        { name: "More", path: "/books" }
       ]
     },
     {
@@ -118,7 +108,7 @@ function Footer() {
       </div>
     </footer>
     ) : (
-      <div className="footerMobile py-[50px] gap-[50px] bg-black"> 
+      <div className="footerMobile py-[50px] gap-[40px] bg-black"> 
         <div className="fmUpperContainer gap-[50px] px-[16px] bg-black">
           <div className="fmUpperSubContainer gap-5">
             <EmailSubscription />
@@ -166,36 +156,27 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="frame2 gap-5">
-          <div className="frame1 gap-5 flex flex-row justify-center">
-            <div className="border-b border-[#262626] pb-5 gap-4 w-2/4 flex flex-col">
-            <div>
-              <p className="finwise-para font-medium text-base">{footerColumns[3].title}</p>
-              <div className="flex flex-col">
-                {footerColumns[3].items.map((items, index) => (
-                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
-                ))}
+          <div className="frame2 gap-2">
+            <div className="frame1 gap-2 flex flex-row justify-center">
+              <div className="border-b border-[#262626] pb-5 gap-4 w-2/4 flex flex-col">
+                <div>
+                  <p className="finwise-para font-medium text-base">{footerColumns[3].title}</p>
+                  <div className="flex flex-col">
+                    {footerColumns[3].items.map((items, index) => (
+                      <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                    ))}
+                  </div>
+                </div>
               </div>
-              </div>
-              <div>
-              <p className="finwise-para font-medium text-base">{footerColumns[4].title}</p>
-              <div className="flex flex-col">
-                {footerColumns[4].items.map((items, index) => (
-                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
-                ))}
-              </div>
-              </div>
-            </div>
-            
-            <div className="border-b border-l border-[#262626] pb-5 pl-5 gap-4 w-2/4">
-            <p className="finwise-para font-medium text-base">{footerColumns[2].title}</p>
-              <div className="flex flex-col">
-                {footerColumns[2].items.map((items, index) => (
-                  <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
-                ))}
+              <div className="border-b border-l border-[#262626] pb-5 pl-5 gap-4 w-2/4">
+                <p className="finwise-para font-medium text-base">{footerColumns[2].title}</p>
+                  <div className="flex flex-col">
+                    {footerColumns[2].items.map((items, index) => (
+                      <Link key={index} to={items.path} className="font-medium text-sm leading-6 text-[#FFFFFF] mb-1">{items.name}</Link>
+                    ))}
+                  </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
         </div>
