@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import EarlyAccessTemplate from "./EarlyAccessTemplate";
 import header from "../assets/video/header.gif";
-import join from "../assets/images/books/joined.png";
+import join from "../assets/images/books/PINK.png";
 import { FaArrowRight } from "react-icons/fa";
 
 const options = { year: "numeric", month: "long", day: "numeric" };
@@ -105,7 +105,7 @@ const bookImages = [
     path: "/budgeting",
   },
   {
-    imageSrc: require("../assets/images/books/analysis.png"),
+    imageSrc: require("../assets/images/books/cover.png"),
     title: "Stock Market",
     path: "/stock",
     booklocal: "/basics",
@@ -208,7 +208,8 @@ const Books = () => {
           <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
             {bookImages.map((bookImage, index) => (
               <div key={index} className="flex flex-col items-center">
-                <div className="bg-gray-200 w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
+                <div className="bg-blue-900 bg-opacity-95 backdrop-blur-sm w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
+
                   <Link to={bookImage.path}>
                     <div className="w-20 h-20 md:w-28 md:h-28 mt-2 md:mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
                       <img
@@ -231,7 +232,7 @@ const Books = () => {
       </div>
 
       {/* Promotion Section */}
-      <div className="finwise-back ml-[14%] mr-[14%] text-black flex pt-10 h-auto px-10">
+      <div className=" fin-head ml-[14%] mr-[14%] text-white flex pt-10 h-auto px-10">
         <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2">
             <div className="flex mb-4 mt-[-20%]">
@@ -240,7 +241,7 @@ const Books = () => {
             </div>
             <h1 className="font-extrabold text-3xl">Free for all</h1>
             <h1 className="text-5xl mb-6 font-bold">Early members</h1>
-            <button className="bg-black text-white py-2 px-4 rounded font-semibold hover:bg-gray-800">
+            <button className="bg-blue-900 text-white py-2 px-4 rounded font-semibold hover:bg-blue-800">
               <Link to="/finance">Get Now</Link>
             </button>
           </div>
@@ -303,24 +304,24 @@ const Books = () => {
       </section>
 
       {/* Guides of the Day Section */}
-      <div className="fin-back pt-4 pb-12 md:pb-16 mb-[-4%] bg-[#f5dac3]">
+      <div className="fin-back pt-4 pb-12 md:pb-16 mb-[-4%] fin-head">
         <div className="container mx-auto">
           {/* Mobile View */}
           <div className="block md:hidden px-4 text-center">
-            <h2 className="text-black text-2xl font-bold">
+            <h2 className="text-blue-900 text-2xl font-bold">
               Guides of the Day -
             </h2>
-            <h2 className="text-orange-800 text-2xl font-bold mb-4">
+            <h2 className="text-white text-2xl font-bold mb-4">
               {new Date().toLocaleDateString("en-GB", options)}
             </h2>
           </div>
 
           {/* Laptop/Tablet View */}
           <div className="hidden md:flex">
-            <h2 className="text-black text-3xl font-bold ml-[7%]">
+            <h2 className="text-white text-3xl font-bold ml-[7%]">
               Guides of the Day -
             </h2>
-            <h2 className="text-orange-800 text-3xl font-bold mb-8 pl-[1%]">
+            <h2 className="text-white text-3xl font-light mb-8 pl-[1%]">
               {new Date().toLocaleDateString("en-GB", options)}
             </h2>
           </div>
@@ -362,7 +363,7 @@ const Books = () => {
 
         {/* Button */}
         <div>
-          <button className="bg-black text-white text-sm font-semibold px-4 py-2 rounded w-full">
+          <button className="bg-blue-900 text-white text-sm font-semibold px-4 py-2 rounded w-full  hover:bg-blue-800">
             <Link to={guide.path}>Get Now</Link>
           </button>
         </div>
