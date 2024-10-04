@@ -4,7 +4,7 @@ const images =[
     {
         imageSrc:require("../../assets/images/books/budget.png"),
         name:"Da Vinci Code",
-         path:"/basics"
+         path:"/comingSoon"
     },
     {
         imageSrc:require("../../assets/images/books/analysis.png"),
@@ -14,12 +14,12 @@ const images =[
     {
         imageSrc:require("../../assets/images/books/book1.png"),
          name:"Angels and Demons",
-         path:"/basics"
+         path:"/comingSoon"
     },
     {
         imageSrc:require("../../assets/images/books/butch.png"),
          name:"TFIOS",
-         path:"/basics"
+        path:"/comingSoon"
     },
     {
         imageSrc:require("../../assets/images/books/blueprint.jpg"),
@@ -29,20 +29,19 @@ const images =[
     {
         imageSrc:require("../../assets/images/books/guide2.png"),
          name:"Kite Runner",
-         path:"/basics"
+         path:"/comingSoon"
     },
     {
         imageSrc:require("../../assets/images/books/guide3.png"),
          name:"Castle in sky",
-         path:"/basics"
+         path:"/comingSoon"
     },
     {
         imageSrc:require("../../assets/images/books/guide1.png"),
          name:"Immortals of Meluha",
-         path:"/basics"
+         path:"/comingSoon"
     },
 ]
-
 const Taxes = () => {
   return (
     <div className='p-[5%]'>
@@ -55,7 +54,7 @@ const Taxes = () => {
             <img
               src={image.imageSrc}
               alt={`Book ${index}`}
-              className="w-full h-auto mt-0 m-0"
+              className="w-full h-[80%] mt-0 m-0"
             />
           </Link>
           <h2 className="font-bold mt-4 mb-2 text-sm text-center text-black">

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import EarlyAccessTemplate from "./EarlyAccessTemplate";
-import heroo from "../assets/images/books/heroo.png";
+import header from "../assets/video/header.gif";
 import join from "../assets/images/books/joined.png";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -70,13 +70,13 @@ const bookList = [
     imageSrc: require("../assets/images/books/blue.png"),
     author: "Finwise School",
     title: "Blue is a darkness weekened by light",
-    path: "/basics",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/father.png"),
     author: "Finwise School",
     title: "My Feather Thief",
-    path: "/basics",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/analysis.png"),
@@ -88,13 +88,13 @@ const bookList = [
     imageSrc: require("../assets/images/books/illness.png"),
     author: "Finwise School",
     title: "The Illness Lesson",
-    path: "/basics",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/butch.png"),
     author: "Finwise School",
     title: "The Butcher and the wren",
-    path: "/basics",
+    path: "/comingSoon",
   },
 ];
 
@@ -135,18 +135,25 @@ const bookImages = [
 const guides = [
   {
     imageSrc: require("../assets/images/books/guide1.png"),
-    author: "By Arthur Gonzalez",
-    title: "A God Who Hates Women",
+    author: "By Finwise School",
+    title: "Basics of Technical Analysis",
+    path: "/basics",
+    description:
+      "This is your go-to guide for understanding and applying technical analysis in financial markets.",
   },
   {
     imageSrc: require("../assets/images/books/guide2.png"),
-    author: "By Sabela Hupter",
-    title: "Hans Christian Andersen",
+    author: "By Finwise School",
+    title: "The Budgeting Blueprint",
+    path: "/budgetBlue",
+    description:
+      "This is a practical guide designed to help you master the art of budgeting and achieve financial freedom.",
   },
   {
     imageSrc: require("../assets/images/books/guide3.png"),
-    author: "By Alyce Kris",
-    title: "Castle In The Sky",
+    author: "By Finwise School",
+    title: "Magic of Moving Averages",
+    path: "/comingSoon",
   },
 ];
 
@@ -154,39 +161,39 @@ const Books = () => {
   return (
     <div className="font-sans">
       {/* Hero Section */}
-      <section className="fin-head text-white pt-10 md:pt-16 md:px-5">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-6">
-          <div className="w-full md:w-1/2 md:pl-[10%]">
-            <p className="text-xs md:text-sm font-thin italic mb-2 md:mb-[3%]">
+      <section className="fin-head text-white pt-6 pb-6 lg:pb-0 lg:pt-[2%] md:pt-16 md:px-5">
+        <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-2 md:px-6">
+          <div className="md:w-1/2 md:pl-[10%]">
+            <p className="text-xs md:text-sm font-thin italic mb-1 md:mb-[3%] md:pt-[4%]">
               Internationally Bestselling Book
             </p>
-            <h1 className="text-3xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
-              2-Week Plan to
+            <h1 className="text-2xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
+              Free Guide to
             </h1>
-            <h1 className="text-3xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
+            <h1 className="text-2xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
               Jump-Start
             </h1>
-            <h1 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-[8%]">
-              Your Healing
+            <h1 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-[8%]">
+              Your Financial Journey
             </h1>
-            <p className="mb-4 md:mb-6 pr-0 md:pr-[30%] font-thin">
-              Check out the new book by Dr. Martin to find out how to stay
-              healthy and support your body.
+            <p className="mb-3 md:mb-6 pr-0 md:pr-[30%] font-thin">
+              Get started with our free, expert-created guide designed to help
+              you build strong financial habits and achieve your goals.
             </p>
-            <button className="bg-blue-900 text-white py-2 px-4 md:px-7 font-semibold hover:bg-blue-800">
+            <button className="bg-blue-900 text-white py-2 px-3 md:px-7 font-semibold hover:bg-blue-800">
               <Link to="/basics">
                 <div className="flex items-center">
-                  Meet Our Bestsellers
+                  Download Our Free Resources
                   <FaArrowRight className="ml-2" />
                 </div>
               </Link>
             </button>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+          <div className="w-full md:w-1/2 flex justify-center mt-4 md:mt-0">
             <img
-              src={heroo}
+              src={header}
               alt="Person"
-              className="max-w-[80%] md:max-w-full pr-0 md:pr-[10%]"
+              className="w-[70%] h-[60%] md:max-w-full pr-0 md:pr-[5%] pb-[4%]"
             />
           </div>
         </div>
@@ -227,7 +234,7 @@ const Books = () => {
       <div className="finwise-back ml-[14%] mr-[14%] text-black flex pt-10 h-auto px-10">
         <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2">
-            <div className="flex mb-4">
+            <div className="flex mb-4 mt-[-20%]">
               <h2 className="font-bold text-lg">100% off</h2>
               <h2 className="font-semibold ml-1 text-lg">on all guides</h2>
             </div>
@@ -237,10 +244,11 @@ const Books = () => {
               <Link to="/finance">Get Now</Link>
             </button>
           </div>
-          <div className="md:w-1/2 flex justify-center">
+          <div className="md:w-1/2 flex justify-center hidden md:flex">
+            {/* Image will be hidden on mobile screens */}
             <img
               src={join}
-              className="h-auto w-[70%] max-w-full"
+              className="lg:h-auto lg:w-[70%] lg:max-w-full mt-[8%] lg:mt-[0%]"
               alt="Join now"
             />
           </div>
@@ -296,8 +304,6 @@ const Books = () => {
 
       {/* Guides of the Day Section */}
       <div className="fin-back pt-4 pb-12 md:pb-16 mb-[-4%] bg-[#f5dac3]">
-        {" "}
-        {/* Added background color and extended padding */}
         <div className="container mx-auto">
           {/* Mobile View */}
           <div className="block md:hidden px-4 text-center">
@@ -320,49 +326,51 @@ const Books = () => {
           </div>
 
           {/* GuidesGrid component */}
-          <div className="grid grid-cols-1 gap-[1%] md:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
-            {" "}
-            {/* Align grid to the heading on desktop */}
-            {guides.map((guide, index) => (
-              <div
-                key={index}
-                className="w-full bg-white p-4 rounded-md shadow-md flex"
-              >
-                {/* Image on the left */}
-                <Link to={guide.path} className="flex-shrink-0">
-                  <img
-                    src={guide.imageSrc}
-                    alt={guide.title}
-                    className="w-auto h-auto object-cover rounded-md"
-                  />
-                </Link>
+          <div className="flex flex-col gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
+  {guides.map((guide, index) => (
+    <div
+      key={index}
+      className="w-full bg-white p-2 sm:p-4 rounded-md shadow-md flex"
+    >
+      {/* Image on the left */}
+      <Link to={guide.path} className="flex-shrink-0">
+        <img
+          src={guide.imageSrc}
+          alt={guide.title}
+          className="w-auto h-auto object-cover rounded-md"
+        />
+      </Link>
 
-                {/* Content on the right */}
-                <div className="flex flex-col justify-between ml-[6%] w-full">
-                  <div>
-                    {/* Author */}
-                    <p className="font-light italic text-sm text-left mb-2">
-                      {guide.author}
-                    </p>
+      {/* Content on the right */}
+      <div className="flex flex-col justify-between ml-[6%] w-full">
+        <div>
+          {/* Author */}
+          <p className="font-light italic text-sm text-left mb-2">
+            {guide.author}
+          </p>
 
-                    {/* Title */}
-                    <Link to={guide.path}>
-                      <h3 className="font-semibold text-sm whitespace-normal text-left mb-2">
-                        {guide.title}
-                      </h3>
-                    </Link>
-                  </div>
+          {/* Title */}
+          <Link to={guide.path}>
+            <h3 className="font-semibold text-sm whitespace-normal text-left mb-2">
+              {guide.title}
+            </h3>
+          </Link>
+        </div>
+        <p className="text-sm whitespace-normal text-left mb-2">
+          {guide.description}
+        </p>
 
-                  {/* Button */}
-                  <div>
-                    <button className="bg-black text-white text-sm font-semibold px-4 py-2 rounded w-full">
-                      Get Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Button */}
+        <div>
+          <button className="bg-black text-white text-sm font-semibold px-4 py-2 rounded w-full">
+            <Link to={guide.path}>Get Now</Link>
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
         </div>
       </div>
 
