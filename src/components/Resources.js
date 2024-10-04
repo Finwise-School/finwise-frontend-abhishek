@@ -66,41 +66,41 @@ const bookList = [
     title: "The Budgeting Blueprint",
     path: "/budgetBlue",
   },
-  // {
-  //   imageSrc: require("../assets/images/books/blue.png"),
-  //   author: "Finwise School",
-  //   title: "Blue is a darkness weekened by light",
-  //   path: "/comingSoon",
-  // },
-  // {
-  //   imageSrc: require("../assets/images/books/father.png"),
-  //   author: "Finwise School",
-  //   title: "My Feather Thief",
-  //   path: "/comingSoon",
-  // },
+  {
+    imageSrc: require("../assets/images/books/Retirement.png"),
+    author: "Finwise School",
+    title: "Retirement Planning",
+    path: "/comingSoon",
+  },
+  {
+    imageSrc: require("../assets/images/books/Tax.png"),
+    author: "Finwise School",
+    title: "The Tax Planning Playbook",
+    path: "/comingSoon",
+  },
   {
     imageSrc: require("../assets/images/books/analysis.png"),
     author: "Finwise School",
     title: "Basics of Technical Analysis",
     path: "/basics",
   },
-  // {
-  //   imageSrc: require("../assets/images/books/illness.png"),
-  //   author: "Finwise School",
-  //   title: "The Illness Lesson",
-  //   path: "/comingSoon",
-  // },
-  // {
-  //   imageSrc: require("../assets/images/books/butch.png"),
-  //   author: "Finwise School",
-  //   title: "The Butcher and the wren",
-  //   path: "/comingSoon",
-  // },
+  {
+    imageSrc: require("../assets/images/books/finances.png"),
+    author: "Finwise School",
+    title: "101 Finance Hacks",
+    path: "/comingSoon",
+  },
+  {
+    imageSrc: require("../assets/images/books/smart.png"),
+    author: "Finwise School",
+    title: "Smart With Money",
+    path: "/comingSoon",
+  },
 ];
 
 const bookImages = [
   {
-    imageSrc: require("../assets/images/books/budget.png"),
+    imageSrc: require("../assets/images/books/blueprint.jpg"),
     title: "Budgeting",
     path: "/budgeting",
   },
@@ -111,22 +111,22 @@ const bookImages = [
     booklocal: "/basics",
   },
   {
-    imageSrc: require("../assets/images/books/book2.png"),
+    imageSrc: require("../assets/images/books/Tax.png"),
     title: "Taxation",
     path:"/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/book3.png"),
+    imageSrc: require("../assets/images/books/Retirement.png"),
     title: "Retirement Planning",
     path: "/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/book4.png"),
+    imageSrc: require("../assets/images/books/smart.png"),
     title: "Smart with money",
     path: "/comingSoon",
   },
   {
-    imageSrc: require("../assets/images/books/book1.png"),
+    imageSrc: require("../assets/images/books/finances.png"),
     title: "Finance hacks",
     path: "/comingSoon",
   },
