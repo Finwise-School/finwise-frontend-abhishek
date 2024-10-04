@@ -326,51 +326,51 @@ const Books = () => {
           </div>
 
           {/* GuidesGrid component */}
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
-            {/* Align grid to the heading on desktop */}
-            {guides.map((guide, index) => (
-              <div
-                key={index}
-                className="w-full bg-white p-4 rounded-md shadow-md flex"
-              >
-                {/* Image on the left */}
-                <Link to={guide.path} className="flex-shrink-0">
-                  <img
-                    src={guide.imageSrc}
-                    alt={guide.title}
-                    className="w-auto h-auto object-cover rounded-md"
-                  />
-                </Link>
+          <div className="flex flex-col gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
+  {guides.map((guide, index) => (
+    <div
+      key={index}
+      className="w-full bg-white p-2 sm:p-4 rounded-md shadow-md flex"
+    >
+      {/* Image on the left */}
+      <Link to={guide.path} className="flex-shrink-0">
+        <img
+          src={guide.imageSrc}
+          alt={guide.title}
+          className="w-auto h-auto object-cover rounded-md"
+        />
+      </Link>
 
-                {/* Content on the right */}
-                <div className="flex flex-col justify-between ml-[6%] w-full">
-                  <div>
-                    {/* Author */}
-                    <p className="font-light italic text-sm text-left mb-2">
-                      {guide.author}
-                    </p>
+      {/* Content on the right */}
+      <div className="flex flex-col justify-between ml-[6%] w-full">
+        <div>
+          {/* Author */}
+          <p className="font-light italic text-sm text-left mb-2">
+            {guide.author}
+          </p>
 
-                    {/* Title */}
-                    <Link to={guide.path}>
-                      <h3 className="font-semibold text-sm whitespace-normal text-left mb-2">
-                        {guide.title}
-                      </h3>
-                    </Link>
-                  </div>
-                  <p className="text-sm whitespace-normal text-left mb-2">
-                    {guide.description}
-                  </p>
+          {/* Title */}
+          <Link to={guide.path}>
+            <h3 className="font-semibold text-sm whitespace-normal text-left mb-2">
+              {guide.title}
+            </h3>
+          </Link>
+        </div>
+        <p className="text-sm whitespace-normal text-left mb-2">
+          {guide.description}
+        </p>
 
-                  {/* Button */}
-                  <div>
-                    <button className="bg-black text-white text-sm font-semibold px-4 py-2 rounded w-full">
-                      <Link to={guide.path}>Get Now</Link>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Button */}
+        <div>
+          <button className="bg-black text-white text-sm font-semibold px-4 py-2 rounded w-full">
+            <Link to={guide.path}>Get Now</Link>
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
         </div>
       </div>
 
