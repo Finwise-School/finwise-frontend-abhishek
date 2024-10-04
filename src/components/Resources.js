@@ -66,36 +66,36 @@ const bookList = [
     title: "The Budgeting Blueprint",
     path: "/budgetBlue",
   },
-  {
-    imageSrc: require("../assets/images/books/blue.png"),
-    author: "Finwise School",
-    title: "Blue is a darkness weekened by light",
-    path: "/comingSoon",
-  },
-  {
-    imageSrc: require("../assets/images/books/father.png"),
-    author: "Finwise School",
-    title: "My Feather Thief",
-    path: "/comingSoon",
-  },
+  // {
+  //   imageSrc: require("../assets/images/books/blue.png"),
+  //   author: "Finwise School",
+  //   title: "Blue is a darkness weekened by light",
+  //   path: "/comingSoon",
+  // },
+  // {
+  //   imageSrc: require("../assets/images/books/father.png"),
+  //   author: "Finwise School",
+  //   title: "My Feather Thief",
+  //   path: "/comingSoon",
+  // },
   {
     imageSrc: require("../assets/images/books/analysis.png"),
     author: "Finwise School",
     title: "Basics of Technical Analysis",
     path: "/basics",
   },
-  {
-    imageSrc: require("../assets/images/books/illness.png"),
-    author: "Finwise School",
-    title: "The Illness Lesson",
-    path: "/comingSoon",
-  },
-  {
-    imageSrc: require("../assets/images/books/butch.png"),
-    author: "Finwise School",
-    title: "The Butcher and the wren",
-    path: "/comingSoon",
-  },
+  // {
+  //   imageSrc: require("../assets/images/books/illness.png"),
+  //   author: "Finwise School",
+  //   title: "The Illness Lesson",
+  //   path: "/comingSoon",
+  // },
+  // {
+  //   imageSrc: require("../assets/images/books/butch.png"),
+  //   author: "Finwise School",
+  //   title: "The Butcher and the wren",
+  //   path: "/comingSoon",
+  // },
 ];
 
 const bookImages = [
@@ -113,22 +113,22 @@ const bookImages = [
   {
     imageSrc: require("../assets/images/books/book2.png"),
     title: "Taxation",
-    path: "/taxation",
+    path:"/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/book3.png"),
     title: "Retirement Planning",
-    path: "/retirement",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/book4.png"),
     title: "Smart with money",
-    path: "/smart",
+    path: "/comingSoon",
   },
   {
     imageSrc: require("../assets/images/books/book1.png"),
     title: "Finance hacks",
-    path: "/finance",
+    path: "/comingSoon",
   },
 ];
 
@@ -165,16 +165,16 @@ const Books = () => {
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-2 md:px-6">
           <div className="md:w-1/2 md:pl-[10%]">
             <p className="text-xs md:text-sm font-thin italic mb-1 md:mb-[3%] md:pt-[4%]">
-              Internationally Bestselling Book
+            Free Guide to Jump-Start Your Financial Journey
             </p>
             <h1 className="text-2xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
-              Free Guide to
+            Take Control of 
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
-              Jump-Start
+            Your Finances
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-[8%]">
-              Your Financial Journey
+            in Just 2 Weeks
             </h1>
             <p className="mb-3 md:mb-6 pr-0 md:pr-[30%] font-thin">
               Get started with our free, expert-created guide designed to help
@@ -326,7 +326,7 @@ const Books = () => {
           </div>
 
           {/* GuidesGrid component */}
-          <div className="flex flex-col gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
+          <div className="flex flex-col gap-8  sm:grid sm:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
   {guides.map((guide, index) => (
     <div
       key={index}
