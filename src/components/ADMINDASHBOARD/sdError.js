@@ -2,7 +2,7 @@ import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
-const SdError = ( { refresh } ) => {
+const SdError = ( { refresh, baseURL } ) => {
     return (
         <>
           <Modal show={true} size="xl" popup>

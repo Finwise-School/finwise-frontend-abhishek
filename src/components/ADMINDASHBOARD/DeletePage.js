@@ -3,7 +3,7 @@ import { Button, Modal, Label, Textarea } from "flowbite-react";
 import { HiOutlineExclamationCircle, HiCheck, HiX } from "react-icons/hi";
 
 
-const DeletePage = ({ openModal, setOpenModal, handleDeleteOption, isBlogs, deletion, setdeletion }) => {
+const DeletePage = ({ baseURL, openModal, setOpenModal, handleDeleteOption, isBlogs, deletion, setdeletion }) => {
   // const [deletionReason, setDeletionReason] = useState('');
 
   return (

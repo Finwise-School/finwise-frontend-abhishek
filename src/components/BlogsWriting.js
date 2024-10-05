@@ -5,7 +5,7 @@ import YourBlogs from './Blogs/YourBlogs';
 import { TextInput, Label, FileInput, Button, Modal } from "flowbite-react";
 import axios from 'axios';
 
-const BlogsWriting = ({ placeholder }) => {
+const BlogsWriting = ({ placeholder, baseURL }) => {
     const [content, setContent] = useState('');
     const [title, setTitle] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,7 +17,7 @@ const BlogsWriting = ({ placeholder }) => {
     const [thumbnailUrl, setThumbnailUrl] = useState('');
 
 
-    axios.defaults.baseURL = 'https://api.finwiseschool.com';
+    axios.defaults.baseURL = baseURL;
     // axios.defaults.baseURL = 'http://localhost:5000';
 
 

@@ -7,7 +7,7 @@ import DeletePage from './DeletePage';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const BlogsData = ({ majorRights }) => {
+const BlogsData = ({ majorRights, baseURL }) => {
   const [blogsData, setBlogsData] = useState([]);
   const [selectedBlog, setSelectedBlog] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -19,7 +19,7 @@ const BlogsData = ({ majorRights }) => {
   let isItBlog = true;
   const [btnClick, setBtnClick] = useState(count);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
   // axios.defaults.baseURL = 'http://localhost:5000';
 
   const handleOpenModal = (blog) => {
@@ -195,7 +195,7 @@ const BlogsData = ({ majorRights }) => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/blogs'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/blogs'); // Replace with your API endpoint
       const data = await response.json();
   
       // Function to remove HTML tags
@@ -296,6 +296,7 @@ const BlogsData = ({ majorRights }) => {
                   ))}
                   {selectedBlog && (
                     <BlogsDataModal
+                      baseURL={baseURL}
                       majorRights={majorRights}
                       setOpenModal={handleCloseModal}
                       setApproveoption={handleApproveOption}
@@ -316,6 +317,7 @@ const BlogsData = ({ majorRights }) => {
       
             {openDeleteModal && (
               <DeletePage
+                baseURL={baseURL}
                 openModal={openDeleteModal}
                 setOpenModal={handleCloseDeleteModal}
                 handleDeleteOption={handleDeleteOption}

@@ -6,14 +6,14 @@ import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const EmailQueries = ({ majorRights }) => {
+const EmailQueries = ({ majorRights, baseURL }) => {
   const [emailData, setEmailData] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   let i = 1;
   const [btnClick, setBtnClick] = useState(0);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
 // axios.defaults.baseURL = 'http://localhost:5000';
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const EmailQueries = ({ majorRights }) => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/emailData');
+      const response = await fetch(baseURL + '/api/admindashboard/emailData');
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -148,6 +148,7 @@ const EmailQueries = ({ majorRights }) => {
       )}
       {openDeleteModal && (
         <DeletePage
+          baseURL={baseURL}
           openModal={openDeleteModal}
           setOpenModal={handleCloseDeleteModal}
           handleDeleteOption={handleDeleteOption}
