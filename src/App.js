@@ -47,6 +47,7 @@ import Retirement from "./components/Resources/retirement";
 import Smart from "./components/Resources/Smartmoney";
 import Finance from "./components/Resources/finance";
 import Coming from "./components/comingSoon";
+import GetNow from "./components/Resources/getNow";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -107,7 +108,8 @@ const App = () => {
             <Route path="/retirement" element={<Retirement baseURL={baseURL} />} />
             <Route path="/smart" element={<Smart baseURL={baseURL}/>} />
             <Route path="/finance" element={<Finance baseURL={baseURL} />} />
-
+            <Route path="/comingSoon" element={<Coming baseURL={baseURL}/>} />
+            <Route path="/getNow" element={<GetNow baseURL={baseURL}/>} />
             <Route
               path="/profile"
               element={
