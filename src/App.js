@@ -46,6 +46,7 @@ import Budgetings from "./components/Resources/Budgeting";
 import Retirement from "./components/Resources/retirement";
 import Smart from "./components/Resources/Smartmoney";
 import Finance from "./components/Resources/finance";
+import Coming from "./components/comingSoon";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();

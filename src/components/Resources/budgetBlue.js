@@ -57,79 +57,91 @@ const BasicsOfTechnicalAnalysis = () => {
   };
 
   return (
-    <div className="p-[5%]">
-      <h1 className="finwise-blue text-5xl md:text-5xl font-bold mb-[4%] text-center">
-        The Budget Blueprint
-      </h1>
-      <div className="mt-[4%] mr-[%]">
-        <div className="flex justify-center">
-          <img src={blues} className="h-auto w-auto" alt="Book Cover" />
+    <div className="p-[5%] bg-slate-50 my-[2%] rounded-lg shadow-xl max-w-4xl mx-auto">
+      <div className="  flex-col md:flex-row items-center md:items-start columns-2 px-[8%]">
+        <div className="mt-[4%] ">
+          <div className="flex justify-center">
+            <img src={blues} className="h-auto w-auto" alt="Book Cover" />
+          </div>
+          <h1 className="finwise-blue text-3xl md:text-5xl font-bold pt-[30%] lg:pt-[40%] text-center">
+            The Budget Blueprint
+          </h1>
         </div>
+      </div>
+      <div className="mt-[4%] mr-[%]">
         <p className="mb-[4%] mt-[4%] font-medium text-black text-justify mx-[10%]">
-          <div className="p-6 bg-white rounded-lg shadow-md max-w-4xl mx-auto">
+          <div className="">
             <h2 className="text-xl italic mb-4 font-bold">
               Take control of your finances and start building the life you
               want!
             </h2>
             <p className="mb-4">
-              <strong className="font-bold">"The Budgeting Blueprint"</strong> by Finwise School is a
-              practical guide designed to help you master the art of budgeting
-              and achieve financial freedom. This easy-to-follow guide walks you
-              through every step, from understanding the basics of budgeting to
-              setting meaningful financial goals, managing debt, and even
-              investing for the future.
+              <strong className="font-bold">"The Budgeting Blueprint"</strong>{" "}
+              by Finwise School is a practical guide designed to help you master
+              the art of budgeting and achieve financial freedom. This
+              easy-to-follow guide walks you through every step, from
+              understanding the basics of budgeting to setting meaningful
+              financial goals, managing debt, and even investing for the future.
             </p>
             <p className="mb-4">In this book, you'll learn how to:</p>
             <ul className="list-disc list-inside mb-4 space-y-2">
               <li>
-                <strong className="font-bold">Create a Personalized Budget:</strong> Break down your
-                income, expenses, and savings in a way that suits your unique
-                lifestyle.
+                <strong className="font-bold">
+                  Create a Personalized Budget:
+                </strong>{" "}
+                Break down your income, expenses, and savings in a way that
+                suits your unique lifestyle.
               </li>
               <li>
-                <strong className="font-bold">Set SMART Financial Goals:</strong> Whether you're
-                saving for a dream vacation or paying off debt, discover how to
-                reach your goals with clear, actionable steps.
+                <strong className="font-bold">
+                  Set SMART Financial Goals:
+                </strong>{" "}
+                Whether you're saving for a dream vacation or paying off debt,
+                discover how to reach your goals with clear, actionable steps.
               </li>
               <li>
-                <strong className="font-bold">Build Smart Spending Habits:</strong> Learn how to track
-                your expenses, cut unnecessary spending, and make smarter
-                financial choices.
+                <strong className="font-bold">
+                  Build Smart Spending Habits:
+                </strong>{" "}
+                Learn how to track your expenses, cut unnecessary spending, and
+                make smarter financial choices.
               </li>
               <li>
-                <strong className="font-bold">Manage Debt Efficiently:</strong> Explore strategies to
-                tackle debt, reduce interest payments, and gain financial
-                control.
+                <strong className="font-bold">Manage Debt Efficiently:</strong>{" "}
+                Explore strategies to tackle debt, reduce interest payments, and
+                gain financial control.
               </li>
               <li>
-                <strong className="font-bold">Invest for the Future:</strong> Get an introduction to
-                basic investing principles and start building long-term wealth.
+                <strong className="font-bold">Invest for the Future:</strong>{" "}
+                Get an introduction to basic investing principles and start
+                building long-term wealth.
               </li>
             </ul>
             <p className="mb-4">
               With practical tips, budgeting hacks, and simple strategies,{" "}
-              <strong className="font-bold">"The Budgeting Blueprint"</strong> turns managing your
-              money into an approachable and rewarding task. Whether you're just
-              starting your financial journey or looking for ways to refine your
-              budget, this guide will give you the tools to create a secure
-              financial future.
+              <strong className="font-bold">"The Budgeting Blueprint"</strong>{" "}
+              turns managing your money into an approachable and rewarding task.
+              Whether you're just starting your financial journey or looking for
+              ways to refine your budget, this guide will give you the tools to
+              create a secure financial future.
             </p>
           </div>
         </p>
         <div className="flex justify-center mr-[2%]">
           <div className="mt-6 lg:mt-0 lg:ml-10">
-          <Button
-           onClick={() => setOpenModal(true)}
-           className="text-[#263871] hover:text-green-500 rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300 bg-white flex justify-center items-center"
-            style={{
-            border: "5px solid",
-            borderRadius: "12px",
-            borderImage: "linear-gradient(90deg, #223876 0%, #3CB371 100%) 1",
-            backgroundColor: "white", 
-           }}
-           >
-           Download Now
-           </Button>
+            <Button
+              onClick={() => setOpenModal(true)}
+              className="text-[#263871] hover:text-green-500 rounded-lg py-3 px-6 lg:px-8 text-base lg:text-lg min-w-[200px] lg:min-w-[250px] text-center transition-all duration-300 bg-white flex justify-center items-center"
+              style={{
+                border: "5px solid",
+                borderRadius: "12px",
+                borderImage:
+                  "linear-gradient(90deg, #223876 0%, #3CB371 100%) 1",
+                backgroundColor: "white",
+              }}
+            >
+              Download Now
+            </Button>
 
             <Modal
               show={openModal}
