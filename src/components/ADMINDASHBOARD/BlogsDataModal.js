@@ -9,9 +9,9 @@ const BlogsDataModal = ({ setOpenModal, setApproveoption,
     item_title, item_content,
      item_date, item_imgurl,
       item_approved, majorRights,
-      revokeReason, setRevokeReason }) => {
+      revokeReason, setRevokeReason, baseURL }) => {
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
   // axios.defaults.baseURL = 'http://localhost:5000';
 
   const [revokeModal, setRevokeModal] = useState(false);

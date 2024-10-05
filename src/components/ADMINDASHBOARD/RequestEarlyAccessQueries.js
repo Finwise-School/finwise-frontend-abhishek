@@ -6,7 +6,7 @@ import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const RequestEarlyAccessQueries = ({ majorRights }) => {
+const RequestEarlyAccessQueries = ({ majorRights, baseURL }) => {
   const [reaData, setReaData] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -14,7 +14,7 @@ const RequestEarlyAccessQueries = ({ majorRights }) => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,7 +82,7 @@ const RequestEarlyAccessQueries = ({ majorRights }) => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/requestearlyaccess'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/requestearlyaccess'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -152,6 +152,7 @@ const RequestEarlyAccessQueries = ({ majorRights }) => {
       </Table>
       {openDeleteModal && (
         <DeletePage
+          baseURL={baseURL}
           openModal={openDeleteModal}
           setOpenModal={handleCloseDeleteModal}
           handleDeleteOption={handleDeleteOption}

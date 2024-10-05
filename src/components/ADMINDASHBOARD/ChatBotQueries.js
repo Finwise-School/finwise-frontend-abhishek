@@ -6,7 +6,7 @@ import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const ChatBotQueries = ({ majorRights }) => {
+const ChatBotQueries = ({ majorRights, baseURL }) => {
   const [chatbotData, setChatbotData] = useState([]);
   const [chatbotId, setChatbotId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -14,7 +14,7 @@ const ChatBotQueries = ({ majorRights }) => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +84,7 @@ const ChatBotQueries = ({ majorRights }) => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/chatbot'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/chatbot'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -154,6 +154,7 @@ const ChatBotQueries = ({ majorRights }) => {
           </Table>
           {openDeleteModal && (
             <DeletePage
+              baseURL={baseURL}
               openModal={openDeleteModal}
               setOpenModal={handleCloseDeleteModal}
               handleDeleteOption={handleDeleteOption}
