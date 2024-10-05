@@ -55,7 +55,7 @@ const ADMINDASHBOARD = () => {
             {isAuthenticated ? (
                 <>
                     <h1 className={`text-center font-black text-4xl`}>ADMIN DASHBOARD</h1>
-                    <h1 className={`text-center font-medium text-base`}>{adminDATA.NAME}</h1>
+                    {adminDATA && <h1 className={`text-center font-medium text-base`}>{adminDATA.NAME}</h1>}
                     <div className='dataSearchCard'>
                         <Card className="m-6">
                         <p className={`cursor-pointer`} onClick={handleLogOut}>
