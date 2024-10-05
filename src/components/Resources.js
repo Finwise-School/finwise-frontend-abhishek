@@ -242,7 +242,7 @@ const Books = () => {
             <h1 className="font-extrabold text-3xl">Free for all</h1>
             <h1 className="text-5xl mb-6 font-bold">Early members</h1>
             <button className="bg-blue-900 text-white py-2 px-4 rounded font-semibold hover:bg-blue-800">
-              <Link to="/finance">Get Now</Link>
+              <Link to="/getNow">Get Now</Link>
             </button>
           </div>
           <div className="md:w-1/2 flex justify-center hidden md:flex">
