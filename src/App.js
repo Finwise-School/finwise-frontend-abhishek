@@ -61,7 +61,7 @@ const ProtectedRoute = ({ children }) => {
 
 // ALERT DON'T DELETE THIS AT ALL
 // const baseURL = "http://localhost:5000";
-const baseURL = "https://finwiseschool.com";
+const baseURL = "https://api.finwiseschool.com";
 
 
 const App = () => {
