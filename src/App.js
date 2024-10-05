@@ -58,6 +58,10 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+// ALERT DON'T DELETE THIS AT ALL
+// const baseURL = "http://localhost:5000";
+const baseURL = "https://finwiseschool.com";
+
 
 const App = () => {
   return (
@@ -68,42 +72,41 @@ const App = () => {
         <div className="app">
           <Header />
           <Routes>
-            <Route path="/privacy" element={<PrivacyNotice />} />
-            <Route path="/early-access" element={<EarlyAccess />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/tools" element={<Calculator />} />
-            <Route path="/maintainence" element={<UnderConst />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/clients" element={<Cards />} />
-            <Route path="/tools/fire" element={<Fire />} />
-            <Route path="/tools/goal-sip" element={<GoalSIP />} />
-            <Route path="/tools/sip" element={<MutualFunds />} />
-            <Route path="/tools/fixed-deposit" element={<FixedDepo />} />
-            <Route path="/tools/tax" element={<Tax />} />
-            <Route path="/tools/emi" element={<EMICalculator />} />
-            <Route path="/tools/cagr" element={<CAGRCalculator />} />
-            <Route path="/tools/mortgage" element={<MortgageCalculator />} />
-            <Route path="/tools/mortgage-borrower" element={<MortgageBorrowerCalculator />} />
-            <Route path="/tools/irr" element={<IRRCalculator />} />
-            <Route path="/tools/rental-yield" element={<RentalYeildCalculator />} />
-            <Route path="/tools/budget-boss" element={<Budget_Boss />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogswriting" element={<BlogsWriting />} />
-            <Route path="/blogs/uk-tax-system" element={<Blogs />} />
-            <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
-            <Route path="/books" element={<Books />} />
-            <Route path="/stock" element={<Stocks />} />
-            <Route path="/basics" element={<BasicsOfTechnicalAnalysis/>} />
-            <Route path="/budgetBlue" element={<BudgetBlueprint/>} />
-            <Route path="/taxation" element={<Taxes/>} />
-            <Route path="/budgeting" element={<Budgetings/>} />
-            <Route path="/retirement" element={<Retirement/>} />
-            <Route path="/smart" element={<Smart/>} />
-            <Route path="/finance" element={<Finance/>} />
-            <Route path="/comingSoon" element={<Coming/>} />
+            <Route path="/privacy" element={<PrivacyNotice baseURL={baseURL} />} />
+            <Route path="/early-access" element={<EarlyAccess baseURL={baseURL} />} />
+            <Route path="/" element={<HomePage baseURL={baseURL} />} />
+            <Route path="/contact" element={<Contact baseURL={baseURL} />} />
+            <Route path="/tools" element={<Calculator baseURL={baseURL} />} />
+            <Route path="/maintainence" element={<UnderConst baseURL={baseURL} />} />
+            <Route path="/about" element={<AboutUs baseURL={baseURL} />} />
+            <Route path="/signup" element={<SignupPage baseURL={baseURL} />} />
+            <Route path="/login" element={<LoginPage baseURL={baseURL} />} />
+            <Route path="/clients" element={<Cards baseURL={baseURL} />} />
+            <Route path="/tools/fire" element={<Fire baseURL={baseURL} />} />
+            <Route path="/tools/goal-sip" element={<GoalSIP baseURL={baseURL} />} />
+            <Route path="/tools/sip" element={<MutualFunds baseURL={baseURL} />} />
+            <Route path="/tools/fixed-deposit" element={<FixedDepo baseURL={baseURL} />} />
+            <Route path="/tools/tax" element={<Tax baseURL={baseURL} />} />
+            <Route path="/tools/emi" element={<EMICalculator baseURL={baseURL} />} />
+            <Route path="/tools/cagr" element={<CAGRCalculator baseURL={baseURL} />} />
+            <Route path="/tools/mortgage" element={<MortgageCalculator baseURL={baseURL} />} />
+            <Route path="/tools/mortgage-borrower" element={<MortgageBorrowerCalculator baseURL={baseURL} />} />
+            <Route path="/tools/irr" element={<IRRCalculator baseURL={baseURL} />} />
+            <Route path="/tools/rental-yield" element={<RentalYeildCalculator baseURL={baseURL} />} />
+            <Route path="/tools/budget-boss" element={<Budget_Boss baseURL={baseURL} />} />
+            <Route path="/blogs" element={<Blogs baseURL={baseURL} />} />
+            <Route path="/blogswriting" element={<BlogsWriting baseURL={baseURL} />} />
+            <Route path="/blogs/uk-tax-system" element={<Blogs baseURL={baseURL} />} />
+            <Route path="/admindashboard" element={<ADMINDASHBOARD baseURL={baseURL} />} />
+            <Route path="/books" element={<Books baseURL={baseURL} />} />
+            <Route path="/stock" element={<Stocks baseURL={baseURL} />} />
+            <Route path="/basics" element={<BasicsOfTechnicalAnalysis baseURL={baseURL} />} />
+            <Route path="/budgetBlue" element={<BudgetBlueprint baseURL={baseURL} />} />
+            <Route path="/taxation" element={<Taxes baseURL={baseURL} />} />
+            <Route path="/budgeting" element={<Budgetings baseURL={baseURL} />} />
+            <Route path="/retirement" element={<Retirement baseURL={baseURL} />} />
+            <Route path="/smart" element={<Smart baseURL={baseURL}/>} />
+            <Route path="/finance" element={<Finance baseURL={baseURL} />} />
 
             <Route
               path="/profile"
@@ -113,10 +116,10 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="/faqs" element={<FAQ />} />
-            <Route path="*" element={<Errors/>}/>
+            <Route path="/faqs" element={<FAQ baseURL={baseURL} />} />
+            <Route path="*" element={<Errors baseURL={baseURL} />}/>
           </Routes>
-          <Chatbot />
+          <Chatbot baseURL={baseURL} />
           <Footer />
         </div>
       </Router>

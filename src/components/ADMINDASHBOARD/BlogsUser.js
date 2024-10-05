@@ -7,7 +7,7 @@ import { HiEye, HiEyeOff, HiTrash, HiDownload, HiRefresh } from 'react-icons/hi'
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const BlogsUser = ({ majorRights }) => {
+const BlogsUser = ({ majorRights, baseURL }) => {
   const [blogsUserData, setBlogsUserData] = useState([]);
   const [blogsUserId, setBlogsUserId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -17,7 +17,7 @@ const BlogsUser = ({ majorRights }) => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
   // axios.defaults.baseURL = 'http://localhost:5000';
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const BlogsUser = ({ majorRights }) => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/bloguser'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/bloguser'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -107,7 +107,7 @@ const BlogsUser = ({ majorRights }) => {
 
   return (
     <>
-    {openCreateModal && (<BlogsUserCreate openParentModal={setOpenCreateModal} />)}
+    {openCreateModal && (<BlogsUserCreate baseURL={baseURL} openParentModal={setOpenCreateModal} />)}
     <div className='flex flex-row justify-between'>
       <div>
         {majorRights && (
@@ -175,6 +175,7 @@ const BlogsUser = ({ majorRights }) => {
           </Table>
           {openDeleteModal && (
             <DeletePage
+              baseURL={baseURL}
               openModal={openDeleteModal}
               setOpenModal={handleCloseDeleteModal}
               handleDeleteOption={handleDeleteOption}

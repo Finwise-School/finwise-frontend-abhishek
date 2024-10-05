@@ -5,7 +5,7 @@ import axios from "axios";
 import { HiUser, HiMail, HiKey } from 'react-icons/hi';
 
 
-const BlogsUserCreate = ({ openParentModal }) => {
+const BlogsUserCreate = ({ openParentModal, baseURL }) => {
     const formatDate = (date) => {
         const options = { day: 'numeric', month: 'short', year: '2-digit' };
         return new Intl.DateTimeFormat('en-GB', options).format(date);
@@ -18,7 +18,7 @@ const BlogsUserCreate = ({ openParentModal }) => {
     const [emailAlready, setEmailAlready] = useState(false);
     // const [success, setSuccess] = useState(false);
 
-    axios.defaults.baseURL = 'https://api.finwiseschool.com';
+    axios.defaults.baseURL = baseURL;
 
     const onCloseModal = () => {
         setOpenModal(false);

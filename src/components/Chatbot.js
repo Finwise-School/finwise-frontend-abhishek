@@ -5,11 +5,13 @@ import './Chatbot/chatbot.css';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import axios from 'axios';
 
-const Chatbot = () => {
+const Chatbot = ({ baseURL }) => {
   const formatDate = (date) => {
     const options = { day: 'numeric', month: 'short', year: '2-digit' };
     return new Intl.DateTimeFormat('en-GB', options).format(date);
 };
+
+axios.defaults.baseURL = baseURL;
 
 const date = new Date();
 
@@ -105,7 +107,7 @@ const writeDate = formatDate(date);
     };
   
     try {
-      await axios.post('https://api.finwiseschool.com/api/chatbot', formData);
+      await axios.post('/api/chatbot', formData);
   
       setMessages([...messages, { text: `Name: ${name}, Email: ${email}, Query: ${query}`, isBot: false }]);
       setMessages([...messages, { text: "Thank you! We will get back to you soon.", isBot: true }]);

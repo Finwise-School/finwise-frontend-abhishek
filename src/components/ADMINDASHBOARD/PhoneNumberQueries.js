@@ -6,7 +6,7 @@ import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const PhoneNumberQueries = ({ majorRights }) => {
+const PhoneNumberQueries = ({ majorRights, baseURL }) => {
   const [phoneData, setPhoneData] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -14,7 +14,7 @@ const PhoneNumberQueries = ({ majorRights }) => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,7 +82,7 @@ const PhoneNumberQueries = ({ majorRights }) => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/phonedata'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/phonedata'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -158,6 +158,7 @@ const PhoneNumberQueries = ({ majorRights }) => {
       )}
       {openDeleteModal && (
         <DeletePage
+          baseURL={baseURL}
           openModal={openDeleteModal}
           setOpenModal={handleCloseDeleteModal}
           handleDeleteOption={handleDeleteOption}

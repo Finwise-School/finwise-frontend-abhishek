@@ -6,14 +6,14 @@ import DeletePage from './DeletePage';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const ContactUs = ({ majorRights }) => {
+const ContactUs = ({ majorRights, baseURL }) => {
   const formatDate = (dateString) => {
     const options = { day: 'numeric', month: 'short', year: '2-digit' };
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('en-GB', options).format(date);
   };
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
 
   const [contactData, setContactData] = useState([]);
   const [contactId, setContactId] = useState(null);
@@ -90,7 +90,7 @@ const ContactUs = ({ majorRights }) => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/contactus'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/contactus'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -162,6 +162,7 @@ const ContactUs = ({ majorRights }) => {
           </Table>
           {openDeleteModal && (
             <DeletePage
+              baseURL={baseURL}
               openModal={openDeleteModal}
               setOpenModal={handleCloseDeleteModal}
               handleDeleteOption={handleDeleteOption}

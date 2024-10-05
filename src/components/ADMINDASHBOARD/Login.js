@@ -93,7 +93,7 @@ import axios from 'axios';
 import { Button, Label, Modal, TextInput } from "flowbite-react";
 import { HiOutlineMail, HiLockClosed } from 'react-icons/hi';
 
-const Login = ({ authentication, admin }) => {
+const Login = ({ authentication, admin, baseURL }) => {
   const [openModal, setOpenModal] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -105,7 +105,7 @@ const Login = ({ authentication, admin }) => {
   // const validEmail = "amandeepsinghbhalla.ab@outlook.com";
   // const validPassword = "Thisiscompletelytrial";
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
   // axios.defaults.baseURL = 'http://localhost:5000';
 
 
@@ -116,9 +116,11 @@ const Login = ({ authentication, admin }) => {
         EMAIL: savedEmail
       }).then(response => {
         if(response.status === 201) {
+          setUserId(response.data[0]._id);
           admin(response.data[0]);
-          authentication(true);
-          setOpenModal(false);
+          setOtpModal(true);
+          // authentication(true);
+          // setOpenModal(false);
         }
       }).catch(() => {
         console.log('Failed to verify saved email');
@@ -147,6 +149,7 @@ const Login = ({ authentication, admin }) => {
           setUserId(response.data[0]._id);
           setOtpModal(true); // Open OTP modal
           localStorage.setItem('ADMINEMAIL', email);
+          admin(response.data[0]);
 
 
 
@@ -172,7 +175,6 @@ const Login = ({ authentication, admin }) => {
     try {
       const response = await axios.post('/api/v1/command/admin/verification', { otp, userId });
       if (response.status === 200) {
-        admin(response.data[0]); // Assuming response contains admin data
         authentication(true);
         setOpenModal(false);
         setOtpModal(false);

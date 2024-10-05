@@ -6,13 +6,13 @@ import CardsBottom from './Blogs/cardsBottom';
 import Blogswrite from './Blogs/Blogswrite';
 import EATemplate from './EarlyAccessTemplate';
 
-function Blogs() {
+function Blogs({ baseURL }) {
 
   const [data, setData] = useState([]);
   const [front, setFront] = useState({});
   const [isOpen, setIsOpen] = useState(false);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
   // axios.defaults.baseURL = 'http://localhost:5000';
 
   useEffect(() => {
