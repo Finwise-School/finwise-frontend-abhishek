@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Button, Modal, Badge, Accordion } from 'flowbite-react'; // Assuming you're using flowbite for the Card component
 
-const YourBlogs = ({ dataYourBlogs }) => {
+const YourBlogs = ({ dataYourBlogs, baseURL }) => {
 
   const [openModal, setOpenModal] = useState(false);
   const [selectedBlog, setSelectedBlog] = useState(null);

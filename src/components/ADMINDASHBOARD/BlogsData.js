@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, Card, Table } from "flowbite-react";
-import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 'react-icons/hi'; // Importing icons
+import { Button, Card, Table, Popover } from "flowbite-react";
+import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload, HiChat } from 'react-icons/hi'; // Importing icons
 import BlogsDataModal from './BlogsDataModal';
 import DeletePage from './DeletePage';
 import { saveAs } from 'file-saver';
@@ -286,11 +286,11 @@ const BlogsData = ({ majorRights, baseURL }) => {
                       </button>
                       </Table.Cell>
                       {majorRights && (
-                                              <Table.Cell>
-                                              <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
-                                                <HiTrash className="inline mr-1 m-auto" /> Delete
-                                              </button>
-                                              </Table.Cell>
+                      <Table.Cell>
+                        <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
+                          <HiTrash className="inline mr-1 m-auto" /> Delete
+                        </button>
+                      </Table.Cell>
                       )}
                     </Table.Row>
                   ))}
@@ -303,7 +303,7 @@ const BlogsData = ({ majorRights, baseURL }) => {
                       setRevokeoption={handleRevokeOption}
                       revokeReason={revokeReason}
                       setRevokeReason={setRevokeReason}
-                      item_id={selectedBlog._id}
+                      blogID={selectedBlog._id}
                       item_title={selectedBlog.title}
                       item_content={selectedBlog.content}
                       item_date={selectedBlog.writeDate}

@@ -292,12 +292,12 @@ const BlogsWriting = ({ placeholder, baseURL }) => {
                          Submit
                         </button>
 </div>
-                        <YourBlogs dataYourBlogs={histBlogs} />
+                        <YourBlogs baseURL={baseURL} dataYourBlogs={histBlogs} />
                     </div>
                 </div>
                 </>
             ) : (
-                <LoginBlogs authentication={setIsAuthenticated} data={setUserData} />
+                <LoginBlogs baseURL={baseURL} authentication={setIsAuthenticated} data={setUserData} />
             )}
         </>
     );

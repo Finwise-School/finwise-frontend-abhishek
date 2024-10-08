@@ -100,6 +100,9 @@ const ADMINDASHBOARD = ({ baseURL }) => {
                         </>
                     ) : (
     <>
+                        <p className={`cursor-pointer`} onClick={handleLogOut}>
+                           <HiLogout className="inline-block mr-1" /> Logout
+                        </p>
     <Accordion collapseAll>
       <Accordion.Panel>
         <Accordion.Title>Blogs Data</Accordion.Title>
