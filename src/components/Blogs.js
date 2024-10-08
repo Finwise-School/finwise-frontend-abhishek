@@ -3,6 +3,7 @@ import Wallimg from '../assets/images/Blogs/img2.png'
 import Sidecards from './Blogs/sidecards';
 import axios from 'axios';
 import CardsBottom from './Blogs/cardsBottom';
+import CommentSection from './Blogs/CommentSection';
 import Blogswrite from './Blogs/Blogswrite';
 import EATemplate from './EarlyAccessTemplate';
 
@@ -42,7 +43,7 @@ function Blogs({ baseURL }) {
       <h2 className='flex sm:justify-start justify-center text-2xl font-bold my-8 finwise-blue'>Top Stories</h2>
         <div>
             <div className={`flex md:flex-row flex-col ${data.length > 1 ? 'justify-between' : 'justify-center'}`}>
-            <div className='mainCard md:w-4/6 bg-white shadow-lg rounded-xl overflow-hidden'>
+    <div className={`mainCard ${isOpen ? 'md:w-full' : 'md:w-4/6'} bg-white shadow-lg rounded-xl overflow-hidden`}>
     <div className="flex justify-center overflow-hidden border-b border-gray-300">
         <img className='object-cover w-full h-60 md:h-96' src={front.imageUrl} alt="" />
     </div>
@@ -52,6 +53,9 @@ function Blogs({ baseURL }) {
                 <h3 className="text-3xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300">{front.title}</h3>
                 <div className={`blogPara text-gray-600 ${isOpen ? 'h-auto' : 'h-14 overflow-hidden'}`}>
                     <p dangerouslySetInnerHTML={{ __html: front.content }} />
+                    <div className='commentSection my-10'>
+                      <CommentSection baseURL={baseURL} blogID={front._id} />
+                    </div>
                 </div>
             </>
         </div>
@@ -69,14 +73,14 @@ function Blogs({ baseURL }) {
         </div> 
     </div> 
 </div>
-            {data.length > 1 && 
+            {(data.length > 1 && !isOpen) &&
               <div className={`sideCard md:flex flex-col md:w-1/6 hidden`}>
-            <Sidecards sidedata={data.slice(0, 3)} onToggle={handleCardClick}/> 
+            <Sidecards baseURL={baseURL} sidedata={data.slice(0, 3)} onToggle={handleCardClick}/> 
             </div>
             }
             </div>
         </div>
-        {data.length > 2 && (<CardsBottom onToggle={handleCardClick}/>)}
+        {data.length > 2 && (<CardsBottom baseURL={baseURL} onToggle={handleCardClick}/>)}
         </div>
         <EATemplate />
         </>

@@ -94,12 +94,12 @@ import Thumbnail from '../../assets/images/Blogs/b-2.png'
 // import Buttonprev from "../../assets/images/Blogs/Buttonprev.png";
 import Slider from "react-slick";
 
-const CardsBottom = ({ onToggle }) => {
+const CardsBottom = ({ onToggle, baseURL }) => {
 
   const [data, setData] = useState([]);
   const carouselRef = useRef(null);
 
-  axios.defaults.baseURL = 'https://api.finwiseschool.com';
+  axios.defaults.baseURL = baseURL;
   // axios.defaults.baseURL = 'http://localhost:5000';
 
   // DONT DELETE

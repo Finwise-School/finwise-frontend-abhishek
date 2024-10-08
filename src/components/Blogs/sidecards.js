@@ -1,6 +1,6 @@
 import Wallimg from '../../assets/images/Blogs/img2.png';
 
-function Sidecards({ sidedata = [], onToggle }) { // Destructure sidedata from props with default value as empty array
+function Sidecards({ sidedata = [], onToggle, baseURL }) { // Destructure sidedata from props with default value as empty array
   return (
     <>
       {sidedata.map((item, index) => {

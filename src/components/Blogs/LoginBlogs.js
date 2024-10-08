@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Checkbox, Card, Button, FloatingLabel, TextInput, Label, FileInput } from "flowbite-react";
 import axios from 'axios';
 
-const LoginBlogs = ({ authentication, data }) => {
+const LoginBlogs = ({ authentication, data, baseURL }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [incorrect, setIncorrect] = useState(false);
 
-    axios.defaults.baseURL = 'https://api.finwiseschool.com';
+    axios.defaults.baseURL = baseURL;
     // axios.defaults.baseURL = 'http://localhost:5000';
 
     useEffect(() => {
