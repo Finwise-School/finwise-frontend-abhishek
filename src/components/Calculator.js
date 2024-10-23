@@ -6,7 +6,7 @@ import MutualImg from "../assets/images/calci_images/mutual.png";
 import FDImg from "../assets/images/calci_images/fd.png";
 import TaxImg from "../assets/images/calci_images/tax.png";
 import BudgetImg from "../assets/images/calci_images/budget.png";
-import MortgageImg from "../assets/images/calci_images/mortgage.png";
+import CreditCardImg from "../assets/images/calci_images/creditcard.png";
 import IRRImg from "../assets/images/calci_images/irr.png";
 import LoanImg from "../assets/images/calci_images/mortgage-borrower.png";
 import EMIImg from "../assets/images/calci_images/emi.png";
@@ -36,7 +36,7 @@ const FinancialPlanningTools = () => {
           <ToolCard title="F.I.R.E." image={FireImg} path="/tools/fire" />
           <ToolCard title="Tax Calculator" image={TaxImg} path="/tools/tax" />
           <ToolCard title="Budget Boss Calculator" image={BudgetImg} path="/tools/budget-boss" />
-          <ToolCard title="Mortgage Calculator" image={MortgageImg} path="/maintainence" />
+          <ToolCard title="Credit Card Calculator" image={CreditCardImg} path="/tools/credit-card" />
           <ToolCard title="IRR" image={IRRImg} path="/tools/irr" />
           <ToolCard title="Mortgage Borrower Calculator" image={LoanImg} path="/tools/mortgage-borrower" />
           <ToolCard title="EMI Calculator" image={EMIImg} path="/tools/emi" />

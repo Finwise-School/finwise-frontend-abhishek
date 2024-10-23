@@ -11,7 +11,7 @@ const IncomeSection = ({ incomes, setIncomes }) => {
   };
 
   // Calculate total income
-  const totalIncome = incomes.reduce((acc, income) => acc + (parseFloat(income.amount) || 0), 0).toFixed(2);
+  // const totalIncome = incomes.reduce((acc, income) => acc + (parseFloat(income.amount) || 0), 0).toFixed(2);
 
   return (
     <div className="section mt-16 mb-6">

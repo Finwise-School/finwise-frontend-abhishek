@@ -12,7 +12,7 @@ const calculators = [
   { path: "/tools/emi", name: "EMI Calculator" },
   { path: "/tools/budget-boss", name: "Budget Calculator" },
   { path: "/tools/irr", name: "IRR Calculator" },
-  { path: "/maintainence", name: "Home Mortgage Calculator" },
+  { path: "/credit-card", name: "Credit Card Calculator" },
   { path: "/tools/tax", name: "Tax Calculator" },
   { path: "/tools/rental-yield", name: "Rental Yield Calculator" },
   { path: "/tools/mortgage-borrower", name: "Mortgage Borrower Calculator" }

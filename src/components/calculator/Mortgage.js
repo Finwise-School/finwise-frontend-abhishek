@@ -4,12 +4,15 @@ import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import Tool_Footer from './Tools_footer';
-import ExtraPayments from "./Mortgage_Extrapayments";
-import PITIPayments from "./Mortgage_PITI_Payments";
+import ExtraPayments from "./home-mortgage/Mortgage_Extrapayments";
+import PITIPayments from "./home-mortgage/Mortgage_PITI_Payments";
+import Summary from './home-mortgage/MortgageSummary';
 import logo from '../../assets/images/logo.png'; 
 import CalculatorList from './Calulators_List';
 
 const MortgageCalculator = () => {
+    let abcd;
+    let dabc;
     const [loanAmount, setLoanAmount] = useState(10000.00);
     const [interestRate, setInterestRate] = useState(12.75);
     const [termLength, setTermLength] = useState(9);
@@ -99,11 +102,15 @@ const MortgageCalculator = () => {
         let totalPaymentsMade = 0;
         let paymentNumber = 0;
     
+        // Variable to accumulate total interest due
+        let totalInterestDue = 0; 
+    
         for (let i = 1; i <= totalPayments; i++) {
             if (balance <= 0) break;
     
             // Interest and Principal Calculation
             const interestDue = balance * periodicInterestRate;
+            totalInterestDue += interestDue; // Accumulate total interest due
             const principalPaid = EMI - interestDue;
             totalSumInterest += interestDue;
     
@@ -113,30 +120,27 @@ const MortgageCalculator = () => {
             totalInterestPaidWithoutExtra += interestDueWithoutExtra;
             balanceWithoutExtra = Math.max(balanceWithoutExtra - principalPaidWithoutExtra, 0);
     
+            // Calculate total payment due
+            const totalPaymentDue = interestDue + principalPaid; 
+    
             // Apply extra payments
             let extraPaymentAmount = 0;
     
-            if (balance > EMI) {
-                if (i >= startPaymentNo && (i - startPaymentNo) % extraPaymentInterval === 0) {
-                    extraPaymentAmount = parseFloat(extraPayment);
-                }
-    
-                if (i >= startPaymentNo && paymentDate.getMonth() + 1 === extraPaymentMonth) {
-                    extraPaymentAmount += annualExtraPayment;
-                }
-            } else {
-                // Logic for the last payment:
-                const remainingBalance = balance - principalPaid;
-    
-                if (remainingBalance <= EMI) {
-                    extraPaymentAmount = 0;  // No extra payment needed
-                } else {
-                    // Calculate how much extra payment is needed to close the loan
-                    extraPaymentAmount = remainingBalance - EMI;
-                }
+            if (i >= startPaymentNo && (i - startPaymentNo) % extraPaymentInterval === 0) {
+                extraPaymentAmount = parseFloat(extraPayment);
             }
     
-            // Balance update with principal and extra payment
+            if (i >= startPaymentNo && paymentDate.getMonth() + 1 === extraPaymentMonth) {
+                extraPaymentAmount += annualExtraPayment;
+            }
+    
+            // Check if total payment due is less than extra payments
+            if (totalPaymentDue < extraPaymentAmount) {
+                // Reduce extra payment to only what's needed to cover the payment due
+                extraPaymentAmount = totalPaymentDue;
+            }
+    
+            // Balance update with principal and adjusted extra payment
             balance = Math.max(balance - (principalPaid + extraPaymentAmount), 0);
             totalInterestPaidWithExtra += interestDue;
             tempTotalExtraPayments += extraPaymentAmount;
@@ -183,11 +187,14 @@ const MortgageCalculator = () => {
         const interestSavings = totalInterestPaidWithoutExtra - totalInterestPaidWithExtra;
         setInterestSavings(interestSavings.toFixed(2));
         setTotalSumInterest_WEP(totalSumInterest);
+    
+        // Log the total interest due
+        abcd = totalInterestDue;
+        console.log("Total Interest Due)(@*#): " + totalInterestDue.toFixed(2));
     };
-            
+    
     
 // ------------------------------------newone----------------------------------
-
 const calculateRegularPaymentSchedule = () => {
     const P = parseFloat(loanAmount);
     const annualInterestRate = parseFloat(interestRate);
@@ -209,19 +216,28 @@ const calculateRegularPaymentSchedule = () => {
     let balance = P;
     let paymentDate = new Date(firstPaymentDate);
     let totalPaymentsMade = 0; // To track the total of all payments made
+    let totalInterestPaid = 0; // To track the total interest paid
 
     for (let i = 1; i <= totalPayments; i++) {
         const interestDue = balance * periodicInterestRate;
         const principalPaid = EMI - interestDue;
+        
+        // Update total interest paid
+        totalInterestPaid += interestDue;
+
+        // Update the balance
         balance = Math.max(balance - principalPaid, 0);
 
         // Sum the total payments made
         totalPaymentsMade += (interestDue + principalPaid);
 
+        // Move to the next payment date
         paymentDate.setMonth(paymentDate.getMonth() + (12 / periodsPerYear));
     }
 
     console.log("Total Payments Made (Regular Schedule): " + totalPaymentsMade.toFixed(2));
+    console.log("Total Interest Paid (Regular Schedule): " + totalInterestPaid.toFixed(2));
+    dabc = totalInterestPaid.toFixed(2);
 
     // Return or set the result if needed
     return totalPaymentsMade;
@@ -301,7 +317,8 @@ const calculateRegularPaymentSchedule = () => {
             setShowMore(prev => (prev - 1 + 3) % 3);
         }
     };
-
+    console.log("addadaa"+dabc);
+    console.log("addadaa"+abcd);
     return (
         <div className="bg-gray-50 p-2">
             <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
@@ -418,18 +435,10 @@ const calculateRegularPaymentSchedule = () => {
                         setExtraPaymentMonth={setExtraPaymentMonth}
                         totalExtraPayment={totalExtraPayment}
                         setTotalExtraPayment={setTotalExtraPayment}
-                        finalInterestSavings={finalInterestSavings}
+                        finalInterestSavings={dabc - abcd}
 
                     />}
-                    {showMore === 2 && <PITIPayments
-                        loanAmount={loanAmount}
-                        interestRate={interestRate}
-                        termLength={termLength}
-                        firstPaymentDate={firstPaymentDate}
-                        compoundPeriod={compoundPeriod}
-                        paymentFrequency={paymentFrequency}
-                        result={result.payment}
-                    />}
+                    
                     {/* Results Display
                     <div className="output-fields -mt-28 md:mt-0">
                         <h2 className="text-lg font-semibold text-gray-800 mb-4">Results:</h2>
@@ -455,6 +464,7 @@ const calculateRegularPaymentSchedule = () => {
                         Next
                     </button>
                 </div>
+                <Summary/>
                 {/* Table Display */}
                 <div>
                     <div className="flex flex-col md:flex-row justify-between items-center">

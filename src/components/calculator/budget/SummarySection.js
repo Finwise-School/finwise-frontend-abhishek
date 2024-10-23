@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import PieChartComponent from './PieChartComponent';
 
-const SummarySection = ({ totals, homeEssentials, otherSpendings }) => {
+const SummarySection = ({ totals, homeEssentials, otherSpendings, customExpenses }) => {
   const [showHomeEssentials, setShowHomeEssentials] = useState(false);
   const [showOtherSpendings, setShowOtherSpendings] = useState(false);
+  const [showCustomExpenses, setShowCustomExpenses] = useState(false);
 
   const calculateMonthlyAmount = (amount, frequency) => {
     return frequency === 'weekly' ? amount * 4.3 : amount;
   };
 
-  // Data for Pie Chart focusing on Home Essentials and Other Spendings
+  // Calculate total spending for custom expenses
+  const totalCustomSpending = customExpenses.reduce((total, expense) => {
+    const subTotal = expense.subExpenses.reduce((subTotal, subExpense) => {
+      return subTotal + calculateMonthlyAmount(parseFloat(subExpense.spending) || 0, subExpense.frequency);
+    }, 0);
+    return total + subTotal;
+  }, 0);
+
+  // Data for Pie Chart
   const spendingData = [
     { label: 'Home Essentials', value: totals.totalHomeEssentials },
     { label: 'Other Spendings', value: totals.totalOtherSpendings },
+    { label: 'Custom Spendings', value: totalCustomSpending },
   ];
 
   return (
@@ -64,15 +74,43 @@ const SummarySection = ({ totals, homeEssentials, otherSpendings }) => {
               <td className="border p-4 text-right">£{(calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency)).toFixed(2)}</td>
             </tr>
           ))}
+
+          {/* Custom Expenses Section */}
+          <tr>
+            <td className="border p-4 text-center">
+              <button 
+                onClick={() => setShowCustomExpenses(!showCustomExpenses)} 
+                className="text-blue-600 font-semibold transition-colors duration-300 hover:text-blue-800"
+              >
+                Custom Expenses {showCustomExpenses ? '-' : '+'}
+              </button>
+            </td>
+            <td className="border p-4 text-right">£{totalCustomSpending.toFixed(2)}</td>
+          </tr>
+          {showCustomExpenses && customExpenses.map((expense, index) => (
+            <React.Fragment key={index}>
+              <tr className="bg-gray-50">
+                <td className="border p-4 pl-8 text-left">• {expense.name}</td>
+                <td className="border p-4 text-right"></td>
+              </tr>
+              {expense.subExpenses.map((subExpense, subIndex) => (
+                <tr key={subIndex} className="bg-gray-50">
+                  <td className="border p-4 pl-12 text-left">- {subExpense.name}</td>
+                  <td className="border p-4 text-right">£{calculateMonthlyAmount(parseFloat(subExpense.spending), subExpense.frequency).toFixed(2)}</td>
+                </tr>
+              ))}
+            </React.Fragment>
+          ))}
+
           <tr className="font-bold">
             <td className="border p-4 text-center">Total Spending</td>
-            <td className="border p-4 text-red-600 text-right">£{totals.totalSpending.toFixed(2)}</td>
+            <td className="border p-4 text-red-600 text-right">£{(totals.totalSpending + totalCustomSpending).toFixed(2)}</td>
           </tr>
         </tbody>
       </table>
 
       {/* Conditionally render the PieChartComponent based on spending amounts */}
-      {totals.totalHomeEssentials >= 1 || totals.totalOtherSpendings >= 1 ? (
+      {totals.totalHomeEssentials >= 1 || totals.totalOtherSpendings >= 1 || totalCustomSpending >= 1 ? (
         <PieChartComponent data={spendingData} />
       ) : null}
     </div>
@@ -95,6 +133,12 @@ const getSpendingRowClass = (spending) => {
       'Electricity', 
       'Water', 
       'Council Tax'
+    ],
+    otherSpendings: [ // Specify distinct colors for other spending categories
+      'Dining Out',
+      'Clothing',
+      'Entertainment',
+      'Miscellaneous'
     ],
     technology: [
       'Internet', 
@@ -143,7 +187,9 @@ const getSpendingRowClass = (spending) => {
 
   // Return the appropriate class based on the spending category
   if (spendingCategories.homeEssentials.includes(name)) {
-    return 'bg-gray-50'; // Default color for Home Essentials
+    return 'bg-gray-200'; // Distinct color for Home Essentials
+  } else if (spendingCategories.otherSpendings.includes(name)) {
+    return 'bg-pink-200'; // Distinct color for Other Spendings
   } else if (spendingCategories.technology.includes(name)) {
     return 'bg-blue-100'; // Technology category
   } else if (spendingCategories.entertainment.includes(name)) {

@@ -3,9 +3,10 @@ import IncomeSection from './budget/IncomeSection';
 import HouseholdEssentialsSection from './budget/HouseholdEssentialsSection';
 import OtherSpendingsSection from './budget/OtherSpendingsSection';
 import SummarySection from './budget/SummarySection';
-import Tool_Footer from './Tools_footer';
+import ToolFooter from './Tools_footer';
 import Info from './info/Budget_Info.js';
 import CalculatorList from './Calulators_List';
+import CustomExpensesSection from './budget/CustomExpensesSection'; // Import the custom expense section
 
 const BudgetCalculator = () => {
   const [incomes, setIncomes] = useState([
@@ -73,6 +74,8 @@ const BudgetCalculator = () => {
     { name: 'Charity', spending: 0, frequency: 'monthly' },
   ]);
 
+  const [customExpenses, setCustomExpenses] = useState([]); // Custom Expenses State
+
   const calculateMonthlyAmount = (amount, frequency) => {
     return frequency === 'weekly' ? amount * 4.3 : amount;
   };
@@ -87,9 +90,13 @@ const BudgetCalculator = () => {
     const totalFamily = familySpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
     const totalFinance = financeSpendings.reduce((sum, spending) => sum + calculateMonthlyAmount(parseFloat(spending.spending) || 0, spending.frequency), 0);
 
+    const totalCustomExpenses = customExpenses.reduce((sum, expense) => {
+      return sum + expense.subExpenses.reduce((subSum, sub) => subSum + calculateMonthlyAmount(parseFloat(sub.spending) || 0, sub.frequency), 0);
+    }, 0);
+
     const totalOtherSpendings = totalTechnology + totalEntertainment + totalHealth + totalTransport + totalFamily + totalFinance;
-    const totalSpending = totalHomeEssentials + totalOtherSpendings;
-    return { totalIncome, totalHomeEssentials, totalOtherSpendings, totalSpending };
+    const totalSpending = totalHomeEssentials + totalOtherSpendings + totalCustomExpenses;
+    return { totalIncome, totalHomeEssentials, totalOtherSpendings, totalSpending, totalCustomExpenses };
   };
 
   const totals = calculateTotals();
@@ -104,9 +111,10 @@ const BudgetCalculator = () => {
     <div className="bg-gray-50 p-2">
       <div className="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-8">
         <div className="mb-6">
-                    <h1 className="text-2xl font-semibold finwise-green">Budget Boss Calculator</h1>
-                    <p className="finwise-blue">Manage your income and expenses effortlessly to achieve your financial goals.</p>
-                </div>
+          <h1 className="text-2xl font-semibold finwise-green">Budget Boss Calculator</h1>
+          <p className="finwise-blue">Manage your income and expenses effortlessly to achieve your financial goals.</p>
+        </div>
+
         <IncomeSection incomes={incomes} setIncomes={setIncomes} />
         <HouseholdEssentialsSection homeEssentials={homeEssentials} setHomeEssentials={setHomeEssentials} />
         <OtherSpendingsSection
@@ -123,8 +131,11 @@ const BudgetCalculator = () => {
           financeSpendings={financeSpendings}
           setFinanceSpendings={setFinanceSpendings}
         />
+      <hr className="border-t-2 border-gray-500 my-4" />
 
-     
+        {/* Custom Expenses Section */}
+        <CustomExpensesSection customExpenses={customExpenses} setCustomExpenses={setCustomExpenses} />
+
         <SummarySection
           totals={totals}
           homeEssentials={homeEssentials}
@@ -136,10 +147,12 @@ const BudgetCalculator = () => {
             ...familySpendings,
             ...financeSpendings,
           ]}
+          customExpenses={customExpenses}
         />
-   {/* Financial Status Message */}
-   <div className="text-center mt-4">
-          <h1 style={{fontSize: "40px", fontWeight: "bold"}} className={totalIncome > totalSpending ? 'text-green-500' : totalIncome === totalSpending ? 'text-gray-700' : 'text-red-600'}>
+
+        {/* Financial Status Message */}
+        <div className="text-center mt-4">
+          <h1 style={{ fontSize: '40px', fontWeight: 'bold' }} className={totalIncome > totalSpending ? 'text-green-500' : totalIncome === totalSpending ? 'text-gray-700' : 'text-red-600'}>
             {financialStatus}
           </h1>
         </div>
@@ -164,7 +177,7 @@ const BudgetCalculator = () => {
           )}
         </div>
 
-        <Tool_Footer message="Understand your income and expenses better to make smarter financial choices." />
+        <ToolFooter message="Understand your income and expenses better to make smarter financial choices." />
         <Info />
         <CalculatorList activeCalculator="Budget Calculator" />
       </div>

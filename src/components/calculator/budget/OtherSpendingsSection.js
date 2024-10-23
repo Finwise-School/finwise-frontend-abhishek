@@ -131,6 +131,7 @@ const OtherSpendingsSection = ({
           Add {category} Spending
         </button>
       )}
+      
     </div>
   );
 

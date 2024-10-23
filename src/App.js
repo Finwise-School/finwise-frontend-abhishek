@@ -28,6 +28,7 @@ import IRRCalculator from "./components/calculator/IRR";
 import RentalYeildCalculator from "./components/calculator/RentalYeild";
 import MortgageBorrowerCalculator from "./components/calculator/MortgageBorrower";
 import Budget_Boss from "./components/calculator/Budget_Boss";
+import CreditCard from "./components/calculator/CreditCard";
 import ScrollToTop from "./components/ScrolltoTop";
 import Blogs from "./components/Blogs";
 import BlogsWriting from "./components/BlogsWriting";
@@ -37,6 +38,7 @@ import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
 import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
 import Errors from "./components/error";
 import Books from "./components/Books";
+import Test from "./components/calculator/test/MortgageTest";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const ProtectedRoute = ({ children }) => {
@@ -81,11 +83,13 @@ const App = () => {
             <Route path="/tools/irr" element={<IRRCalculator />} />
             <Route path="/tools/rental-yield" element={<RentalYeildCalculator />} />
             <Route path="/tools/budget-boss" element={<Budget_Boss />} />
+            <Route path="/tools/credit-card" element={<CreditCard />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogswriting" element={<BlogsWriting />} />
             <Route path="/blogs/uk-tax-system" element={<Blogs />} />
             <Route path="/admindashboard" element={<ADMINDASHBOARD />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/test" element={<Test />} />
             <Route
               path="/profile"
               element={
