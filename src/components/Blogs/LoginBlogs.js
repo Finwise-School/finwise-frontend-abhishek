@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Checkbox, Card, Button, FloatingLabel, TextInput, Label, FileInput } from "flowbite-react";
 import axios from 'axios';
 
-const LoginBlogs = ({ authentication, data }) => {
+const LoginBlogs = ({ authentication, data, baseURL }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [incorrect, setIncorrect] = useState(false);
 
-    axios.defaults.baseURL = 'http://localhost:5000';
+    axios.defaults.baseURL = baseURL;
+    // axios.defaults.baseURL = 'http://localhost:5000';
 
     useEffect(() => {
       const savedEmail = localStorage.getItem('blogsUserEmail');
@@ -57,7 +58,7 @@ const LoginBlogs = ({ authentication, data }) => {
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
             </div>
-            <TextInput id="email1" value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="name@flowbite.com" required />
+            <TextInput id="email1" value={email} onChange={(event) => setEmail(event.target.value)} type="email" required />
           </div>
           <div>
             <div className="mb-2 block">

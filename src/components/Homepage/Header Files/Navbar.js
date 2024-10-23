@@ -110,6 +110,15 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  to="/books"
+                  className={`block py-2 px-3 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${isActive('/books')}`}
+                  onClick={handleLinkClick} // Close menu on link click
+                >
+                  Resources
+                </Link>
+              </li>
+              <li>
               {/* only show this link in mobile view */}
               <Link
                 to="/early-access"
@@ -147,6 +156,14 @@ const Navbar = () => {
                 className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/blogs')}`}
               >
                 Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/books"
+                className={`block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ${isActive('/books')}`}
+              >
+                Resources
               </Link>
             </li>
             {/* Show this Link only To Admins */}

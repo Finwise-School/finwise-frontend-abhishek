@@ -6,7 +6,7 @@ import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const PhoneNumberQueries = () => {
+const PhoneNumberQueries = ({ majorRights, baseURL }) => {
   const [phoneData, setPhoneData] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -14,10 +14,12 @@ const PhoneNumberQueries = () => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
+  axios.defaults.baseURL = baseURL;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/phonedata');
+        const response = await axios.get('/api/admindashboard/phonedata');
         setPhoneData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
@@ -39,7 +41,7 @@ const PhoneNumberQueries = () => {
   const handleDeleteOption = async () => {
     if (deleteId) {
       try {
-        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/phonedata-delete', { id: deleteId });
+        const response = await axios.post('/api/admindashboard/phonedata-delete', { id: deleteId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted phone entry from state
@@ -63,7 +65,7 @@ const PhoneNumberQueries = () => {
     }
   
     try {
-      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-phonenumber');
+      const response = await axios.delete('/api/delete-all-phonenumber');
       if (response.status === 200) {
         console.log('All phone numbers deleted');
         // Refresh the blogs data here
@@ -80,7 +82,7 @@ const PhoneNumberQueries = () => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/phonedata'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/phonedata'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -103,9 +105,11 @@ const PhoneNumberQueries = () => {
       <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
         <HiRefresh className="inline mr-1 m-auto" /> Refresh
       </button>
+      {majorRights && (
       <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${phoneData.length > 0 ? 'block' : 'hidden'}`}>
         Delete All
       </button>
+      )}
       <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
         <HiDownload className="inline mr-1 m-auto" /> Download Excel
       </button>
@@ -137,11 +141,13 @@ const PhoneNumberQueries = () => {
                     </Table.Cell>
                   )}
                   <Table.Cell>{item.writeDate}</Table.Cell>
+                  {majorRights && (
                   <Table.Cell>
                    <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
                    <HiTrash className="inline-block mr-1" /> Delete
                     </button>
                   </Table.Cell>
+                  )}
                 </Table.Row>
               ))}
             </Table.Body>
@@ -152,6 +158,7 @@ const PhoneNumberQueries = () => {
       )}
       {openDeleteModal && (
         <DeletePage
+          baseURL={baseURL}
           openModal={openDeleteModal}
           setOpenModal={handleCloseDeleteModal}
           handleDeleteOption={handleDeleteOption}

@@ -6,7 +6,7 @@ import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const ChatBotQueries = () => {
+const ChatBotQueries = ({ majorRights, baseURL }) => {
   const [chatbotData, setChatbotData] = useState([]);
   const [chatbotId, setChatbotId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -14,10 +14,12 @@ const ChatBotQueries = () => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
+  axios.defaults.baseURL = baseURL;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/chatbot');
+        const response = await axios.get('/api/admindashboard/chatbot');
         // const response = await axios.get('http://localhost:5000/api/admindashboard/chatbot');
         setChatbotData(response.data);
       } catch (error) {
@@ -40,7 +42,7 @@ const ChatBotQueries = () => {
   const handleDeleteOption = async () => {
     if (chatbotId) {
       try {
-        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/chatbot-delete', { id: chatbotId });
+        const response = await axios.post('/api/admindashboard/chatbot-delete', { id: chatbotId });
         // const response = await axios.post('http://localhost:5000/api/admindashboard/chatbot-delete', { id: chatbotId });
         if (response.status === 201) {
           console.log('Content Deleted');
@@ -65,7 +67,7 @@ const ChatBotQueries = () => {
     }
   
     try {
-      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-chatbot');
+      const response = await axios.delete('/api/delete-all-chatbot');
       if (response.status === 200) {
         console.log('All blogs deleted');
         // Refresh the blogs data here
@@ -82,7 +84,7 @@ const ChatBotQueries = () => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/chatbot'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/chatbot'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -105,9 +107,11 @@ const ChatBotQueries = () => {
       <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
         <HiRefresh className="inline mr-1 m-auto" /> Refresh
       </button>
+      {majorRights && (
       <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${chatbotData.length > 0 ? 'block' : 'hidden'}`}>
         Delete All
       </button>
+      )}
       <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
         <HiDownload className="inline mr-1 m-auto" /> Download Excel
       </button>
@@ -137,17 +141,20 @@ const ChatBotQueries = () => {
                   <Table.Cell>{item.email}</Table.Cell>
                   <Table.Cell>{item.query}</Table.Cell>
                   <Table.Cell>{item.writeDate}</Table.Cell>
+                  {majorRights && (
                   <Table.Cell>
                    <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
                    <HiTrash className="inline-block mr-1" /> Delete
                     </button>
                   </Table.Cell>
+                  )}
                 </Table.Row>
               ))}
             </Table.Body>
           </Table>
           {openDeleteModal && (
             <DeletePage
+              baseURL={baseURL}
               openModal={openDeleteModal}
               setOpenModal={handleCloseDeleteModal}
               handleDeleteOption={handleDeleteOption}

@@ -7,7 +7,7 @@ import { HiEye, HiEyeOff, HiTrash, HiDownload, HiRefresh } from 'react-icons/hi'
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const BlogsUser = () => {
+const BlogsUser = ({ majorRights, baseURL }) => {
   const [blogsUserData, setBlogsUserData] = useState([]);
   const [blogsUserId, setBlogsUserId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -17,10 +17,13 @@ const BlogsUser = () => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
+  axios.defaults.baseURL = baseURL;
+  // axios.defaults.baseURL = 'http://localhost:5000';
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/bloguser');
+        const response = await axios.get('/api/admindashboard/bloguser');
         // const response = await axios.get('http://localhost:5000/api/admindashboard/bloguser');
         setBlogsUserData(response.data);
       } catch (error) {
@@ -43,7 +46,7 @@ const BlogsUser = () => {
   const handleDeleteOption = async () => {
     if (blogsUserId) {
       try {
-        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/bloguser-delete', { id: blogsUserId });
+        const response = await axios.post('/api/admindashboard/bloguser-delete', { id: blogsUserId });
         // const response = await axios.post('http://localhost:5000/api/admindashboard/bloguser-delete', { id: blogsUserId });
         if (response.status === 201) {
           console.log('Content Deleted');
@@ -68,7 +71,7 @@ const BlogsUser = () => {
     }
   
     try {
-      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-blogsUser');
+      const response = await axios.delete('/api/delete-all-blogsUser');
       if (response.status === 200) {
         console.log('All blogs users deleted');
         // Refresh the blogs data here
@@ -85,7 +88,7 @@ const BlogsUser = () => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/bloguser'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/bloguser'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -104,16 +107,20 @@ const BlogsUser = () => {
 
   return (
     <>
-    {openCreateModal && (<BlogsUserCreate openParentModal={setOpenCreateModal} />)}
+    {openCreateModal && (<BlogsUserCreate baseURL={baseURL} openParentModal={setOpenCreateModal} />)}
     <div className='flex flex-row justify-between'>
       <div>
-       <button className='text-right cursor-pointer text-blue-900 font-bold mr-5' onClick={() => setOpenCreateModal(true)}>Create New</button>
+        {majorRights && (
+          <button className='text-right cursor-pointer text-blue-900 font-bold mr-5' onClick={() => setOpenCreateModal(true)}>Create New</button>
+        )}
        <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
         <HiRefresh className="inline mr-1 m-auto" /> Refresh
        </button>
+       {majorRights && (
        <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${blogsUserData.length > 0 ? 'block' : 'hidden'}`}>
         Delete All
       </button>
+       )}
       </div>
       <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
         <HiDownload className="inline mr-1 m-auto" /> Download Excel
@@ -126,9 +133,11 @@ const BlogsUser = () => {
               <Table.HeadCell>S.No</Table.HeadCell>
               <Table.HeadCell>User Name</Table.HeadCell>
               <Table.HeadCell>Email</Table.HeadCell>
-              <Table.HeadCell>Password<span className='cursor-pointer text-center' onClick={() => setShowPassword(!showPassword)}>{showPassword ? <HiEyeOff /> : <HiEye />}</span></Table.HeadCell>
+              {majorRights && (
+                <Table.HeadCell>Password<span className='cursor-pointer text-center' onClick={() => setShowPassword(!showPassword)}>{showPassword ? <HiEyeOff /> : <HiEye />}</span></Table.HeadCell>
+              )}
               <Table.HeadCell>Created</Table.HeadCell>
-              <Table.HeadCell>Blogs</Table.HeadCell>
+              {/* <Table.HeadCell>Blogs</Table.HeadCell> */}
               <Table.HeadCell>
                 <span className="sr-only">Edit</span>
               </Table.HeadCell>
@@ -143,25 +152,30 @@ const BlogsUser = () => {
                     {item.username}
                   </Table.Cell>
                   <Table.Cell>{item.email}</Table.Cell>
-                  <Table.Cell><p className={`${showPassword ? 'block' : 'hidden'}`}>{item.password}</p></Table.Cell>
+                  {majorRights && (
+                    <Table.Cell><p className={`${showPassword ? 'block' : 'hidden'}`}>{item.password}</p></Table.Cell>
+                  )}
                   <Table.Cell>{item.writeDate}</Table.Cell>
-                  <Table.Cell>{item.blogPost.map((bitem, index) => (
+                  {/* <Table.Cell>{item.blogPost.map((bitem, index) => (
                     <div className='flex flex-row justify-start' key={index}>
                      <p className='me-5'>{index + 1}</p>
                      <p>{bitem}</p>
                     </div>
-                  ))}</Table.Cell>
+                  ))}</Table.Cell> */}
+                  {majorRights && (
                   <Table.Cell>
                     <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
                       <HiTrash className="inline-block mr-1" /> Delete
                     </button>
                   </Table.Cell>
+                  )}
                 </Table.Row>
               ))}
             </Table.Body>
           </Table>
           {openDeleteModal && (
             <DeletePage
+              baseURL={baseURL}
               openModal={openDeleteModal}
               setOpenModal={handleCloseDeleteModal}
               handleDeleteOption={handleDeleteOption}

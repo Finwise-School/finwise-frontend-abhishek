@@ -5,7 +5,7 @@ import YourBlogs from './Blogs/YourBlogs';
 import { TextInput, Label, FileInput, Button, Modal } from "flowbite-react";
 import axios from 'axios';
 
-const BlogsWriting = ({ placeholder }) => {
+const BlogsWriting = ({ placeholder, baseURL }) => {
     const [content, setContent] = useState('');
     const [title, setTitle] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -17,6 +17,10 @@ const BlogsWriting = ({ placeholder }) => {
     const [thumbnailUrl, setThumbnailUrl] = useState('');
 
 
+    axios.defaults.baseURL = baseURL;
+    // axios.defaults.baseURL = 'http://localhost:5000';
+
+
     const handleReload = () => {
       window.location.reload(); // Reload the page
   };
@@ -25,7 +29,7 @@ const BlogsWriting = ({ placeholder }) => {
         const fetchBlogs = async () => {
             if (userData.length > 0) {
                 try {
-                    const response = await axios.post('http://localhost:5000/api/userBlogsContentFetch', {
+                    const response = await axios.post('/api/userBlogsContentFetch', {
                         ids: userData[0].blogPost // Assuming this is an array of IDs
                     });
                     if (response.status === 200) {
@@ -49,38 +53,113 @@ const BlogsWriting = ({ placeholder }) => {
 
     const writeDate = formatDate(new Date());
 
-    const handleImageUpload = async (blobInfo, success, failure) => {
-        const formData = new FormData();
-        formData.append('file', blobInfo.blob(), blobInfo.filename());
+    // const handleImageUpload = async (blobInfo, success, failure) => {
+    //     const formData = new FormData();
+    //     formData.append('file', blobInfo.blob(), blobInfo.filename());
     
-        try {
-            const response = await axios.post('/api/upload-image', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
-            setUploadedImageUrl(response.data.url); // Store the uploaded image URL
-            success(response.data.url); // Assuming your backend returns the URL of the uploaded image
-        } catch (error) {
-            failure('Image upload failed: ' + error.message);
-        }
-    };
+    //     try {
+    //         const response = await axios.post('/api/upload-image', formData, {
+    //             headers: { 'Content-Type': 'multipart/form-data' }
+    //         });
+    //         if (response.data.url) {
+    //             success(response.data.url); // Use the URL returned from the backend
+    //         } else {
+    //             failure('Image upload failed: No URL returned.');
+    //         }
+    //     } catch (error) {
+    //         failure('Image upload failed: ' + error.message);
+    //     }
+    // };
 
-    const handleThumbnailChange = async (event) => {
-        const file = event.target.files[0];
-        setThumbnailFile(file);
+    // const handleImageUpload = async (blobInfo, success, failure) => {
+    //     const formData = new FormData();
+    //     formData.append('image', blobInfo.blob(), blobInfo.filename());
+    //     formData.append('key', '65f8bb755163a2c0fb7741e95ee4944c'); // Your Imgbb API key
+
+    //     try {
+    //         const response = await axios.post('https://api.imgbb.com/1/upload', formData, {
+    //             headers: { 'Content-Type': 'multipart/form-data' }
+    //         });
+    //         if (response.data && response.data.data && response.data.data.url) {
+    //             success(response.data.data.url); // Use the URL returned from Imgbb
+    //         } else {
+    //             failure('Image upload failed: No URL returned.');
+    //         }
+    //     } catch (error) {
+    //         failure('Image upload failed: ' + error.message);
+    //     }
+    // };
     
-        // Upload the thumbnail file
+
+    const handleThumbnailUpload = async (file) => {
         const formData = new FormData();
-        formData.append('file', file);
-    
+        formData.append('image', file);
+        formData.append('key', '65f8bb755163a2c0fb7741e95ee4944c'); // Your Imgbb API key
+
         try {
-            const response = await axios.post('/api/upload-image', formData, {
+            const response = await axios.post('https://api.imgbb.com/1/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            setThumbnailUrl(response.data.url); // Store the uploaded image URL
+            if (response.data && response.data.data && response.data.data.url) {
+                setThumbnailUrl(response.data.data.url); // Store the uploaded thumbnail URL
+            } else {
+                console.error('Thumbnail upload failed: No URL returned.');
+            }
         } catch (error) {
             console.error('Thumbnail upload failed:', error);
         }
     };
+
+    const handleThumbnailChange = (event) => {
+        const file = event.target.files[0];
+        setThumbnailFile(file);
+        handleThumbnailUpload(file); // Call the refactored thumbnail upload function
+    };
+    
+    // const handleImageUpload = async (blobInfo, success, failure) => {
+    //     const formData = new FormData();
+    //     formData.append('file', blobInfo.blob(), blobInfo.filename());
+    
+    //     try {
+    //         const response = await axios.post('/api/upload-image', formData, {
+    //             headers: { 'Content-Type': 'multipart/form-data' }
+    //         });
+    //         if (response.data.url) {
+    //             success(response.data.url); // Use the URL returned from the backend
+    //         } else {
+    //             failure('Image upload failed: No URL returned.');
+    //         }
+    //     } catch (error) {
+    //         failure('Image upload failed: ' + error.message);
+    //     }
+    // };
+    
+    // const handleThumbnailUpload = async (file) => {
+    //     const formData = new FormData();
+    //     formData.append('file', file);
+    
+    //     try {
+    //         const response = await axios.post('/api/upload-thumbnail', formData, {
+    //             headers: { 'Content-Type': 'multipart/form-data' }
+    //         });
+    //         if (response.data.url) {
+    //             setThumbnailUrl(response.data.url); // Store the uploaded thumbnail URL
+    //         } else {
+    //             console.error('Thumbnail upload failed: No URL returned.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Thumbnail upload failed:', error);
+    //     }
+    // };
+    
+    // const handleThumbnailChange = (event) => {
+    //     const file = event.target.files[0];
+    //     setThumbnailFile(file);
+    
+    //     // Call the refactored thumbnail upload function
+    //     handleThumbnailUpload(file);
+    // };
+    
     
     
 
@@ -169,7 +248,7 @@ const BlogsWriting = ({ placeholder }) => {
     </div>
     <FileInput 
         id="file-upload-helper-text" 
-        helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." 
+        helperText="SVG, PNG, JPG or GIF" 
         type="file" 
         name="Thumbnail" 
         accept=".jpeg, .png, .gif, .bmp, .tiff" 
@@ -177,6 +256,15 @@ const BlogsWriting = ({ placeholder }) => {
         required 
     />
 </div>
+                                {/* <form action="/upload" method="POST" enctype="multipart/form-data">
+                                    <input
+                                        class="AI_Input"
+                                        type="file"
+                                        name="resume"
+                                        accept=".jpeg, .png, .gif, .bmp, .tiff"
+                                        required="required">
+                                    <button class="resume_btn" type="submit">AI ✨</button>
+                                </form> */}
 
                         <div className='my-6'>
                             <Label htmlFor="blogsContent" value="Please write the content of the blog here." />
@@ -184,10 +272,10 @@ const BlogsWriting = ({ placeholder }) => {
                                 apiKey='ypo1fmswbyn1ye2jhqzf5k7otdoe4qi3l7a3oe58xisjkd1w'
                                 init={{
                                     plugins: [
-                                        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+                                        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'searchreplace', 'table', 'visualblocks', 'wordcount',
                                     ],
                                     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-                                    images_upload_handler: handleImageUpload,
+                                    // images_upload_handler: handleImageUpload,
                                 }}
                                 initialValue="Start writing your Blogs!"
                                 onEditorChange={(newContent) => setContent(newContent)}
@@ -204,12 +292,12 @@ const BlogsWriting = ({ placeholder }) => {
                          Submit
                         </button>
 </div>
-                        <YourBlogs dataYourBlogs={histBlogs} />
+                        <YourBlogs baseURL={baseURL} dataYourBlogs={histBlogs} />
                     </div>
                 </div>
                 </>
             ) : (
-                <LoginBlogs authentication={setIsAuthenticated} data={setUserData} />
+                <LoginBlogs baseURL={baseURL} authentication={setIsAuthenticated} data={setUserData} />
             )}
         </>
     );

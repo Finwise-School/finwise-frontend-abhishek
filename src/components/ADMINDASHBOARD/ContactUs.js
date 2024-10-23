@@ -6,12 +6,14 @@ import DeletePage from './DeletePage';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const ContactUs = () => {
+const ContactUs = ({ majorRights, baseURL }) => {
   const formatDate = (dateString) => {
     const options = { day: 'numeric', month: 'short', year: '2-digit' };
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('en-GB', options).format(date);
   };
+
+  axios.defaults.baseURL = baseURL;
 
   const [contactData, setContactData] = useState([]);
   const [contactId, setContactId] = useState(null);
@@ -23,7 +25,7 @@ const ContactUs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/contactus');
+        const response = await axios.get('/api/admindashboard/contactus');
         // const response = await axios.get('http://localhost:5000/api/admindashboard/contactus');
         setContactData(response.data);
       } catch (error) {
@@ -46,7 +48,7 @@ const ContactUs = () => {
   const handleDeleteOption = async () => {
     if (contactId) {
       try {
-        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/contactus-delete', { id: contactId });
+        const response = await axios.post('/api/admindashboard/contactus-delete', { id: contactId });
         // const response = await axios.post('http://localhost:5000/api/admindashboard/contactus-delete', { id: contactId });
         if (response.status === 201) {
           console.log('Content Deleted');
@@ -71,7 +73,7 @@ const ContactUs = () => {
     }
   
     try {
-      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-contactus');
+      const response = await axios.delete('/api/delete-all-contactus');
       if (response.status === 200) {
         console.log('All contact us deleted');
         // Refresh the blogs data here
@@ -88,7 +90,7 @@ const ContactUs = () => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/contactus'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/contactus'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -111,9 +113,11 @@ const ContactUs = () => {
       <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
         <HiRefresh className="inline mr-1 m-auto" /> Refresh
       </button>
+      {majorRights && (
       <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${contactData.length > 0 ? 'block' : 'hidden'}`}>
         Delete All
       </button>
+      )}
       <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
         <HiDownload className="inline mr-1 m-auto" /> Download Excel
       </button>
@@ -145,17 +149,20 @@ const ContactUs = () => {
                   <Table.Cell>{item.subject}</Table.Cell>
                   <Table.Cell>{item.message}</Table.Cell>
                   <Table.Cell>{formatDate(item.createdAt)}</Table.Cell>
+                  {majorRights && (
                   <Table.Cell>
                    <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
                    <HiTrash className="inline-block mr-1" /> Delete
                     </button>
                   </Table.Cell>
+                  )}
                 </Table.Row>
               ))}
             </Table.Body>
           </Table>
           {openDeleteModal && (
             <DeletePage
+              baseURL={baseURL}
               openModal={openDeleteModal}
               setOpenModal={handleCloseDeleteModal}
               handleDeleteOption={handleDeleteOption}

@@ -6,7 +6,7 @@ import { HiEye, HiTrash, HiCheckCircle, HiXCircle, HiRefresh, HiDownload } from 
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 
-const RequestEarlyAccessQueries = () => {
+const RequestEarlyAccessQueries = ({ majorRights, baseURL }) => {
   const [reaData, setReaData] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -14,10 +14,12 @@ const RequestEarlyAccessQueries = () => {
   let count = 0;
   const [btnClick, setBtnClick] = useState(count);
 
+  axios.defaults.baseURL = baseURL;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://api.finwiseschool.com/api/admindashboard/requestearlyaccess');
+        const response = await axios.get('/api/admindashboard/requestearlyaccess');
         setReaData(response.data);
       } catch (error) {
         console.error('Error fetching collections:', error);
@@ -39,7 +41,7 @@ const RequestEarlyAccessQueries = () => {
   const handleDeleteOption = async () => {
     if (deleteId) {
       try {
-        const response = await axios.post('https://api.finwiseschool.com/api/admindashboard/requestearlyaccess-delete', { id: deleteId });
+        const response = await axios.post('/api/admindashboard/requestearlyaccess-delete', { id: deleteId });
         if (response.status === 201) {
           console.log('Content Deleted');
           // Remove deleted request from state
@@ -63,7 +65,7 @@ const RequestEarlyAccessQueries = () => {
     }
   
     try {
-      const response = await axios.delete('https://api.finwiseschool.com/api/delete-all-reaccess');
+      const response = await axios.delete('/api/delete-all-reaccess');
       if (response.status === 200) {
         console.log('All Request Early deleted');
         // Refresh the blogs data here
@@ -80,7 +82,7 @@ const RequestEarlyAccessQueries = () => {
 
   const fetchDataAndDownloadExcel = async () => {
     try {
-      const response = await fetch('https://api.finwiseschool.com/api/admindashboard/requestearlyaccess'); // Replace with your API endpoint
+      const response = await fetch(baseURL + '/api/admindashboard/requestearlyaccess'); // Replace with your API endpoint
       const data = await response.json();
   
       // Convert cleaned data to worksheet
@@ -103,9 +105,11 @@ const RequestEarlyAccessQueries = () => {
       <button onClick={() => {setBtnClick(count++)}} className='text-right cursor-pointer'>
         <HiRefresh className="inline mr-1 m-auto" /> Refresh
       </button>
+      {majorRights && (
       <button onClick={handleDeleteAll} className={`text-right cursor-pointer text-red-800 font-bold ${reaData.length > 0 ? 'block' : 'hidden'}`}>
         Delete All
       </button>
+      )}
       <button onClick={fetchDataAndDownloadExcel} className='text-right cursor-pointer'>
         <HiDownload className="inline mr-1 m-auto" /> Download Excel
       </button>
@@ -135,17 +139,20 @@ const RequestEarlyAccessQueries = () => {
               <Table.Cell>{item.email}</Table.Cell>
               <Table.Cell>{item.phone}</Table.Cell>
               <Table.Cell>{item.writeDate}</Table.Cell>
+              {majorRights && (
               <Table.Cell>
                    <button className="font-medium text-red-600 hover:text-red-800 dark:text-red-500" onClick={() => handleOpenDeleteModal(item._id)}>
                    <HiTrash className="inline-block mr-1" /> Delete
                     </button>
               </Table.Cell>
+              )}
             </Table.Row>
           ))}
         </Table.Body>
       </Table>
       {openDeleteModal && (
         <DeletePage
+          baseURL={baseURL}
           openModal={openDeleteModal}
           setOpenModal={handleCloseDeleteModal}
           handleDeleteOption={handleDeleteOption}

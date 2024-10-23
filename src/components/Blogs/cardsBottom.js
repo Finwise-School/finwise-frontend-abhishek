@@ -94,14 +94,17 @@ import Thumbnail from '../../assets/images/Blogs/b-2.png'
 // import Buttonprev from "../../assets/images/Blogs/Buttonprev.png";
 import Slider from "react-slick";
 
-const CardsBottom = ({ onToggle }) => {
+const CardsBottom = ({ onToggle, baseURL }) => {
 
   const [data, setData] = useState([]);
   const carouselRef = useRef(null);
 
+  axios.defaults.baseURL = baseURL;
+  // axios.defaults.baseURL = 'http://localhost:5000';
+
   // DONT DELETE
   useEffect(() => {
-    axios.get('http://localhost:5000/api/blogsContentFetch')
+    axios.get('/api/blogsContentFetch')
     .then(response => {
       // setData(response.data[0].Heading);
       setData(response.data);
