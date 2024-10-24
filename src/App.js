@@ -37,7 +37,7 @@ import UnderConst from "./components/UnderDevelopement";
 import PrivacyNotice from "./components/Homepage/Footer Files/privacyNotice";
 import ADMINDASHBOARD from "./components/ADMINDASHBOARD";
 import Errors from "./components/error";
-import Books from "./components/Books";
+import Books from "./components/Resources";
 import Test from "./components/calculator/test/MortgageTest";
 
 import { GoogleOAuthProvider } from '@react-oauth/google';

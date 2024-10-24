@@ -237,7 +237,7 @@ const CreditCardPaymentCalculator = () => {
                         {monthlyErrors.interestRate && <p className="text-red-500">{monthlyErrors.interestRate}</p>}
 
                         <div className="flex items-center justify-between p-4 border border-gray-300 rounded-lg">
-                            <label htmlFor="months" className="text-lg text-gray-700">Number of Months</label>
+                            <label htmlFor="months" className="text-lg text-gray-700">In how many months u are willing to pay ?</label>
                             <input
                                 type="number"
                                 id="months"
