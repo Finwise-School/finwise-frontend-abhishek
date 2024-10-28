@@ -4,9 +4,9 @@ import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
 
 const TaxCalculator = () => {
-  const [grossAmount, setGrossAmount] = useState("");
-  const [frequency, setFrequency] = useState("monthly");
-  const [hoursOrDays, setHoursOrDays] = useState("");
+  const [grossAmount, setGrossAmount] = useState("300");
+  const [frequency, setFrequency] = useState("daily");
+  const [hoursOrDays, setHoursOrDays] = useState("3");
   const [isScottishTax, setIsScottishTax] = useState("no");
   const [results, setResults] = useState(null);
   const [view, setView] = useState("yearly"); // New state for table view
@@ -133,7 +133,7 @@ const TaxCalculator = () => {
               type="number"
               value={grossAmount}
               onChange={(e) => setGrossAmount(e.target.value)}
-              className="border p-2 rounded-lg w-32"
+              className="border bg-green-100 text-gray-800  p-2 rounded-lg w-32"
             />
           </div>
 
@@ -142,7 +142,7 @@ const TaxCalculator = () => {
             <select
               value={frequency}
               onChange={(e) => setFrequency(e.target.value)}
-              className="border p-2 rounded-lg"
+              className="border bg-green-100 text-gray-800  p-2 rounded-lg"
             >
               <option value="hourly">Hourly</option>
               <option value="daily">Daily</option>
@@ -159,7 +159,7 @@ const TaxCalculator = () => {
                 type="number"
                 value={hoursOrDays}
                 onChange={(e) => setHoursOrDays(e.target.value)}
-                className="border p-2 rounded-lg w-32"
+                className="border bg-green-100 text-gray-800  p-2 rounded-lg w-32"
               />
             </div>
           )}
@@ -169,7 +169,7 @@ const TaxCalculator = () => {
             <select
               value={isScottishTax}
               onChange={(e) => setIsScottishTax(e.target.value)}
-              className="border p-2 rounded-lg"
+              className="border bg-green-100 text-gray-800  p-2 rounded-lg"
             >
               <option value="yes">Yes</option>
               <option value="no">No</option>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CreditCardPaymentCalculatorInfo = () => {
+const CreditCard_Info = () => {
   const [faqIndex, setFaqIndex] = useState(null);
 
   const toggleFaq = (index) => {
@@ -9,82 +9,66 @@ const CreditCardPaymentCalculatorInfo = () => {
 
   return (
     <div className="mt-8 bg-white">
-      <h1 className="text-2xl font-bold mb-4 finwise-green">About Credit Card Payment Calculators</h1>
+      {/* Pay Off Calculator Section */}
+      <h1 className="text-2xl font-bold mb-4 finwise-green">About Pay Off Calculator</h1>
       <p className="mb-6 text-base text-gray-700">
-        Managing credit card payments can be challenging. Our Credit Card Payment Calculators help you evaluate your credit card debt in two distinct ways:
-        <strong> Monthly Repayments Calculator</strong> and <strong>Pay Off Calculator</strong>.
+        Welcome to Finwise School’s Pay Off Calculator! This tool is designed to help you take control of your credit card debt by providing a clear roadmap to repayment.
       </p>
-
-      <h2 className="text-xl font-semibold mb-4 finwise-green">Monthly Repayments Calculator</h2>
-      <p className="mb-6 text-base text-gray-700">
-        The Monthly Repayments Calculator assists you in determining how much you need to pay each month to pay off your credit card balance within a specified timeframe. 
-        This tool provides insights into your monthly payments, total interest, and overall cost.
-      </p>
-      <h3 className="font-semibold mb-4">How to Use the Monthly Repayments Calculator:</h3>
+      
+      <h2 className="text-xl font-semibold mb-4 finwise-green">How to Use the Pay Off Calculator</h2>
       <ol className="list-decimal list-inside mb-6 space-y-2 text-base text-gray-700">
-        <li>Enter your <strong>Credit Card Balance</strong>.</li>
-        <li>Input the <strong>Interest Rate (APR)</strong>.</li>
-        <li>Specify the <strong>Desired Months to be Debt Free</strong>.</li>
+        <li><strong>Credit Card Balance:</strong> Enter the outstanding balance on your credit card.</li>
+        <li><strong>Interest Rate (APR):</strong> Input your card’s annual interest rate.</li>
+        <li><strong>Monthly Payment:</strong> Specify your monthly payment amount.</li>
       </ol>
       <p className="mb-6 text-base text-gray-700">
-        The calculator will instantly display the monthly payment required, total interest, and total cost, helping you make informed financial decisions.
+        With one click, you’ll see:
+        <ul className="list-disc list-inside mt-2 space-y-2">
+          <li><strong>Months to Pay Off:</strong> How long it will take to pay off your balance.</li>
+          <li><strong>Total Interest Paid:</strong> The total interest you’ll pay over time.</li>
+          <li><strong>Total Amount Paid:</strong> The complete cost of your repayment plan, including both principal and interest.</li>
+        </ul>
       </p>
+      
+      <h2 className="text-xl font-semibold mb-4 finwise-green">Benefits of Using the Pay Off Calculator</h2>
+      <ul className="list-disc list-inside mb-6 space-y-2 text-base text-gray-700">
+        <li><strong>Smart Financial Decisions:</strong> Visualize how different monthly payments can shorten your debt timeline and save on interest.</li>
+        <li><strong>Debt-Free Planning:</strong> Discover how adjustments in your monthly payment affect your overall debt duration and costs.</li>
+        <li><strong>Budgeting Assistance:</strong> Align your financial goals by adjusting payments to fit your budget and priorities.</li>
+      </ul>
+      <h2 className="text-base text-gray-700 mb-8">Our Pay Off Calculator empowers you to make informed, proactive decisions about managing and eliminating credit card debt. Try it out to see how small changes in your payments can lead to big savings!</h2>
 
-      <h2 className="text-xl font-semibold mb-4 finwise-green">Pay Off Calculator</h2>
+      {/* Monthly Repayment Calculator Section */}
+      <h1 className="text-2xl font-bold mb-4 finwise-green">About Monthly Repayment Calculator</h1>
       <p className="mb-6 text-base text-gray-700">
-        The Pay Off Calculator is designed to help you assess how quickly you can pay off your credit card debt. 
-        By inputting your current balance and interest rate, you can explore different payment strategies and their implications on your overall debt.
+        Welcome to Finwise School’s Monthly Repayment Calculator! This tool helps you plan manageable monthly payments to pay off your credit card debt within a specific timeframe.
       </p>
-      <h3 className="font-semibold mb-4">How to Use the Pay Off Calculator:</h3>
+      
+      <h2 className="text-xl font-semibold mb-4 finwise-green">How to Use the Monthly Repayment Calculator</h2>
       <ol className="list-decimal list-inside mb-6 space-y-2 text-base text-gray-700">
-        <li>Enter your <strong>Credit Card Balance</strong>.</li>
-        <li>Input the <strong>Interest Rate (APR)</strong>.</li>
-        <li>Specify a <strong>Monthly Payment Amount</strong> you plan to make.</li>
+        <li><strong>Credit Card Balance:</strong> Enter the outstanding amount on your card.</li>
+        <li><strong>Interest Rate (APR):</strong> Input your card’s annual percentage rate.</li>
+        <li><strong>Repayment Period:</strong> Set the number of months you plan to pay off the debt.</li>
       </ol>
       <p className="mb-6 text-base text-gray-700">
-        The calculator will calculate the number of months required to pay off your balance, the total interest paid, and the overall cost of your payments.
+        Results Summary:
+        <ul className="list-disc list-inside mt-2 space-y-2">
+          <li><strong>Monthly Payment:</strong> The amount to be paid each month.</li>
+          <li><strong>Total Interest:</strong> The interest cost over the repayment period.</li>
+          <li><strong>Total Cost:</strong> The total expense, including principal and interest.</li>
+        </ul>
       </p>
+      
+      <h2 className="text-xl font-semibold mb-4 finwise-green">Benefits of Using the Monthly Repayment Calculator</h2>
+      <ul className="list-disc list-inside mb-6 space-y-2 text-base text-gray-700">
+        <li><strong>Goal-Oriented Planning:</strong> Tailor monthly payments to achieve a debt-free timeline that fits your financial goals.</li>
+        <li><strong>Interest Savings:</strong> See how adjustments in repayment time affect the interest paid, helping you minimize costs.</li>
+        <li><strong>Effective Budgeting:</strong> Calculate a monthly amount that aligns with your income and financial priorities.</li>
+      </ul>
+      <h2 className="text-base text-gray-700 mb-8">This calculator is perfect for taking charge of your financial future and working towards debt elimination!</h2>
 
-      <h2 className="text-xl font-semibold mb-4 finwise-green">Frequently Asked Questions (FAQ)</h2>
-      <div className="mb-6">
-        {/* FAQ 1 */}
-        <div className="border-b border-gray-300 pb-2">
-          <button
-            className="w-full text-left text-base font-bold text-finwise-green focus:outline-none flex justify-between items-center"
-            onClick={() => toggleFaq(0)}
-          >
-            <span>Q: What is the difference between the two calculators?</span>
-            <span>{faqIndex === 0 ? "-" : "+"}</span>
-          </button>
-          {faqIndex === 0 && (
-            <p className="mt-2 text-base text-gray-700">
-              A: The Monthly Repayments Calculator helps you find out how much to pay each month to eliminate debt, while the Pay Off Calculator shows you how long it will take to pay off your debt based on a specified monthly payment.
-            </p>
-          )}
-        </div>
-
-        {/* FAQ 2 */}
-        <div className="border-b border-gray-300 pb-2 mt-4">
-          <button
-            className="w-full text-left text-base font-bold text-finwise-green focus:outline-none flex justify-between items-center"
-            onClick={() => toggleFaq(1)}
-          >
-            <span>Q: Can these calculators help me save on interest?</span>
-            <span>{faqIndex === 1 ? "-" : "+"}</span>
-          </button>
-          {faqIndex === 1 && (
-            <p className="mt-2 text-base text-gray-700">
-              A: Yes, by understanding your payment options and how they affect interest over time, you can create a strategy that minimizes your total interest paid.
-            </p>
-          )}
-        </div>
-      </div>
-
-      <p className="text-base text-gray-700">
-        Using these tools empowers you to manage your credit card payments more effectively, leading to financial stability and peace of mind.
-      </p>
     </div>
   );
 };
 
-export default CreditCardPaymentCalculatorInfo;
+export default CreditCard_Info;

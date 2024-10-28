@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Tool_Footer from './Tools_footer';
 import CalculatorList from './Calulators_List';
+import Info from '../calculator/info/Credit_Info';
 
 const CreditCardPaymentCalculator = () => {
     const [activeTab, setActiveTab] = useState('payOff');
-    const [creditCardBalance, setCreditCardBalance] = useState(10000);
-    const [annualInterestRate, setAnnualInterestRate] = useState(1);
-    const [monthlyPaymentAmount, setMonthlyPaymentAmount] = useState(12);
+    const [creditCardBalance, setCreditCardBalance] = useState(3000);
+    const [annualInterestRate, setAnnualInterestRate] = useState(18);
+    const [monthlyPaymentAmount, setMonthlyPaymentAmount] = useState(100);
     const [payOffResult, setPayOffResult] = useState(null);
     const [payOffErrors, setPayOffErrors] = useState({});
     const [balance, setBalance] = useState(5000);
@@ -24,8 +25,6 @@ const CreditCardPaymentCalculator = () => {
         }
         if (!annualInterestRate || isNaN(annualInterestRate) || annualInterestRate <= 0) {
             newErrors.annualInterestRate = "Please enter a valid annual interest rate (APR) greater than zero.";
-        } else if (annualInterestRate > 1) {
-            newErrors.annualInterestRate = "Interest rate must be 1% or lower for payoff calculations.";
         }
         if (!monthlyPaymentAmount || isNaN(monthlyPaymentAmount) || monthlyPaymentAmount <= 0) {
             newErrors.monthlyPaymentAmount = "Please enter a valid monthly payment amount greater than zero.";
@@ -56,33 +55,41 @@ const CreditCardPaymentCalculator = () => {
         const monthlyPayment = parseFloat(monthlyPaymentAmount);
         const monthlyInterestRate = parseFloat(annualInterestRate) / 100 / 12;
     
-        // Check if the payment is less than the monthly interest charged
+        // Check if the monthly payment is sufficient to cover at least the monthly interest
         if (monthlyPayment <= (balanceValue * monthlyInterestRate)) {
-            setPayOffMessage("Your monthly payment is less than the monthly interest charged by this card. You will never pay off the debt.");
+            setPayOffMessage("Your monthly payment is less than the monthly interest charged by this card. It is not possible to pay off the debt.");
             setPayOffResult(null);
             return;
         }
     
-        // Calculate the precise months to pay off (without rounding yet)
+        // Calculate the exact number of months to pay off the balance
         const exactMonthsToPayOff = Math.log(monthlyPayment / (monthlyPayment - monthlyInterestRate * balanceValue)) / Math.log(1 + monthlyInterestRate);
     
-        // Calculate the exact total to pay back and total interest with this value
+        // If exactMonthsToPayOff is not a real, positive number, payment plan is impossible
+        if (exactMonthsToPayOff <= 0 || isNaN(exactMonthsToPayOff) || !isFinite(exactMonthsToPayOff)) {
+            setPayOffMessage("Your monthly payment is less than the monthly interest charged by this card. It is not possible to pay off the debt.");
+            setPayOffResult(null);
+            return;
+        }
+    
+        // Calculate the exact totals if pay off is possible
         const exactTotalToPayBack = exactMonthsToPayOff * monthlyPayment;
         const exactTotalInterest = exactTotalToPayBack - balanceValue;
     
-        // Round to two decimal places for currency formatting
+        // Format values for display
         const roundedTotalToPayBack = exactTotalToPayBack.toFixed(2);
         const roundedTotalInterest = exactTotalInterest.toFixed(2);
-        const roundedMonthsToPayOff = Math.ceil(exactMonthsToPayOff); // Round up to ensure complete months
+        const roundedMonthsToPayOff = Math.ceil(exactMonthsToPayOff); // Rounds up to ensure full months
     
-        // Update state with calculated values
+        // Update state with calculated results
         setPayOffResult({
             monthsToPayOff: roundedMonthsToPayOff,
             totalInterestPaid: roundedTotalInterest,
             totalAmountPaid: roundedTotalToPayBack,
         });
-        setPayOffMessage(""); // Clear any messages
+        setPayOffMessage(""); // Clear any messages if calculation is valid
     };
+    
     
     const calculateMonthlyRepayment = () => {
         if (!validateMonthlyForm()) return;
@@ -275,6 +282,7 @@ const CreditCardPaymentCalculator = () => {
             )}
 
             <Tool_Footer message='Take Control of Your Credit Card Payments!. Start managing your credit wisely!'/>
+            <Info/>
             <CalculatorList activeCalculator="Credit Card Calculator"/>
         </div>
     );
