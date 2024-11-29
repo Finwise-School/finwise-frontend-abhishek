@@ -203,7 +203,7 @@ const CreditCardPaymentCalculator = () => {
                                         <span className="text-lg font-bold text-yellow-600">£{Number(payOffResult.totalInterestPaid).toLocaleString()}</span>
                                     </div>
                                     <div className="flex justify-between p-4 bg-blue-50 border-l-4 border-blue-400 rounded-lg shadow-md">
-                                        <span className="text-lg font-semibold text-blue-500">Total Amount Paid:</span>
+                                        <span className="text-lg font-semibold text-blue-500">Total Amount Paid :</span>
                                         <span className="text-lg font-bold text-blue-500">£{Number(payOffResult.totalAmountPaid).toLocaleString()}</span>
                                     </div>
                                 </div>
