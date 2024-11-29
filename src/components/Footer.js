@@ -103,7 +103,7 @@ function Footer() {
             </div>
           </div>
 
-          {/* Bottom Section */}
+          {/* Bottom Sectidsfsdfsdfdsfsdon */}
           <div className="flex flex-col md:flex-row items-center justify-between px-4 py-2 bg-zinc-900 text-xs text-center">
             {/* Text Links */}
             <div className="flex flex-col md:flex-row items-center text-white justify-center md:justify-start w-full md:w-auto">
