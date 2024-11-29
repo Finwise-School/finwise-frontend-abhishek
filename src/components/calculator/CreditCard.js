@@ -283,7 +283,7 @@ const CreditCardPaymentCalculator = () => {
 
             <Tool_Footer message='Take Control of Your Credit Card Payments!. Start managing your credit wisely!'/>
             <Info/>
-            <CalculatorList activeCalculator="Credit Card Calculator"/>
+            <CalculatorList activeCalculator="Cre dit Card Calculator"/>
         </div>
     );
 };
