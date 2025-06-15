@@ -100,8 +100,7 @@ const bookList = [
 
 const bookImages = [
   {
-    imageSrc: require("../assets/images/books/blueprint.jpg"),
-    title: "Budgeting",
+    imageSrc: require("../assets/images/books/blueprint.jpg"),,
     path: "https://finwiseschool.gumroad.com/l/fwsbudgetboss",
   },
   {
