@@ -24,7 +24,7 @@ const images =[
     {
         imageSrc:require("../../assets/images/books/blueprint.jpg"),
          name:"The Budgeting Blueprint",
-         path:"/budgetBlue"
+         path:"https://finwiseschool.gumroad.com/l/fwsbudgetboss"
     },
     // {
     //     imageSrc:require("../../assets/images/books/guide2.png"),
