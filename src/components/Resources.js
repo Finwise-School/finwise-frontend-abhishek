@@ -206,7 +206,7 @@ const Books = () => {
         </h2>
         <div className="container">
           <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
-           {bookImage.path.startsWith("http") ? (
+           {bookImages.map((bookImage, index) => (   <div key={index} className="text-center">     {bookImage.path.startsWith("http") ? (       <a         href={bookImage.path}         target="_blank"         rel="noopener noreferrer"       >         <img           src={bookImage.imageSrc}           alt={`Book ${index}`}           className="w-40 h-60 object-cover mb-2 rounded"         />         <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>       </a>     ) : (       <Link to={bookImage.path}>         <img           src={bookImage.imageSrc}           alt={`Book ${index}`}           className="w-40 h-60 object-cover mb-2 rounded"         />         <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>       </Link>     )}   </div> ))}
   <a
     href={bookImage.path}
     target="_blank"
