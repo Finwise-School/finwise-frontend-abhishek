@@ -61,10 +61,25 @@ const GuidesGrid = ({ guides }) => {
 // Book and guide data
 const bookList = [
   {
-    imageSrc: require("../assets/images/books/blueprint.jpg"),
-    author: "Finwise School",
-    title: "The Budgeting Blueprint",
-    path: "https://finwiseschool.gumroad.com/l/fwsbudgetboss",
+    import React from "react";
+
+const BookComponent = () => {
+  return (
+    <a 
+      href="https://finwiseschool.gumroad.com/l/fwsbudgetboss" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <img 
+        src={require("../assets/images/books/blueprint.jpg")} 
+        alt="The Budgeting Blueprint" 
+        style={{ cursor: "pointer", width: "100%" }}
+      />
+    </a>
+  );
+};
+
+export default BookComponent;
   },
   {
     imageSrc: require("../assets/images/books/Retirement.png"),
@@ -99,10 +114,25 @@ const bookList = [
 ];
 
 const bookImages = [
-  {
-    imageSrc: require("../assets/images/books/blueprint.jpg"),,
-    path: "https://finwiseschool.gumroad.com/l/fwsbudgetboss",
-  },
+  import React from "react";
+
+const BookComponent = () => {
+  return (
+    <a 
+      href="https://finwiseschool.gumroad.com/l/fwsbudgetboss" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <img 
+        src={require("../assets/images/books/blueprint.jpg")} 
+        alt="The Budgeting Blueprint" 
+        style={{ cursor: "pointer", width: "100%" }}
+      />
+    </a>
+  );
+};
+
+export default BookComponent;
   {
     imageSrc: require("../assets/images/books/cover.png"),
     title: "Stock Market",
@@ -145,8 +175,7 @@ const guides = [
     author: "By Finwise School",
     title: "The Budgeting Blueprint",
     path: "https://finwiseschool.gumroad.com/l/fwsbudgetboss",
-    description:
-      "This is a practical guide designed to help you master the art of budgeting and achieve financial freedom.",
+    
   },
   {
     imageSrc: require("../assets/images/books/guide3.png"),
@@ -202,38 +231,33 @@ const Books = () => {
       <div className="p-6 md:p-14 flex flex-col items-center">
         <h2 className="font-bold text-black text-xl md:text-2xl text-center mb-6 md:mb-[4%]">
           Browse by Category
-    <div className="container">
-  <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
-    {bookImages.map((bookImage, index) => (
-      <div key={index} className="text-center">
-        {bookImage.path.startsWith("http") ? (
-          <a
-            href={bookImage.path}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={bookImage.imageSrc}
-              alt={`Book ${index}`}
-              className="w-40 h-60 object-cover mb-2 rounded"
-            />
-            <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>
-          </a>
-        ) : (
-          <Link to={bookImage.path}>
-            <img
-              src={bookImage.imageSrc}
-              alt={`Book ${index}`}
-              className="w-40 h-60 object-cover mb-2 rounded"
-            />
-            <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>
-          </Link>
-        )}
-      </div>
-    ))}
-  </div>
-</div>
+        </h2>
+        <div className="container">
+          <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
+            {bookImages.map((bookImage, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="bg-blue-900 bg-opacity-95 backdrop-blur-sm w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
 
+                  <Link to={bookImage.path}>
+                    <div className="w-20 h-20 md:w-28 md:h-28 mt-2 md:mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
+                      <img
+                        src={bookImage.imageSrc}
+                        alt={`Book ${index}`}
+                        className="max-w-full max-h-full object-cover"
+                      />
+                    </div>
+                  </Link>
+                </div>
+                <div className="flex text-center mt-4 md:mt-5 mb-8 md:mb-[50%]">
+                  <Link to={bookImage.path}>
+                    <h2 className="text-sm md:text-base">{bookImage.title}</h2>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Promotion Section */}
       <div className=" fin-head ml-[14%] mr-[14%] text-white flex pt-10 h-auto px-10">
@@ -268,46 +292,15 @@ const Books = () => {
 
         {/* Mobile Carousel */}
         <div className="block md:hidden overflow-x-auto whitespace-nowrap py-4 px-6 space-x-4 md:px-[4%]">
-         {bookList.map((book, index) => (
-  <div key={index} className="text-center md:text-left">
-    {book.path.startsWith("http") ? (
-      <a
-        href={book.path}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src={book.imageSrc}
-          alt={`Book ${index}`}
-          className="w-[100%] h-[75%] object-cover mb-2 md:mb-4"
-        />
-      </a>
-    ) : (
-      <Link to={book.path}>
-        <img
-          src={book.imageSrc}
-          alt={`Book ${index}`}
-          className="w-[100%] h-[75%] object-cover mb-2 md:mb-4"
-        />
-      </Link>
-    )}
-    <p className="font-light italic text-sm">{book.author}</p>
-    {book.path.startsWith("http") ? (
-      <a
-        href={book.path}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h3 className="font-semibold">{book.title}</h3>
-      </a>
-    ) : (
-      <Link to={book.path}>
-        <h3 className="font-semibold">{book.title}</h3>
-      </Link>
-    )}
-  </div>
-))}
-
+          {bookList.map((book, index) => (
+            <div key={index} className="inline-block align-top w-40 text-left">
+              <Link to={book.path}>
+                <img
+                  src={book.imageSrc}
+                  alt={`Book ${index}`}
+                  className="w-40 h-60 object-cover mb-2 rounded"
+                />
+              </Link>
               <p className="font-light italic text-sm">{book.author}</p>
               <Link to={book.path}>
                 <h3 className="font-semibold text-sm whitespace-normal max-w-40 min-h-[40px]">
