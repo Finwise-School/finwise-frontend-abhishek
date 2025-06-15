@@ -273,15 +273,46 @@ const Books = () => {
 
         {/* Mobile Carousel */}
         <div className="block md:hidden overflow-x-auto whitespace-nowrap py-4 px-6 space-x-4 md:px-[4%]">
-          {bookList.map((book, index) => (
-            <div key={index} className="inline-block align-top w-40 text-left">
-              <Link to={book.path}>
-                <img
-                  src={book.imageSrc}
-                  alt={`Book ${index}`}
-                  className="w-40 h-60 object-cover mb-2 rounded"
-                />
-              </Link>
+         {bookList.map((book, index) => (
+  <div key={index} className="text-center md:text-left">
+    {book.path.startsWith("http") ? (
+      <a
+        href={book.path}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src={book.imageSrc}
+          alt={`Book ${index}`}
+          className="w-[100%] h-[75%] object-cover mb-2 md:mb-4"
+        />
+      </a>
+    ) : (
+      <Link to={book.path}>
+        <img
+          src={book.imageSrc}
+          alt={`Book ${index}`}
+          className="w-[100%] h-[75%] object-cover mb-2 md:mb-4"
+        />
+      </Link>
+    )}
+    <p className="font-light italic text-sm">{book.author}</p>
+    {book.path.startsWith("http") ? (
+      <a
+        href={book.path}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <h3 className="font-semibold">{book.title}</h3>
+      </a>
+    ) : (
+      <Link to={book.path}>
+        <h3 className="font-semibold">{book.title}</h3>
+      </Link>
+    )}
+  </div>
+))}
+
               <p className="font-light italic text-sm">{book.author}</p>
               <Link to={book.path}>
                 <h3 className="font-semibold text-sm whitespace-normal max-w-40 min-h-[40px]">
