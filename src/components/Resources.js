@@ -102,7 +102,7 @@ const bookImages = [
   {
     imageSrc: require("../assets/images/books/blueprint.jpg"),
     title: "Budgeting",
-    path: "/budgeting",
+    path: "https://finwiseschool.gumroad.com/l/fwsbudgetboss",
   },
   {
     imageSrc: require("../assets/images/books/cover.png"),
@@ -206,19 +206,28 @@ const Books = () => {
         </h2>
         <div className="container">
           <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
-            {bookImages.map((bookImage, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div className="bg-blue-900 bg-opacity-95 backdrop-blur-sm w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
+           {bookImage.path.startsWith("http") ? (
+  <a
+    href={bookImage.path}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src={bookImage.imageSrc}
+      alt={`Book ${index}`}
+      className="w-40 h-60 object-cover mb-2 rounded"
+    />
+  </a>
+) : (
+  <Link to={bookImage.path}>
+    <img
+      src={bookImage.imageSrc}
+      alt={`Book ${index}`}
+      className="w-40 h-60 object-cover mb-2 rounded"
+    />
+  </Link>
+)}
 
-                  <Link to={bookImage.path}>
-                    <div className="w-20 h-20 md:w-28 md:h-28 mt-2 md:mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
-                      <img
-                        src={bookImage.imageSrc}
-                        alt={`Book ${index}`}
-                        className="max-w-full max-h-full object-cover"
-                      />
-                    </div>
-                  </Link>
                 </div>
                 <div className="flex text-center mt-4 md:mt-5 mb-8 md:mb-[50%]">
                   <Link to={bookImage.path}>
