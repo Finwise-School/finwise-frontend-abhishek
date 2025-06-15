@@ -1,43 +1,39 @@
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import React from "react";
-import EarlyAccessTemplate from "./EarlyAccessTemplate";
-import header from "../assets/video/header.gif";
-import join from "../assets/images/books/PINK.png";
 import { FaArrowRight } from "react-icons/fa";
 
+import header from "../assets/video/header.gif";
+import join from "../assets/images/books/PINK.png";
+
+// Date format options
 const options = { year: "numeric", month: "long", day: "numeric" };
 
+// GuidesGrid Component to show guides shuffled
 const GuidesGrid = ({ guides }) => {
   const [shuffledGuides, setShuffledGuides] = useState([]);
 
   useEffect(() => {
-    // Shuffle the guides array on component mount
     const shuffleArray = (array) => {
       return array
         .map((item) => ({ ...item, sortValue: Math.random() }))
         .sort((a, b) => a.sortValue - b.sortValue)
-        .map((item) => {
-          delete item.sortValue;
-          return item;
-        });
+        .map(({ sortValue, ...rest }) => rest);
     };
-
     setShuffledGuides(shuffleArray(guides));
   }, [guides]);
 
   return (
-    <div className="grid grid-cols-1 ml-28 md:grid-cols-3 w-[85%]">
+    <div className="grid grid-cols-1 ml-28 md:grid-cols-3 w-[85%] gap-8">
       {shuffledGuides.map((guide, index) => (
         <div
           key={index}
-          className="bg-white p-5 grid grid-cols-2 items-center w-[125%] h-[60%]"
+          className="bg-white p-5 grid grid-cols-2 items-center w-[125%] h-[60%] rounded shadow"
         >
           <div className="w-[120%] h-[110%]">
             <img
               src={guide.imageSrc}
               alt={`Guide ${index}`}
-              className="w-[175%] h-[90%] object-cover"
+              className="w-[175%] h-[90%] object-cover rounded"
             />
           </div>
           <div className="flex flex-col justify-between h-[90%]">
@@ -46,11 +42,18 @@ const GuidesGrid = ({ guides }) => {
               <h2 className="font-bold mt-[8%] mb-[4%] text-[75%] ml-[-8%] text-black">
                 {guide.title}
               </h2>
-              <p className="text-gray-500 italic ml-[-8%]">About the book</p>
+              {guide.description && (
+                <p className="text-gray-500 italic ml-[-8%]">{guide.description}</p>
+              )}
             </div>
-            <button className="mt-6 ml-[-10%] bg-black text-white py-2 px-4 rounded font-semibold hover:bg-gray-800">
+            <a
+              href={guide.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 ml-[-10%] bg-black text-white py-2 px-4 rounded font-semibold hover:bg-gray-800 inline-block text-center"
+            >
               Get Now
-            </button>
+            </a>
           </div>
         </div>
       ))}
@@ -58,28 +61,41 @@ const GuidesGrid = ({ guides }) => {
   );
 };
 
-// Book and guide data
+// Book data for carousel and listings
+const bookImages = [
+  {
+    imageSrc: require("../assets/images/books/cover.png"),
+    title: "Stock Market",
+    path: "/stock",
+  },
+  {
+    imageSrc: require("../assets/images/books/Tax.png"),
+    title: "Taxation",
+    path: "/comingSoon",
+  },
+  {
+    imageSrc: require("../assets/images/books/Retirement.png"),
+    title: "Retirement Planning",
+    path: "/comingSoon",
+  },
+  {
+    imageSrc: require("../assets/images/books/smart.png"),
+    title: "Smart with Money",
+    path: "/comingSoon",
+  },
+  {
+    imageSrc: require("../assets/images/books/finances.png"),
+    title: "Finance Hacks",
+    path: "/comingSoon",
+  },
+];
+
 const bookList = [
   {
-    import React from "react";
-
-const BookComponent = () => {
-  return (
-    <a 
-      href="https://finwiseschool.gumroad.com/l/fwsbudgetboss" 
-      target="_blank" 
-      rel="noopener noreferrer"
-    >
-      <img 
-        src={require("../assets/images/books/blueprint.jpg")} 
-        alt="The Budgeting Blueprint" 
-        style={{ cursor: "pointer", width: "100%" }}
-      />
-    </a>
-  );
-};
-
-export default BookComponent;
+    imageSrc: require("../assets/images/books/blueprint.jpg"),
+    author: "Finwise School",
+    title: "The Budgeting Blueprint",
+    path: "https://finwiseschool.gumroad.com/l/fwsbudgetboss",
   },
   {
     imageSrc: require("../assets/images/books/Retirement.png"),
@@ -113,54 +129,6 @@ export default BookComponent;
   },
 ];
 
-const bookImages = [
-  import React from "react";
-
-const BookComponent = () => {
-  return (
-    <a 
-      href="https://finwiseschool.gumroad.com/l/fwsbudgetboss" 
-      target="_blank" 
-      rel="noopener noreferrer"
-    >
-      <img 
-        src={require("../assets/images/books/blueprint.jpg")} 
-        alt="The Budgeting Blueprint" 
-        style={{ cursor: "pointer", width: "100%" }}
-      />
-    </a>
-  );
-};
-
-export default BookComponent;
-  {
-    imageSrc: require("../assets/images/books/cover.png"),
-    title: "Stock Market",
-    path: "/stock",
-    booklocal: "/basics",
-  },
-  {
-    imageSrc: require("../assets/images/books/Tax.png"),
-    title: "Taxation",
-    path:"/comingSoon",
-  },
-  {
-    imageSrc: require("../assets/images/books/Retirement.png"),
-    title: "Retirement Planning",
-    path: "/comingSoon",
-  },
-  {
-    imageSrc: require("../assets/images/books/smart.png"),
-    title: "Smart with money",
-    path: "/comingSoon",
-  },
-  {
-    imageSrc: require("../assets/images/books/finances.png"),
-    title: "Finance hacks",
-    path: "/comingSoon",
-  },
-];
-
 const guides = [
   {
     imageSrc: require("../assets/images/books/guide1.png"),
@@ -175,7 +143,6 @@ const guides = [
     author: "By Finwise School",
     title: "The Budgeting Blueprint",
     path: "https://finwiseschool.gumroad.com/l/fwsbudgetboss",
-    
   },
   {
     imageSrc: require("../assets/images/books/guide3.png"),
@@ -193,20 +160,20 @@ const Books = () => {
         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-2 md:px-6">
           <div className="md:w-1/2 md:pl-[10%]">
             <p className="text-xs md:text-sm font-thin italic mb-1 md:mb-[3%] md:pt-[4%]">
-            Free Guide to Jump-Start Your Financial Journey
+              Free Guide to Jump-Start Your Financial Journey
             </p>
             <h1 className="text-2xl md:text-5xl mb-1 md:mb-[1%] font-semibold">
-            Take Control of 
+              Take Control of
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-1 md:mb-[1%]">
-            Your Finances
+              Your Finances
             </h1>
             <h1 className="text-2xl md:text-5xl font-semibold mb-2 md:mb-[8%]">
-            in Just 2 Weeks
+              in Just 2 Weeks
             </h1>
             <p className="mb-3 md:mb-6 pr-0 md:pr-[30%] font-thin">
-              Get started with our free, expert-created guide designed to help
-              you build strong financial habits and achieve your goals.
+              Get started with our free, expert-created guide designed to help you
+              build strong financial habits and achieve your goals.
             </p>
             <button className="bg-blue-900 text-white py-2 px-3 md:px-7 font-semibold hover:bg-blue-800">
               <Link to="/basics">
@@ -237,7 +204,6 @@ const Books = () => {
             {bookImages.map((bookImage, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div className="bg-blue-900 bg-opacity-95 backdrop-blur-sm w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center">
-
                   <Link to={bookImage.path}>
                     <div className="w-20 h-20 md:w-28 md:h-28 mt-2 md:mt-4 rounded-b-full overflow-hidden flex items-center justify-center">
                       <img
@@ -259,153 +225,4 @@ const Books = () => {
         </div>
       </div>
 
-      {/* Promotion Section */}
-      <div className=" fin-head ml-[14%] mr-[14%] text-white flex pt-10 h-auto px-10">
-        <div className="mx-auto p-10 w-full flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2">
-            <div className="flex mb-4 mt-[-20%]">
-              <h2 className="font-bold text-lg">100% off</h2>
-              <h2 className="font-semibold ml-1 text-lg">on all guides</h2>
-            </div>
-            <h1 className="font-extrabold text-3xl">Free for all</h1>
-            <h1 className="text-5xl mb-6 font-bold">Early members</h1>
-            <button className="bg-blue-900 text-white py-2 px-4 rounded font-semibold hover:bg-blue-800">
-              <Link to="/getNow">Get Now</Link>
-            </button>
-          </div>
-          <div className="md:w-1/2 flex justify-center hidden md:flex">
-            {/* Image will be hidden on mobile screens */}
-            <img
-              src={join}
-              className="lg:h-auto lg:w-[70%] lg:max-w-full mt-[8%] lg:mt-[0%]"
-              alt="Join now"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Book List Section with Carousel for Mobile */}
-      <section className="mb-[8%] w-full md:w-[80%] mx-auto">
-        <h2 className="font-semibold text-black text-3xl px-6 md:px-12 py-6 md:py-12 text-center md:text-left">
-          New Arrivals
-        </h2>
-
-        {/* Mobile Carousel */}
-        <div className="block md:hidden overflow-x-auto whitespace-nowrap py-4 px-6 space-x-4 md:px-[4%]">
-          {bookList.map((book, index) => (
-            <div key={index} className="inline-block align-top w-40 text-left">
-              <Link to={book.path}>
-                <img
-                  src={book.imageSrc}
-                  alt={`Book ${index}`}
-                  className="w-40 h-60 object-cover mb-2 rounded"
-                />
-              </Link>
-              <p className="font-light italic text-sm">{book.author}</p>
-              <Link to={book.path}>
-                <h3 className="font-semibold text-sm whitespace-normal max-w-40 min-h-[40px]">
-                  {book.title}
-                </h3>
-              </Link>
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop Grid View */}
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-6 gap-4">
-          {bookList.map((book, index) => (
-            <div key={index} className="text-center md:text-left">
-              <Link to={book.path}>
-                <img
-                  src={book.imageSrc}
-                  alt={`Book ${index}`}
-                  className="w-[100%] h-[75%] object-cover mb-2 md:mb-4"
-                />
-              </Link>
-              <p className="font-light italic text-sm">{book.author}</p>
-              <Link to={book.path}>
-                <h3 className="font-semibold">{book.title}</h3>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Guides of the Day Section */}
-      <div className="fin-back pt-4 pb-12 md:pb-16 mb-[-4%] fin-head">
-        <div className="container mx-auto">
-          {/* Mobile View */}
-          <div className="block md:hidden px-4 text-center">
-            <h2 className="text-blue-900 text-2xl font-bold">
-              Guides of the Day -
-            </h2>
-            <h2 className="text-white text-2xl font-bold mb-4">
-              {new Date().toLocaleDateString("en-GB", options)}
-            </h2>
-          </div>
-
-          {/* Laptop/Tablet View */}
-          <div className="hidden md:flex">
-            <h2 className="text-white text-3xl font-bold ml-[7%]">
-              Guides of the Day -
-            </h2>
-            <h2 className="text-white text-3xl font-light mb-8 pl-[1%]">
-              {new Date().toLocaleDateString("en-GB", options)}
-            </h2>
-          </div>
-
-          {/* GuidesGrid component */}
-          <div className="flex flex-col gap-8  sm:grid sm:grid-cols-2 lg:grid-cols-3 mb-[6%] md:ml-[7%] md:mr-[7%]">
-  {guides.map((guide, index) => (
-    <div
-      key={index}
-      className="w-full bg-white p-2 sm:p-4 rounded-md shadow-md flex"
-    >
-      {/* Image on the left */}
-      <Link to={guide.path} className="flex-shrink-0">
-        <img
-          src={guide.imageSrc}
-          alt={guide.title}
-          className="w-auto h-auto object-cover rounded-md"
-        />
-      </Link>
-
-      {/* Content on the right */}
-      <div className="flex flex-col justify-between ml-[6%] w-full">
-        <div>
-          {/* Author */}
-          <p className="font-light italic text-sm text-left mb-2">
-            {guide.author}
-          </p>
-
-          {/* Title */}
-          <Link to={guide.path}>
-            <h3 className="font-semibold text-sm whitespace-normal text-left mb-2">
-              {guide.title}
-            </h3>
-          </Link>
-        </div>
-        <p className="text-sm whitespace-normal text-left mb-2">
-          {guide.description}
-        </p>
-
-        {/* Button */}
-        <div>
-          <button className="bg-blue-900 text-white text-sm font-semibold px-4 py-2 rounded w-full  hover:bg-blue-800">
-            <Link to={guide.path}>Get Now</Link>
-          </button>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
-        </div>
-      </div>
-
-      <EarlyAccessTemplate />
-    </div>
-  );
-};
-
-export default Books;
+     
