@@ -203,42 +203,38 @@ const Books = () => {
       <div className="p-6 md:p-14 flex flex-col items-center">
         <h2 className="font-bold text-black text-xl md:text-2xl text-center mb-6 md:mb-[4%]">
           Browse by Category
-        </h2>
-        <div className="container">
-          <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
-           {bookImages.map((bookImage, index) => (   <div key={index} className="text-center">     {bookImage.path.startsWith("http") ? (       <a         href={bookImage.path}         target="_blank"         rel="noopener noreferrer"       >         <img           src={bookImage.imageSrc}           alt={`Book ${index}`}           className="w-40 h-60 object-cover mb-2 rounded"         />         <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>       </a>     ) : (       <Link to={bookImage.path}>         <img           src={bookImage.imageSrc}           alt={`Book ${index}`}           className="w-40 h-60 object-cover mb-2 rounded"         />         <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>       </Link>     )}   </div> ))}
-  <a
-    href={bookImage.path}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      src={bookImage.imageSrc}
-      alt={`Book ${index}`}
-      className="w-40 h-60 object-cover mb-2 rounded"
-    />
-  </a>
-) : (
-  <Link to={bookImage.path}>
-    <img
-      src={bookImage.imageSrc}
-      alt={`Book ${index}`}
-      className="w-40 h-60 object-cover mb-2 rounded"
-    />
-  </Link>
-)}
-
-                </div>
-                <div className="flex text-center mt-4 md:mt-5 mb-8 md:mb-[50%]">
-                  <Link to={bookImage.path}>
-                    <h2 className="text-sm md:text-base">{bookImage.title}</h2>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div className="container">
+  <div className="flex justify-start md:justify-center space-x-6 md:space-x-10 overflow-x-auto px-4 md:px-0">
+    {bookImages.map((bookImage, index) => (
+      <div key={index} className="text-center">
+        {bookImage.path.startsWith("http") ? (
+          <a
+            href={bookImage.path}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={bookImage.imageSrc}
+              alt={`Book ${index}`}
+              className="w-40 h-60 object-cover mb-2 rounded"
+            />
+            <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>
+          </a>
+        ) : (
+          <Link to={bookImage.path}>
+            <img
+              src={bookImage.imageSrc}
+              alt={`Book ${index}`}
+              className="w-40 h-60 object-cover mb-2 rounded"
+            />
+            <h2 className="text-sm md:text-base mt-2">{bookImage.title}</h2>
+          </Link>
+        )}
       </div>
+    ))}
+  </div>
+</div>
+
 
       {/* Promotion Section */}
       <div className=" fin-head ml-[14%] mr-[14%] text-white flex pt-10 h-auto px-10">
