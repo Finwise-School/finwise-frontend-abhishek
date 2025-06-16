@@ -43,9 +43,31 @@ import Test from "./components/calculator/test/MortgageTest";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Stocks from "./components/stock";
 import BasicsOfTechnicalAnalysis from "./components/Resources/basicsOfTechnicalAnalysis";
-import BudgetBlueprint from "./components/Resources/budgetBlue";
+const handleClick = () => {
+  window.location.href = "https://finwiseschool.gumroad.com/l/fwsbudgetboss";
+};
+
+export default function BudgetBlueprintButton() {
+  return (
+    <button onClick={handleClick}>
+      Get Budget Boss
+    </button>
+  );
+}
+
 import Taxes from "./components/Resources/taxation";
-import Budgetings from "./components/Resources/Budgeting";
+const handleClick = () => {
+  window.location.href = "https://finwiseschool.gumroad.com/l/fwsbudgetboss";
+};
+
+export default function BudgetBlueprintButton() {
+  return (
+    <button onClick={handleClick}>
+      Get Budget Boss
+    </button>
+  );
+}
+
 import Retirement from "./components/Resources/retirement";
 import Smart from "./components/Resources/Smartmoney";
 import Finance from "./components/Resources/finance";
